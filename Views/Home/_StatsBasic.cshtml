@@ -1,0 +1,12 @@
+﻿<br/><br/>
+<div class="well" id="statsbasic">
+    <h2 title="@DateTime.Now">Statistics</h2>
+    <h4>The youngest student was born: @ViewBag.Oldest</h4>
+    <h4>The oldest student was born: @ViewBag.Youngest</h4>
+    <h4>The average age: @ViewBag.AverageAgeInDays days / @ViewBag.AverageAgeInYears years</h4>
+    <h4>The average birthday: @ViewBag.AverageBirthday</h4>
+    <h4>Random birthday: @ViewBag.RandomBirthday</h4>
+</div>
+<script>
+     $("#statsbasic").effect("highlight", {}, 3000);
+</script>
