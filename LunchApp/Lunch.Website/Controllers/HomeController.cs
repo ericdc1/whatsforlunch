@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Lunch.Website.Models;
 
 namespace Lunch.Website.Controllers
 {
@@ -10,10 +12,12 @@ namespace Lunch.Website.Controllers
     {
         //
         // GET: /Home/
-
+        
         public ActionResult Index()
         {
-            return View();
+            var entities = new WhatsForLunchEntities();
+            var model = entities.JobLogs.OrderByDescending(f=>f.LogDTM).Take(20);
+            return View(model);
         }
 
     }

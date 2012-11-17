@@ -1,5 +1,36 @@
-﻿@{
+﻿@model IEnumerable<Lunch.Website.Models.JobLog>
+
+@{
     ViewBag.Title = "Index";
 }
+<link href="//netdna.bootstrapcdn.com/bootswatch/2.1.1/simplex/bootstrap.min.css" rel="stylesheet">
+<h2>Job log</h2>
+<table class="table table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.LogDTM)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Message)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Category)
+        </th>
+        <th></th>
+    </tr>
 
-<h2>What's for lunch</h2>
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.LogDTM)
+        </td>
+        <td>
+            @Html.Raw(item.Message)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Category)
+        </td>
+    </tr>
+}
+
+</table>
