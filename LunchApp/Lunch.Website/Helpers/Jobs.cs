@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Web;
 using Lunch.Website.Models;
@@ -12,7 +14,7 @@ namespace Lunch.Website.Helpers
     {
         public static void Test1()
         {
-
+            keepalive();
             var utc = DateTime.UtcNow;
             var eastern = TimeZoneInfo.FindSystemTimeZoneById("Eastern Standard Time");
             var sb = new StringBuilder();
@@ -22,12 +24,30 @@ namespace Lunch.Website.Helpers
         }
         public static void Test2()
         {
+            keepalive();
             new Models.JobLogRepository().Insert(new JobLog { Category = "test2", LogDTM = DateTime.Now, Message = "Job running" });
 
         }
         public static void Test3()
         {
+            keepalive();
             new Models.JobLogRepository().Insert(new JobLog { Category = "test3", LogDTM = DateTime.Now, Message = "Job running" });
         }
+
+
+        static string keepalive()
+        {
+            const string url = "http://whatsforlunch.azurewebsites.net/home/keepalive";
+            String strResult;
+            var objRequest = WebRequest.Create(url);
+            var objResponse = objRequest.GetResponse();
+            using (var sr = new StreamReader(objResponse.GetResponseStream()))
+            {
+                strResult = sr.ReadToEnd();
+                sr.Close();
+            }
+            return strResult;
+        }
+
     }
 }

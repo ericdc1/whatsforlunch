@@ -20,5 +20,10 @@ namespace Lunch.Website.Controllers
             
         }
 
+        public ActionResult Keepalive()
+        {
+            return Content("alive");
+        }
+
     }
 }
