@@ -12,7 +12,7 @@ namespace Lunch.Website.Helpers
     {
         public static void Test1()
         {
-            using (var entities = new WhatsForLunchEntities())
+            using (var entities = new WhatsForLunchEntities1())
             {
                 var utc = DateTime.UtcNow;
                 var eastern = TimeZoneInfo.FindSystemTimeZoneById("Eastern Standard Time");
@@ -25,7 +25,7 @@ namespace Lunch.Website.Helpers
         }
         public static void Test2()
         {
-            using (var entities = new WhatsForLunchEntities())
+            using (var entities = new WhatsForLunchEntities1())
             {
                 entities.JobLogs.Add(new JobLog { Category = "test2", LogDTM = DateTime.Now, Message = "Job running" });
                 entities.SaveChanges();
@@ -33,7 +33,7 @@ namespace Lunch.Website.Helpers
         }
         public static void Test3()
         {
-            using (var entities = new WhatsForLunchEntities())
+            using (var entities = new WhatsForLunchEntities1())
             {
                 entities.JobLogs.Add(new JobLog { Category = "test3", LogDTM = DateTime.Now, Message = "Job running" });
                 entities.SaveChanges();

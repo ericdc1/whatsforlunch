@@ -13,10 +13,10 @@ namespace Lunch.Website.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class WhatsForLunchEntities : DbContext
+    public partial class WhatsForLunchEntities1 : DbContext
     {
-        public WhatsForLunchEntities()
-            : base("name=WhatsForLunchEntities")
+        public WhatsForLunchEntities1()
+            : base("name=WhatsForLunchEntities1")
         {
         }
     

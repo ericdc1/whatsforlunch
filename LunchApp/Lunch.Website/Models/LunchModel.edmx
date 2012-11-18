@@ -22,7 +22,7 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="WhatsForLunchModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="WhatsForLunchEntities" p1:LazyLoadingEnabled="true">
+        <EntityContainer Name="WhatsForLunchEntities1" p1:LazyLoadingEnabled="true">
           <EntitySet Name="JobLogs" EntityType="WhatsForLunchModel.JobLog" />
         </EntityContainer>
         <EntityType Name="JobLog">
@@ -39,7 +39,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="WhatsForLunchModelStoreContainer" CdmEntityContainer="WhatsForLunchEntities">
+        <EntityContainerMapping StorageEntityContainer="WhatsForLunchModelStoreContainer" CdmEntityContainer="WhatsForLunchEntities1">
           <EntitySetMapping Name="JobLogs">
             <EntityTypeMapping TypeName="WhatsForLunchModel.JobLog">
               <MappingFragment StoreEntitySet="JobLog">
