@@ -15,9 +15,9 @@ namespace Lunch.Website.Controllers
         
         public ActionResult Index()
         {
-            var entities = new WhatsForLunchEntities1();
-            var model = entities.JobLogs.OrderByDescending(f=>f.LogDTM).Take(20);
+            var model = new JobLogRepository().GetList().OrderByDescending(f=>f.LogDTM).Take(20);
             return View(model);
+            
         }
 
     }

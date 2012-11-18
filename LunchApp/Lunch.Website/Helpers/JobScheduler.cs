@@ -38,11 +38,11 @@ namespace Lunch.Website.Helpers
     {
         public void Execute(IJobExecutionContext context)
         {
-            using (var entities = new WhatsForLunchEntities1())
-            {
-                entities.JobLogs.Add(new JobLog { Category = "Recurring", LogDTM = DateTime.Now, Message = "Job running" });
-                entities.SaveChanges();
-            }
+            //using (var entities = new WhatsForLunchEntities1())
+            //{
+            //    entities.JobLogs.Add(new JobLog { Category = "Recurring", LogDTM = DateTime.Now, Message = "Job running" });
+            //    entities.SaveChanges();
+            //}
 
             var functionarray = new string[3] { "Test1", "Test2", "Test3" };
             var random = new Random();
