@@ -2,15 +2,15 @@
 {
     public class User
     {
-        public int Id { get; set; }
-        public string FullName { get; set; }
-        public string Email { get; set; }
-        public string Password { get; set; }
-        public string Guid { get; set; }
-        public bool SendMorningEmailFlg { get; set; }
-        public bool SendVotingIsOverEmailFlg { get; set; }
-        public bool SendWhereWeAreGoingEmailFlg { get; set; }
-        public bool IsAdministrator { get; set; }
+        public virtual int Id { get; protected set; }
+        public virtual string FullName { get; set; }
+        public virtual string Email { get; set; }
+        public virtual string Password { get; set; }
+        public virtual string Guid { get; set; }
+        public virtual bool SendMorningEmailFlg { get; set; }
+        public virtual bool SendVotingIsOverEmailFlg { get; set; }
+        public virtual bool SendWhereWeAreGoingEmailFlg { get; set; }
+        public virtual bool IsAdministrator { get; set; }
     }
 }
 

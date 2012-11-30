@@ -4,10 +4,10 @@ namespace Lunch.Core.Models
 {
     public class Restaurant
     {
-        public int ID { get; set; }
-        public string RestaurantName { get; set; }
-        public DayOfWeek? PreferredDayOfWeek { get; set; }
-        public DateTime LastVisitedDate { get; set; }
+        public virtual int ID { get; protected set; }
+        public virtual string RestaurantName { get; set; }
+        public virtual DayOfWeek? PreferredDayOfWeek { get; set; }
+        public virtual DateTime LastVisitedDate { get; set; }
     }
 }
 
