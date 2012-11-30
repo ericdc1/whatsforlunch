@@ -2,30 +2,31 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using Lunch.Core;
+using Lunch.Core.Models;
+using Lunch.Core.RepositoryInterfaces;
 using NHibernate;
 using NHibernate.Linq;
 
-namespace Lunch.Data
+namespace Lunch.Data.Repositories
 {
-    public class Repository<T> : IRepository<T>
+    public class RestaurantRepository : IRestaurantRepository
     {
         public ISession Session
         {
             get { return NHibernateHttpModule.GetCurrentSession(); }
         }
 
-        public IQueryable<T> GetAll()
+        public IQueryable<Restaurant> GetAll()
         {
-            return Session.Query<T>();
+            return Session.Query<Restaurant>();
         }
 
-        public IQueryable<T> Get(Expression<Func<T, bool>> predicate)
+        public IQueryable<Restaurant> Get(Expression<Func<Restaurant, bool>> predicate)
         {
             return GetAll().Where(predicate);
         }
 
-        public IEnumerable<T> SaveOrUpdateAll(params T[] entities)
+        public IEnumerable<Restaurant> SaveOrUpdateAll(params Restaurant[] entities)
         {
             foreach (var entity in entities)
             {
@@ -35,7 +36,7 @@ namespace Lunch.Data
             return entities;
         }
 
-        public T SaveOrUpdate(T entity)
+        public Restaurant SaveOrUpdate(Restaurant entity)
         {
             Session.SaveOrUpdate(entity);
 

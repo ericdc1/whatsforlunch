@@ -6,6 +6,7 @@ namespace Lunch.Core.Models
     {
         public virtual int ID { get; protected set; }
         public virtual string RestaurantName { get; set; }
+        public virtual RestaurantType RestaurantType { get; set; }
         public virtual DayOfWeek? PreferredDayOfWeek { get; set; }
         public virtual DateTime LastVisitedDate { get; set; }
     }

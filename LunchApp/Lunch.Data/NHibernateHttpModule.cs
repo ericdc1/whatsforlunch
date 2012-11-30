@@ -104,17 +104,17 @@ namespace Lunch.Data
                 });
         }
 
-        // Drops and creates the database shema
-        //private static void BuildSchema( Configuration cfg )
-        //{
-        //    new SchemaExport( cfg )
-        //        .Create( false,true  );
-        //}
+        //Drops and creates the database shema
+        private static void BuildSchema( Configuration cfg )
+        {
+            new SchemaExport( cfg )
+                .Create( false,true  );
+        }
 
         // Updates the database schema if there are any changes to the model
-        private static void BuildSchema(Configuration cfg)
-        {
-            new SchemaUpdate(cfg).Execute(true, true);
-        }
+        //private static void BuildSchema(Configuration cfg)
+        //{
+        //    new SchemaUpdate(cfg).Execute(true, true);
+        //}
     }
 }

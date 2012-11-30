@@ -1,4 +1,7 @@
 using System.Reflection;
+using Lunch.Core;
+using Lunch.Data;
+using Lunch.Data.Repositories;
 using StructureMap.Configuration.DSL;
 
 namespace Lunch.Website.DependencyResolution
@@ -22,7 +25,7 @@ namespace Lunch.Website.DependencyResolution
 			if (customAttributes.Length == 0) {
 				return false;
 			}
-			if (((AssemblyProductAttribute)customAttributes[0]).Product.Contains("Lunch")) {
+			if (((AssemblyProductAttribute)customAttributes[0]).Product.StartsWith("Lunch")) {
 				return true;
 			}
 			return false;

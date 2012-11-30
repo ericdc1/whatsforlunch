@@ -1,17 +1,23 @@
 ﻿using System.Web.Mvc;
+using Lunch.Core.Logic;
 
 namespace Lunch.Website.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly ITestLogic _testLogic;
+
+        public HomeController(ITestLogic testLogic)
+        {
+            _testLogic = testLogic;
+        }
+
         //
         // GET: /Home/
         
         public ActionResult Index()
         {
-            //var model = new JobLogRepository().GetList().OrderByDescending(f=>f.LogDTM).Take(20);
-            return View();
-            
+            return View(_testLogic.GetRestaurants());            
         }
 
         public ActionResult Keepalive()

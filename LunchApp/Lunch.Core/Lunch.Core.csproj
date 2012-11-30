@@ -39,11 +39,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IRepository.cs" />
+    <Compile Include="RepositoryInterfaces\IRestaurantRepository.cs" />
+    <Compile Include="Logic\Implementations\TestLogic.cs" />
+    <Compile Include="Logic\ITestLogic.cs" />
     <Compile Include="Models\Job.cs" />
     <Compile Include="Models\JobLog.cs" />
     <Compile Include="Models\Restaurant.cs" />
     <Compile Include="Models\RestaurantHistory.cs" />
+    <Compile Include="Models\RestaurantType.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -1,8 +1,11 @@
-﻿@model IEnumerable<Lunch.Core.Models.JobLog>
+﻿@model IEnumerable<Lunch.Core.Models.Restaurant>
 
 @{
     ViewBag.Title = "Index";
 }
+
+@Model.First().RestaurantName
+
 @*<link href="//netdna.bootstrapcdn.com/bootswatch/2.1.1/simplex/bootstrap.min.css" rel="stylesheet">
 <h2>Job log</h2>
 <table class="table table-striped">
