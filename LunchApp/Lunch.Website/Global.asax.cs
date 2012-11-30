@@ -1,12 +1,8 @@
-﻿using System;
-using System.Diagnostics;
-using System.Reflection;
-using System.Web.Http;
+﻿using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Routing;
-using Lunch.Website.Models;
-using Quartz;
-using Quartz.Impl;
+using Lunch.Website.DependencyResolution;
+using StructureMap;
 
 
 namespace Lunch.Website
@@ -17,6 +13,9 @@ namespace Lunch.Website
     {
         protected void Application_Start()
         {
+            ObjectFactory.Initialize(i => i.AddRegistry<StructureMapRegistry>());
+            ObjectFactory.AssertConfigurationIsValid();
+
             AreaRegistration.RegisterAllAreas();
 
             WebApiConfig.Register(GlobalConfiguration.Configuration);
@@ -24,6 +23,8 @@ namespace Lunch.Website
             RouteConfig.RegisterRoutes(RouteTable.Routes);
 
             new Helpers.JobScheduler().Taskmanager();
+
+            ControllerBuilder.Current.SetControllerFactory(new StructureMapControllerFactory());
         }
 
     }

@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
-using System.Linq;
 using System.Net;
 using System.Text;
-using System.Web;
-using Lunch.Website.Models;
+using Lunch.Core.Models;
 
 namespace Lunch.Website.Helpers
 {
@@ -20,18 +16,18 @@ namespace Lunch.Website.Helpers
             var sb = new StringBuilder();
             sb.Append("<li>Local time" + DateTime.Now);
             sb.Append("<li>Eastern time" + utc.Add(eastern.BaseUtcOffset));
-            new Models.JobLogRepository().Insert(new JobLog { Category = "test1", LogDTM = DateTime.Now, Message = "Job running - " + sb.ToString() });
+            //new Models.JobLogRepository().Insert(new JobLog { Category = "test1", LogDTM = DateTime.Now, Message = "Job running - " + sb.ToString() });
         }
         public static void Test2(object model)
         {
             keepalive();
-            new Models.JobLogRepository().Insert(new JobLog { Category = "test2", LogDTM = DateTime.Now, Message = "Job running" });
+            //new Models.JobLogRepository().Insert(new JobLog { Category = "test2", LogDTM = DateTime.Now, Message = "Job running" });
 
         }
         public static void Test3(object model)
         {
             keepalive();
-            new Models.JobLogRepository().Insert(new JobLog { Category = "test3", LogDTM = DateTime.Now, Message = "Job running" });
+            //new Models.JobLogRepository().Insert(new JobLog { Category = "test3", LogDTM = DateTime.Now, Message = "Job running" });
         }
 
 
