@@ -1,15 +1,18 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Globalization;
+using System.Web.Mvc;
 using Lunch.Core.Logic;
+using Lunch.Core.Models;
 
 namespace Lunch.Website.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ITestLogic _testLogic;
+        private readonly IRestaurantLogic _restaurantLogic;
 
-        public HomeController(ITestLogic testLogic)
+        public HomeController(IRestaurantLogic restaurantLogic)
         {
-            _testLogic = testLogic;
+            _restaurantLogic = restaurantLogic;
         }
 
         //
@@ -17,7 +20,16 @@ namespace Lunch.Website.Controllers
         
         public ActionResult Index()
         {
-            return View(_testLogic.GetRestaurants());            
+            _restaurantLogic.SaveOrUpdate(new Restaurant() {RestaurantName = "My restaurant" });
+
+            var allrest = _restaurantLogic.Get(f => f.ID < 3);
+            foreach(var res in allrest)
+            {
+                res.RestaurantName = DateTime.Now.ToString(CultureInfo.InvariantCulture);
+            }
+            var model = _restaurantLogic.GetAll();
+
+            return View(model);            
         }
 
         public ActionResult Keepalive()

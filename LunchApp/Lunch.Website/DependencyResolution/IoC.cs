@@ -1,7 +1,5 @@
 using System.Reflection;
 using Lunch.Core;
-using Lunch.Data;
-using Lunch.Data.Repositories;
 using StructureMap.Configuration.DSL;
 
 namespace Lunch.Website.DependencyResolution
