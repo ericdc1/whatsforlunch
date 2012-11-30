@@ -4,10 +4,10 @@ namespace Lunch.Core.Models
 {
     public class Job
     {
-        public int ID { get; set; }
-        public string MethodName { get; set; }
-        public string ParametersJson { get; set; }
-        public DateTime RunDate { get; set; }
-        public DateTime CreatedDate { get; set; }
+        public virtual int ID { get; protected set; }
+        public virtual string MethodName { get; set; }
+        public virtual string ParametersJson { get; set; }
+        public virtual DateTime RunDate { get; set; }
+        public virtual DateTime CreatedDate { get; set; }
     }
 }
