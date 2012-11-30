@@ -38,21 +38,21 @@ namespace Lunch.Website.Helpers
     {
         public void Execute(IJobExecutionContext context)
         {
-            //using (var entities = new WhatsForLunchEntities1())
-            //{
-            //    entities.JobLogs.Add(new JobLog { Category = "Recurring", LogDTM = DateTime.Now, Message = "Job running" });
-            //    entities.SaveChanges();
-            //}
-
             var functionarray = new string[3] { "Test1", "Test2", "Test3" };
             var random = new Random();
             var index = random.Next(0, functionarray.Length);
             var functiontorun = functionarray[index];
             var calledType = Type.GetType("Lunch.Website.Helpers.Jobs");
+            var settings = "{ 'firstName':'John' , 'lastName':'Doe' }";
             if (calledType != null)
-                calledType.InvokeMember(functiontorun, BindingFlags.InvokeMethod | BindingFlags.Public | BindingFlags.Static, null, null, null);
+                calledType.InvokeMember(functiontorun, BindingFlags.InvokeMethod | BindingFlags.Public | BindingFlags.Static, null, null, new object[] {settings});
         }
 
+    }
+
+    public class Settings
+    {
+        public string Settingsjson { get; set; }
     }
 
 }

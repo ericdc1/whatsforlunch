@@ -151,6 +151,7 @@
     <Compile Include="Helpers\JobScheduler.cs" />
     <Compile Include="Models\JobLog.cs" />
     <Compile Include="Models\JobLogRepository.cs" />
+    <Compile Include="Models\Users.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

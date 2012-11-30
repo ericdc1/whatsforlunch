@@ -12,7 +12,7 @@ namespace Lunch.Website.Helpers
 {
     public class Jobs
     {
-        public static void Test1()
+        public static void Test1(object model)
         {
             keepalive();
             var utc = DateTime.UtcNow;
@@ -22,13 +22,13 @@ namespace Lunch.Website.Helpers
             sb.Append("<li>Eastern time" + utc.Add(eastern.BaseUtcOffset));
             new Models.JobLogRepository().Insert(new JobLog { Category = "test1", LogDTM = DateTime.Now, Message = "Job running - " + sb.ToString() });
         }
-        public static void Test2()
+        public static void Test2(object model)
         {
             keepalive();
             new Models.JobLogRepository().Insert(new JobLog { Category = "test2", LogDTM = DateTime.Now, Message = "Job running" });
 
         }
-        public static void Test3()
+        public static void Test3(object model)
         {
             keepalive();
             new Models.JobLogRepository().Insert(new JobLog { Category = "test3", LogDTM = DateTime.Now, Message = "Job running" });
