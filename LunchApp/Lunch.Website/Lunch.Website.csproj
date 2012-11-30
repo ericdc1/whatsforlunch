@@ -173,12 +173,6 @@
     <Content Include="Views\Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Lunch.Core\Lunch.Core.csproj">
-      <Project>{92e2a624-3234-4ba4-a61d-07b7b0c10bfe}</Project>
-      <Name>Lunch.Core</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -186,6 +180,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Lunch.Core\Lunch.Core.csproj">
+      <Project>{5dd60c57-3a10-4538-a46d-c934f236e8d3}</Project>
+      <Name>Lunch.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
