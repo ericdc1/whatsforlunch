@@ -2,9 +2,8 @@
 using System.IO;
 using System.Net;
 using System.Text;
-using Lunch.Core.Models;
 
-namespace Lunch.Website.Helpers
+namespace Lunch.Core.Helpers
 {
     public class Jobs
     {

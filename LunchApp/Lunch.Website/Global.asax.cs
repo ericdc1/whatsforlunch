@@ -1,6 +1,7 @@
 ﻿using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Routing;
+using Lunch.Core.Helpers;
 using Lunch.Website.DependencyResolution;
 using StructureMap;
 
@@ -22,7 +23,7 @@ namespace Lunch.Website
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
 
-            new Helpers.JobScheduler().Taskmanager();
+            new JobScheduler().Taskmanager();
 
             ControllerBuilder.Current.SetControllerFactory(new StructureMapControllerFactory());
         }
