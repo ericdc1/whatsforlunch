@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Mail;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -9,6 +10,7 @@ namespace Lunch.Core.Helpers
 {
     class Helpers
     {
+
         public static bool IsLunchDate(DateTime date)
         {
             if (date.DayOfWeek == DayOfWeek.Saturday || date.DayOfWeek == DayOfWeek.Sunday)
@@ -52,8 +54,52 @@ namespace Lunch.Core.Helpers
             }
         }
 
+        public void CreateJobs(DateTime dateTime)
+        {
+            CreateMorningMailJob();
+            CreateVotingIsOverJob();
+            CreateWhereAreWeGoingJob();
+        }
 
+        private void CreateWhereAreWeGoingJob()
+        {
+            //TODO:insert into db this job
+            throw new NotImplementedException();
+        }
 
+        private void CreateVotingIsOverJob()
+        {
+            //TODO: insert into db this job
+            throw new NotImplementedException();
+        }
 
+        private void CreateMorningMailJob()
+        {
+            //TODO:insert into db this job
+            throw new NotImplementedException();
+        }
+
+        public void RunJob(string methodname, string parameters)
+        {
+            var calledType = Type.GetType("Lunch.Core.Helpers.Jobs");
+            if (calledType != null)
+            {
+                var methods = calledType.GetMethods(BindingFlags.Public);
+                foreach (var method in methods)
+                {
+                    if (method.Name == methodname)
+                    {
+                        calledType.InvokeMember(methodname, BindingFlags.InvokeMethod | BindingFlags.Public | BindingFlags.Static, null, null, new object[] { parameters });
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                //ToDo - email or log that this failed
+            }
+        }
     }
+
 }
+
