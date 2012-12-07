@@ -5,10 +5,12 @@ using System.Net.Mail;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using Lunch.Core.Logic.Implementations;
+using StructureMap;
 
 namespace Lunch.Core.Helpers
 {
-    class Helpers
+    public class Helpers
     {
 
         public static bool IsLunchDate(DateTime date)
@@ -84,12 +86,14 @@ namespace Lunch.Core.Helpers
             var calledType = Type.GetType("Lunch.Core.Helpers.Jobs");
             if (calledType != null)
             {
-                var methods = calledType.GetMethods(BindingFlags.Public);
+                var methods = calledType.GetMethods(BindingFlags.InvokeMethod | BindingFlags.Instance | BindingFlags.Public);
                 foreach (var method in methods)
                 {
                     if (method.Name == methodname)
                     {
-                        calledType.InvokeMember(methodname, BindingFlags.InvokeMethod | BindingFlags.Public | BindingFlags.Static, null, null, new object[] { parameters });
+                        //object jobsInstance =  Activator.CreateInstance(calledType);
+                        object jobsInstance = ObjectFactory.GetInstance(calledType);
+                        calledType.InvokeMember(methodname, BindingFlags.InvokeMethod| BindingFlags.Public | BindingFlags.Instance, null, jobsInstance, new object[] { parameters });
                         break;
                     }
                 }

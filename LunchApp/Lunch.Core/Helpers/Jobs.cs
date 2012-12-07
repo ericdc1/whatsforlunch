@@ -1,38 +1,74 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Text;
+using Lunch.Core.Logic;
+using Lunch.Core.Models;
 
 namespace Lunch.Core.Helpers
 {
     public class Jobs
     {
-        public static void Test1(object model)
+        private readonly IJobLogLogic _jobLogLogic;
+
+
+        public Jobs(IJobLogLogic jobLogLogic)
+        {
+            _jobLogLogic = jobLogLogic;
+        }
+
+        public void MorningMessage(object model)
         {
             keepalive();
+            //figure out what time it really is
             var utc = DateTime.UtcNow;
             var eastern = TimeZoneInfo.FindSystemTimeZoneById("Eastern Standard Time");
-            var sb = new StringBuilder();
-            sb.Append("<li>Local time" + DateTime.Now);
-            sb.Append("<li>Eastern time" + utc.Add(eastern.BaseUtcOffset));
-            //new Models.JobLogRepository().Insert(new JobLog { Category = "test1", LogDTM = DateTime.Now, Message = "Job running - " + sb.ToString() });
-        }
-        public static void Test2(object model)
-        {
-            keepalive();
-            //new Models.JobLogRepository().Insert(new JobLog { Category = "test2", LogDTM = DateTime.Now, Message = "Job running" });
+            var easterntime = utc.Add(eastern.BaseUtcOffset);
+            var logentries = new List<JobLog>();
 
-        }
-        public static void Test3(object model)
-        {
-            keepalive();
-            //new Models.JobLogRepository().Insert(new JobLog { Category = "test3", LogDTM = DateTime.Now, Message = "Job running" });
+            //TODO: populate from query of users who have mornining mail flag set
+            var peopletoreceivemail = new List<User>();
+            peopletoreceivemail.Add(new User() {FullName="Eric Coffman", Email="ecoffman@hsc.wvu.edu", SendMorningEmailFlg=true, GUID =  Guid.NewGuid().ToString()});
+            peopletoreceivemail.Add(new User() { FullName = "Libby DeHaan", Email = "edehaan@hsc.wvu.edu", SendMorningEmailFlg = false });
+            peopletoreceivemail.Add(new User() { FullName = "No One", Email = "noone@hsc.wvu.edu", SendMorningEmailFlg = false });
+
+            var todayschoices = new List<Restaurant>();
+
+            int numberofpeople = peopletoreceivemail.Count;
+
+            //ToDo: set in web.config
+            var fromaddress = "admin@lunchapp.com";
+
+            //send email to each person who is eligible
+            foreach (var user in peopletoreceivemail.Where(f=>f.SendMorningEmailFlg=true))
+            {    
+                var messagesb = new StringBuilder();
+                messagesb.Append("Today's choices are");
+                foreach (var restaurant in todayschoices)
+                {
+                    messagesb.Append(restaurant.RestaurantName);                    
+                }
+
+                //TODO: set in web.config
+                var link = string.Format("http://localhost:2227/?u={0}", user.GUID);
+                messagesb.Append(string.Format("Click here to vote - <a href='{0}'>Login</a>", link));
+
+                Helpers.SendMail(user.Email, fromaddress, "What's for Lunch Message of the day", messagesb.ToString());     
+                //add log
+               var entity = new JobLog() {Category="MorningMessage", LogDTM = easterntime, Message=string.Format("Morning message sent to {0}", user.FullName)};
+               logentries.Add(entity);
+            }
+
+          //  _jobLogLogic.SaveOrUpdateAll(logentries.ToArray());
         }
 
 
         static string keepalive()
         {
-            const string url = "http://whatsforlunch.azurewebsites.net/home/keepalive";
+            //TODO: set in web.config
+            const string url = "http://localhost:2227/home/keepalive";
             String strResult;
             var objRequest = WebRequest.Create(url);
             var objResponse = objRequest.GetResponse();

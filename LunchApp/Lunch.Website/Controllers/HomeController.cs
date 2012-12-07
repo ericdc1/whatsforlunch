@@ -20,6 +20,7 @@ namespace Lunch.Website.Controllers
         
         public ActionResult Index()
         {
+
             _restaurantLogic.SaveOrUpdate(new Restaurant() {RestaurantName = "My restaurant" });
             var allrest = _restaurantLogic.Get(f => f.ID < 3);
             foreach(var res in allrest)

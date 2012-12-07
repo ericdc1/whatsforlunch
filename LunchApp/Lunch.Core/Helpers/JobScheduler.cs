@@ -46,13 +46,14 @@ namespace Lunch.Core.Helpers
                 var jobsfortoday = new List<Job>();
                 if (jobsfortoday.Count == 0)
                 {
-                    new Helpers().CreateJobs(DateTime.Now);
+                    //new Helpers().CreateJobs(DateTime.Now);
                 }
 
                 //check to see if any tasks exist that need to run now
                 //run those jobs and log actions
                 //Todo: get list of jobs that are in today's date and before NOW that have not been flagged as ran
                 var jobstorun = new List<Job>();
+                jobstorun.Add(new Job() { CreatedDate = DateTime.Now, MethodName = "MorningMessage", ParametersJson = "{name:bob}", RunDate=DateTime.Now.AddMinutes(-5)});
                 foreach (var job in jobstorun)
                 {
                    new Helpers().RunJob(job.MethodName, job.ParametersJson);

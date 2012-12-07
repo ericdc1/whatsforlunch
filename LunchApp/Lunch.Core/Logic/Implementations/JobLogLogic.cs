@@ -8,41 +8,41 @@ namespace Lunch.Core.Logic.Implementations
 {
     public class JobLogLogic : IJobLogLogic
     {
-        private readonly IJobLogRepository _restaurantRepository;
+        private readonly IJobLogRepository _jobLogRepository;
 
         public JobLogLogic(IJobLogRepository restaurantRepository)
         {
-            _restaurantRepository = restaurantRepository;
+            _jobLogRepository = restaurantRepository;
         }
 
         public IQueryable<JobLog> GetAll()
         {
-            return _restaurantRepository.GetAll();
+            return _jobLogRepository.GetAll();
         }
 
         public IQueryable<JobLog> GetAll(JobLogDependencies dependencies)
         {
-            return _restaurantRepository.GetAll(dependencies);
+            return _jobLogRepository.GetAll(dependencies);
         }
 
         public IQueryable<JobLog> Get(System.Linq.Expressions.Expression<Func<JobLog, bool>> predicate)
         {
-            return _restaurantRepository.Get(predicate);
+            return _jobLogRepository.Get(predicate);
         }
 
         public IEnumerable<JobLog> SaveOrUpdateAll(params JobLog[] entities)
         {
-           return _restaurantRepository.SaveOrUpdateAll(entities);
+           return _jobLogRepository.SaveOrUpdateAll(entities);
         }
 
         public JobLog SaveOrUpdate(JobLog entity)
         {
-            return _restaurantRepository.SaveOrUpdate(entity);
+            return _jobLogRepository.SaveOrUpdate(entity);
         }
 
         public JobLog Delete(JobLog entity)
         {
-            return _restaurantRepository.Delete(entity);
+            return _jobLogRepository.Delete(entity);
         }
     }
 }

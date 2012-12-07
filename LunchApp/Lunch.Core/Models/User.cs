@@ -10,5 +10,6 @@
         public virtual bool SendVotingIsOverEmailFlg { get; set; }
         public virtual bool SendWhereWeAreGoingEmailFlg { get; set; }
         public virtual bool IsAdministrator { get; set; }
+        public virtual string GUID { get; set; }
     }
 }
