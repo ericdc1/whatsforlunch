@@ -21,14 +21,12 @@ namespace Lunch.Website.Controllers
         public ActionResult Index()
         {
             _restaurantLogic.SaveOrUpdate(new Restaurant() {RestaurantName = "My restaurant" });
-
             var allrest = _restaurantLogic.Get(f => f.ID < 3);
             foreach(var res in allrest)
             {
                 res.RestaurantName = DateTime.Now.ToString(CultureInfo.InvariantCulture);
             }
             var model = _restaurantLogic.GetAll();
-
             return View(model);            
         }
 

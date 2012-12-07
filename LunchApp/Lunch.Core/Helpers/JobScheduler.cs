@@ -46,7 +46,7 @@ namespace Lunch.Core.Helpers
                 var jobsfortoday = new List<Job>();
                 if (jobsfortoday.Count == 0)
                 {
-                    CreateJobs(DateTime.Now);
+                    new Helpers().CreateJobs(DateTime.Now);
                 }
 
                 //check to see if any tasks exist that need to run now
@@ -55,58 +55,10 @@ namespace Lunch.Core.Helpers
                 var jobstorun = new List<Job>();
                 foreach (var job in jobstorun)
                 {
-                    RunJob(job.MethodName, job.ParametersJson);
+                   new Helpers().RunJob(job.MethodName, job.ParametersJson);
                 }
 
-            }
-        }
-
-        private void CreateJobs(DateTime dateTime)
-        {
-            CreateMorningMailJob();
-            CreateVotingIsOverJob();
-            CreateWhereAreWeGoingJob();
-        }
-
-        private void CreateWhereAreWeGoingJob()
-        {
-            //TODO:insert into db this job
-            throw new NotImplementedException();
-        }
-
-        private void CreateVotingIsOverJob()
-        {
-            //TODO: insert into db this job
-            throw new NotImplementedException();
-        }
-
-        private void CreateMorningMailJob()
-        {
-            //TODO:insert into db this job
-            throw new NotImplementedException();
-        }
-
-        private static void RunJob(string methodname, string parameters)
-        {
-            var calledType = Type.GetType("Lunch.Core.Helpers.Jobs");
-            if (calledType != null)
-            {
-                var methods = calledType.GetMethods(BindingFlags.Public);
-                foreach (var method in methods)
-                {
-                    if (method.Name == methodname)
-                    {
-                        calledType.InvokeMember(methodname, BindingFlags.InvokeMethod | BindingFlags.Public | BindingFlags.Static, null, null, new object[] { parameters });
-                        break;
-                    }
-                }
-            }
-            else
-            {
-                //ToDo - email or log that this failed
             }
         }
     }
-
-
 }
