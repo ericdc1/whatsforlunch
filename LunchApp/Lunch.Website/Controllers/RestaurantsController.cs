@@ -26,8 +26,7 @@ namespace Lunch.Website.Controllers
         public ActionResult Index()
         {
             var results =
-                _restaurantLogic.GetAll(RestaurantDependencies.RestaurantHistories |
-                                        RestaurantDependencies.RestaurantType);
+                _restaurantLogic.GetAll();
 
             return View(results);
         }
@@ -58,12 +57,14 @@ namespace Lunch.Website.Controllers
         {
             try
             {
-                _restaurantLogic.SaveOrUpdate(entity);
+                entity = _restaurantLogic.SaveOrUpdate(entity);
 
                 return RedirectToAction("Index");
             }
-            catch
+            catch(Exception ex)
             {
+                ViewBag.RestaurantTypes = new SelectList(_restaurantTypeLogic.GetAll(), "ID", "TypeName");
+
                 return View(entity);
             }
         }
