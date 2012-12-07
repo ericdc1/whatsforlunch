@@ -12,5 +12,3 @@
         public virtual bool IsAdministrator { get; set; }
     }
 }
-
-//ToDo: Create Add/Edit/Delete users

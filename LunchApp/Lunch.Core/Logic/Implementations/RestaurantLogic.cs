@@ -40,7 +40,7 @@ namespace Lunch.Core.Logic.Implementations
             return _restaurantRepository.SaveOrUpdate(entity);
         }
 
-        public bool Delete(int ID)
+        public bool Delete(int id)
         {
             throw new NotImplementedException();
         }

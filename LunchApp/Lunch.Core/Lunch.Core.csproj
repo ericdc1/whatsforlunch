@@ -54,6 +54,8 @@
     <Compile Include="Helpers\Helpers.cs" />
     <Compile Include="Helpers\Jobs.cs" />
     <Compile Include="Helpers\JobScheduler.cs" />
+    <Compile Include="Models\Rating.cs" />
+    <Compile Include="Models\Vote.cs" />
     <Compile Include="RepositoryInterfaces\IRestaurantRepository.cs" />
     <Compile Include="Logic\Implementations\RestaurantLogic.cs" />
     <Compile Include="Logic\IRestaurantLogic.cs" />

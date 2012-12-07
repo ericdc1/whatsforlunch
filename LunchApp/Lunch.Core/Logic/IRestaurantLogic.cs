@@ -14,6 +14,6 @@ namespace Lunch.Core.Logic
         IQueryable<Restaurant> Get(Expression<Func<Restaurant, bool>> predicate);
         IEnumerable<Restaurant> SaveOrUpdateAll(params Restaurant[] entities);
         Restaurant SaveOrUpdate(Restaurant entity);
-        bool Delete(int ID);
+        bool Delete(int id);
     }
 }
