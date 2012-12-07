@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Lunch.Core.Models
+﻿namespace Lunch.Core.Models
 {
     public class User
     {
@@ -12,8 +10,5 @@ namespace Lunch.Core.Models
         public virtual bool SendVotingIsOverEmailFlg { get; set; }
         public virtual bool SendWhereWeAreGoingEmailFlg { get; set; }
         public virtual bool IsAdministrator { get; set; }
-        public virtual Guid Guid { get; set; }
     }
 }
-
-//ToDo: Create Add/Edit/Delete users

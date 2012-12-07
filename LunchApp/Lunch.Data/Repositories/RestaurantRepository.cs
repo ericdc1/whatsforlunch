@@ -42,5 +42,12 @@ namespace Lunch.Data.Repositories
 
             return entity;
         }
+
+        public Restaurant Delete(Restaurant entity)
+        {
+            Session.Delete(entity);
+
+            return entity;
+        }
     }
 }

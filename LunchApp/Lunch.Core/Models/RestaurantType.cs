@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Lunch.Core.Models
 {
@@ -10,5 +6,6 @@ namespace Lunch.Core.Models
     {
         public virtual int ID { get; protected set; }
         public virtual string TypeName { get; set; }
+        public virtual IList<Restaurant> Restaurants { get; set; }
     }
 }

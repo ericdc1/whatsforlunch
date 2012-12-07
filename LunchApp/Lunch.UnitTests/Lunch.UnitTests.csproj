@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{5DD60C57-3A10-4538-A46D-C934F236E8D3}</ProjectGuid>
+    <ProjectGuid>{FDF30865-3B4B-4B18-BF2D-8D10452D6900}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Lunch.Core</RootNamespace>
-    <AssemblyName>Lunch.Core</AssemblyName>
+    <RootNamespace>Lunch.UnitTests</RootNamespace>
+    <AssemblyName>Lunch.UnitTests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,17 +30,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="C5, Version=1.1.0.0, Culture=neutral, PublicKeyToken=06a1b38866503b69, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Quartz.2.0.1\lib\net40\C5.dll</HintPath>
-    </Reference>
-    <Reference Include="Common.Logging, Version=2.0.0.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Common.Logging.2.0.0\lib\2.0\Common.Logging.dll</HintPath>
-    </Reference>
-    <Reference Include="Quartz, Version=2.0.1.100, Culture=neutral, PublicKeyToken=f6b8c98a402cc8a4, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Quartz.2.0.1\lib\net40\Quartz.dll</HintPath>
+    <Reference Include="Moq">
+      <HintPath>..\packages\Moq.4.0.10827\lib\NET40\Moq.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -49,26 +40,33 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="xunit">
+      <HintPath>..\packages\xunit.1.9.1\lib\net20\xunit.dll</HintPath>
+    </Reference>
+    <Reference Include="xunit.runner.msbuild">
+      <HintPath>..\packages\xunit.1.9.1\lib\net20\xunit.runner.msbuild.dll</HintPath>
+    </Reference>
+    <Reference Include="xunit.runner.tdnet">
+      <HintPath>..\packages\xunit.1.9.1\lib\net20\xunit.runner.tdnet.dll</HintPath>
+    </Reference>
+    <Reference Include="xunit.runner.utility">
+      <HintPath>..\packages\xunit.1.9.1\lib\net20\xunit.runner.utility.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Helpers\Helpers.cs" />
-    <Compile Include="Helpers\Jobs.cs" />
-    <Compile Include="Helpers\JobScheduler.cs" />
-    <Compile Include="Models\Rating.cs" />
-    <Compile Include="Models\Vote.cs" />
-    <Compile Include="RepositoryInterfaces\IRestaurantRepository.cs" />
-    <Compile Include="Logic\Implementations\RestaurantLogic.cs" />
-    <Compile Include="Logic\IRestaurantLogic.cs" />
-    <Compile Include="Models\Job.cs" />
-    <Compile Include="Models\JobLog.cs" />
-    <Compile Include="Models\Restaurant.cs" />
-    <Compile Include="Models\RestaurantHistory.cs" />
-    <Compile Include="Models\RestaurantType.cs" />
-    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Lunch.Core\Lunch.Core.csproj">
+      <Project>{5dd60c57-3a10-4538-a46d-c934f236e8d3}</Project>
+      <Name>Lunch.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Logic\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

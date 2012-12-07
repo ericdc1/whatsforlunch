@@ -15,5 +15,3 @@ namespace Lunch.Core.Models
         Override
     }
 }
-
-//ToDo: Create logging inserts
