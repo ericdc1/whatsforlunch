@@ -28,5 +28,14 @@ namespace Lunch.Website
             ControllerBuilder.Current.SetControllerFactory(new StructureMapControllerFactory());
         }
 
+        private void Application_BeginRequest()
+        {
+            StackExchange.Profiling.MiniProfiler.Start();
+        }
+
+        private void Application_EndRequest()
+        {
+            StackExchange.Profiling.MiniProfiler.Stop();
+        }
     }
 }

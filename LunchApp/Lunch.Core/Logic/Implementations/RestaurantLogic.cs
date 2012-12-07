@@ -15,14 +15,14 @@ namespace Lunch.Core.Logic.Implementations
             _restaurantRepository = restaurantRepository;
         }
 
-        public IList<Restaurant> GetRestaurants()
-        {
-            return _restaurantRepository.GetAll().ToList();
-        }
-
         public IQueryable<Restaurant> GetAll()
         {
             return _restaurantRepository.GetAll();
+        }
+
+        public IQueryable<Restaurant> GetAll(RestaurantDependencies dependencies)
+        {
+            return _restaurantRepository.GetAll(dependencies);
         }
 
         public IQueryable<Restaurant> Get(System.Linq.Expressions.Expression<Func<Restaurant, bool>> predicate)
@@ -40,9 +40,9 @@ namespace Lunch.Core.Logic.Implementations
             return _restaurantRepository.SaveOrUpdate(entity);
         }
 
-        public bool Delete(int id)
+        public Restaurant Delete(Restaurant entity)
         {
-            throw new NotImplementedException();
+            return _restaurantRepository.Delete(entity);
         }
     }
 }

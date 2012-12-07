@@ -21,6 +21,19 @@ namespace Lunch.Data.Repositories
             return Session.Query<Restaurant>();
         }
 
+        public IQueryable<Restaurant> GetAll(RestaurantDependencies dependencies)
+        {
+            //var results = Session.QueryOver<Restaurant>();
+
+            //if ((dependencies & RestaurantDependencies.RestaurantHistories) == RestaurantDependencies.RestaurantHistories)
+            //    results = results.Fetch(x => x.RestaurantHistories).Eager;
+            //if ((dependencies & RestaurantDependencies.RestaurantType) == RestaurantDependencies.RestaurantType)
+            //    results = results.Fetch(y => y.RestaurantType).Eager;
+
+            //return results.Future<Restaurant>().AsQueryable();
+            return Session.Query<Restaurant>();
+        }
+
         public IQueryable<Restaurant> Get(Expression<Func<Restaurant, bool>> predicate)
         {
             return GetAll().Where(predicate);

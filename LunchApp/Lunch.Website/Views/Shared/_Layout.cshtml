@@ -1,0 +1,17 @@
+﻿@using StackExchange.Profiling
+
+@{
+    ViewBag.Title = "_Layout";
+}
+
+<html>
+    <head>
+        <title></title>
+
+        
+    </head>
+    <body>
+        @MiniProfiler.RenderIncludes()
+        @RenderBody()
+    </body>
+</html>
