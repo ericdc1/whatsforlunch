@@ -6,6 +6,7 @@ using Lunch.Core.Models;
 using Lunch.Core.RepositoryInterfaces;
 using NHibernate;
 using NHibernate.Linq;
+using NHibernate.Transform;
 
 namespace Lunch.Data.Repositories
 {
@@ -23,15 +24,20 @@ namespace Lunch.Data.Repositories
 
         public IQueryable<Restaurant> GetAll(RestaurantDependencies dependencies)
         {
-            //var results = Session.QueryOver<Restaurant>();
+            //var results = Session.CreateCriteria<Restaurant>().SetFetchMode("RestaurantTypes", FetchMode.Eager).List<Restaurant>();
 
-            //if ((dependencies & RestaurantDependencies.RestaurantHistories) == RestaurantDependencies.RestaurantHistories)
-            //    results = results.Fetch(x => x.RestaurantHistories).Eager;
-            //if ((dependencies & RestaurantDependencies.RestaurantType) == RestaurantDependencies.RestaurantType)
-            //    results = results.Fetch(y => y.RestaurantType).Eager;
 
-            //return results.Future<Restaurant>().AsQueryable();
-            return Session.Query<Restaurant>();
+            var results = Session.QueryOver<Restaurant>();
+
+            if ((dependencies & RestaurantDependencies.RestaurantHistories) == RestaurantDependencies.RestaurantHistories)
+                results = results.Fetch(x => x.RestaurantHistories).Eager;
+            if ((dependencies & RestaurantDependencies.RestaurantType) == RestaurantDependencies.RestaurantType)
+                results = results.Fetch(y => y.RestaurantType).Eager;
+
+            return results.Future<Restaurant>().AsQueryable();
+            //return Session.Query<Restaurant>();
+
+            //return results.AsQueryable();
         }
 
         public IQueryable<Restaurant> Get(Expression<Func<Restaurant, bool>> predicate)

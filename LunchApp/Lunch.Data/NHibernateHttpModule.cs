@@ -105,10 +105,10 @@ namespace Lunch.Data
         }
 
         //Drops and creates the database shema
-        //private static void BuildSchema( Configuration cfg )
+        //private static void BuildSchema(Configuration cfg)
         //{
-        //    new SchemaExport( cfg )
-        //        .Create( false,true  );
+        //    new SchemaExport(cfg)
+        //        .Create(false, true);
         //}
 
         // Updates the database schema if there are any changes to the model
