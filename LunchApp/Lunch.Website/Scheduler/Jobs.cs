@@ -7,7 +7,7 @@ using System.Text;
 using Lunch.Core.Logic;
 using Lunch.Core.Models;
 
-namespace Lunch.Core.Helpers
+namespace Lunch.Website.Scheduler
 {
     public class Jobs
     {
@@ -55,14 +55,13 @@ namespace Lunch.Core.Helpers
                 var link = string.Format("http://localhost:2227/?u={0}", user.GUID);
                 messagesb.Append(string.Format("Click here to vote - <a href='{0}'>Login</a>", link));
 
-                Helpers.SendMail(user.Email, fromaddress, "What's for Lunch Message of the day", messagesb.ToString());     
+                Website.Scheduler.Helpers.SendMail(user.Email, fromaddress, "What's for Lunch Message of the day", messagesb.ToString());     
                 //add log
                var entity = new JobLog() {Category="MorningMessage", LogDTM = easterntime, Message=string.Format("Morning message sent to {0}", user.FullName)};
                logentries.Add(entity);
             }
 
-            //todo - session doesn't exist here so this errors
-          //  _jobLogLogic.SaveOrUpdateAll(logentries.ToArray());
+           _jobLogLogic.SaveOrUpdateAll(logentries.ToArray());
         }
 
 

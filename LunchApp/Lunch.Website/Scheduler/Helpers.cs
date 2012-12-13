@@ -1,16 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Mail;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using Lunch.Core.Logic;
-using Lunch.Core.Logic.Implementations;
 using Lunch.Core.Models;
 using StructureMap;
 
-namespace Lunch.Core.Helpers
+namespace Lunch.Website.Scheduler
 {
     public class Helpers
     {
@@ -79,15 +74,14 @@ namespace Lunch.Core.Helpers
 
         private void CreateMorningMailJob()
         {
-            //var job = new Job() { CreatedDate = DateTime.Now, MethodName = "MorningMessage", ParametersJson = "{name:bob}", RunDate=DateTime.Now.AddMinutes(-5)};
-            //var _jobLogic = ObjectFactory.GetInstance<IJobLogic>();
-            //_jobLogic.SaveOrUpdate(job);
-            //todo - session doesn't exist here so this errors
+            var job = new Job() { CreatedDate = DateTime.Now, MethodName = "MorningMessage", ParametersJson = "{name:bob}", RunDate=DateTime.Now.AddMinutes(-5)};
+            var _jobLogic = ObjectFactory.GetInstance<IJobLogic>();
+            _jobLogic.SaveOrUpdate(job);
         }
 
         public void RunJob(string methodname, string parameters)
         {
-            var calledType = Type.GetType("Lunch.Core.Helpers.Jobs");
+            var calledType = Type.GetType("Lunch.Websites.Scheduler.Jobs");
             if (calledType != null)
             {
                 var methods = calledType.GetMethods(BindingFlags.InvokeMethod | BindingFlags.Instance | BindingFlags.Public);

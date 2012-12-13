@@ -20,5 +20,6 @@ namespace Lunch.Core.Models
         public virtual DateTime RunDate { get; set; }
         public virtual DateTime CreatedDate { get; set; }
         public virtual IList<JobLog> JobLogs { get; set; }
+        public virtual bool HasRun { get; set; }
     }
 }

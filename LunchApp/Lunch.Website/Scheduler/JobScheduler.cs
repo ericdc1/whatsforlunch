@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
 using Lunch.Core.Logic;
 using Lunch.Core.Models;
 using Quartz;
 using Quartz.Impl;
 using StructureMap;
 
-namespace Lunch.Core.Helpers
+namespace Lunch.Website.Scheduler
 {
     public class JobScheduler
     {
@@ -42,7 +40,7 @@ namespace Lunch.Core.Helpers
         public void Execute(IJobExecutionContext context)
         {
             //Check to see if today is a lunch day
-            if (Helpers.IsLunchDate(DateTime.Now))
+            if (Website.Scheduler.Helpers.IsLunchDate(DateTime.Now))
             {
                 //Check to see if there are jobs in the db for today
                 //if not add jobs
@@ -50,7 +48,7 @@ namespace Lunch.Core.Helpers
                 var jobsfortoday = new List<Job>();
                 if (jobsfortoday.Count == 0)
                 {
-                    new Helpers().CreateJobs();
+                    new Website.Scheduler.Helpers().CreateJobs();
                 }
 
                 //check to see if any tasks exist that need to run now
@@ -61,7 +59,7 @@ namespace Lunch.Core.Helpers
                 //jobstorun.Add(new Job() { CreatedDate = DateTime.Now, MethodName = "MorningMessage", ParametersJson = "{name:bob}", RunDate=DateTime.Now.AddMinutes(-5)});
                 foreach (var job in jobstorun)
                 {
-                    ObjectFactory.GetInstance<Helpers>().RunJob(job.MethodName, job.ParametersJson);
+                    ObjectFactory.GetInstance<Website.Scheduler.Helpers>().RunJob(job.MethodName, job.ParametersJson);
                 }
 
             }
