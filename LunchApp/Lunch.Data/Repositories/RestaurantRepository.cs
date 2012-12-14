@@ -45,6 +45,11 @@ namespace Lunch.Data.Repositories
             return GetAll().Where(predicate);
         }
 
+        public Restaurant Load(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public IEnumerable<Restaurant> SaveOrUpdateAll(params Restaurant[] entities)
         {
             foreach (var entity in entities)

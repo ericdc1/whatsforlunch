@@ -14,7 +14,7 @@ namespace Lunch.Core.Models
 
     public class RestaurantType
     {
-        public virtual int Id { get; protected set; }
+        public virtual int RestaurantTypeID { get; set; }
         public virtual string TypeName { get; set; }
         public virtual IList<Restaurant> Restaurants { get; set; }
     }

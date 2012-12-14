@@ -21,11 +21,11 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.RestaurantType.Id)
+            @Html.LabelFor(model => model.RestaurantTypeID)
         </div>
         <div class="editor-field">
-            @Html.DropDownListFor(model => model.RestaurantType.Id, (SelectList)ViewBag.RestaurantTypes, "-- SELECT --")
-            @Html.ValidationMessageFor(model => model.RestaurantType.Id)
+            @Html.DropDownListFor(model => model.RestaurantTypeID, (SelectList)ViewBag.RestaurantTypes, "-- SELECT --")
+            @Html.ValidationMessageFor(model => model.RestaurantTypeID)
         </div>
 
         <p>

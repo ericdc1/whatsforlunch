@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using Lunch.Core.Models;
 using Lunch.Core.RepositoryInterfaces;
 
@@ -15,6 +16,7 @@ namespace Lunch.Core.Logic.Implementations
             _restaurantRepository = restaurantRepository;
         }
 
+
         public IQueryable<Restaurant> GetAll()
         {
             return _restaurantRepository.GetAll();
@@ -25,14 +27,19 @@ namespace Lunch.Core.Logic.Implementations
             return _restaurantRepository.GetAll(dependencies);
         }
 
-        public IQueryable<Restaurant> Get(System.Linq.Expressions.Expression<Func<Restaurant, bool>> predicate)
+        public IQueryable<Restaurant> Get(Expression<Func<Restaurant, bool>> predicate)
         {
             return _restaurantRepository.Get(predicate);
         }
 
+        public Restaurant Load(int id)
+        {
+            return _restaurantRepository.Load(id);
+        }
+
         public IEnumerable<Restaurant> SaveOrUpdateAll(params Restaurant[] entities)
         {
-           return _restaurantRepository.SaveOrUpdateAll(entities);
+            return _restaurantRepository.SaveOrUpdateAll(entities);
         }
 
         public Restaurant SaveOrUpdate(Restaurant entity)

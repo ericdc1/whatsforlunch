@@ -11,6 +11,7 @@ namespace Lunch.Core.RepositoryInterfaces
         IQueryable<Restaurant> GetAll();
         IQueryable<Restaurant> GetAll(RestaurantDependencies dependencies);
         IQueryable<Restaurant> Get(Expression<Func<Restaurant, bool>> predicate);
+        Restaurant Load(int id);
         IEnumerable<Restaurant> SaveOrUpdateAll(params Restaurant[] entities);
         Restaurant SaveOrUpdate(Restaurant entity);
         Restaurant Delete(Restaurant entity);

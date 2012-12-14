@@ -44,7 +44,7 @@ namespace Lunch.Website.Controllers
 
         public ActionResult Create()
         {
-            ViewBag.RestaurantTypes = new SelectList(_restaurantTypeLogic.GetAll(), "ID", "TypeName");
+            ViewBag.RestaurantTypes = new SelectList(_restaurantTypeLogic.GetAll(), "RestaurantTypeID", "TypeName");
 
             return View();
         }
@@ -63,7 +63,7 @@ namespace Lunch.Website.Controllers
             }
             catch(Exception ex)
             {
-                ViewBag.RestaurantTypes = new SelectList(_restaurantTypeLogic.GetAll(), "ID", "TypeName");
+                ViewBag.RestaurantTypes = new SelectList(_restaurantTypeLogic.GetAll(), "RestaurantTypeID", "TypeName");
 
                 return View(entity);
             }

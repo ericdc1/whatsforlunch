@@ -39,6 +39,11 @@ namespace Lunch.Data.Repositories
             return GetAll().Where(predicate);
         }
 
+        public Job Load(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public IEnumerable<Job> SaveOrUpdateAll(params Job[] entities)
         {
             foreach (var entity in entities)

@@ -22,7 +22,7 @@ namespace Lunch.Website.Controllers
 
         public ActionResult Index()
         {
-            var results = _restaurantTypeLogic.GetAll(RestaurantTypeDependencies.Restaurants);
+            var results = _restaurantTypeLogic.GetAll();
 
             return View(results);
         }

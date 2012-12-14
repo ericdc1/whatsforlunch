@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -34,6 +35,11 @@ namespace Lunch.Data.Repositories
         public IQueryable<RestaurantType> Get(Expression<Func<RestaurantType, bool>> predicate)
         {
             return GetAll().Where(predicate);
+        }
+
+        public RestaurantType Load(int id)
+        {
+            throw new NotImplementedException();
         }
 
         public IEnumerable<RestaurantType> SaveOrUpdateAll(params RestaurantType[] entities)

@@ -1,9 +1,8 @@
 ﻿using System;
+using System.Reflection;
 using System.Web;
-using FluentNHibernate.Automapping;
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
-using FluentNHibernate.Conventions.Helpers;
 using NHibernate;
 using NHibernate.Cfg;
 using NHibernate.Context;
@@ -75,15 +74,35 @@ namespace Lunch.Data
         // Returns our NHibernate session factory
         private static ISessionFactory CreateSessionFactory()
         {
-            var mappings = CreateMappings();
+            //// initialize persistance configurer
+            //IPersistenceConfigurer persistenceConfigurer =
+            //    MsSqlConfiguration
+            //        .MsSql2008
+            //        .ConnectionString(c => c.FromConnectionStringWithKey("AzureSQL"))
+            //        .ShowSql();
+
+            //// initialize nhibernate with persistance configurer properties
+            //Configuration cfg = persistenceConfigurer.ConfigureProperties(new Configuration());
+
+            //// add mappings definition to nhibernate configuration
+            //var persistenceModel = new PersistenceModel();
+            //persistenceModel.AddMappingsFromAssembly(Assembly.Load("Lunch.Data"));
+            //persistenceModel.Configure(cfg);
+
+            //// set session factory field which is to be used in tests
+            //return cfg.BuildSessionFactory();
+
+
+
+            //var mappings = CreateMappings();
 
             return Fluently
                 .Configure()
                 .Database(MsSqlConfiguration.MsSql2008
                     .ConnectionString(c => c
-                        .FromConnectionStringWithKey("AzureSQL")))
+                        .FromConnectionStringWithKey("LocalSQL")))
                 .Mappings(m => m
-                    .AutoMappings.Add(mappings))
+                    .FluentMappings.AddFromAssembly(Assembly.Load("Lunch.Data")))
                 .ExposeConfiguration(c =>
                 {
                     BuildSchema(c);
@@ -92,17 +111,17 @@ namespace Lunch.Data
                 .BuildSessionFactory();
         }
 
-        // Returns our NHibernate auto mapper
-        private static AutoPersistenceModel CreateMappings()
-        {
-            return AutoMap
-                .Assembly(System.Reflection.Assembly.Load("Lunch.Core"))
-                .Where(t => t.Namespace == "Lunch.Core.Models")
-                .Conventions.Setup(c =>
-                {
-                    c.Add(DefaultCascade.SaveUpdate());
-                });
-        }
+        //// Returns our NHibernate auto mapper
+        //private static AutoPersistenceModel CreateMappings()
+        //{
+        //    return AutoMap
+        //        .Assembly(System.Reflection.Assembly.Load("Lunch.Core"))
+        //        .Where(t => t.Namespace == "Lunch.Core.Models")
+        //        .Conventions.Setup(c =>
+        //        {
+        //            c.Add(DefaultCascade.SaveUpdate());
+        //        });
+        //}
 
         //Drops and creates the database shema
         //private static void BuildSchema(Configuration cfg)
