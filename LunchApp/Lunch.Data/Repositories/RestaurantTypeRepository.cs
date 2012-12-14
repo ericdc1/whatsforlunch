@@ -39,7 +39,7 @@ namespace Lunch.Data.Repositories
 
         public RestaurantType Load(int id)
         {
-            throw new NotImplementedException();
+            return Session.Load<RestaurantType>(id);
         }
 
         public IEnumerable<RestaurantType> SaveOrUpdateAll(params RestaurantType[] entities)

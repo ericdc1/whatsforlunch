@@ -100,7 +100,7 @@ namespace Lunch.Data
                 .Configure()
                 .Database(MsSqlConfiguration.MsSql2008
                     .ConnectionString(c => c
-                        .FromConnectionStringWithKey("LocalSQL")))
+                        .FromConnectionStringWithKey("AzureSQL")))
                 .Mappings(m => m
                     .FluentMappings.AddFromAssembly(Assembly.Load("Lunch.Data")))
                 .ExposeConfiguration(c =>

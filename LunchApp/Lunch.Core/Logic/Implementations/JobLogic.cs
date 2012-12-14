@@ -30,6 +30,11 @@ namespace Lunch.Core.Logic.Implementations
             return _restaurantRepository.Get(predicate);
         }
 
+        public Job Load(int id)
+        {
+            return _restaurantRepository.Load(id);
+        }
+
         public IEnumerable<Job> SaveOrUpdateAll(params Job[] entities)
         {
            return _restaurantRepository.SaveOrUpdateAll(entities);

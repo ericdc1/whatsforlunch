@@ -41,7 +41,7 @@ namespace Lunch.Data.Repositories
 
         public JobLog Load(int id)
         {
-            throw new NotImplementedException();
+            return Session.Load<JobLog>(id);
         }
 
         public IEnumerable<JobLog> SaveOrUpdateAll(params JobLog[] entities)

@@ -41,7 +41,7 @@ namespace Lunch.Data.Repositories
 
         public Job Load(int id)
         {
-            throw new NotImplementedException();
+            return Session.Load<Job>(id);
         }
 
         public IEnumerable<Job> SaveOrUpdateAll(params Job[] entities)

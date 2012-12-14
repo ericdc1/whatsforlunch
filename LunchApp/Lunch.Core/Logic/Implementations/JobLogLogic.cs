@@ -30,6 +30,11 @@ namespace Lunch.Core.Logic.Implementations
             return _jobLogRepository.Get(predicate);
         }
 
+        public JobLog Load(int id)
+        {
+            return _jobLogRepository.Load(id);
+        }
+
         public IEnumerable<JobLog> SaveOrUpdateAll(params JobLog[] entities)
         {
            return _jobLogRepository.SaveOrUpdateAll(entities);

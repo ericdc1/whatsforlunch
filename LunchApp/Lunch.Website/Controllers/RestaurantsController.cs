@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using Lunch.Core.Logic;
 using Lunch.Core.Models;
+using Lunch.Website.ViewModels;
 
 namespace Lunch.Website.Controllers
 {
@@ -53,11 +54,11 @@ namespace Lunch.Website.Controllers
         // POST: /Restaurants/Create
 
         [HttpPost]
-        public ActionResult Create(Restaurant entity)
+        public ActionResult Create(CreateRestaurant viewEntity)
         {
             try
             {
-                entity = _restaurantLogic.SaveOrUpdate(entity);
+                _restaurantLogic.SaveOrUpdate(viewEntity.ToDomainModel(_restaurantTypeLogic));
 
                 return RedirectToAction("Index");
             }
@@ -65,7 +66,7 @@ namespace Lunch.Website.Controllers
             {
                 ViewBag.RestaurantTypes = new SelectList(_restaurantTypeLogic.GetAll(), "RestaurantTypeID", "TypeName");
 
-                return View(entity);
+                return View(viewEntity);
             }
         }
 

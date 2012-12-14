@@ -52,6 +52,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Mappings\JobLogMap.cs" />
+    <Compile Include="Mappings\JobMap.cs" />
     <Compile Include="Mappings\RestaurantMap.cs" />
     <Compile Include="Mappings\RestaurantTypeMap.cs" />
     <Compile Include="NHibernateHttpModule.cs" />
