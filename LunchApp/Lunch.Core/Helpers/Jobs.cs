@@ -46,8 +46,8 @@ namespace Lunch.Core.Helpers
                     messagesb.Append(restaurant.RestaurantName);                    
                 }
 
-                //TODO: set in web.config
-                var link = string.Format("http://whatsforlunch.azurewebsites.net/?u={0}", user.GUID);
+                var baseurl = System.Configuration.ConfigurationManager.AppSettings.Get("BaseURL");
+                var link = string.Format("{0}?u={1}", baseurl, user.GUID);
                 messagesb.Append(string.Format("Click here to vote - <a href='{0}'>Login</a>", link));
 
                 Helpers.SendMail(user.Email, fromaddress, "What's for Lunch Message of the day", messagesb.ToString()); 
@@ -87,11 +87,11 @@ namespace Lunch.Core.Helpers
                     messagesb.Append(restaurant.RestaurantName);
                 }
 
-                //TODO: set in web.config
-                var link = string.Format("http://whatsforlunch.azurewebsites.net/?u={0}", user.GUID);
-                messagesb.Append(string.Format("Click here to vote - <a href='{0}'>Login</a>", link));
+                var baseurl = System.Configuration.ConfigurationManager.AppSettings.Get("BaseURL");
+                var link = string.Format("{0}?u={1}", baseurl, user.GUID);
+                messagesb.Append(string.Format("Click here to view results - <a href='{0}'>Login</a>", link));
 
-                Helpers.SendMail(user.Email, fromaddress, "What's for Lunch Votins isover", messagesb.ToString());
+                Helpers.SendMail(user.Email, fromaddress, "What's for Lunch Voting is over", messagesb.ToString());
 
                 //add log
                 var entity = new JobLog() { JobID = id, Category = "VotingIsOverMessage", Message = string.Format("Voting is over message sent to {0}", user.FullName) };
@@ -103,8 +103,8 @@ namespace Lunch.Core.Helpers
 
         static string keepalive()
         {
-            //TODO: set in web.config
-            const string url = "http://localhost:2227/home/keepalive";
+            var baseurl = System.Configuration.ConfigurationManager.AppSettings.Get("BaseURL");
+            string url = string.Format("{0}/home/keepalive", baseurl);
             String strResult;
             var objRequest = WebRequest.Create(url);
             var objResponse = objRequest.GetResponse();
