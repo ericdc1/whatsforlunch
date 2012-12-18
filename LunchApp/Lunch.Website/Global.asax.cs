@@ -22,8 +22,8 @@ namespace Lunch.Website
     {
         protected void Application_Start()
         {
-           // ObjectFactory.Initialize(i => i.AddRegistry<StructureMapRegistry>());
-           // ObjectFactory.AssertConfigurationIsValid();
+            ObjectFactory.Initialize(i => i.AddRegistry<StructureMapRegistry>());
+            ObjectFactory.AssertConfigurationIsValid();
            
             AreaRegistration.RegisterAllAreas();
 
@@ -33,7 +33,7 @@ namespace Lunch.Website
 
             new Lunch.Core.Helpers.JobScheduler().Taskmanager();
 
-            //ControllerBuilder.Current.SetControllerFactory(new StructureMapControllerFactory());
+            ControllerBuilder.Current.SetControllerFactory(new StructureMapControllerFactory());
 
             CreateMaps();
         }
