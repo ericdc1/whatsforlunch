@@ -181,6 +181,10 @@
       <Project>{5dd60c57-3a10-4538-a46d-c934f236e8d3}</Project>
       <Name>Lunch.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Lunch.Data\Lunch.Data.csproj">
+      <Project>{45afc077-b16d-4af1-95c5-b1efe3187ace}</Project>
+      <Name>Lunch.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\_Layout.cshtml" />
