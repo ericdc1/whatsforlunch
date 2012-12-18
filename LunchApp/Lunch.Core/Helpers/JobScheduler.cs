@@ -41,42 +41,65 @@ namespace Lunch.Core.Helpers
  
         public void Execute(IJobExecutionContext context)
         {
-            //Check to see if today is a lunch day
-            if (Helpers.IsLunchDate(Helpers.AdjustTimeOffsetFromUtc(DateTime.UtcNow)))
+            try
             {
-                //add log
-                var _jobLogLogic = ObjectFactory.GetInstance<IJobLogLogic>();
-                var entity = new JobLog() { JobID = 0, Category = "System", Message = "Running recurring job" };
-                _jobLogLogic.SaveOrUpdate(entity);
-
-                var _jobLogic = ObjectFactory.GetInstance<IJobLogic>();
-                var jobsfortoday = _jobLogic.GetAll().Where(f => f.RunDate.ToShortDateString() == DateTime.Today.ToShortDateString()).ToList();
                 
-                //Check to see if there are jobs in the db for today
-                //if not add jobs
-                if (jobsfortoday.Count == 0)
+            //Check to see if today is a lunch day
+                if (Helpers.IsLunchDate(Helpers.AdjustTimeOffsetFromUtc(DateTime.UtcNow)))
                 {
-                    new Helpers().CreateJobs();
-
-                     entity = new JobLog() { JobID = 0, Category = "System", Message = "Creating Jobs"};
+                    //add log
+                    var _jobLogLogic = ObjectFactory.GetInstance<IJobLogLogic>();
+                    var entity = new JobLog() {JobID = 0, Category = "System", Message = "Running recurring job"};
                     _jobLogLogic.SaveOrUpdate(entity);
-                }
 
-                //check to see if any tasks exist that need to run now
-                //run those jobs and log actions
-                //Todo: should create a logic method to get all that has not run
-                var jobstorun = _jobLogic.GetAll().Where(f => f.RunDate < DateTime.UtcNow && f.HasRun == false);
+                    var _jobLogic = ObjectFactory.GetInstance<IJobLogic>();
+                    var jobsfortoday =
+                        _jobLogic.GetAll()
+                                 .Where(f => f.RunDate.ToShortDateString() == DateTime.Today.ToShortDateString())
+                                 .ToList();
+
+                    //Check to see if there are jobs in the db for today
+                    //if not add jobs
+                    if (jobsfortoday.Count == 0)
+                    {
+                        new Helpers().CreateJobs();
+
+                        entity = new JobLog() {JobID = 0, Category = "System", Message = "Creating Jobs"};
+                        _jobLogLogic.SaveOrUpdate(entity);
+                    }
+
+                    //check to see if any tasks exist that need to run now
+                    //run those jobs and log actions
+                    //Todo: should create a logic method to get all that has not run
+                    var jobstorun = _jobLogic.GetAll().Where(f => f.RunDate < DateTime.UtcNow && f.HasRun == false);
+
+                    foreach (var job in jobstorun)
+                    {
+                        ObjectFactory.GetInstance<Helpers>().RunJob(job.MethodName, job.ParametersJson, job.Id);
+                        job.HasRun = true;
+                        _jobLogic.SaveOrUpdate(job);
+
+                        entity = new JobLog()
+                                     {
+                                         JobID = 0,
+                                         Category = "System",
+                                         Message = string.Format("Running Job {0}", job.MethodName)
+                                     };
+                        _jobLogLogic.SaveOrUpdate(entity);
+                    }
+                }
                
-                foreach (var job in jobstorun)
+            }
+            catch (Exception ex)
+            {
+                var _jobLogLogic = ObjectFactory.GetInstance<IJobLogLogic>();
+                var entity = new JobLog()
                 {
-                    ObjectFactory.GetInstance<Helpers>().RunJob(job.MethodName, job.ParametersJson, job.Id);
-                    job.HasRun = true;
-                    _jobLogic.SaveOrUpdate(job);
-
-                     entity = new JobLog() { JobID = 0, Category = "System", Message = string.Format("Running Job {0}",job.MethodName)};
-                    _jobLogLogic.SaveOrUpdate(entity);
-                }
-
+                    JobID = 0,
+                    Category = "Error",
+                    Message = string.Format("Error in job execution: {0}", ex.Message)
+                };
+                _jobLogLogic.SaveOrUpdate(entity);
             }
         }
     }
