@@ -23,8 +23,8 @@ namespace Lunch.Website
         protected void Application_Start()
         {
             ObjectFactory.Initialize(i => i.AddRegistry<StructureMapRegistry>());
-            ObjectFactory.AssertConfigurationIsValid();
-
+           // ObjectFactory.AssertConfigurationIsValid();
+           
             AreaRegistration.RegisterAllAreas();
 
             WebApiConfig.Register(GlobalConfiguration.Configuration);
