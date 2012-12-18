@@ -22,10 +22,6 @@ namespace Lunch.Core.Helpers
         public void MorningMessage(object model, int id)
         {
             keepalive();
-            //figure out what time it really is
-            //var utc = DateTime.UtcNow;
-            //var eastern = TimeZoneInfo.FindSystemTimeZoneById("Eastern Standard Time");
-            //var easterntime = utc.Add(eastern.BaseUtcOffset);
           
             //TODO: populate from query of users who have morning mail flag set
             var peopletoreceivemail = new List<User>();
@@ -61,6 +57,47 @@ namespace Lunch.Core.Helpers
                _jobLogLogic.SaveOrUpdate(entity);
             }
            
+        }
+
+
+        public void VotingIsOverMessage(object model, int id)
+        {
+            keepalive();
+
+            //TODO: populate from query of users who have morning mail flag set
+            var peopletoreceivemail = new List<User>();
+            peopletoreceivemail.Add(new User() { FullName = "Eric Coffman", Email = "ecoffman@hsc.wvu.edu", SendMorningEmailFlg = true, GUID = Guid.NewGuid().ToString() });
+            peopletoreceivemail.Add(new User() { FullName = "Libby DeHaan", Email = "edehaan@hsc.wvu.edu", SendMorningEmailFlg = false });
+            peopletoreceivemail.Add(new User() { FullName = "No One", Email = "noone@hsc.wvu.edu", SendMorningEmailFlg = false });
+
+            var todayschoices = new List<Restaurant>();
+
+            int numberofpeople = peopletoreceivemail.Count;
+
+            //ToDo: set in web.config
+            var fromaddress = "admin@lunchapp.com";
+
+            //send email to each person who is eligible
+            foreach (var user in peopletoreceivemail.Where(f => f.SendMorningEmailFlg))
+            {
+                var messagesb = new StringBuilder();
+                messagesb.Append("Voting is over");
+                foreach (var restaurant in todayschoices)
+                {
+                    messagesb.Append(restaurant.RestaurantName);
+                }
+
+                //TODO: set in web.config
+                var link = string.Format("http://whatsforlunch.azurewebsites.net/?u={0}", user.GUID);
+                messagesb.Append(string.Format("Click here to vote - <a href='{0}'>Login</a>", link));
+
+                Helpers.SendMail(user.Email, fromaddress, "What's for Lunch Votins isover", messagesb.ToString());
+
+                //add log
+                var entity = new JobLog() { JobID = id, Category = "VotingIsOverMessage", Message = string.Format("Voting is over message sent to {0}", user.FullName) };
+                _jobLogLogic.SaveOrUpdate(entity);
+            }
+
         }
 
 

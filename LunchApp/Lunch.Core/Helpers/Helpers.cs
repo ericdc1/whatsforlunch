@@ -61,7 +61,7 @@ namespace Lunch.Core.Helpers
         public void CreateJobs()
         {
             CreateMorningMailJob();
-           // CreateVotingIsOverJob();
+            CreateVotingIsOverJob();
            // CreateWhereAreWeGoingJob();
         }
 
@@ -73,8 +73,14 @@ namespace Lunch.Core.Helpers
 
         private void CreateVotingIsOverJob()
         {
-            //TODO: insert into db this job
-            throw new NotImplementedException();
+            var job = new Job() { CreatedDate = DateTime.Now, MethodName = "VotingIsOverMessage", ParametersJson = "{name:bob}", RunDate = Helpers.AdjustTimeOffsetToUtc(DateTime.Today.AddHours(12)) };
+            var _jobLogic = ObjectFactory.GetInstance<IJobLogic>();
+            _jobLogic.SaveOrUpdate(job);
+
+            //add log
+            var _jobLogLogic = ObjectFactory.GetInstance<IJobLogLogic>();
+            var entity = new JobLog() { JobID = 0, Category = "System", Message = "Create voting is over mail job" };
+            _jobLogLogic.SaveOrUpdate(entity);
         }
 
         private void CreateMorningMailJob()

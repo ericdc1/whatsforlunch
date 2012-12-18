@@ -29,7 +29,7 @@ namespace Lunch.Core.Helpers
                 .Create()
                 .WithIdentity("recurringtrigger", "group1")
                 .StartAt(DateBuilder.FutureDate(5, IntervalUnit.Second))
-                .WithSimpleSchedule(x => x.WithInterval(new TimeSpan(0, 0, 10, 0))
+                .WithSimpleSchedule(x => x.WithInterval(new TimeSpan(0, 0, 1, 0))
                 .RepeatForever())
                 .Build();
             sched.ScheduleJob(jobDetail1, recurringtrigger);
