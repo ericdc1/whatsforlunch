@@ -8,11 +8,8 @@ namespace Lunch.Core.RepositoryInterfaces
 {
     public interface IRestaurantTypeRepository
     {
-        IQueryable<RestaurantType> GetAll();
-        IQueryable<RestaurantType> GetAll(RestaurantTypeDependencies dependencies);
-        IQueryable<RestaurantType> Get(Expression<Func<RestaurantType, bool>> predicate);
-        RestaurantType Load(int id);
-        IEnumerable<RestaurantType> SaveOrUpdateAll(params RestaurantType[] entities);
+        IEnumerable<RestaurantType> GetAll();
+        RestaurantType Get(int id);
         RestaurantType SaveOrUpdate(RestaurantType entity);
         RestaurantType Delete(RestaurantType entity);
     }

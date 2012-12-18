@@ -1,0 +1,103 @@
+﻿<#@ template language="C#" debug="True"  hostspecific="True" #>
+<#@ assembly name="System" #>
+<#@ assembly name="System.Data" #>
+<#@ assembly name="System.Xml" #>
+<#@ assembly name="System.Configuration" #>
+<#@ assembly name="Microsoft.SqlServer.ConnectionInfo" #>
+<#@ assembly name="Microsoft.SqlServer.Management.Sdk.Sfc" #>
+<#@ assembly name="Microsoft.SqlServer.Smo" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Xml" #>
+<#@ import namespace="Microsoft.SqlServer.Management.Smo" #>
+<#@ import namespace="System.Data.SqlClient" #>
+<#@ import namespace="Microsoft.SqlServer.Management.Common" #>
+<#@ import namespace="System.Configuration" #>
+using System;
+namespace Lunch.Core.Models.Template
+{ 
+<# 
+		var path = Host.ResolvePath(@"..\..\..\Lunch.Website\web.config");
+		var config = ConfigurationManager.OpenMappedExeConfiguration(new ExeConfigurationFileMap { ExeConfigFilename = path },ConfigurationUserLevel.None);
+		var settings = config.GetSection("connectionStrings") as ConnectionStringsSection;
+		var serverConnection = new SqlConnection(settings.ConnectionStrings["AzureSQL"].ConnectionString);
+        var svrConnection = new ServerConnection(serverConnection);
+   
+   Server srv = new Server(svrConnection);
+            foreach (Table table in srv.Databases["WhatsForLunch"].Tables)
+            {
+          
+#>
+        public class <#= table.Name #>
+		{
+        <#
+        foreach (Column col in table.Columns)
+        {
+        #>
+	public <#= GetNetDataType(col.DataType.Name) #> <#= col.Name #> { get; set; }
+        <#
+        }
+        #>
+}
+      
+<#}
+#>
+}
+
+<#+
+        public static string GetNetDataType(string sqlDataTypeName)
+        {
+
+            switch (sqlDataTypeName.ToLower())
+            {
+                case "bigint":
+                    return "Int64";
+                case "binary":
+                    return "Byte[]";
+                case "bit":
+                    return "bool";
+                case "char":
+                    return "char";
+                case "cursor":
+                    return string.Empty;
+                case "datetime":
+                    return "DateTime";
+                case "decimal":
+                    return "Decimal";
+                case "float":
+                    return "Double";
+                case "int":
+                    return "int";
+                case "money":
+                    return "Decimal";
+                case "nchar":
+                    return "string";
+                case "numeric":
+                    return "Decimal";
+                case "nvarchar":
+                    return "string";
+                case "real":
+                    return "single";
+                case "smallint":
+                    return "Int16";
+                case "text":
+                    return "string";
+                case "tinyint":
+                    return "Byte";
+                case "varbinary":
+                    return "Byte[]";
+                case "xml":
+                    return "string";
+                case "varchar":
+                    return "string";
+                case "smalldatetime":
+                    return "DateTime";
+                case "image":
+                    return "byte[]";
+              
+                default:
+                    return string.Empty;
+            }
+
+        }
+#>

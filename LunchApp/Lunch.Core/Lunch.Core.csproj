@@ -61,15 +61,22 @@
     <Compile Include="Helpers\Jobs.cs" />
     <Compile Include="Helpers\JobScheduler.cs" />
     <Compile Include="Logic\IJobLogLogic.cs" />
-    <Compile Include="Logic\IJobLogic.cs" />
+    <Compile Include="Logic\IJobLogic.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Logic\Implementations\JobLogLogic.cs" />
-    <Compile Include="Logic\Implementations\JobLogic.cs" />
+    <Compile Include="Logic\Implementations\JobLogic.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Logic\Implementations\RestaurantTypeLogic.cs" />
     <Compile Include="Logic\IRestaurantTypeLogic.cs" />
     <Compile Include="Models\Rating.cs" />
+    <Compile Include="Models\Views\RestaurantDetails.cs" />
     <Compile Include="Models\Vote.cs" />
     <Compile Include="RepositoryInterfaces\IJobLogRepository.cs" />
-    <Compile Include="RepositoryInterfaces\IJobRepository.cs" />
+    <Compile Include="RepositoryInterfaces\IJobRepository.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="RepositoryInterfaces\IRestaurantTypeRepository.cs" />
     <Compile Include="RepositoryInterfaces\IRestaurantRepository.cs" />
     <Compile Include="Logic\Implementations\RestaurantLogic.cs" />
@@ -83,7 +90,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Models\Template\ModelGenerator.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ModelGenerator.cs</LastGenOutput>
+    </None>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

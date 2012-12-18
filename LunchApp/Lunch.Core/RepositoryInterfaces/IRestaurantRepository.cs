@@ -1,17 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
+﻿using System.Collections.Generic;
 using Lunch.Core.Models;
+using Lunch.Core.Models.Views;
 
 namespace Lunch.Core.RepositoryInterfaces
 {
     public interface IRestaurantRepository
     {
-        IQueryable<Restaurant> GetAll();
-        IQueryable<Restaurant> GetAll(RestaurantDependencies dependencies);
-        IQueryable<Restaurant> Get(Expression<Func<Restaurant, bool>> predicate);
-        Restaurant Load(int id);
+        IEnumerable<Restaurant> GetAll();
+        IEnumerable<RestaurantDetails> GetAllDetailed(int? categoryId);
+        Restaurant Get(int id);
         IEnumerable<Restaurant> SaveOrUpdateAll(params Restaurant[] entities);
         Restaurant SaveOrUpdate(Restaurant entity);
         Restaurant Delete(Restaurant entity);

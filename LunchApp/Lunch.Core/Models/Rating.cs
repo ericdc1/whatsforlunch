@@ -2,7 +2,7 @@
 {
     public class Rating
     {
-        public virtual int ID { get; protected set; }
+        public virtual int Id { get; protected set; }
         public virtual decimal Score { get; set; }
         public virtual int UserID { get; set; }
         public virtual int RestaurantID { get; set; }

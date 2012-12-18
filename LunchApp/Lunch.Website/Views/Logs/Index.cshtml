@@ -1,0 +1,46 @@
+﻿@using Lunch.Core.Helpers
+@model IEnumerable<Lunch.Core.Models.JobLog>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Logs</h2>
+
+<table width="100%">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.JobID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LogDTM)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Category)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Message)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.JobID)
+        </td>
+        <td>
+           UTC: @item.LogDTM<br/>
+           EST: @Helpers.AdjustTimeOffsetFromUtc(item.LogDTM)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Category)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Message)
+        </td>
+ 
+    </tr>
+}
+
+</table>

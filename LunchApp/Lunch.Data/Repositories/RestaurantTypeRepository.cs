@@ -1,68 +1,59 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Linq;
 using System.Linq.Expressions;
 using Lunch.Core.Models;
 using Lunch.Core.RepositoryInterfaces;
-using NHibernate;
-using NHibernate.Linq;
-
+using Dapper;
 namespace Lunch.Data.Repositories
 {
     public class RestaurantTypeRepository : IRestaurantTypeRepository
     {
-        public ISession Session
+
+       // private DbConnection _connection;
+        private LunchDatabase _rainbowconnection;
+
+        public IEnumerable<RestaurantType> GetAll()
         {
-            get { return NHibernateHttpModule.GetCurrentSession(); }
-        }
-
-        public IQueryable<RestaurantType> GetAll()
-        {
-            return Session.Query<RestaurantType>();
-        }
-
-        public IQueryable<RestaurantType> GetAll(RestaurantTypeDependencies dependencies)
-        {
-            var results = Session.QueryOver<RestaurantType>();
-
-            if ((dependencies & RestaurantTypeDependencies.Restaurants) == RestaurantTypeDependencies.Restaurants)
-                results = results.Fetch(x => x.Restaurants).Eager;
-
-            return results.Future<RestaurantType>().AsQueryable();
-        }
-
-        public IQueryable<RestaurantType> Get(Expression<Func<RestaurantType, bool>> predicate)
-        {
-            return GetAll().Where(predicate);
-        }
-
-        public RestaurantType Load(int id)
-        {
-            return Session.Load<RestaurantType>(id);
-        }
-
-        public IEnumerable<RestaurantType> SaveOrUpdateAll(params RestaurantType[] entities)
-        {
-            foreach (var entity in entities)
+            using (_rainbowconnection = Utilities.GetProfiledOpenRainbowConnection())
             {
-                Session.SaveOrUpdate(entity);
+                return _rainbowconnection.RestaturantTypes.All();
             }
+        }
 
-            return entities;
+        public RestaurantType Get(int id)
+        {
+            using (_rainbowconnection = Utilities.GetProfiledOpenRainbowConnection())
+            {
+                return _rainbowconnection.RestaturantTypes.Get(id);
+            }
         }
 
         public RestaurantType SaveOrUpdate(RestaurantType entity)
         {
-            Session.SaveOrUpdate(entity);
-
-            return entity;
+            using (_rainbowconnection = Utilities.GetProfiledOpenRainbowConnection())
+            {
+                if (entity.Id > 0)
+                {
+                    entity.Id = _rainbowconnection.RestaturantTypes.Update(entity.Id, entity);
+                }
+                else
+                {
+                    var insert = _rainbowconnection.RestaturantTypes.Insert(entity);
+                    if (insert != null)
+                        entity.Id = (int)insert;
+                }
+                return entity;
+            }
         }
 
         public RestaurantType Delete(RestaurantType entity)
         {
-            Session.Delete(entity);
-
+            using (_rainbowconnection = Utilities.GetProfiledOpenRainbowConnection())
+            {
+                _rainbowconnection.RestaturantTypes.Delete(entity.Id);
+            }
             return entity;
         }
     }

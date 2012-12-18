@@ -1,70 +1,59 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Linq;
 using System.Linq.Expressions;
 using Lunch.Core.Models;
 using Lunch.Core.RepositoryInterfaces;
-using NHibernate;
-using NHibernate.Linq;
-
+using Dapper;
 namespace Lunch.Data.Repositories
 {
     public class JobRepository : IJobRepository
     {
-        public ISession Session
+
+        // private DbConnection _connection;
+        private LunchDatabase _rainbowconnection;
+
+        public IEnumerable<Job> GetAll()
         {
-            get { return NHibernateHttpModule.GetCurrentSession(); }
-        }
-
-        public IQueryable<Job> GetAll()
-        {
-            return Session.Query<Job>();
-        }
-
-        public IQueryable<Job> GetAll(JobDependencies dependencies)
-        {
-            //var results = Session.QueryOver<Job>();
-
-            //if ((dependencies & JobDependencies.JobHistories) == JobDependencies.JobHistories)
-            //    results = results.Fetch(x => x.JobHistories).Eager;
-            //if ((dependencies & JobDependencies.JobType) == JobDependencies.JobType)
-            //    results = results.Fetch(y => y.JobType).Eager;
-
-            //return results.Future<Job>().AsQueryable();
-            return Session.Query<Job>();
-        }
-
-        public IQueryable<Job> Get(Expression<Func<Job, bool>> predicate)
-        {
-            return GetAll().Where(predicate);
-        }
-
-        public Job Load(int id)
-        {
-            return Session.Load<Job>(id);
-        }
-
-        public IEnumerable<Job> SaveOrUpdateAll(params Job[] entities)
-        {
-            foreach (var entity in entities)
+            using (_rainbowconnection = Utilities.GetProfiledOpenRainbowConnection())
             {
-                Session.SaveOrUpdate(entity);
+                return _rainbowconnection.Jobs.All();
             }
+        }
 
-            return entities;
+        public Job Get(int id)
+        {
+            using (_rainbowconnection = Utilities.GetProfiledOpenRainbowConnection())
+            {
+                return _rainbowconnection.Jobs.Get(id);
+            }
         }
 
         public Job SaveOrUpdate(Job entity)
         {
-            Session.SaveOrUpdate(entity);
-
-            return entity;
+            using (_rainbowconnection = Utilities.GetProfiledOpenRainbowConnection())
+            {
+                if (entity.Id > 0)
+                {
+                    entity.Id = _rainbowconnection.Jobs.Update(entity.Id, entity);
+                }
+                else
+                {
+                    var insert = _rainbowconnection.Jobs.Insert(entity);
+                    if (insert != null)
+                        entity.Id = (int)insert;
+                }
+                return entity;
+            }
         }
 
         public Job Delete(Job entity)
         {
-            Session.Delete(entity);
-
+            using (_rainbowconnection = Utilities.GetProfiledOpenRainbowConnection())
+            {
+                _rainbowconnection.Jobs.Delete(entity.Id);
+            }
             return entity;
         }
     }

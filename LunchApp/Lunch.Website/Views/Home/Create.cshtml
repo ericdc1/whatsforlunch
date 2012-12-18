@@ -1,0 +1,47 @@
+﻿@model Lunch.Website.ViewModels.Restaurant
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Restaurant</legend>
+               @Html.Hidden("RestaurantID",0)
+        <div class="editor-label">
+            @Html.LabelFor(model => model.RestaurantName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.RestaurantName)
+            @Html.ValidationMessageFor(model => model.RestaurantName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PreferredDayOfWeek)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PreferredDayOfWeek)
+            @Html.ValidationMessageFor(model => model.PreferredDayOfWeek)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.RestaurantTypeID)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.RestaurantTypeID)
+            @Html.ValidationMessageFor(model => model.RestaurantTypeID)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

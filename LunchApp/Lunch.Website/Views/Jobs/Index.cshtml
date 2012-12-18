@@ -1,0 +1,54 @@
+﻿@using Lunch.Core.Helpers
+@model IEnumerable<Lunch.Core.Models.Job>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Jobs</h2>
+
+
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MethodName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ParametersJson)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RunDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HasRun)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.MethodName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ParametersJson)
+        </td>
+            <td>
+           UTC: @item.RunDate<br/>
+           EST: @Helpers.AdjustTimeOffsetFromUtc(item.RunDate)
+        </td>
+                <td>
+           UTC: @item.CreatedDate<br/>
+           EST: @Helpers.AdjustTimeOffsetFromUtc(item.CreatedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HasRun)
+        </td>
+ 
+    </tr>
+}
+
+</table>

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
 using Lunch.Core.Models;
 using Lunch.Core.RepositoryInterfaces;
 
@@ -9,47 +8,32 @@ namespace Lunch.Core.Logic.Implementations
 {
     public class RestaurantTypeLogic : IRestaurantTypeLogic
     {
-        private readonly IRestaurantTypeRepository _restaurantRepository;
+        private readonly IRestaurantTypeRepository _restaurantTypeRepository;
 
-        public RestaurantTypeLogic(IRestaurantTypeRepository restaurantRepository)
+        public RestaurantTypeLogic(IRestaurantTypeRepository restaurantTypeRepository)
         {
-            _restaurantRepository = restaurantRepository;
+            _restaurantTypeRepository = restaurantTypeRepository;
         }
 
 
-        public IQueryable<RestaurantType> GetAll()
+        public IEnumerable<RestaurantType> GetAll()
         {
-            return _restaurantRepository.GetAll();
+            return _restaurantTypeRepository.GetAll();
         }
 
-        public IQueryable<RestaurantType> GetAll(RestaurantTypeDependencies dependencies)
+        public RestaurantType Get(int id)
         {
-            return _restaurantRepository.GetAll(dependencies);
-        }
-
-        public IQueryable<RestaurantType> Get(Expression<Func<RestaurantType, bool>> predicate)
-        {
-            return _restaurantRepository.Get(predicate);
-        }
-
-        public RestaurantType Load(int id)
-        {
-            return _restaurantRepository.Load(id);
-        }
-
-        public IEnumerable<RestaurantType> SaveOrUpdateAll(params RestaurantType[] entities)
-        {
-            return _restaurantRepository.SaveOrUpdateAll(entities);
+            return _restaurantTypeRepository.Get(id);
         }
 
         public RestaurantType SaveOrUpdate(RestaurantType entity)
         {
-            return _restaurantRepository.SaveOrUpdate(entity);
+            return _restaurantTypeRepository.SaveOrUpdate(entity);
         }
 
         public RestaurantType Delete(RestaurantType entity)
         {
-            return _restaurantRepository.Delete(entity);
+            return _restaurantTypeRepository.Delete(entity);
         }
     }
 }

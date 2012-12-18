@@ -16,15 +16,17 @@ namespace Lunch.Core.Models
     public class Restaurant
     {
         #region persisted
-            public virtual int RestaurantID { get; set; }
-            public virtual string RestaurantName { get; set; }
-            public virtual DayOfWeek? PreferredDayOfWeek { get; set; }
-            public virtual int RestaurantTypeID { get; set; }
+        public virtual int Id { get; set; }
+        public virtual string RestaurantName { get; set; }
+        public virtual DayOfWeek? PreferredDayOfWeek { get; set; }
+        public virtual int RestaurantTypeID { get; set; }
         #endregion
 
         #region relationships
-            public virtual RestaurantType RestaurantType { get; set; }
-            public virtual IList<RestaurantHistory> RestaurantHistories { get; set; }
+        public virtual RestaurantType RestaurantType { get; set; }
+        public virtual IList<RestaurantHistory> RestaurantHistories { get; set; }
         #endregion
+
+
     }
 }

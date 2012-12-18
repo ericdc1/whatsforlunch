@@ -4,11 +4,13 @@ using System.Reflection;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Routing;
+using AutoMapper;
 using Lunch.Core.Helpers;
 using Lunch.Core.Models;
 using Lunch.Website.DependencyResolution;
 using Quartz;
 using Quartz.Impl;
+using StackExchange.Profiling;
 using StructureMap;
 
 
@@ -29,15 +31,24 @@ namespace Lunch.Website
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
 
-            new JobScheduler().Taskmanager();
+            new Lunch.Core.Helpers.JobScheduler().Taskmanager();
 
             ControllerBuilder.Current.SetControllerFactory(new StructureMapControllerFactory());
-            
+
+            CreateMaps();
+        }
+
+
+        private static void CreateMaps()
+        {
+            Mapper.CreateMap<Restaurant, ViewModels.Restaurant>();
+            Mapper.CreateMap<ViewModels.Restaurant, Restaurant>();
         }
 
         private void Application_BeginRequest()
         {
             StackExchange.Profiling.MiniProfiler.Start();
+            StackExchange.Profiling.MiniProfiler.Settings.PopupRenderPosition = RenderPosition.Right;    
         }
 
         private void Application_EndRequest()

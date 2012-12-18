@@ -79,13 +79,17 @@ namespace Lunch.Core.Helpers
 
         private void CreateMorningMailJob()
         {
-            //var job = new Job() { CreatedDate = DateTime.Now, MethodName = "MorningMessage", ParametersJson = "{name:bob}", RunDate=DateTime.Now.AddMinutes(-5)};
-            //var _jobLogic = ObjectFactory.GetInstance<IJobLogic>();
-            //_jobLogic.SaveOrUpdate(job);
-            //todo - session doesn't exist here so this errors
+            var job = new Job() { CreatedDate = DateTime.Now, MethodName = "MorningMessage", ParametersJson = "{name:bob}", RunDate = Helpers.AdjustTimeOffsetToUtc(DateTime.Today.AddHours(7))};
+            var _jobLogic = ObjectFactory.GetInstance<IJobLogic>();
+            _jobLogic.SaveOrUpdate(job);
+
+            //add log
+            var _jobLogLogic = ObjectFactory.GetInstance<IJobLogLogic>();
+            var entity = new JobLog() { JobID = 0, Category = "System", Message = "Create morning mail job" };
+            _jobLogLogic.SaveOrUpdate(entity);
         }
 
-        public void RunJob(string methodname, string parameters)
+        public void RunJob(string methodname, string parameters, int id)
         {
             var calledType = Type.GetType("Lunch.Core.Helpers.Jobs");
             if (calledType != null)
@@ -97,15 +101,41 @@ namespace Lunch.Core.Helpers
                     {
                         //object jobsInstance =  Activator.CreateInstance(calledType);
                         object jobsInstance = ObjectFactory.GetInstance(calledType);
-                        calledType.InvokeMember(methodname, BindingFlags.InvokeMethod| BindingFlags.Public | BindingFlags.Instance, null, jobsInstance, new object[] { parameters });
+                        calledType.InvokeMember(methodname, BindingFlags.InvokeMethod| BindingFlags.Public | BindingFlags.Instance, null, jobsInstance, new object[] { parameters, id });
                         break;
                     }
                 }
             }
             else
             {
-                //ToDo - email or log that this failed
+                //add log
+                var _jobLogLogic = ObjectFactory.GetInstance<IJobLogLogic>();
+                var entity = new JobLog() { JobID = 0, Category = "System" , Message=string.Format("Running job {0} failed",methodname) };
+                _jobLogLogic.SaveOrUpdate(entity);
             }
+        }
+
+
+        public static DateTime AdjustTimeOffsetFromUtc(DateTime time)
+        {
+            var utc = DateTime.UtcNow;
+            var eastern = TimeZoneInfo.FindSystemTimeZoneById("Eastern Standard Time");
+            var easterntime = utc.Add(eastern.BaseUtcOffset);
+
+            TimeSpan diff = (easterntime-utc);
+            double hours = diff.TotalHours;
+            return time.AddHours(hours);
+        }
+
+        public static DateTime AdjustTimeOffsetToUtc(DateTime time)
+        {    
+            var utc = DateTime.UtcNow;
+            var eastern = TimeZoneInfo.FindSystemTimeZoneById("Eastern Standard Time");
+            var easterntime = utc.Add(eastern.BaseUtcOffset);
+
+            TimeSpan diff = (utc-easterntime);
+            double hours = diff.TotalHours;
+            return time.AddHours(hours);
         }
     }
 

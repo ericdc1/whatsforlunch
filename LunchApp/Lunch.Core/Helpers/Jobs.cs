@@ -19,16 +19,15 @@ namespace Lunch.Core.Helpers
             _jobLogLogic = jobLogLogic;
         }
 
-        public void MorningMessage(object model)
+        public void MorningMessage(object model, int id)
         {
             keepalive();
             //figure out what time it really is
-            var utc = DateTime.UtcNow;
-            var eastern = TimeZoneInfo.FindSystemTimeZoneById("Eastern Standard Time");
-            var easterntime = utc.Add(eastern.BaseUtcOffset);
-            var logentries = new List<JobLog>();
-
-            //TODO: populate from query of users who have mornining mail flag set
+            //var utc = DateTime.UtcNow;
+            //var eastern = TimeZoneInfo.FindSystemTimeZoneById("Eastern Standard Time");
+            //var easterntime = utc.Add(eastern.BaseUtcOffset);
+          
+            //TODO: populate from query of users who have morning mail flag set
             var peopletoreceivemail = new List<User>();
             peopletoreceivemail.Add(new User() {FullName="Eric Coffman", Email="ecoffman@hsc.wvu.edu", SendMorningEmailFlg=true, GUID =  Guid.NewGuid().ToString()});
             peopletoreceivemail.Add(new User() { FullName = "Libby DeHaan", Email = "edehaan@hsc.wvu.edu", SendMorningEmailFlg = false });
@@ -42,7 +41,7 @@ namespace Lunch.Core.Helpers
             var fromaddress = "admin@lunchapp.com";
 
             //send email to each person who is eligible
-            foreach (var user in peopletoreceivemail.Where(f=>f.SendMorningEmailFlg=true))
+            foreach (var user in peopletoreceivemail.Where(f=>f.SendMorningEmailFlg))
             {    
                 var messagesb = new StringBuilder();
                 messagesb.Append("Today's choices are");
@@ -52,17 +51,16 @@ namespace Lunch.Core.Helpers
                 }
 
                 //TODO: set in web.config
-                var link = string.Format("http://localhost:2227/?u={0}", user.GUID);
+                var link = string.Format("http://whatsforlunch.azurewebsites.net/?u={0}", user.GUID);
                 messagesb.Append(string.Format("Click here to vote - <a href='{0}'>Login</a>", link));
 
-                Helpers.SendMail(user.Email, fromaddress, "What's for Lunch Message of the day", messagesb.ToString());     
+                Helpers.SendMail(user.Email, fromaddress, "What's for Lunch Message of the day", messagesb.ToString()); 
+    
                 //add log
-               var entity = new JobLog() {Category="MorningMessage", LogDTM = easterntime, Message=string.Format("Morning message sent to {0}", user.FullName)};
-               logentries.Add(entity);
+               var entity = new JobLog() {JobID= id, Category="MorningMessage", Message=string.Format("Morning message sent to {0}", user.FullName)};
+               _jobLogLogic.SaveOrUpdate(entity);
             }
-
-            //todo - session doesn't exist here so this errors
-          //  _jobLogLogic.SaveOrUpdateAll(logentries.ToArray());
+           
         }
 
 

@@ -1,44 +1,59 @@
-﻿@model IEnumerable<Lunch.Core.Models.Restaurant>
+﻿@model IEnumerable<Lunch.Core.Models.Views.RestaurantDetails>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Restaurants";
 }
 
-@*@foreach(var xrestaurant in Model)
-{
-    @xrestaurant.ID;
-    @xrestaurant.RestaurantName;
-    <br/>
-}*@
+<h2>Restaurants</h2>
 
+<p>
+    @Html.ActionLink("Create New", "Create")
+    @if (ViewBag.HasCategoryFilter)
+    {
+        @:|
+        @Html.ActionLink("Show all", "index")
+    }
 
-@*<link href="//netdna.bootstrapcdn.com/bootswatch/2.1.1/simplex/bootstrap.min.css" rel="stylesheet">
-<h2>Job log</h2>
-@*<table class="table table-striped">
+   
+</p>
+<table>
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.LogDTM)
+            @Html.DisplayNameFor(model => model.Id)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Message)
+            @Html.DisplayNameFor(model => model.RestaurantName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Category)
+            @Html.DisplayNameFor(model => model.PreferredDayOfWeek)
         </th>
+    
+        <th>
+            @Html.DisplayNameFor(model => model.TypeName)
+        </th>
+        <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.LogDTM)
+            @Html.DisplayFor(modelItem => item.Id)
         </td>
         <td>
-            @Html.Raw(item.Message)
+            @Html.DisplayFor(modelItem => item.RestaurantName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Category)
+            @Html.DisplayFor(modelItem => item.PreferredDayOfWeek)
+        </td>
+        <td>
+             @Html.ActionLink(item.TypeName,"index",new {categoryid=item.RestaurantTypeId})
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id  }) |
+            @Html.ActionLink("Details", "Details", new {  id=item.Id  }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id  })
         </td>
     </tr>
 }
 
-</table>*@
+</table>

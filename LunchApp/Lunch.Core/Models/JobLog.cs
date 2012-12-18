@@ -13,11 +13,13 @@ namespace Lunch.Core.Models
 
     public class JobLog
     {
-        public virtual int JobLogID { get; protected set; }
+        public virtual int Id { get;  set; }
         public virtual int JobID { get; set; }
         public virtual DateTime LogDTM { get; set; }
         public virtual string Category { get; set; }
         public virtual string Message { get; set; }
         public virtual Job Job { get; set; }
+
+
     }
 }
