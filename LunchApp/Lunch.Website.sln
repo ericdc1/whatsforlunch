@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lunch.UnitTests", "Lunch.Un
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lunch.Data", "Lunch.Data\Lunch.Data.csproj", "{45AFC077-B16D-4AF1-95C5-B1EFE3187ACE}"
 EndProject
+Project("{CC5FD16D-436D-48AD-A40C-5A424C6E3E79}") = "WindowsAzure1", "WindowsAzure1\WindowsAzure1.ccproj", "{32E7F0AA-52B8-48C5-9519-91357695988E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,6 +63,16 @@ Global
 		{45AFC077-B16D-4AF1-95C5-B1EFE3187ACE}.Release|ARM.ActiveCfg = Release|Any CPU
 		{45AFC077-B16D-4AF1-95C5-B1EFE3187ACE}.Release|x64.ActiveCfg = Release|Any CPU
 		{45AFC077-B16D-4AF1-95C5-B1EFE3187ACE}.Release|x86.ActiveCfg = Release|Any CPU
+		{32E7F0AA-52B8-48C5-9519-91357695988E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32E7F0AA-52B8-48C5-9519-91357695988E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32E7F0AA-52B8-48C5-9519-91357695988E}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{32E7F0AA-52B8-48C5-9519-91357695988E}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{32E7F0AA-52B8-48C5-9519-91357695988E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{32E7F0AA-52B8-48C5-9519-91357695988E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32E7F0AA-52B8-48C5-9519-91357695988E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32E7F0AA-52B8-48C5-9519-91357695988E}.Release|ARM.ActiveCfg = Release|Any CPU
+		{32E7F0AA-52B8-48C5-9519-91357695988E}.Release|x64.ActiveCfg = Release|Any CPU
+		{32E7F0AA-52B8-48C5-9519-91357695988E}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
