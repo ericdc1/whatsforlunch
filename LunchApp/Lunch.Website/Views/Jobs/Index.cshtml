@@ -28,27 +28,25 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.MethodName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ParametersJson)
-        </td>
+    @foreach (var item in Model)
+    {
+        <tr>
             <td>
-           UTC: @item.RunDate<br/>
-           EST: @Helpers.AdjustTimeOffsetFromUtc(item.RunDate)
-        </td>
-                <td>
-           UTC: @item.CreatedDate<br/>
-           EST: @Helpers.AdjustTimeOffsetFromUtc(item.CreatedDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.HasRun)
-        </td>
- 
-    </tr>
-}
+                @Html.DisplayFor(modelItem => item.MethodName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ParametersJson)
+            </td>
+            <td title="UTC: @item.RunDate">@Helpers.AdjustTimeOffsetFromUtc(item.RunDate)
+            </td>
+            <td title="UTC: @item.CreatedDate">
+                @Helpers.AdjustTimeOffsetFromUtc(item.CreatedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HasRun)
+            </td>
+
+        </tr>
+    }
 
 </table>
