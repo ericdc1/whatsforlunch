@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Net;
 using System.Text;
 using Lunch.Core.Logic;
 using Lunch.Core.Models;
@@ -21,8 +20,6 @@ namespace Lunch.Core.Helpers
 
         public void MorningMessage(object model, int id)
         {
-            keepalive();
-          
             //TODO: populate from query of users who have morning mail flag set
             var peopletoreceivemail = new List<User>();
             peopletoreceivemail.Add(new User() {FullName="Eric Coffman", Email="ecoffman@hsc.wvu.edu", SendMorningEmailFlg=true, GUID =  Guid.NewGuid().ToString()});
@@ -62,8 +59,6 @@ namespace Lunch.Core.Helpers
 
         public void VotingIsOverMessage(object model, int id)
         {
-            keepalive();
-
             //TODO: populate from query of users who have morning mail flag set
             var peopletoreceivemail = new List<User>();
             peopletoreceivemail.Add(new User() { FullName = "Eric Coffman", Email = "ecoffman@hsc.wvu.edu", SendMorningEmailFlg = true, GUID = Guid.NewGuid().ToString() });
@@ -98,22 +93,6 @@ namespace Lunch.Core.Helpers
                 _jobLogLogic.SaveOrUpdate(entity);
             }
 
-        }
-
-
-        static string keepalive()
-        {
-            var baseurl = System.Configuration.ConfigurationManager.AppSettings.Get("BaseURL");
-            string url = string.Format("{0}/home/keepalive", baseurl);
-            String strResult;
-            var objRequest = WebRequest.Create(url);
-            var objResponse = objRequest.GetResponse();
-            using (var sr = new StreamReader(objResponse.GetResponseStream()))
-            {
-                strResult = sr.ReadToEnd();
-                sr.Close();
-            }
-            return strResult;
         }
 
     }

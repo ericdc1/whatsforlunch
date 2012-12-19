@@ -38,21 +38,22 @@ namespace Lunch.Core.Helpers
 
     public class RecurringJob : IJob
     {
- 
+
         public void Execute(IJobExecutionContext context)
         {
             try
             {
-                
-            //Check to see if today is a lunch day
+                Helpers.Keepalive();
+
+                //Check to see if today is a lunch day
                 if (Helpers.IsLunchDate(Helpers.AdjustTimeOffsetFromUtc(DateTime.UtcNow)))
                 {
                     //add log
                     var _jobLogLogic = ObjectFactory.GetInstance<IJobLogLogic>();
-                    var entity = new JobLog() {JobID = 0, Category = "System", Message = "Running recurring job"};
+                    var entity = new JobLog() { JobID = 0, Category = "System", Message = "Running recurring job" };
                     _jobLogLogic.SaveOrUpdate(entity);
 
-                    var _jobLogic = ObjectFactory.GetInstance<IJobLogic>(); 
+                    var _jobLogic = ObjectFactory.GetInstance<IJobLogic>();
                     var jobsfortoday =
                         _jobLogic.GetAll()
                                  .Where(f => f.RunDate.ToShortDateString() == Helpers.AdjustTimeOffsetFromUtc(DateTime.UtcNow).ToShortDateString())
@@ -64,7 +65,7 @@ namespace Lunch.Core.Helpers
                     {
                         new Helpers().CreateJobs();
 
-                        entity = new JobLog() {JobID = 0, Category = "System", Message = "Creating Jobs"};
+                        entity = new JobLog() { JobID = 0, Category = "System", Message = "Creating Jobs" };
                         _jobLogLogic.SaveOrUpdate(entity);
                     }
 
@@ -88,7 +89,7 @@ namespace Lunch.Core.Helpers
                         _jobLogLogic.SaveOrUpdate(entity);
                     }
                 }
-               
+
             }
             catch (Exception ex)
             {
