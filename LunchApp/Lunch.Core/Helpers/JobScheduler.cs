@@ -55,7 +55,7 @@ namespace Lunch.Core.Helpers
                     var _jobLogic = ObjectFactory.GetInstance<IJobLogic>(); 
                     var jobsfortoday =
                         _jobLogic.GetAll()
-                                 .Where(f => f.RunDate.ToShortDateString() == DateTime.UtcNow.ToShortDateString())
+                                 .Where(f => f.RunDate.ToShortDateString() == Helpers.AdjustTimeOffsetFromUtc(DateTime.UtcNow).ToShortDateString())
                                  .ToList();
 
                     //Check to see if there are jobs in the db for today
