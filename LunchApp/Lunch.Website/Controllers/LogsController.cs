@@ -22,7 +22,7 @@ namespace Lunch.Website.Controllers
         public ActionResult Index(int? categoryid)
         {
             ViewBag.HasCategoryFilter = categoryid > 0;
-            var result = _jobLogLogic.GetAll().Take(300).OrderByDescending(f=>f.Id);
+            var result = _jobLogLogic.GetAll().OrderByDescending(f=>f.Id).Take(250);
             return View(result);
         }
 
