@@ -52,7 +52,7 @@ namespace Lunch.Core.Helpers
                     var entity = new JobLog() {JobID = 0, Category = "System", Message = "Running recurring job"};
                     _jobLogLogic.SaveOrUpdate(entity);
 
-                    var _jobLogic = ObjectFactory.GetInstance<IJobLogic>();
+                    var _jobLogic = ObjectFactory.GetInstance<IJobLogic>(); 
                     var jobsfortoday =
                         _jobLogic.GetAll()
                                  .Where(f => f.RunDate.ToShortDateString() == DateTime.UtcNow.ToShortDateString())
