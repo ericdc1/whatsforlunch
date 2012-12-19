@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Net.Mail;
 using System.Reflection;
 using System.Text;
@@ -142,6 +144,22 @@ namespace Lunch.Core.Helpers
             TimeSpan diff = (utc-easterntime);
             double hours = diff.TotalHours;
             return time.AddHours(hours);
+        }
+
+
+        public static string Keepalive()
+        {
+            var baseurl = System.Configuration.ConfigurationManager.AppSettings.Get("BaseURL");
+            string url = string.Format("{0}/home/keepalive", baseurl);
+            String strResult;
+            var objRequest = WebRequest.Create(url);
+            var objResponse = objRequest.GetResponse();
+            using (var sr = new StreamReader(objResponse.GetResponseStream()))
+            {
+                strResult = sr.ReadToEnd();
+                sr.Close();
+            }
+            return strResult;
         }
     }
 

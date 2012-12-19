@@ -24,23 +24,23 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.JobID)
-        </td>
-        <td>
-           UTC: @item.LogDTM<br/>
-           EST: @Helpers.AdjustTimeOffsetFromUtc(item.LogDTM)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Category)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Message)
-        </td>
- 
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.JobID)
+            </td>
+            <td title="UTC: @item.LogDTM">
+                @Helpers.AdjustTimeOffsetFromUtc(item.LogDTM)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Message)
+            </td>
+
+        </tr>
+    }
 
 </table>
