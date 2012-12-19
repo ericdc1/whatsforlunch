@@ -145,7 +145,6 @@
     <Compile Include="Controllers\JobsController.cs" />
     <Compile Include="Controllers\LogsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\testController.cs" />
     <Compile Include="DependencyResolution\IoC.cs" />
     <Compile Include="DependencyResolution\StructureMapControllerFactory.cs" />
     <Compile Include="Global.asax.cs">
@@ -202,9 +201,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Jobs\Index.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\test\Index.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
