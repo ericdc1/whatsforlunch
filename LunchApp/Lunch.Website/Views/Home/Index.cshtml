@@ -7,15 +7,17 @@
 <h2>Restaurants</h2>
 
 <p>
+    <ul>
+        <li><a href="~/Management/">App Management</a></li>
+    </ul>
     @Html.ActionLink("Create New", "Create")
     @if (ViewBag.HasCategoryFilter)
     {
         @:|
         @Html.ActionLink("Show all", "index")
-    }
-
-   
+    }   
 </p>
+
 <table>
     <tr>
         <th>
