@@ -11,36 +11,38 @@ namespace Lunch.Data.Repositories
     public class JobLogRepository : IJobLogRepository
     {
 
-        // private DbConnection _connection;
-        private LunchDatabase _rainbowconnection;
-
+        private DbConnection _connection;
+       
         public IEnumerable<JobLog> GetAll()
         {
-            using (_rainbowconnection = Utilities.GetProfiledOpenRainbowConnection())
+            using (_connection = Utilities.GetProfiledOpenConnection())
             {
-                return _rainbowconnection.JobLogs.All();
+                var db = LunchDatabase.Init(_connection, commandTimeout: 2);
+                return db.JobLogs.All();
             }
         }
 
         public JobLog Get(int id)
         {
-            using (_rainbowconnection = Utilities.GetProfiledOpenRainbowConnection())
+            using (_connection = Utilities.GetProfiledOpenConnection())
             {
-                return _rainbowconnection.JobLogs.Get(id);
+                var db = LunchDatabase.Init(_connection, commandTimeout: 2);
+                return db.JobLogs.Get(id);
             }
         }
 
         public JobLog SaveOrUpdate(JobLog entity)
         {
-            using (_rainbowconnection = Utilities.GetProfiledOpenRainbowConnection())
+            using (_connection = Utilities.GetProfiledOpenConnection())
             {
+                var db = LunchDatabase.Init(_connection, commandTimeout: 2);
                 if (entity.Id > 0)
                 {
-                    entity.Id = _rainbowconnection.JobLogs.Update(entity.Id, entity);
+                    entity.Id = db.JobLogs.Update(entity.Id, entity);
                 }
                 else
                 {
-                    var insert = _rainbowconnection.JobLogs.Insert(entity);
+                    var insert = db.JobLogs.Insert(entity);
                     if (insert != null)
                         entity.Id = (int)insert;
                 }
@@ -50,9 +52,10 @@ namespace Lunch.Data.Repositories
 
         public JobLog Delete(JobLog entity)
         {
-            using (_rainbowconnection = Utilities.GetProfiledOpenRainbowConnection())
+            using (_connection = Utilities.GetProfiledOpenConnection())
             {
-                _rainbowconnection.JobLogs.Delete(entity.Id);
+                 var db = LunchDatabase.Init(_connection, commandTimeout: 2);
+                db.JobLogs.Delete(entity.Id);
             }
             return entity;
         }

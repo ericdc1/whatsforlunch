@@ -25,13 +25,6 @@ namespace Lunch.Data
             return new StackExchange.Profiling.Data.ProfiledDbConnection(cnn, MiniProfiler.Current);
         }
 
-        public static LunchDatabase GetProfiledOpenRainbowConnection()
-        {
-            var cnn = GetOpenConnection();
-
-            // wrap the connection with a profiling connection that tracks timings and initialize a LunchDatabase
-            return LunchDatabase.Init(GetProfiledOpenConnection(), commandTimeout: 2);
-        }
 
     }
 }

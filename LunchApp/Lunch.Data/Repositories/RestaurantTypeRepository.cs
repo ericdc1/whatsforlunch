@@ -11,36 +11,38 @@ namespace Lunch.Data.Repositories
     public class RestaurantTypeRepository : IRestaurantTypeRepository
     {
 
-       // private DbConnection _connection;
-        private LunchDatabase _rainbowconnection;
+       private DbConnection _connection;
 
         public IEnumerable<RestaurantType> GetAll()
         {
-            using (_rainbowconnection = Utilities.GetProfiledOpenRainbowConnection())
+            using (_connection = Utilities.GetProfiledOpenConnection())
             {
-                return _rainbowconnection.RestaturantTypes.All();
+                var db = LunchDatabase.Init(_connection, commandTimeout: 2);
+                return db.RestaturantTypes.All();
             }
         }
 
         public RestaurantType Get(int id)
         {
-            using (_rainbowconnection = Utilities.GetProfiledOpenRainbowConnection())
+            using (_connection = Utilities.GetProfiledOpenConnection())
             {
-                return _rainbowconnection.RestaturantTypes.Get(id);
+                var db = LunchDatabase.Init(_connection, commandTimeout: 2);
+                return db.RestaturantTypes.Get(id);
             }
         }
 
         public RestaurantType SaveOrUpdate(RestaurantType entity)
         {
-            using (_rainbowconnection = Utilities.GetProfiledOpenRainbowConnection())
+            using (_connection = Utilities.GetProfiledOpenConnection())
             {
+                var db = LunchDatabase.Init(_connection, commandTimeout: 2);
                 if (entity.Id > 0)
                 {
-                    entity.Id = _rainbowconnection.RestaturantTypes.Update(entity.Id, entity);
+                    entity.Id = db.RestaturantTypes.Update(entity.Id, entity);
                 }
                 else
                 {
-                    var insert = _rainbowconnection.RestaturantTypes.Insert(entity);
+                    var insert = db.RestaturantTypes.Insert(entity);
                     if (insert != null)
                         entity.Id = (int)insert;
                 }
@@ -50,9 +52,10 @@ namespace Lunch.Data.Repositories
 
         public RestaurantType Delete(RestaurantType entity)
         {
-            using (_rainbowconnection = Utilities.GetProfiledOpenRainbowConnection())
+            using (_connection = Utilities.GetProfiledOpenConnection())
             {
-                _rainbowconnection.RestaturantTypes.Delete(entity.Id);
+                var db = LunchDatabase.Init(_connection, commandTimeout: 2);
+                db.RestaturantTypes.Delete(entity.Id);
             }
             return entity;
         }
