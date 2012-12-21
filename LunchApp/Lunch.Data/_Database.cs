@@ -15,6 +15,7 @@ using System.Text;
 using System.Data.Common;
 using System.Diagnostics;
 using System.Reflection.Emit;
+using System.ComponentModel.DataAnnotations;
 
 namespace Dapper
 {
@@ -129,7 +130,9 @@ namespace Dapper
                     paramNames = new List<string>();
                     foreach (var prop in o.GetType().GetProperties(BindingFlags.GetProperty | BindingFlags.Instance | BindingFlags.Public))
                     {
-                        if (IsSimpleType(prop.PropertyType))
+                        
+
+                        if (IsSimpleType(prop.PropertyType) && !IsScaffold(prop))
                             paramNames.Add(prop.Name);
                     }
                     paramNameCache[o.GetType()] = paramNames;
@@ -161,6 +164,15 @@ namespace Dapper
                                    typeof(byte[])
                                };
                 return simpleTypes.Contains(propertyType);
+            }
+
+            private static bool IsScaffold(PropertyInfo prop)
+            {
+                var scaffoldAttribute =
+                            (ScaffoldColumnAttribute)
+                            prop.GetCustomAttributes(typeof(ScaffoldColumnAttribute), false).FirstOrDefault();
+
+                return (scaffoldAttribute != null && scaffoldAttribute.Scaffold == true);
             }
         }
 
