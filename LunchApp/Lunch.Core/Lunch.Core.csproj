@@ -49,6 +49,7 @@
       <HintPath>..\packages\structuremap.2.6.4.1\lib\net40\StructureMap.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -72,6 +73,11 @@
     <Compile Include="Logic\Implementations\RestaurantTypeLogic.cs" />
     <Compile Include="Logic\IRestaurantTypeLogic.cs" />
     <Compile Include="Models\Rating.cs" />
+    <Compile Include="Models\Template\ModelGenerator.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelGenerator.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Views\RestaurantDetails.cs" />
     <Compile Include="Models\Vote.cs" />
     <Compile Include="RepositoryInterfaces\IJobLogRepository.cs" />
