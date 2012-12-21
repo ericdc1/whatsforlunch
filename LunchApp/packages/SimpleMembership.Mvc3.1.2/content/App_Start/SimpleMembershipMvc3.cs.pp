@@ -3,10 +3,10 @@ using System.Configuration;
 using System.Web.Security;
 using WebMatrix.WebData;
 
-[assembly: WebActivator.PreApplicationStartMethod(typeof(Lunch.Website.App_Start.SimpleMembershipMvc3), "Start")]
-[assembly: WebActivator.PostApplicationStartMethod(typeof(Lunch.Website.App_Start.SimpleMembershipMvc3), "Initialize")]
+[assembly: WebActivator.PreApplicationStartMethod(typeof($rootnamespace$.App_Start.SimpleMembershipMvc3), "Start")]
+[assembly: WebActivator.PostApplicationStartMethod(typeof($rootnamespace$.App_Start.SimpleMembershipMvc3), "Initialize")]
 
-namespace Lunch.Website.App_Start
+namespace $rootnamespace$.App_Start
 {
 	public static class SimpleMembershipMvc3
 	{
@@ -20,7 +20,7 @@ namespace Lunch.Website.App_Start
 		public static void Initialize()
 		{
 			// Modify the settings below as appropriate for your application
-            //WebSecurity.InitializeDatabaseConnection(connectionStringName: ConfigurationManager.ConnectionStrings["AzureSQL"].ConnectionString, userTableName: "User", userIdColumn: "Id", userNameColumn: "Email", autoCreateTables: false);
+			WebSecurity.InitializeDatabaseConnection(connectionStringName: "Default", userTableName: "Users", userIdColumn: "ID", userNameColumn: "Username", autoCreateTables: true);
 			
 			// Comment the line above and uncomment these lines to use the IWebSecurityService abstraction
 			//var webSecurityService = DependencyResolver.Current.GetService<IWebSecurityService>();

@@ -39,7 +39,9 @@ namespace Lunch.Website
 
             CreateMaps();
 
-            WebSecurity.InitializeDatabaseConnection(ConfigurationManager.ConnectionStrings["AzureSQL"].ConnectionString, "System.Data.SqlServer", "User", "Id", "Email", false);
+            //WebSecurity.InitializeDatabaseConnection(ConfigurationManager.ConnectionStrings["AzureSQL"].ConnectionString, "System.Data.SqlServer", "User", "Id", "Email", false);
+            //if (!WebSecurity.UserExists("jdehlin@gmail.com"))
+            //    WebSecurity.CreateUserAndAccount("jdehlin@gmail.com", "foobar");
         }
 
 
