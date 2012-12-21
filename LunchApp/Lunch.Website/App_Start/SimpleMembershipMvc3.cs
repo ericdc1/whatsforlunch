@@ -1,6 +1,9 @@
+using System;
 using System.Collections.Specialized;
 using System.Configuration;
+using System.Web.Mvc;
 using System.Web.Security;
+using Lunch.Website.Services;
 using WebMatrix.WebData;
 
 [assembly: WebActivator.PreApplicationStartMethod(typeof(Lunch.Website.App_Start.SimpleMembershipMvc3), "Start")]
@@ -20,11 +23,14 @@ namespace Lunch.Website.App_Start
 		public static void Initialize()
 		{
 			// Modify the settings below as appropriate for your application
-            //WebSecurity.InitializeDatabaseConnection(connectionStringName: ConfigurationManager.ConnectionStrings["AzureSQL"].ConnectionString, userTableName: "User", userIdColumn: "Id", userNameColumn: "Email", autoCreateTables: false);
+            //WebSecurity.InitializeDatabaseConnection(connectionStringName: "AzureSQL", userTableName: "User", userIdColumn: "Id", userNameColumn: "Email", autoCreateTables: true);
 			
 			// Comment the line above and uncomment these lines to use the IWebSecurityService abstraction
-			//var webSecurityService = DependencyResolver.Current.GetService<IWebSecurityService>();
-			//webSecurityService.InitializeDatabaseConnection(connectionStringName: "Default", userTableName: "Users", userIdColumn: "ID", userNameColumn: "Username", autoCreateTables: true);
+		    var webSecurityService = StructureMap.ObjectFactory.GetInstance<IWebSecurityService>();
+            webSecurityService.InitializeDatabaseConnection(connectionStringName: "AzureSQL", userTableName: "User", userIdColumn: "Id", userNameColumn: "Email", autoCreateTables: true);
+
+            //if (!WebSecurity.UserExists("jdehlin@gmail.com"))
+            //    WebSecurity.CreateUserAndAccount("jdehlin@gmail.com", "foobar", new {FullName = "Jack Dehlin", GUID = Guid.NewGuid()});
 		}
 
 		public static void Start()

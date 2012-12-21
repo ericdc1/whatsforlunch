@@ -9,40 +9,53 @@ using Dapper;
 
 namespace Lunch.Data.Repositories
 {
-    public class UserRepository : IJobRepository
+    public class UserRepository : IUserRepository
     {
         private DbConnection _connection;
 
-        public IEnumerable<Job> GetAll()
+        public IEnumerable<User> GetAll()
         {
             using (_connection = Utilities.GetProfiledOpenConnection())
             {
                 var db = LunchDatabase.Init(_connection, commandTimeout: 2);
-                return db.Jobs.All();
+                return db.Users.All();
             }
         }
 
-        public Job Get(int id)
+        public User Get(int id)
         {
             using (_connection = Utilities.GetProfiledOpenConnection())
             {
                 var db = LunchDatabase.Init(_connection, commandTimeout: 2);
-                return db.Jobs.Get(id);
+                return db.Users.Get(id);
             }
         }
 
-        public Job SaveOrUpdate(Job entity)
+        public User Get(Guid guid)
+        {
+            using (_connection = Utilities.GetProfiledOpenConnection())
+            {
+                return _connection.Query<User>("SELECT * FROM [User] WHERE GUID = @guid", new {guid = guid.ToString()}).FirstOrDefault();
+            }
+        }
+
+        public IEnumerable<User> SaveOrUpdateAll(params User[] entities)
+        {
+            throw new NotImplementedException();
+        }
+
+        public User SaveOrUpdate(User entity)
         {
             using (_connection = Utilities.GetProfiledOpenConnection())
             {
                 var db = LunchDatabase.Init(_connection, commandTimeout: 2);
                 if (entity.Id > 0)
                 {
-                    entity.Id = db.Jobs.Update(entity.Id, entity);
+                    entity.Id = db.Users.Update(entity.Id, entity);
                 }
                 else
                 {
-                    var insert = db.Jobs.Insert(entity);
+                    var insert = db.Users.Insert(entity);
                     if (insert != null)
                         entity.Id = (int)insert;
                 }
@@ -50,12 +63,12 @@ namespace Lunch.Data.Repositories
             }
         }
 
-        public Job Delete(Job entity)
+        public User Delete(User entity)
         {
             using (_connection = Utilities.GetProfiledOpenConnection())
             {
                 var db = LunchDatabase.Init(_connection, commandTimeout: 2);
-                db.Jobs.Delete(entity.Id);
+                db.Users.Delete(entity.Id);
             }
             return entity;
         }

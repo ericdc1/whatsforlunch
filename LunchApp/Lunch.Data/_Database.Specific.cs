@@ -8,6 +8,7 @@ namespace Lunch.Data
         public Table<RestaurantType> RestaturantTypes{ get; private set; }
         public Table<JobLog> JobLogs { get; private set; }
         public Table<Job> Jobs { get; private set; }
+        public Table<User> Users { get; private set; }
 
     }
 }
