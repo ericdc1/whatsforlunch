@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Reflection;
 using System.Web.Http;
 using System.Web.Mvc;
@@ -12,6 +13,7 @@ using Quartz;
 using Quartz.Impl;
 using StackExchange.Profiling;
 using StructureMap;
+using WebMatrix.WebData;
 
 
 namespace Lunch.Website
@@ -36,6 +38,8 @@ namespace Lunch.Website
             ControllerBuilder.Current.SetControllerFactory(new StructureMapControllerFactory());
 
             CreateMaps();
+
+            WebSecurity.InitializeDatabaseConnection(ConfigurationManager.ConnectionStrings["AzureSQL"].ConnectionString, "System.Data.SqlServer", "User", "Id", "Email", false);
         }
 
 
