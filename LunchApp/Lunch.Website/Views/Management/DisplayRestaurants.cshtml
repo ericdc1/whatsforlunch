@@ -1,0 +1,41 @@
+﻿@model Lunch.Website.ViewModels.ImportRestaurantsViewModel
+
+@{
+    ViewBag.Title = "DisplayRestaurants";
+}
+
+<h2>DisplayRestaurants</h2>
+
+@if (Model == null || Model.Restaurants.Count == 0)
+{
+    
+} else
+{
+    using (Html.BeginForm()) {
+        @Html.ValidationSummary(true)
+
+        <fieldset>
+            <legend>Restaurants List</legend>
+        
+            @for (var i= 0; i < Model.Restaurants.Count; i++)
+            {
+                <div class="editor-field">@Html.EditorFor(model => model.Restaurants[i].Selected) @Model.Restaurants[i].Name</div>
+            }
+
+    @*        <div class="editor-label">@Html.LabelFor(model => model.TotalResults)</div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.TotalResults)
+                @Html.ValidationMessageFor(model => model.TotalResults)
+            </div>*@
+
+        
+
+            <p>
+                <input type="submit" value="Save" />
+            </p>
+
+        </fieldset>
+    }
+}
+
+

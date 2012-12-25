@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -160,6 +161,24 @@ namespace Lunch.Core.Helpers
                 sr.Close();
             }
             return strResult;
+        }
+
+        public static string GenerateRestaurantApi(string publisher, string latitude, string longitude, string radius, int page)
+        {
+            var apiUrl = ConfigurationManager.AppSettings.Get("RestaurantProviderURL");
+            if (!string.IsNullOrWhiteSpace(apiUrl))
+            {
+                var sb = new StringBuilder();
+                sb.Append(apiUrl);
+                sb.Append(@"?type=restaurant&rpp=50&format=json");
+                sb.Append(@"&publisher=" + publisher);
+                sb.Append(@"&lat=" + latitude);
+                sb.Append(@"&lon=" + longitude);
+                sb.Append(@"&radius=" + radius);
+                sb.Append(@"&page=" + page.ToString());
+                apiUrl = sb.ToString();
+            }
+            return apiUrl;
         }
     }
 

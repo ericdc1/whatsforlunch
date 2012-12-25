@@ -1,14 +1,17 @@
 ﻿using System;
 using System.Globalization;
+using System.Security.Principal;
+using System.Threading;
 using System.Web.Mvc;
 using AutoMapper;
 using Lunch.Core.Helpers;
 using Lunch.Core.Logic;
 using Lunch.Core.Models;
+using Lunch.Website.Services;
 
 namespace Lunch.Website.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         private readonly IRestaurantLogic _restaurantLogic;
         private readonly IRestaurantTypeLogic _restaurantTypeLogic;
@@ -20,14 +23,13 @@ namespace Lunch.Website.Controllers
             _restaurantTypeLogic = restaurantTypeLogic;
         }
 
+        [LunchAuthorize]
         public ActionResult Index(int? categoryid)
         {
             ViewBag.HasCategoryFilter = categoryid > 0;
             var result = _restaurantLogic.GetAllDetailed(categoryid);
             return View(result);
         }
-
-
 
         public ActionResult Keepalive()
         {
@@ -45,7 +47,6 @@ namespace Lunch.Website.Controllers
             ViewBag.RestaurantTypeList = _restaurantTypeLogic.GetAll();
             return View("Edit");
         }
-
 
         [HttpPost]
         public ActionResult Create([Bind(Exclude = "Id")] ViewModels.Restaurant model)
@@ -86,24 +87,6 @@ namespace Lunch.Website.Controllers
             var rest = _restaurantLogic.Get(id);
             _restaurantLogic.Delete(rest);
             return RedirectToAction("Index");
-        }
-
-
-        public ActionResult usertest()
-        {
-            var udb = new Lunch.Data.Repositories.UserRepository();
-            var user = new User() { Email = "ecoffman@hsc.wvu.edu", FullName = "Eric Coffman", IsAdministrator = true, GUID = "hi" };
-            var newid = udb.SaveOrUpdate(user);
-
-            var x = udb.GetAll();
-            var y = udb.Get(2);
-            var z = udb.GetList(new { FullName = "Eric Coffman" });
-
-            y.FullName = DateTime.Now.ToLongDateString();
-            var zz = udb.SaveOrUpdate(y);
-
-
-            return Content("hi");
         }
     }
 }

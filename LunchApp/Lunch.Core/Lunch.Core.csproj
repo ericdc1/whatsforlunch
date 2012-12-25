@@ -63,6 +63,8 @@
     <Compile Include="Helpers\Helpers.cs" />
     <Compile Include="Helpers\Jobs.cs" />
     <Compile Include="Helpers\JobScheduler.cs" />
+    <Compile Include="Logic\Implementations\UserLogic.cs" />
+    <Compile Include="Logic\IUserLogic.cs" />
     <Compile Include="Logic\IJobLogLogic.cs" />
     <Compile Include="Logic\IJobLogic.cs">
       <SubType>Code</SubType>
@@ -81,6 +83,7 @@
     </Compile>
     <Compile Include="Models\Views\RestaurantDetails.cs" />
     <Compile Include="Models\Vote.cs" />
+    <Compile Include="RepositoryInterfaces\IUserRepository.cs" />
     <Compile Include="RepositoryInterfaces\IJobLogRepository.cs" />
     <Compile Include="RepositoryInterfaces\IJobRepository.cs">
       <SubType>Code</SubType>
