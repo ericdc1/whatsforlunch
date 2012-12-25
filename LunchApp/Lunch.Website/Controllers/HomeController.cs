@@ -89,6 +89,21 @@ namespace Lunch.Website.Controllers
         }
 
 
+        public ActionResult usertest()
+        {
+            var udb = new Lunch.Data.Repositories.UserRepository();
+            var user = new User() { Email = "ecoffman@hsc.wvu.edu", FullName = "Eric Coffman", IsAdministrator = true, GUID = "hi" };
+            var newid = udb.SaveOrUpdate(user);
 
+            var x = udb.GetAll();
+            var y = udb.Get(2);
+            var z = udb.GetList(new { FullName = "Eric Coffman" });
+
+            y.FullName = DateTime.Now.ToLongDateString();
+            var zz = udb.SaveOrUpdate(y);
+
+
+            return Content("hi");
+        }
     }
 }

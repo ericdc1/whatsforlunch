@@ -1,12 +1,16 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Lunch.Core.Models
 {
+    [Table("User")]
     public class User
     {
         #region DatabaseFields
-        public virtual int Id { get; protected set; }
+
+        [Key]
+        public virtual int Id { get; set; }
         public virtual string FullName { get; set; }
         public virtual string Email { get; set; }
         public virtual string Password { get; set; }

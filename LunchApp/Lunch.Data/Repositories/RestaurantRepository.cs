@@ -4,7 +4,7 @@ using System.Linq;
 using Lunch.Core.Models;
 using Lunch.Core.Models.Views;
 using Lunch.Core.RepositoryInterfaces;
-
+using Dapper;
 namespace Lunch.Data.Repositories
 {
     public class RestaurantRepository : IRestaurantRepository
@@ -14,8 +14,7 @@ namespace Lunch.Data.Repositories
         {
             using (_connection = Utilities.GetProfiledOpenConnection())
             {
-                var db = LunchDatabase.Init(_connection, commandTimeout: 2);
-                return db.Restaurants.All();
+                return _connection.GetList<Restaurant>(new {});
             }
         }
 
@@ -23,8 +22,7 @@ namespace Lunch.Data.Repositories
         {
             using (_connection = Utilities.GetProfiledOpenConnection())
             {
-                var db = LunchDatabase.Init(_connection, commandTimeout: 2);
-                var result =db.Query<RestaurantDetails>(
+                var result =_connection.Query<RestaurantDetails>(
                         @"Select restaurant.Id, restaurant.RestaurantName , restaurant.PreferredDayOfWeek, restauranttype.Id as RestaurantTypeID, restauranttype.typename as TypeName
                         from Restaurant
                         INNER JOIN RestaurantType
@@ -40,8 +38,7 @@ namespace Lunch.Data.Repositories
         {
             using (_connection = Utilities.GetProfiledOpenConnection())
             {
-                var db = LunchDatabase.Init(_connection, commandTimeout: 2);
-                return db.Restaurants.Get(id);
+                return _connection.Get<Restaurant>(id);
             }
         }
 
@@ -55,17 +52,15 @@ namespace Lunch.Data.Repositories
         {
             using (_connection = Utilities.GetProfiledOpenConnection())
             {
-                var db = LunchDatabase.Init(_connection, commandTimeout: 2);
-
+ 
                 if (entity.Id > 0)
                 {
-                    db.Restaurants.Update(entity.Id, entity);
+                   _connection.Update(entity);
                 }
                 else
                 {
-                    var insert = db.Restaurants.Insert(entity);
-                    if (insert != null)
-                        entity.Id = (int)insert;
+                    var insert = _connection.Insert(entity);
+                    entity.Id = (int)insert;
                 }
                 return entity;
             }
@@ -75,8 +70,7 @@ namespace Lunch.Data.Repositories
         {
             using (_connection = Utilities.GetProfiledOpenConnection())
             {
-                var db = LunchDatabase.Init(_connection, commandTimeout: 2);
-                db.Restaurants.Delete(entity.Id);
+                _connection.Delete(entity);
             }
             return entity;
         }

@@ -17,8 +17,7 @@ namespace Lunch.Data.Repositories
         {
             using (_connection = Utilities.GetProfiledOpenConnection())
             {
-                var db = LunchDatabase.Init(_connection, commandTimeout: 2);
-                return db.JobLogs.All();
+                return _connection.GetList<JobLog>(new {});
             }
         }
 
@@ -26,8 +25,7 @@ namespace Lunch.Data.Repositories
         {
             using (_connection = Utilities.GetProfiledOpenConnection())
             {
-                var db = LunchDatabase.Init(_connection, commandTimeout: 2);
-                return db.JobLogs.Get(id);
+                return _connection.Get<JobLog>(id);
             }
         }
 
@@ -35,15 +33,13 @@ namespace Lunch.Data.Repositories
         {
             using (_connection = Utilities.GetProfiledOpenConnection())
             {
-                var db = LunchDatabase.Init(_connection, commandTimeout: 2);
                 if (entity.Id > 0)
                 {
-                    entity.Id = db.JobLogs.Update(entity.Id, entity);
+                    entity.Id = _connection.Update(entity);
                 }
                 else
                 {
-                    var insert = db.JobLogs.Insert(entity);
-                    if (insert != null)
+                    var insert = _connection.Insert(entity);
                         entity.Id = (int)insert;
                 }
                 return entity;
@@ -54,8 +50,7 @@ namespace Lunch.Data.Repositories
         {
             using (_connection = Utilities.GetProfiledOpenConnection())
             {
-                 var db = LunchDatabase.Init(_connection, commandTimeout: 2);
-                db.JobLogs.Delete(entity.Id);
+                _connection.Delete(entity);
             }
             return entity;
         }

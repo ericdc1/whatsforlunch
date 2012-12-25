@@ -9,39 +9,46 @@ using Dapper;
 
 namespace Lunch.Data.Repositories
 {
-    public class UserRepository : IJobRepository
+    public class UserRepository 
     {
 
-        // private DbConnection _connection;
-        private LunchDatabase _rainbowconnection;
-
-        public IEnumerable<Job> GetAll()
+         private DbConnection _connection;
+       
+        public IEnumerable<User> GetAll()
         {
-            using (_rainbowconnection = Utilities.GetProfiledOpenRainbowConnection())
+            using (_connection = Utilities.GetProfiledOpenConnection())
             {
-                return _rainbowconnection.Jobs.All();
+                return _connection.GetList<User>(new {});
             }
         }
 
-        public Job Get(int id)
+        public IEnumerable<User> GetList(object where)
         {
-            using (_rainbowconnection = Utilities.GetProfiledOpenRainbowConnection())
+            using (_connection = Utilities.GetProfiledOpenConnection())
             {
-                return _rainbowconnection.Jobs.Get(id);
+                return _connection.GetList<User>(where);
             }
         }
 
-        public Job SaveOrUpdate(Job entity)
+        public User Get(int id)
         {
-            using (_rainbowconnection = Utilities.GetProfiledOpenRainbowConnection())
+            using (_connection = Utilities.GetProfiledOpenConnection())
+            {
+                return _connection.Get<User>(id);
+            }
+        }
+
+        public User SaveOrUpdate(User entity)
+        {
+            using (_connection = Utilities.GetProfiledOpenConnection())
             {
                 if (entity.Id > 0)
                 {
-                    entity.Id = _rainbowconnection.Jobs.Update(entity.Id, entity);
+                    _connection.Update(entity);
                 }
                 else
                 {
-                    var insert = _rainbowconnection.Jobs.Insert(entity);
+                    var insert = _connection.Insert(entity);
                     if (insert != null)
                         entity.Id = (int)insert;
                 }
@@ -49,11 +56,11 @@ namespace Lunch.Data.Repositories
             }
         }
 
-        public Job Delete(Job entity)
+        public User Delete(User entity)
         {
-            using (_rainbowconnection = Utilities.GetProfiledOpenRainbowConnection())
+            using (_connection = Utilities.GetProfiledOpenConnection())
             {
-                _rainbowconnection.Jobs.Delete(entity.Id);
+                _connection.Delete(entity);
             }
             return entity;
         }
