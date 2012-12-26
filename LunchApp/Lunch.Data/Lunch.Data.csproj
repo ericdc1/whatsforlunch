@@ -36,9 +36,9 @@
     <Reference Include="Dapper">
       <HintPath>..\packages\Dapper.1.12.1\lib\net40\Dapper.dll</HintPath>
     </Reference>
-    <Reference Include="Dapper.SimpleCRUD, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Dapper.SimpleCRUD, Version=1.0.2.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Dapper.SimpleCRUD.1.0.1\lib\net40\Dapper.SimpleCRUD.dll</HintPath>
+      <HintPath>..\packages\Dapper.SimpleCRUD.1.0.2\lib\net40\Dapper.SimpleCRUD.dll</HintPath>
     </Reference>
     <Reference Include="MiniProfiler">
       <HintPath>..\packages\MiniProfiler.2.0.2\lib\net40\MiniProfiler.dll</HintPath>

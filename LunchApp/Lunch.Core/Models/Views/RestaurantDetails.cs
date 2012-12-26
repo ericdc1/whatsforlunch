@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 
 namespace Lunch.Core.Models.Views
 {
@@ -9,7 +10,7 @@ namespace Lunch.Core.Models.Views
         [DisplayName("Name")]
         public string RestaurantName { get; set; }
         [DisplayName("Preferred Day")]
-        public string PreferredDayOfWeek { get; set; }
+        public DayOfWeek? PreferredDayOfWeek { get; set; }
         [DisplayName("Genre")]
         public string TypeName { get; set; }
         [DisplayName("Genre ID")]

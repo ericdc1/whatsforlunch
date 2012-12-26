@@ -1,15 +1,14 @@
-﻿@using Lunch.Core.Helpers
-@using Lunch.Core.Jobs
+﻿@using Lunch.Core.Jobs
 @model IEnumerable<Lunch.Core.Models.Job>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Jobs";
 }
 
 <h2>Jobs</h2>
 
 
-<table>
+<table class="table table-striped">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.MethodName)
@@ -26,7 +25,6 @@
         <th>
             @Html.DisplayNameFor(model => model.HasRun)
         </th>
-        <th></th>
     </tr>
 
     @foreach (var item in Model)
@@ -46,7 +44,6 @@
             <td>
                 @Html.DisplayFor(modelItem => item.HasRun)
             </td>
-
         </tr>
     }
 

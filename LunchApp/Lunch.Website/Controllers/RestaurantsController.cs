@@ -26,11 +26,6 @@ namespace Lunch.Website.Controllers
             return View(result);
         }
 
-        public ActionResult Keepalive()
-        {
-            return Content("alive");
-        }
-
         public ActionResult Details(int id)
         {
             var model = _restaurantLogic.Get(id);

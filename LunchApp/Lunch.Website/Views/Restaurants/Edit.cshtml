@@ -1,4 +1,5 @@
-﻿@model Lunch.Website.ViewModels.Restaurant
+﻿@using System.Globalization
+@model Lunch.Website.ViewModels.Restaurant
 
 @{
     ViewBag.Title = "Edit";
@@ -6,9 +7,17 @@
 
 <h2>Edit</h2>
 
-@using (Html.BeginForm()) {
+@using (Html.BeginForm())
+{
     @Html.ValidationSummary(true)
-
+    
+    var monthFilters = from DayOfWeek n in Enum.GetValues(typeof(DayOfWeek))
+                       select new SelectListItem
+                       {
+                           Value = ((int)n).ToString(CultureInfo.InvariantCulture),
+                           Text = n.ToString()
+                       };
+    
     <fieldset>
         <legend>Restaurants</legend>
 
@@ -29,7 +38,7 @@
             @Html.LabelFor(model => model.PreferredDayOfWeek)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.PreferredDayOfWeek)
+            @Html.DropDownList("PreferredDayOfWeek", monthFilters, "No preference",null)
             @Html.ValidationMessageFor(model => model.PreferredDayOfWeek)
         </div>
 

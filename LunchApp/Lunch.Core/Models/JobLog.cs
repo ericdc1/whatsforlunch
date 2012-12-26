@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 
 namespace Lunch.Core.Models
 {
@@ -14,7 +15,9 @@ namespace Lunch.Core.Models
     public class JobLog
     {
         public virtual int Id { get;  set; }
+        [DisplayName("Job ID")]
         public virtual int JobID { get; set; }
+        [DisplayName("Log Date")]
         public virtual DateTime LogDTM { get; set; }
         public virtual string Category { get; set; }
         public virtual string Message { get; set; }
