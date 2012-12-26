@@ -67,10 +67,5 @@ namespace Lunch.Data.Repositories
         {
             throw new NotImplementedException();
         }
-
-        public User Get(Guid guid)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
