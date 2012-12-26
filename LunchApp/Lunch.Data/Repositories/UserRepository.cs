@@ -62,5 +62,15 @@ namespace Lunch.Data.Repositories
             }
             return entity;
         }
+
+        public IEnumerable<User> SaveOrUpdateAll(params User[] entities)
+        {
+            throw new NotImplementedException();
+        }
+
+        public User Get(Guid guid)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
