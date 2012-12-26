@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 
@@ -10,14 +11,16 @@ namespace Lunch.Website.ViewModels
         [HiddenInput(DisplayValue = false)]
         [DisplayName("ID")]
         public int Id { get; set; }
+
         [Required]
         [StringLength(50)]
         [DisplayName("Name")]
-        public string RestaurantName { get; set; }
+        public string RestaurantName { get;set; }
+
         [DisplayName("Preferred Day")]
-        public string PreferredDayOfWeek { get; set; }
+        [Editable(true)]
+        public int PreferredDayOfWeek { get; set; }
         [DisplayName("Genre")]
         public int RestaurantTypeID { get; set; }
-
     }
 }
