@@ -10,11 +10,11 @@ namespace Lunch.Data.Repositories
     public class RestaurantRepository : IRestaurantRepository
     {
         private DbConnection _connection;
-        public IEnumerable<Restaurant> GetAll()
+        public IEnumerable<Restaurant> GetList(object parameters)
         {
             using (_connection = Utilities.GetProfiledOpenConnection())
             {
-                return _connection.GetList<Restaurant>(new {});
+                return _connection.GetList<Restaurant>(parameters);
             }
         }
 

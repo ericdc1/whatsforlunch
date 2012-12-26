@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Lunch.Core.Models;
 using Lunch.Core.Models.Views;
 using Lunch.Core.RepositoryInterfaces;
@@ -14,9 +16,14 @@ namespace Lunch.Core.Logic.Implementations
             _restaurantRepository = restaurantRepository;
         }
 
-        public IEnumerable<Restaurant> GetAll()
+        public IEnumerable<Restaurant> GetList(object parameters)
         {
-            return _restaurantRepository.GetAll();
+            return _restaurantRepository.GetList(parameters);
+        }
+
+        public IEnumerable<Restaurant> GenerateRestaurants()
+        {
+            return _restaurantRepository.GetList(new{}).OrderBy (x => Guid.NewGuid()).Take(4);
         }
 
         public IEnumerable<RestaurantDetails> GetAllDetailed(int? categoryId)

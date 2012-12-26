@@ -14,14 +14,14 @@ namespace Lunch.Core.Logic.Implementations
             _userRepository = userRepository;
         }
 
-        public IEnumerable<User> GetAll()
+        public IEnumerable<User> GetList(object parameters)
         {
-            throw new NotImplementedException();
+            return _userRepository.GetList(parameters);
         }
 
         public User Get(int id)
         {
-            throw new NotImplementedException();
+            return _userRepository.Get(id);
         }
 
         public User Get(Guid guid)
@@ -29,19 +29,14 @@ namespace Lunch.Core.Logic.Implementations
             return _userRepository.Get(guid);
         }
 
-        public IEnumerable<User> SaveOrUpdateAll(params User[] entities)
-        {
-            throw new NotImplementedException();
-        }
-
         public User SaveOrUpdate(User entity)
         {
-            throw new NotImplementedException();
+            return _userRepository.SaveOrUpdate(entity);
         }
 
         public User Delete(User entity)
         {
-            throw new NotImplementedException();
+            return _userRepository.Delete(entity);
         }
     }
 }

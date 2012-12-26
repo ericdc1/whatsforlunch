@@ -9,18 +9,10 @@ using Dapper;
 
 namespace Lunch.Data.Repositories
 {
-    public class UserRepository 
+    public class UserRepository : IUserRepository
     {
 
          private DbConnection _connection;
-       
-        public IEnumerable<User> GetAll()
-        {
-            using (_connection = Utilities.GetProfiledOpenConnection())
-            {
-                return _connection.GetList<User>(new {});
-            }
-        }
 
         public IEnumerable<User> GetList(object where)
         {
@@ -38,6 +30,14 @@ namespace Lunch.Data.Repositories
             }
         }
 
+        public User Get(Guid guid)
+        {
+            using (_connection = Utilities.GetProfiledOpenConnection())
+            {
+                return _connection.GetList<User>(new {GUID = guid}).FirstOrDefault();
+            }
+        }
+
         public User SaveOrUpdate(User entity)
         {
             using (_connection = Utilities.GetProfiledOpenConnection())
@@ -48,9 +48,7 @@ namespace Lunch.Data.Repositories
                 }
                 else
                 {
-                    var insert = _connection.Insert(entity);
-                    if (insert != null)
-                        entity.Id = (int)insert;
+                    entity.Id = _connection.Insert(entity);
                 }
                 return entity;
             }

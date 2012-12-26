@@ -1,8 +1,8 @@
-﻿//todo: admit that we failed at nhibernate - EC/JD/MM/LD
+﻿//done: admit that we failed at nhibernate - EC/JD/MM/LD
 //todo: bring in the UI - SRK
 //todo: ui for editing lists and search/filter lists - TY/SRK
 //todo: ui for email messages - TY
-//todo: CRUD for restaurants - MM
+//done: CRUD for restaurants - MM
 //add stats columns - last visited, last up for vote, times in last 90 days, average rating based on weighted averages of attendees
 //todo: user voting for restaurants
 

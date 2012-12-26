@@ -7,10 +7,9 @@ namespace Lunch.Core.Logic
 {
     public interface IUserLogic
     {
-        IEnumerable<User> GetAll();
+        IEnumerable<User> GetList(object parameters);
         User Get(int id);
         User Get(Guid guid);
-        IEnumerable<User> SaveOrUpdateAll(params User[] entities);
         User SaveOrUpdate(User entity);
         User Delete(User entity);
     }

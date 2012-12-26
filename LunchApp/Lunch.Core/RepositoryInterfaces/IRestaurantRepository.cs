@@ -6,7 +6,7 @@ namespace Lunch.Core.RepositoryInterfaces
 {
     public interface IRestaurantRepository
     {
-        IEnumerable<Restaurant> GetAll();
+        IEnumerable<Restaurant> GetList(object parameters);
         IEnumerable<RestaurantDetails> GetAllDetailed(int? categoryId);
         Restaurant Get(int id);
         IEnumerable<Restaurant> SaveOrUpdateAll(params Restaurant[] entities);

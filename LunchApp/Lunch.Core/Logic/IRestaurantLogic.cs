@@ -6,7 +6,8 @@ namespace Lunch.Core.Logic
 {
     public interface IRestaurantLogic
     {
-        IEnumerable<Restaurant> GetAll();
+        IEnumerable<Restaurant> GetList(object parameters);
+        IEnumerable<Restaurant> GenerateRestaurants();
         IEnumerable<RestaurantDetails> GetAllDetailed(int? categoryId);
         Restaurant Get(int id);
         IEnumerable<Restaurant> SaveOrUpdateAll(params Restaurant[] entities);

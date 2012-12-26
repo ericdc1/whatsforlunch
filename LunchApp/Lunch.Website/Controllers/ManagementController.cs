@@ -2,7 +2,7 @@
 using System.IO;
 using System.Net;
 using System.Web.Mvc;
-using Lunch.Core.Helpers;
+using Lunch.Core.Jobs;
 using Lunch.Website.ViewModels;
 
 namespace Lunch.Website.Controllers

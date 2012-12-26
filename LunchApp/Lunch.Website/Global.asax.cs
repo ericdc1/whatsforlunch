@@ -1,25 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Reflection;
-using System.Security.Principal;
-using System.Threading;
-using System.Web.Http;
+﻿using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Routing;
 using AutoMapper;
-using Lunch.Core.Helpers;
-using Lunch.Core.Logic;
-using Lunch.Core.Logic.Implementations;
+using Lunch.Core.Jobs;
 using Lunch.Core.Models;
-using Lunch.Data.Repositories;
 using Lunch.Website.DependencyResolution;
-using Lunch.Website.Services;
-using Quartz;
-using Quartz.Impl;
 using StackExchange.Profiling;
 using StructureMap;
-using WebMatrix.WebData;
 
 
 namespace Lunch.Website
@@ -42,7 +29,7 @@ namespace Lunch.Website
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
 
-            new Lunch.Core.Helpers.JobScheduler().Taskmanager();
+            new JobScheduler().Taskmanager();
 
             ControllerBuilder.Current.SetControllerFactory(new StructureMapControllerFactory());
             
