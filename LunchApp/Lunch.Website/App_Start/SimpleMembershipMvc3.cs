@@ -27,7 +27,7 @@ namespace Lunch.Website.App_Start
 			
 			// Comment the line above and uncomment these lines to use the IWebSecurityService abstraction
 		    var webSecurityService = StructureMap.ObjectFactory.GetInstance<IWebSecurityService>();
-            webSecurityService.InitializeDatabaseConnection(connectionStringName: "AzureSQL", userTableName: "User", userIdColumn: "Id", userNameColumn: "Email", autoCreateTables: true);
+            webSecurityService.InitializeDatabaseConnection(connectionStringName: "AzureSQL", userTableName: "Users", userIdColumn: "Id", userNameColumn: "Email", autoCreateTables: true);
 
             //if (!WebSecurity.UserExists("jdehlin@gmail.com"))
             //    WebSecurity.CreateUserAndAccount("jdehlin@gmail.com", "foobar", new {FullName = "Jack Dehlin", GUID = Guid.NewGuid()});

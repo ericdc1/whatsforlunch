@@ -34,17 +34,14 @@ namespace Lunch.Core.Models.Template
         	public string TypeName { get; set; }
         }
       
-        public class User
+        public class Users
 		{
         	public int Id { get; set; }
         	public string FullName { get; set; }
         	public string Email { get; set; }
-        	public string Password { get; set; }
-        	public bool SendMorningEmailFlg  { get; set; }
-        	public bool SendVotingIsOverEmailFlg  { get; set; }
         	public bool SendWhereWeAreGoingEmailFlg { get; set; }
-        	public bool IsAdministrator  { get; set; }
         	public string GUID { get; set; }
+        	public bool myflg { get; set; }
         }
       
         public class webpages_Membership

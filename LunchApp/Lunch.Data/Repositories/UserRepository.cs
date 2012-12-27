@@ -18,8 +18,7 @@ namespace Lunch.Data.Repositories
          {
              using (_connection = Utilities.GetProfiledOpenConnection())
              {
-                 //return _connection.GetList<User>(where);
-                 return _connection.Query<User>("Select * From Users");
+                 return _connection.GetList<User>(where);
              }
          }
 

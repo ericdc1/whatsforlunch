@@ -14,11 +14,10 @@ namespace Lunch.Core.Models
         public virtual int Id { get; set; }
         public virtual string FullName { get; set; }
         public virtual string Email { get; set; }
-        public virtual string Password { get; set; }
-        public virtual bool SendMorningEmailFlg { get; set; }
-        public virtual bool SendVotingIsOverEmailFlg { get; set; }
-        public virtual bool SendWhereWeAreGoingEmailFlg { get; set; }
-        public virtual bool IsAdministrator { get; set; }
+        public virtual bool SendMail1 { get; set; }
+        public virtual bool SendMail2 { get; set; }
+        public virtual bool SendMail3 { get; set; }
+        public virtual bool SendMail4 { get; set; }
         public virtual string GUID { get; set; }
         #endregion
 

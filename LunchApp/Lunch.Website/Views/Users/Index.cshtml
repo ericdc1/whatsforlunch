@@ -18,17 +18,18 @@
         <th>
             @Html.DisplayNameFor(model => model.Email)
         </th>
+      
         <th>
-            @Html.DisplayNameFor(model => model.IsAdministrator)
+            @Html.DisplayNameFor(model => model.SendMail1)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.SendMorningEmailFlg)
+            @Html.DisplayNameFor(model => model.SendMail2)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SendVotingIsOverEmailFlg)
+          <th>
+            @Html.DisplayNameFor(model => model.SendMail3)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SendWhereWeAreGoingEmailFlg)
+            <th>
+            @Html.DisplayNameFor(model => model.SendMail4)
         </th>
         <th></th>
     </tr>
@@ -42,17 +43,18 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Email)
             </td>
+       
             <td>
-                @Html.DisplayFor(modelItem => item.IsAdministrator)
+                @Html.DisplayFor(modelItem => item.SendMail1)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.SendMorningEmailFlg)
+                @Html.DisplayFor(modelItem => item.SendMail2)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.SendVotingIsOverEmailFlg)
+                @Html.DisplayFor(modelItem => item.SendMail3)
             </td>
-                 <td>
-                @Html.DisplayFor(modelItem => item.SendWhereWeAreGoingEmailFlg)
+                <td>
+                @Html.DisplayFor(modelItem => item.SendMail4)
             </td>
             <td>
                 <a href="@Url.Action("Edit", new { ID = item.Id })"><i class="icon-pencil"></i></a>
