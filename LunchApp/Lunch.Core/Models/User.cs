@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Lunch.Core.Models
 {
-    [Table("User")]
+    [Table("Users")]
     public class User
     {
         #region DatabaseFields
