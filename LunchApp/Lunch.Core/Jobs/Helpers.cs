@@ -66,7 +66,7 @@ namespace Lunch.Core.Jobs
 
         private void CreateWhereAreWeGoingJob()
         {
-            var job = new Job() { CreatedDate = DateTime.Now, MethodName = "WhereAreWeGoingMessage", ParametersJson = "", RunDate = Helpers.AdjustTimeOffsetToUtc(DateTime.Today.AddHours(12)) };
+            var job = new Job() { CreatedDate = DateTime.Now, MethodName = "WhereAreWeGoingMessage", ParametersJson = "", RunDate = Helpers.AdjustTimeOffsetToUtc(DateTime.Today.AddHours(11).AddMinutes(15)) };
             var _jobLogic = ObjectFactory.GetInstance<IJobLogic>();
             _jobLogic.SaveOrUpdate(job);
 
@@ -78,7 +78,7 @@ namespace Lunch.Core.Jobs
 
         private void CreateVotingIsOverJob()
         {
-            var job = new Job() { CreatedDate = DateTime.Now, MethodName = "VotingIsOverMessage", ParametersJson = "{name:bob}", RunDate = Helpers.AdjustTimeOffsetToUtc(DateTime.Today.AddHours(12)) };
+            var job = new Job() { CreatedDate = DateTime.Now, MethodName = "VotingIsOverMessage", ParametersJson = "{name:bob}", RunDate = Helpers.AdjustTimeOffsetToUtc(DateTime.Today.AddHours(10).AddMinutes(30)) };
             var _jobLogic = ObjectFactory.GetInstance<IJobLogic>();
             _jobLogic.SaveOrUpdate(job);
 
@@ -90,7 +90,7 @@ namespace Lunch.Core.Jobs
 
         private void CreateMorningMailJob()
         {
-            var job = new Job() { CreatedDate = DateTime.Now, MethodName = "MorningMessage", ParametersJson = "{name:bob}", RunDate = Helpers.AdjustTimeOffsetToUtc(DateTime.Today.AddHours(7))};
+            var job = new Job() { CreatedDate = DateTime.Now, MethodName = "MorningMessage", ParametersJson = "{name:bob}", RunDate = Helpers.AdjustTimeOffsetToUtc(DateTime.Today.AddHours(7).AddMinutes(30))};
             var _jobLogic = ObjectFactory.GetInstance<IJobLogic>();
             _jobLogic.SaveOrUpdate(job);
 
@@ -102,7 +102,7 @@ namespace Lunch.Core.Jobs
 
         public void RunJob(string methodname, string parameters, int id)
         {
-            var calledType = Type.GetType("Lunch.Core.Helpers.Jobs");
+            var calledType = Type.GetType("Lunch.Core.Jobs.Jobs");
             if (calledType != null)
             {
                 var methods = calledType.GetMethods(BindingFlags.InvokeMethod | BindingFlags.Instance | BindingFlags.Public);
@@ -121,7 +121,7 @@ namespace Lunch.Core.Jobs
             {
                 //add log
                 var _jobLogLogic = ObjectFactory.GetInstance<IJobLogLogic>();
-                var entity = new JobLog() { JobID = 0, Category = "System" , Message=string.Format("Running job {0} failed",methodname) };
+                var entity = new JobLog() { JobID = 0, Category = "Error" , Message=string.Format("Running job {0} failed",methodname) };
                 _jobLogLogic.SaveOrUpdate(entity);
             }
         }

@@ -156,6 +156,7 @@
     <Compile Include="App_Start\SimpleMembershipMvc3.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JobsController.cs" />
     <Compile Include="Controllers\LogsController.cs" />
@@ -172,6 +173,7 @@
     <Compile Include="Services\WebSecurityService.cs" />
     <Compile Include="todo.cs" />
     <Compile Include="ViewModels\Account.cs" />
+    <Compile Include="ViewModels\User.cs" />
     <Compile Include="ViewModels\ImportRestaurantsViewModel.cs" />
     <Compile Include="ViewModels\ImportSettingsViewModel.cs" />
     <Compile Include="ViewModels\Restaurant.cs" />
@@ -207,6 +209,9 @@
     </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Users\Create.cshtml" />
+    <Content Include="Views\Users\Edit.cshtml" />
+    <Content Include="Views\Users\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -235,7 +240,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Restaurants\Create.cshtml" />
-    <Content Include="Views\Restaurants\Details.cshtml" />
     <Content Include="Views\Restaurants\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>

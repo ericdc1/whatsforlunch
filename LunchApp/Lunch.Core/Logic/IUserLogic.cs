@@ -11,6 +11,6 @@ namespace Lunch.Core.Logic
         User Get(int id);
         User Get(Guid guid);
         User SaveOrUpdate(User entity);
-        User Delete(User entity);
+        int Delete(int id);
     }
 }

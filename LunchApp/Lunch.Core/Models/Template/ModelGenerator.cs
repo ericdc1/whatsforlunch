@@ -24,7 +24,7 @@ namespace Lunch.Core.Models.Template
 		{
         	public int Id { get; set; }
         	public string RestaurantName { get; set; }
-        	public string PreferredDayOfWeek { get; set; }
+        	public int PreferredDayOfWeek { get; set; }
         	public int RestaurantTypeID { get; set; }
         }
       
@@ -45,6 +45,33 @@ namespace Lunch.Core.Models.Template
         	public bool SendWhereWeAreGoingEmailFlg { get; set; }
         	public bool IsAdministrator  { get; set; }
         	public string GUID { get; set; }
+        }
+      
+        public class webpages_Membership
+		{
+        	public int UserId { get; set; }
+        	public DateTime CreateDate { get; set; }
+        	public string ConfirmationToken { get; set; }
+        	public bool IsConfirmed { get; set; }
+        	public DateTime LastPasswordFailureDate { get; set; }
+        	public int PasswordFailuresSinceLastSuccess { get; set; }
+        	public string Password { get; set; }
+        	public DateTime PasswordChangedDate { get; set; }
+        	public string PasswordSalt { get; set; }
+        	public string PasswordVerificationToken { get; set; }
+        	public DateTime PasswordVerificationTokenExpirationDate { get; set; }
+        }
+      
+        public class webpages_Roles
+		{
+        	public int RoleId { get; set; }
+        	public string RoleName { get; set; }
+        }
+      
+        public class webpages_UsersInRoles
+		{
+        	public int UserId { get; set; }
+        	public int RoleId { get; set; }
         }
       
 }

@@ -45,6 +45,8 @@ namespace Lunch.Website
         {
             Mapper.CreateMap<Restaurant, ViewModels.Restaurant>();
             Mapper.CreateMap<ViewModels.Restaurant, Restaurant>();
+            Mapper.CreateMap<User, ViewModels.User>();
+            Mapper.CreateMap<ViewModels.User, User>();
         }
 
         private void Application_BeginRequest()

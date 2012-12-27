@@ -1,0 +1,56 @@
+﻿@model Lunch.Website.ViewModels.User
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>User</legend>
+               @Html.Hidden("ID",0)
+        
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FullName)
+            @Html.ValidationMessageFor(model => model.FullName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Email)
+            @Html.ValidationMessageFor(model => model.Email)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.GUID)
+            @Html.ValidationMessageFor(model => model.GUID)
+        </div>
+        
+        <div class="editor-label">
+            @Html.LabelFor(model => model.GUID)
+            @Html.ValidationMessageFor(model => model.IsAdministrator)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.GUID)
+            @Html.ValidationMessageFor(model => model.SendMorningEmailFlg)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.GUID)
+            @Html.ValidationMessageFor(model => model.SendVotingIsOverEmailFlg)
+        </div>
+         <div class="editor-label">
+            @Html.LabelFor(model => model.GUID)
+            @Html.ValidationMessageFor(model => model.SendWhereWeAreGoingEmailFlg)
+        </div>
+
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

@@ -14,13 +14,14 @@ namespace Lunch.Data.Repositories
 
          private DbConnection _connection;
 
-        public IEnumerable<User> GetList(object where)
-        {
-            using (_connection = Utilities.GetProfiledOpenConnection())
-            {
-                return _connection.GetList<User>(where);
-            }
-        }
+         public IEnumerable<User> GetList(object where)
+         {
+             using (_connection = Utilities.GetProfiledOpenConnection())
+             {
+                 return _connection.GetList<User>(where);
+                 //return _connection.Query<User>("Select * From [User]");
+             }
+         }
 
         public User Get(int id)
         {
@@ -54,18 +55,12 @@ namespace Lunch.Data.Repositories
             }
         }
 
-        public User Delete(User entity)
+        public int Delete(int id)
         {
             using (_connection = Utilities.GetProfiledOpenConnection())
             {
-                _connection.Delete(entity);
+                return _connection.Delete<User>(id);
             }
-            return entity;
-        }
-
-        public IEnumerable<User> SaveOrUpdateAll(params User[] entities)
-        {
-            throw new NotImplementedException();
         }
     }
 }
