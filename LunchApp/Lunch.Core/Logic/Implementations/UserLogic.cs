@@ -31,12 +31,13 @@ namespace Lunch.Core.Logic.Implementations
 
         public User SaveOrUpdate(User entity)
         {
+            if (entity.GUID == null) entity.GUID = Guid.NewGuid().ToString();
             return _userRepository.SaveOrUpdate(entity);
         }
 
-        public User Delete(User entity)
+        public int Delete(int id)
         {
-            return _userRepository.Delete(entity);
+            return _userRepository.Delete(id);
         }
     }
 }
