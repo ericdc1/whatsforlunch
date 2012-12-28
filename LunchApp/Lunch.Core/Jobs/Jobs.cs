@@ -24,7 +24,7 @@ namespace Lunch.Core.Jobs
 
         public void MorningMessage(object model, int id)
         {
-            var peopletoreceivemail = _userLogic.GetList(new {SendMorningEmailFlg = true});
+            var peopletoreceivemail = _userLogic.GetList(new {SendMail1 = true});
             var todayschoices = _restaurantLogic.GenerateRestaurants().ToList();
             var fromaddress = System.Configuration.ConfigurationManager.AppSettings.Get("FromEmail");
 
@@ -53,7 +53,7 @@ namespace Lunch.Core.Jobs
 
         public void VotingIsOverMessage(object model, int id)
         {
-            var peopletoreceivemail = _userLogic.GetList(new { SendVotingIsOverEmailFlg = true });
+            var peopletoreceivemail = _userLogic.GetList(new { SendMail2  = true });
             var todayschoices = _restaurantLogic.GenerateRestaurants().Take(2).ToList();
             var fromaddress = System.Configuration.ConfigurationManager.AppSettings.Get("FromEmail");
 
@@ -83,7 +83,7 @@ namespace Lunch.Core.Jobs
 
         public void WhereAreWeGoingMessage(object model, int id)
         {
-            var peopletoreceivemail = _userLogic.GetList(new { SendWhereWeAreGoingEmailFlg = true });
+            var peopletoreceivemail = _userLogic.GetList(new { SendMail3 = true });
             var todayschoices = _restaurantLogic.GenerateRestaurants().Take(1).ToList();
             var fromaddress = System.Configuration.ConfigurationManager.AppSettings.Get("FromEmail");
 
