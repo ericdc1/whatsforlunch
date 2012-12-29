@@ -4,58 +4,40 @@
     ViewBag.Title = "DisplayRestaurants";
 }
 
-<h2>Display Restaurants</h2>
+<h2>Restaurants Import</h2>
 
-@if (Model == null || Model.Restaurants.Count == 0)
+@using (Html.BeginForm())
 {
-    
-} else
-{
-    using (Html.BeginForm()) {
-        @Html.ValidationSummary(true)
+    @Html.ValidationSummary(true)
 
-        <fieldset>
-            <legend>Restaurants List</legend>
+    <fieldset>
+        <legend>Restaurants List</legend>
+            
+        <div>Search: <input id="searchbox" type="text" url="/Management/Search" /></div>
+        
+        <div id="results_container">
+            @Html.Partial("_ImportRestaurantsList", Model)
+        </div>    
 
-                <table>
-                    <tbody>
-                         <tr>
-                            <th colspan="3">
-                                Search: <input id="searchbox" type="text" url="/Management/Search" />
-                            </th>
-                        </tr>
-                
-                        @for (var i= 0; i < Model.Restaurants.Count; i++)
-                        {
-                            <tr>
-                                <td>@Html.EditorFor(model => model.Restaurants[i].Selected)</td>
-                                <td>@(i + 1). @Model.Restaurants[i].Name</td>
-                                <td>@Html.DropDownListFor(model => model.Restaurants[i].SpecialDay, (SelectList)ViewBag.DaysOfWekk, "-- NONE --")</td>
-                            </tr>
-                        }
+        <p>
+            <input type="submit" value="Save" class="btn btn-primary" />
+        </p>
 
-                    </tbody>
-                </table>        
-
-            <p>
-                <input type="submit" value="Save" />
-            </p>
-
-        </fieldset>
-    }
+    </fieldset>
 }
 
 <script type="text/javascript">
 
     $(document).ready(function () {
 
-        $('#searchbox').change(function() {
-            var url = $(this).attr('url').val();
-            alert(url);
-            //$.ajax({
-            //    url: url,
-
-            //});
+        $('#searchbox').keyup(function () {
+            var url = $(this).attr('url') + '?term=' + $(this).val();
+            $.ajax({
+                url: url,
+                success: function(html) {
+                    $("#results_container").html(html);
+                }
+            });
         });
 
     });

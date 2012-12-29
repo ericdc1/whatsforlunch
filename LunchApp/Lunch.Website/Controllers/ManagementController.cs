@@ -41,9 +41,28 @@ namespace Lunch.Website.Controllers
             {
                 var results = GetRestaurantsFromApi(model);
                 Session.Add(SessionName, results);
+                GenerateDropDownLists();
                 return View("DisplayRestaurants", results);
             }
             return View(model);
+        }
+
+        public PartialViewResult Search(string term)
+        {
+            ImportRestaurantsViewModel results;
+            if (Session[SessionName] == null)
+            {
+                results = GetRestaurantsFromApi(GetDefaultImportSetting());
+            }
+            else
+            {
+                results = (ImportRestaurantsViewModel)Session[SessionName];
+            }
+            var model = new ImportRestaurantsViewModel { TotalResults = results.TotalResults, Page = results.Page, FirstHit = results.FirstHit, LastHit = results.LastHit, Restaurants = results.Restaurants };
+            if (!string.IsNullOrWhiteSpace(term) && term.Length > 1)
+                model.Restaurants = model.Restaurants.Where(f => f.Name.ToLower().Contains(term.ToLower())).ToList();
+            GenerateDropDownLists();
+            return PartialView("_ImportRestaurantsList", model);
         }
 
         private ImportRestaurantsViewModel GetRestaurantsFromApi(ImportSettingsViewModel settings)
@@ -75,7 +94,6 @@ namespace Lunch.Website.Controllers
                 page++;
             }
             results.Restaurants = results.Restaurants.OrderBy(f => f.Name).ToList();
-            GenerateDropDownLists();
             return results;
         }
 

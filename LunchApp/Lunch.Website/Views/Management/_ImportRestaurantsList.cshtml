@@ -1,0 +1,29 @@
+﻿@model Lunch.Website.ViewModels.ImportRestaurantsViewModel
+
+@if (Model.Restaurants == null || Model.Restaurants.Count == 0)
+{
+    <p>There are no known restaurants within the specified area.</p>
+} else {
+    <table class="table table-striped">
+        <tbody>
+                <tr>
+                    <th colspan="2">
+                        Restaurants
+                    </th>
+                    <th>
+                        Speacials Day
+                    </th>
+            </tr>
+                
+            @for (var i = 0; i < Model.Restaurants.Count; i++)
+            {
+                <tr>
+                    <td>@Html.EditorFor(model => model.Restaurants[i].Selected)</td>
+                    <td>@Model.Restaurants[i].Name</td>
+                    <td>@Html.DropDownListFor(model => model.Restaurants[i].SpecialDay, (SelectList)ViewBag.DaysOfWekk, "-- NONE --")</td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+}
