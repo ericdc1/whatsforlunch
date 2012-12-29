@@ -18,9 +18,12 @@
             @for (var i = 0; i < Model.Restaurants.Count; i++)
             {
                 <tr>
-                    <td>@Html.EditorFor(model => model.Restaurants[i].Selected)</td>
-                    <td>@Model.Restaurants[i].Name</td>
-                    <td>@Html.DropDownListFor(model => model.Restaurants[i].SpecialDay, (SelectList)ViewBag.DaysOfWekk, "-- NONE --")</td>
+                    <td>@Html.CheckBoxFor(model => model.Restaurants[i].Selected, new { Class = "IsSelected" })</td>
+                    <td>
+                        @Html.HiddenFor(model => model.Restaurants[i].Name)
+                        @Model.Restaurants[i].Name
+                    </td>
+                    <td>@Html.DropDownListFor(model => model.Restaurants[i].SpecialDay, (SelectList)ViewBag.DaysOfWeek, "-- NONE --", new { Class = "SpecialDay" })</td>
                 </tr>
             }
 

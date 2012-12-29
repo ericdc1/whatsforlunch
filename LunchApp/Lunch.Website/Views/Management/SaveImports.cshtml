@@ -1,0 +1,12 @@
+﻿@model Lunch.Website.ViewModels.ImportRestaurantsViewModel
+
+@{
+    ViewBag.Title = "Save Imports";
+}
+
+<h2>Save Imports</h2>
+
+@foreach (var restaurant in Model.Restaurants)
+{
+    <p>@restaurant.Name (@(restaurant.Selected ? "SELECTED" : "IGNORED"))</p>
+}

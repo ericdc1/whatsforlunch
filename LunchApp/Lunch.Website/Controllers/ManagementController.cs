@@ -16,11 +16,6 @@ namespace Lunch.Website.Controllers
 
         public ActionResult Index()
         {
-            return View();
-        }
-
-        public ActionResult RestaurantImport()
-        {
             var defaults = GetDefaultImportSetting();
             var model = new ImportSettingsViewModel
             {
@@ -35,7 +30,7 @@ namespace Lunch.Website.Controllers
         }
 
         [HttpPost]
-        public ActionResult RestaurantImport(ImportSettingsViewModel model)
+        public ActionResult Index(ImportSettingsViewModel model)
         {
             if (ModelState.IsValid)
             {
@@ -64,6 +59,15 @@ namespace Lunch.Website.Controllers
             GenerateDropDownLists();
             return PartialView("_ImportRestaurantsList", model);
         }
+
+        [HttpPost]
+        public ActionResult SaveImports(ImportRestaurantsViewModel model)
+        {
+            var x = 5;
+            return View(model);
+        }
+
+        #region Helpers
 
         private ImportRestaurantsViewModel GetRestaurantsFromApi(ImportSettingsViewModel settings)
         {
@@ -112,7 +116,9 @@ namespace Lunch.Website.Controllers
         private void GenerateDropDownLists()
         {
             var values = from DayOfWeek e in Enum.GetValues(typeof(DayOfWeek)) select new { Id = e, Name = e.ToString() };
-            ViewBag.DaysOfWekk = new SelectList(values, "Id", "Name");
+            ViewBag.DaysOfWeek = new SelectList(values, "Id", "Name");
         }
+
+        #endregion
     }
 }

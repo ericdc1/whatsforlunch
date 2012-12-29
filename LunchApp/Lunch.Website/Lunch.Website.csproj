@@ -213,6 +213,7 @@
     <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Management\_ImportRestaurantsList.cshtml" />
+    <Content Include="Views\Management\SaveImports.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -256,9 +257,6 @@
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\Thanks.cshtml" />
     <Content Include="Views\Management\Index.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Management\RestaurantImport.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Management\DisplayRestaurants.cshtml" />

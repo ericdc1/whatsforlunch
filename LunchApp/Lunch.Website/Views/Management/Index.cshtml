@@ -1,11 +1,86 @@
-﻿@{
-    ViewBag.Title = "Index";
+﻿@using Lunch.Website.ViewModels
+
+@model ImportSettingsViewModel
+
+@{
+    ViewBag.Title = "Restaurant Import";
+    var defaults = (ImportSettingsViewModel)ViewBag.DefaultSettings ?? new ImportSettingsViewModel();
 }
 
-<h2>Management</h2>
+<h2>Restaurant Import</h2>
 
-<p>
-    <ul>
-        <li><a href="~/Management/RestaurantImport">Import Restaurant</a></li>
-    </ul> 
-</p>
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset id="formdata">
+        <legend>Import Settings</legend>
+        
+        <div class="editor-label">
+            @Html.LabelFor(model => model.UseDefaults)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.UseDefaults)
+            @Html.ValidationMessageFor(model => model.UseDefaults)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PublisherKey)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PublisherKey)
+            @Html.ValidationMessageFor(model => model.PublisherKey)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Latitude)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Latitude)
+            @Html.ValidationMessageFor(model => model.Latitude)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Longitude)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Longitude)
+            @Html.ValidationMessageFor(model => model.Longitude)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Radius)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Radius)
+            @Html.ValidationMessageFor(model => model.Radius)
+        </div>
+
+    </fieldset>
+    
+    <hr/>
+    <p>
+        <input type="submit" value="Proceed" class="btn btn-primary" />
+    </p>
+}
+
+<script type="text/javascript">
+
+    $(document).ready(function() {
+
+        $("#UseDefaults").change(function() {
+            if ($(this).is(':checked')) {
+                $('#PublisherKey').val('@(defaults.PublisherKey)');
+                $('#Latitude').val('@(defaults.Latitude)');
+                $('#Longitude').val('@(defaults.Longitude)');
+                $('#Radius').val('@(defaults.Radius)');
+            } else {
+                $('#PublisherKey').val('');
+                $('#Latitude').val('');
+                $('#Longitude').val('');
+                $('#Radius').val('');
+            }
+        });
+
+    });
+
+</script>
