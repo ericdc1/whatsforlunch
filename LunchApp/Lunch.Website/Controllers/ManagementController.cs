@@ -1,5 +1,8 @@
-﻿using System.Configuration;
+﻿using System;
+using System.Configuration;
+using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 using Lunch.Core.Jobs;
@@ -9,8 +12,7 @@ namespace Lunch.Website.Controllers
 {
     public class ManagementController : Controller
     {
-        //
-        // GET: /Management/
+        private const string SessionName = "WhatsForLunchRestaurantsImport";
 
         public ActionResult Index()
         {
@@ -21,9 +23,13 @@ namespace Lunch.Website.Controllers
         {
             var defaults = GetDefaultImportSetting();
             var model = new ImportSettingsViewModel
-                            {
-                                UseDefaults = true, PublisherKey = defaults.PublisherKey, Latitude = defaults.Latitude, Longitude = defaults.Longitude, Radius = defaults.Radius
-                            };
+            {
+                UseDefaults = true,
+                PublisherKey = defaults.PublisherKey,
+                Latitude = defaults.Latitude,
+                Longitude = defaults.Longitude,
+                Radius = defaults.Radius
+            };
             ViewBag.DefaultSettings = defaults;
             return View(model);
         }
@@ -34,15 +40,16 @@ namespace Lunch.Website.Controllers
             if (ModelState.IsValid)
             {
                 var results = GetRestaurantsFromApi(model);
+                Session.Add(SessionName, results);
                 return View("DisplayRestaurants", results);
             }
             return View(model);
         }
 
-        public ImportRestaurantsViewModel GetRestaurantsFromApi(ImportSettingsViewModel settings)
+        private ImportRestaurantsViewModel GetRestaurantsFromApi(ImportSettingsViewModel settings)
         {
             var page = 1;
-            var results = new ImportRestaurantsViewModel {TotalResults = 51};
+            var results = new ImportRestaurantsViewModel { TotalResults = 51 };
             while (results.TotalResults > page * 50)
             {
                 var apiUrl = Helpers.GenerateRestaurantApi(settings.PublisherKey, settings.Latitude, settings.Longitude, settings.Radius, page);
@@ -62,11 +69,13 @@ namespace Lunch.Website.Controllers
                 {
                     if (results.Restaurants.Find(f => f.Name == item.name) == null)
                     {
-                        results.Restaurants.Add(new RestaurantViewModel {Name = item.name, Selected = false});
+                        results.Restaurants.Add(new RestaurantViewModel { Name = item.name, Selected = false, SpecialDay = null });
                     }
                 }
                 page++;
             }
+            results.Restaurants = results.Restaurants.OrderBy(f => f.Name).ToList();
+            GenerateDropDownLists();
             return results;
         }
 
@@ -80,6 +89,12 @@ namespace Lunch.Website.Controllers
                 Radius = ConfigurationManager.AppSettings["RestaurantProviderRadius"]
             };
             return defaultSettings;
+        }
+
+        private void GenerateDropDownLists()
+        {
+            var values = from DayOfWeek e in Enum.GetValues(typeof(DayOfWeek)) select new { Id = e, Name = e.ToString() };
+            ViewBag.DaysOfWekk = new SelectList(values, "Id", "Name");
         }
     }
 }

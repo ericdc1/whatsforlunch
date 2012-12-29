@@ -4,7 +4,7 @@
     ViewBag.Title = "DisplayRestaurants";
 }
 
-<h2>DisplayRestaurants</h2>
+<h2>Display Restaurants</h2>
 
 @if (Model == null || Model.Restaurants.Count == 0)
 {
@@ -16,19 +16,26 @@
 
         <fieldset>
             <legend>Restaurants List</legend>
-        
-            @for (var i= 0; i < Model.Restaurants.Count; i++)
-            {
-                <div class="editor-field">@Html.EditorFor(model => model.Restaurants[i].Selected) @Model.Restaurants[i].Name</div>
-            }
 
-    @*        <div class="editor-label">@Html.LabelFor(model => model.TotalResults)</div>
-            <div class="editor-field">
-                @Html.EditorFor(model => model.TotalResults)
-                @Html.ValidationMessageFor(model => model.TotalResults)
-            </div>*@
+                <table>
+                    <tbody>
+                         <tr>
+                            <th colspan="3">
+                                Search: <input id="searchbox" type="text" url="/Management/Search" />
+                            </th>
+                        </tr>
+                
+                        @for (var i= 0; i < Model.Restaurants.Count; i++)
+                        {
+                            <tr>
+                                <td>@Html.EditorFor(model => model.Restaurants[i].Selected)</td>
+                                <td>@(i + 1). @Model.Restaurants[i].Name</td>
+                                <td>@Html.DropDownListFor(model => model.Restaurants[i].SpecialDay, (SelectList)ViewBag.DaysOfWekk, "-- NONE --")</td>
+                            </tr>
+                        }
 
-        
+                    </tbody>
+                </table>        
 
             <p>
                 <input type="submit" value="Save" />
@@ -38,4 +45,19 @@
     }
 }
 
+<script type="text/javascript">
 
+    $(document).ready(function () {
+
+        $('#searchbox').change(function() {
+            var url = $(this).attr('url').val();
+            alert(url);
+            //$.ajax({
+            //    url: url,
+
+            //});
+        });
+
+    });
+
+</script>

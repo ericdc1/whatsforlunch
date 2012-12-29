@@ -24,5 +24,6 @@ namespace Lunch.Website.ViewModels
     {
         public string  Name { get; set; }
         public bool Selected { get; set; }
+        public DayOfWeek? SpecialDay { get; set; }
     }
 }
