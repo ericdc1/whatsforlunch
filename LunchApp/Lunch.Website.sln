@@ -14,6 +14,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{440121
 		.nuget\packages.config = .nuget\packages.config
 	EndProjectSection
 EndProject
+Project("{CC5FD16D-436D-48AD-A40C-5A424C6E3E79}") = "Lunch.Website.Azure", "Lunch.Website.Azure\Lunch.Website.Azure.ccproj", "{AC55B077-F97F-4B3E-B717-5D136A5889A9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -66,6 +68,16 @@ Global
 		{45AFC077-B16D-4AF1-95C5-B1EFE3187ACE}.Release|ARM.ActiveCfg = Release|Any CPU
 		{45AFC077-B16D-4AF1-95C5-B1EFE3187ACE}.Release|x64.ActiveCfg = Release|Any CPU
 		{45AFC077-B16D-4AF1-95C5-B1EFE3187ACE}.Release|x86.ActiveCfg = Release|Any CPU
+		{AC55B077-F97F-4B3E-B717-5D136A5889A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC55B077-F97F-4B3E-B717-5D136A5889A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC55B077-F97F-4B3E-B717-5D136A5889A9}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{AC55B077-F97F-4B3E-B717-5D136A5889A9}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{AC55B077-F97F-4B3E-B717-5D136A5889A9}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{AC55B077-F97F-4B3E-B717-5D136A5889A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC55B077-F97F-4B3E-B717-5D136A5889A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC55B077-F97F-4B3E-B717-5D136A5889A9}.Release|ARM.ActiveCfg = Release|Any CPU
+		{AC55B077-F97F-4B3E-B717-5D136A5889A9}.Release|x64.ActiveCfg = Release|Any CPU
+		{AC55B077-F97F-4B3E-B717-5D136A5889A9}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
