@@ -1,0 +1,110 @@
+﻿@using System.Collections
+@using System.Text
+@model SortedList
+@{o
+    ViewBag.Title = "Index";
+}
+
+<h2>Excluded Dates</h2>
+
+@functions{
+
+    public string Calendar(DateTime dateToShow, SortedList datesSortedList)
+    {
+        System.Globalization.DateTimeFormatInfo cinfo = System.Globalization.DateTimeFormatInfo.CurrentInfo;
+        StringBuilder sb = new StringBuilder();
+        DateTime date = new DateTime(dateToShow.Year, dateToShow.Month, 1);
+        int emptyCells = (Convert.ToInt32(date.DayOfWeek) + 7 - Convert.ToInt32(cinfo.FirstDayOfWeek)) % 7;
+        int days = DateTime.DaysInMonth(dateToShow.Year, dateToShow.Month);
+        sb.Append("<div class='ContentCalendar'>" +
+                  "<div class='ContentHeader'>" + cinfo.MonthNames[date.Month - 1] + " " + Convert.ToString(dateToShow.Year) + "</div>" +
+                  "<div class='CalendarDaysRow'>" +
+                  "<div class='Label'>Su</div>" +
+                  "<div class='Label'>Mo</div>" +
+                  "<div class='Label'>Tu</div>" +
+                  "<div class='Label'>We</div>" +
+                  "<div class='Label'>Th</div>" +
+                  "<div class='Label'>Fr</div>" +
+                  "<div class='Label'>Sa</div>" +
+                  "</div>");
+        for (int i = 0; i <= ((days + emptyCells) > 35 ? 42 : 35) - 1; i++)
+        {
+            if (i % 7 == 0)
+            {
+                if (i > 0)
+                {
+                    sb.Append("</div>");
+                }
+                sb.Append("<div class='CalendarRow'>");
+            }
+
+            if (i < emptyCells || i >= emptyCells + days)
+            {
+                sb.Append("<div class='EmptyDay'></div>");
+            }
+            else
+            {
+                if (datesSortedList.ContainsKey(date))
+                {
+
+                    sb.Append("<div class='Day On'><a class='ContentCalendarDay' data-date='" + date + "' data-date='" + date + "'>" + date.Day + "</a></div>");
+                }
+                    
+                else if (ViewBag.BlackoutDays.ContainsKey(date))
+                {
+                    sb.Append("<div class='Day Reserved' title='Excluded Day'>" + date.Day + "</div>");
+                }
+                else
+                {
+                    sb.Append("<div class='Day Off'><a  class='ContentCalendarDay' data-date='" + date + "' data-date='" + date + "'>" + date.Day + "</a></div>");
+                }
+                date = date.AddDays(1);
+            }
+        }
+        sb.Append("</div>");
+        sb.Append("</div>");
+
+        return sb.ToString();
+    }
+
+    }
+
+@Html.Raw(Calendar(DateTime.Now, Model))
+@Html.Raw(Calendar(DateTime.Now.AddMonths(1), Model))
+@Html.Raw(Calendar(DateTime.Now.AddMonths(2), Model))
+@Html.Raw(Calendar(DateTime.Now.AddMonths(3), Model))
+@Html.Raw(Calendar(DateTime.Now.AddMonths(4), Model))
+@Html.Raw(Calendar(DateTime.Now.AddMonths(5), Model))
+@Html.Raw(Calendar(DateTime.Now.AddMonths(6), Model))
+@Html.Raw(Calendar(DateTime.Now.AddMonths(7), Model))
+@Html.Raw(Calendar(DateTime.Now.AddMonths(8), Model))
+@Html.Raw(Calendar(DateTime.Now.AddMonths(9), Model))
+@Html.Raw(Calendar(DateTime.Now.AddMonths(10), Model))
+@Html.Raw(Calendar(DateTime.Now.AddMonths(11), Model))
+
+@section Scripts{
+    <script>
+    $(".ContentCalendarDay").click(function () {
+        var url = '@Url.Content("~/holidays/")';
+        var parentcontainer = $(this).parent();    
+        if (parentcontainer.hasClass ('On')) {
+            url += "RemoveDate/?selecteddate=" + $(this).attr('data-date');
+            parentcontainer.removeClass('On').addClass('Off');
+        }
+        else {
+            url += "AddDate/?selecteddate=" + $(this).attr('data-date');
+            parentcontainer.removeClass('Off').addClass('On');
+        }  
+        $.ajax({
+            type:'POST',
+            url: url,
+            success: function (data) {
+                console.log(data);
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                alert(xhr.status + ' ' + thrownError);
+            }
+        });
+    });
+</script>
+}

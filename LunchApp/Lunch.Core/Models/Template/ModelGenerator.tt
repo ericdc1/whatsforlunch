@@ -60,6 +60,8 @@ namespace Lunch.Core.Models.Template
                     return "char";
                 case "cursor":
                     return string.Empty;
+				case "date":
+                    return "DateTime";
                 case "datetime":
                     return "DateTime";
                 case "decimal":

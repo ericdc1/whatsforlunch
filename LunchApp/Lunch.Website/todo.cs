@@ -6,15 +6,15 @@
 //add stats columns - last visited, last up for vote, times in last 90 days, average rating based on weighted averages of attendees
 //todo: user voting for restaurants
 
-//todo: possibly pull from some external data source - MM -- http://api.citygridmedia.com/content/places/v2/search/latlon?lat=39.653319&lon=-79.95735&radius=1&type=restaurant&publisher=10000004484&rpp=50
-//todo: create remaining jobs 
+//inprogress: possibly pull from some external data source - MM -- http://api.citygridmedia.com/content/places/v2/search/latlon?lat=39.653319&lon=-79.95735&radius=1&type=restaurant&publisher=10000004484&rpp=50
+//done: create remaining jobs 
 
-//todo: views for jobs and job logs (filter and date range) - MM
+//inprogress: views for jobs and job logs (filter and date range) - MM
 
-//todo: CRUD for users - JD 
-//todo: User logins - allow login with username/password and with guid - JD
+//inprogress: CRUD for users - JD 
+//inprogress: User logins - allow login with username/password and with guid - JD
 //todo: Allow users to edit profile including mail preferences - JD
-//todo: make holidays tables and logic
+//done: make holidays tables and logic
 
 //todo: Generate 4 restaurants method MM/JD
 //should be random weighting based on users restaurant ratings

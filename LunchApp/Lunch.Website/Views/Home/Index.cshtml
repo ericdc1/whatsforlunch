@@ -1,4 +1,6 @@
-﻿@{
+﻿@using System.Collections
+@using System.Text
+@{
     ViewBag.Title = "Index";
 }
 
@@ -6,11 +8,3 @@
 
 <span class="marko">click me</span>
 
-@section Scripts {
-    <script>
-        $(".marko").click(function(){
-            alert('hi marko');
-        });
-
-    </script>
-}

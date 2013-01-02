@@ -15,6 +15,7 @@ namespace Lunch.Website.DependencyResolution
 				s.WithDefaultConventions();
 				s.AssembliesFromApplicationBaseDirectory(AssemblyFilter);
 			});
+
 		}
 
 		private bool AssemblyFilter(Assembly assembly)

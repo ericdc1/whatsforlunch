@@ -1,6 +1,12 @@
 ﻿using System;
 namespace Lunch.Core.Models.Template
 { 
+        public class Holidays
+		{
+        	public int ID { get; set; }
+        	public DateTime ExcludedDate { get; set; }
+        }
+      
         public class Job
 		{
         	public int Id { get; set; }
@@ -39,9 +45,11 @@ namespace Lunch.Core.Models.Template
         	public int Id { get; set; }
         	public string FullName { get; set; }
         	public string Email { get; set; }
-        	public bool SendWhereWeAreGoingEmailFlg { get; set; }
         	public string GUID { get; set; }
-        	public bool myflg { get; set; }
+        	public bool SendMail1 { get; set; }
+        	public bool SendMail2 { get; set; }
+        	public bool SendMail3 { get; set; }
+        	public bool SendMail4 { get; set; }
         }
       
         public class webpages_Membership
