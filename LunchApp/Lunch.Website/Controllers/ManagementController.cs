@@ -63,7 +63,6 @@ namespace Lunch.Website.Controllers
         [HttpPost]
         public ActionResult SaveImports(ImportRestaurantsViewModel model)
         {
-            var x = 5;
             return View(model);
         }
 
