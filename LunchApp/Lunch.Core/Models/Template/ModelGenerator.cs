@@ -34,6 +34,14 @@ namespace Lunch.Core.Models.Template
         	public int RestaurantTypeID { get; set; }
         }
       
+        public class RestaurantRatings
+		{
+        	public int ID { get; set; }
+        	public int UserID { get; set; }
+        	public int RestaurantID { get; set; }
+        	public int Rating { get; set; }
+        }
+      
         public class RestaurantType
 		{
         	public int Id { get; set; }
@@ -45,7 +53,7 @@ namespace Lunch.Core.Models.Template
         	public int Id { get; set; }
         	public string FullName { get; set; }
         	public string Email { get; set; }
-        	public string GUID { get; set; }
+        	public Guid GUID { get; set; }
         	public bool SendMail1 { get; set; }
         	public bool SendMail2 { get; set; }
         	public bool SendMail3 { get; set; }

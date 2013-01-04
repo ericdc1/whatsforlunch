@@ -19,7 +19,7 @@ namespace Lunch.Core.Models
 
         public virtual int Id { get; set; }
         public virtual string RestaurantName { get; set; }
-        public virtual string PreferredDayOfWeek { get; set; }
+        public virtual int PreferredDayOfWeek { get; set; }
         public virtual int RestaurantTypeID { get; set; }
 
         #endregion
