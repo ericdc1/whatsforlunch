@@ -1,10 +1,10 @@
-﻿@using Lunch.Website.ViewModels
+﻿@using Lunch.Core.Models.Views
 
-@model ImportSettingsViewModel
+@model RestaurantImportSettings
 
 @{
     ViewBag.Title = "Restaurant Import";
-    var defaults = (ImportSettingsViewModel)ViewBag.DefaultSettings ?? new ImportSettingsViewModel();
+    var defaults = (RestaurantImportSettings)ViewBag.DefaultSettings ?? new RestaurantImportSettings();
 }
 
 <h2>Restaurant Import</h2>

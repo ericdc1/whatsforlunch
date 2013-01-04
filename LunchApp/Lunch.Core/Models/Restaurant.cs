@@ -17,10 +17,10 @@ namespace Lunch.Core.Models
     {
         #region persisted
 
-        public virtual int Id { get; set; }
-        public virtual string RestaurantName { get; set; }
-        public virtual int? PreferredDayOfWeek { get; set; }
-        public virtual int? RestaurantTypeID { get; set; }
+        public int Id { get; set; }
+        public string RestaurantName { get; set; }
+        public int? PreferredDayOfWeek { get; set; }
+        public int? RestaurantTypeID { get; set; }
 
         #endregion
 

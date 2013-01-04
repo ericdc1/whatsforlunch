@@ -49,6 +49,7 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -63,6 +64,8 @@
     </Compile>
     <Compile Include="Logic\IHolidayLogic.cs" />
     <Compile Include="Logic\Implementations\HolidayLogic.cs" />
+    <Compile Include="Logic\IImportRestaurantLogic.cs" />
+    <Compile Include="Logic\Implementations\ImportRestaurantLogic.cs" />
     <Compile Include="Logic\Implementations\UserLogic.cs" />
     <Compile Include="Logic\IUserLogic.cs" />
     <Compile Include="Logic\IJobLogLogic.cs" />
@@ -83,6 +86,8 @@
       <DependentUpon>ModelGenerator.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Views\RestaurantDetails.cs" />
+    <Compile Include="Models\Views\ImportRestaurant.cs" />
+    <Compile Include="Models\Views\RestaurantImportSettings.cs" />
     <Compile Include="Models\Vote.cs" />
     <Compile Include="RepositoryInterfaces\IHolidayRepository.cs" />
     <Compile Include="RepositoryInterfaces\IUserRepository.cs" />
