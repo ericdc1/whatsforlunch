@@ -5,46 +5,29 @@
     ViewBag.Title = "Jobs";
 }
 
-<h2>Jobs</h2>
+<div id="content" class="reports">
+    <div class="bgOne"></div>
+    <div class="mask"></div>
+    <div id="info">
+        <div class="management">
 
+            <h1>Jobs</h1>
 
-<table class="table table-striped">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.MethodName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ParametersJson)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.RunDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CreatedDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.HasRun)
-        </th>
-    </tr>
+            <div>
+            @foreach (var item in Model)
+            {
+                <div class="jobsReport">
+                    <div class="checkBox">@Html.DisplayFor(modelItem => item.HasRun)</div>
+                    <div class="jobName">@Html.DisplayFor(modelItem => item.MethodName)</div>
+                    <div class="jobDetails">
+                        <div class="runDate"><p title="UTC: @item.RunDate">Ran on @Helpers.AdjustTimeOffsetFromUtc(item.RunDate)</p></div>
+                        <div class="createdDate"><p title="UTC: @item.CreatedDate">Created on @Helpers.AdjustTimeOffsetFromUtc(item.CreatedDate)</p></div>
+                        <div class="json"><p>@Html.DisplayFor(modelItem => item.ParametersJson)</p></div>
+                    </div>
+                </div>
+            }
+            </div>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.MethodName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ParametersJson)
-            </td>
-            <td title="UTC: @item.RunDate">@Helpers.AdjustTimeOffsetFromUtc(item.RunDate)
-            </td>
-            <td title="UTC: @item.CreatedDate">
-                @Helpers.AdjustTimeOffsetFromUtc(item.CreatedDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.HasRun)
-            </td>
-        </tr>
-    }
-
-</table>
+        </div>
+    </div>
+</div>
