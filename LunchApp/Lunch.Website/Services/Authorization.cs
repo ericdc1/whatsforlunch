@@ -1,7 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Security.Principal;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Web;
 using System.Web.Mvc;
@@ -21,40 +21,43 @@ namespace Lunch.Website.Services
             _webSecurityService = ObjectFactory.GetInstance<IWebSecurityService>();
             _userLogic = ObjectFactory.GetInstance<IUserLogic>();
 
+            // if the user is already authenticated let them in fast
+            if (_webSecurityService.IsAuthenticated)
+            {
+                var roleAuthorized = false;
+                foreach (var role in Regex.Split(Roles, @"\s*,\s*"))
+                {
+                    roleAuthorized = httpContext.User.IsInRole(role);
+                }
+                if (!roleAuthorized)
+                    return false;
 
+                return true;
+            }
+                
+            // if we're not authenticated and there's a guid check if it matches a user
             var guid = Guid.Empty;
             if (!string.IsNullOrWhiteSpace(httpContext.Request.QueryString.Get("guid")))
                 guid = Guid.Parse(httpContext.Request.QueryString.Get("guid"));
-
-            var isAuthorized = base.AuthorizeCore(httpContext);
-            if (isAuthorized)
-                return true;
-
             if (!_webSecurityService.IsAuthenticated && guid != Guid.Empty)
             {
                 var user = _userLogic.Get(guid);
 
-                var identity = new GenericIdentity(user.Email, "Forms");
-                httpContext.User = new GenericPrincipal(identity, new string[] { });
-                Thread.CurrentPrincipal = new GenericPrincipal(identity, new string[] { });
+                // if a user has a matching guid let them in
+                if (user != null)
+                {
+                    FormsAuthentication.SetAuthCookie(user.Email, false);
+
+                    // have to set the current principal as well as the cookie or we won't have it until refresh
+                    var identity = new GenericIdentity(user.Email, "Forms");
+                    httpContext.User = new GenericPrincipal(identity, new string[] { });
+                    Thread.CurrentPrincipal = new GenericPrincipal(identity, new string[] { });
+
+                    return true;
+                }
             }
 
-            return base.AuthorizeCore(httpContext);
-
-
-            //var isAuthorized = base.AuthorizeCore(httpContext);
-            //if (isAuthorized)
-            //{
-            //    var authCookie = httpContext.Request.Cookies[FormsAuthentication.FormsCookieName];
-            //    if (authCookie != null)
-            //    {
-            //        var authTicket = FormsAuthentication.Decrypt(authCookie.Value);
-            //        var identity = new GenericIdentity(authTicket.Name, "Forms");
-            //        var principal = new GenericPrincipal(identity, new string[] { });
-            //        httpContext.User = principal;
-            //    }
-            //}
-            //return isAuthorized;
+            return false;
         }
     }
 }

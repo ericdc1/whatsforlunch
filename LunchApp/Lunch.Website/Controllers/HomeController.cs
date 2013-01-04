@@ -1,19 +1,12 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
+using Lunch.Website.Services;
 using StackExchange.Exceptional;
 
 namespace Lunch.Website.Controllers
 {
+    [AllowAnonymous]
     public class HomeController : BaseController
     {
-        //
-        // GET: /Home/
-
         public ActionResult Index()
         {
             return View();
@@ -38,7 +31,6 @@ namespace Lunch.Website.Controllers
 
             return null;
         }
-
 
     }
 }

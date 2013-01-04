@@ -7,11 +7,11 @@ using Lunch.Website.Services;
 
 namespace Lunch.Website.Controllers
 {
+    [LunchAuthorize(Roles = "Administrator")]
     public class RestaurantsController : BaseController
     {
         private readonly IRestaurantLogic _restaurantLogic;
         private readonly IRestaurantTypeLogic _restaurantTypeLogic;
-
 
         public RestaurantsController(IRestaurantLogic restaurantLogic, IRestaurantTypeLogic restaurantTypeLogic)
         {
@@ -19,7 +19,7 @@ namespace Lunch.Website.Controllers
             _restaurantTypeLogic = restaurantTypeLogic;
         }
 
-        //[LunchAuthorize]
+
         public ActionResult Index(int? categoryid)
         {
             ViewBag.HasCategoryFilter = categoryid > 0;

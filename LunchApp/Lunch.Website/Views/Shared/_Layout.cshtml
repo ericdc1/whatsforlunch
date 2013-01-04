@@ -23,7 +23,7 @@
     </style>
     <link href="~/Content/bootstrap-responsive.min.css" rel="stylesheet" />
     
-        <!-- Le javascript
+    <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
@@ -33,7 +33,7 @@
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
 </head>
@@ -70,6 +70,13 @@
                     </ul>
                 </div>
                 <!--/.nav-collapse -->
+                @if (@User.Identity.IsAuthenticated)
+                {
+                    <div class="pull-right">
+                        <div class="navbar-text pull-right">Hello, @User.Identity.Name</div>
+                        @Html.ActionLink("LogOut", "LogOut", "Account", null, new {@class = "btn pull-right"})
+                    </div>
+                }
             </div>
         </div>
     </div>

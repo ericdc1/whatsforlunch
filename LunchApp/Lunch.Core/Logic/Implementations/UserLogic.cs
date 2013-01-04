@@ -29,15 +29,18 @@ namespace Lunch.Core.Logic.Implementations
             return _userRepository.Get(guid);
         }
 
-        public User SaveOrUpdate(User entity)
+        public User Update(User entity)
         {
-            if (entity.GUID == null) entity.GUID = Guid.NewGuid().ToString();
-            return _userRepository.SaveOrUpdate(entity);
+            entity.GUID = Get(entity.Id).GUID;
+
+            return _userRepository.Update(entity);
         }
 
         public int Delete(int id)
         {
-            return _userRepository.Delete(id);
+            // Do not use this!
+            // Use Simple Membership
+            throw new NotImplementedException();
         }
     }
 }

@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -18,7 +18,7 @@ namespace Lunch.Core.Models
         public virtual bool SendMail2 { get; set; }
         public virtual bool SendMail3 { get; set; }
         public virtual bool SendMail4 { get; set; }
-        public virtual string GUID { get; set; }
+        public virtual Guid GUID { get; set; }
         #endregion
 
         #region RelatedTables

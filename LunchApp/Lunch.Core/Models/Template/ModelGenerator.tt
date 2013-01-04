@@ -96,6 +96,8 @@ namespace Lunch.Core.Models.Template
                     return "DateTime";
                 case "image":
                     return "byte[]";
+				case "uniqueidentifier":
+                    return "Guid";
               
                 default:
                     return string.Empty;

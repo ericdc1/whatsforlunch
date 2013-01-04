@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace Lunch.Website.Controllers
 {
+    [AllowAnonymous]
     public class ErrorsController : Controller
     {
         public ActionResult General(Exception exception)

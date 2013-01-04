@@ -10,7 +10,7 @@ namespace Lunch.Core.Logic
         IEnumerable<User> GetList(object parameters);
         User Get(int id);
         User Get(Guid guid);
-        User SaveOrUpdate(User entity);
+        User Update(User entity);
         int Delete(int id);
     }
 }
