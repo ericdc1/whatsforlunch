@@ -1,9 +1,11 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
 using Lunch.Core.Logic;
+using Lunch.Website.Services;
 
 namespace Lunch.Website.Controllers
 {
+    [LunchAuthorize(Roles = "Administrator")]
     public class LogsController : BaseController
     {
         private readonly IJobLogLogic _jobLogLogic;

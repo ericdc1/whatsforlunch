@@ -138,8 +138,8 @@ namespace Lunch.Website.Services
 		{
 			return WebSecurity.UserExists(userName);
 		}
-
-		public int CurrentUserId
+        
+	    public int CurrentUserId
 		{
 			get { return WebSecurity.CurrentUserId; }
 		}
@@ -163,6 +163,8 @@ namespace Lunch.Website.Services
 		{
 			get { return Membership.Provider.MinRequiredPasswordLength; }
 		}
+
+
 
 		#endregion
 	}

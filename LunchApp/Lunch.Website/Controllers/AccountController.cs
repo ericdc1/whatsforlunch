@@ -57,10 +57,6 @@ namespace Lunch.Website.Controllers
             return View(model);
         }
 
-        // **************************************
-        // URL: /Account/LogOff
-        // **************************************
-
         public ActionResult LogOut()
         {
             return RedirectToAction("LogOff");
@@ -72,10 +68,6 @@ namespace Lunch.Website.Controllers
 
             return RedirectToAction("Index", "Home");
         }
-
-        // **************************************
-        // URL: /Account/Register
-        // **************************************
 
         //public ActionResult Register()
         //{
@@ -111,11 +103,6 @@ namespace Lunch.Website.Controllers
         //    ViewBag.PasswordLength = WebSecurityService.MinPasswordLength;
         //    return View(model);
         //}
-
-        // **************************************
-        // URL: /Account/ChangePassword
-        // **************************************
-
         
         public ActionResult ChangePassword()
         {
@@ -141,10 +128,6 @@ namespace Lunch.Website.Controllers
             ViewBag.PasswordLength = WebSecurityService.MinPasswordLength;
             return View(model);
         }
-
-        // **************************************
-        // URL: /Account/ChangePasswordSuccess
-        // **************************************
 
         public ActionResult ChangePasswordSuccess()
         {

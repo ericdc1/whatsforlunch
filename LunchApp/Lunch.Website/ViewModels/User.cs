@@ -1,9 +1,18 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 
 namespace Lunch.Website.ViewModels
 {
+    [Serializable]
+    [Flags]
+    public enum LunchRoles
+    {
+        User = 1,
+        Administrator = 2
+    }
+
     public class User
     {
         [Key]
@@ -29,6 +38,6 @@ namespace Lunch.Website.ViewModels
         [DisplayName("After Lunch To Email")]
         public virtual bool SendMail4 { get; set; }
 
-
+        public virtual bool Administrator { get; set; }
     }
 }

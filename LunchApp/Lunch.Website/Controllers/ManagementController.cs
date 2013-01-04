@@ -1,15 +1,16 @@
 ﻿using System;
 using System.Configuration;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 using Lunch.Core.Jobs;
+using Lunch.Website.Services;
 using Lunch.Website.ViewModels;
 
 namespace Lunch.Website.Controllers
 {
+    [LunchAuthorize(Roles = "Administrator")]
     public class ManagementController : BaseController
     {
         private const string SessionName = "WhatsForLunchRestaurantsImport";

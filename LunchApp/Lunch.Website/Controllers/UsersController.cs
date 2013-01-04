@@ -1,13 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
+using System.Web.Security;
 using AutoMapper;
 using Lunch.Core.Logic;
-using Lunch.Core.Models;
 using Lunch.Website.Services;
+using Lunch.Website.ViewModels;
+using User = Lunch.Core.Models.User;
 
 namespace Lunch.Website.Controllers
 {
+    [LunchAuthorize(Roles = "Administrator")]
     public class UsersController : BaseController
     {
         private readonly IUserLogic _userLogic;
@@ -24,6 +27,10 @@ namespace Lunch.Website.Controllers
         {
             var result = _userLogic.GetList(new { });
             var xmodel = Mapper.Map<IEnumerable<User>, IEnumerable<ViewModels.User>>(result);
+
+            foreach(var user in xmodel)
+                user.Administrator = Roles.IsUserInRole(user.Email, LunchRoles.Administrator.ToString());
+            
             return View(xmodel);
         }
 
@@ -38,18 +45,25 @@ namespace Lunch.Website.Controllers
             if (ModelState.IsValid)
             {
                 var guid = Guid.NewGuid();
-                _webSecurityService.CreateUserAndAccount(model.Email, model.Password, new { model.FullName, model.SendMail1, model.SendMail2, model.SendMail3, model.SendMail4, GUID = guid });
+                var userName = _webSecurityService.CreateUserAndAccount(model.Email, model.Password, new { model.FullName, model.SendMail1, model.SendMail2, model.SendMail3, model.SendMail4, GUID = guid });
+
+                if (model.Administrator)
+                    Roles.AddUserToRole(userName, LunchRoles.Administrator.ToString());
+                Roles.AddUserToRole(userName, "User");
 
                 return RedirectToAction("Index");
             }
 
-            return View("Edit", model);
+            return View(model);
         }
 
         public ActionResult Edit(int id)
         {
             var user = _userLogic.Get(id);
             var model = Mapper.Map<User, ViewModels.UserEdit>(user);
+
+            model.Administrator = Roles.IsUserInRole(model.Email, LunchRoles.Administrator.ToString());
+
             return View(model);
         }
 
@@ -60,6 +74,18 @@ namespace Lunch.Website.Controllers
             {
                 var xmodel = Mapper.Map<ViewModels.UserEdit, User>(model);
                 _userLogic.Update(xmodel);
+
+                if (model.Administrator)
+                {
+                    if (!Roles.IsUserInRole(model.Email, LunchRoles.Administrator.ToString()))
+                        Roles.AddUserToRole(model.Email, LunchRoles.Administrator.ToString());
+                }
+                else
+                {
+                    if (Roles.IsUserInRole(model.Email, LunchRoles.Administrator.ToString()))
+                        Roles.RemoveUserFromRole(model.Email, LunchRoles.Administrator.ToString());
+                }
+                    
                 return RedirectToAction("Index");
             }
             return View(model);

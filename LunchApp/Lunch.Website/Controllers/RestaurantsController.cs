@@ -6,6 +6,7 @@ using Lunch.Website.Services;
 
 namespace Lunch.Website.Controllers
 {
+    [LunchAuthorize(Roles = "Administrator")]
     public class RestaurantsController : BaseController
     {
         private readonly IRestaurantLogic _restaurantLogic;

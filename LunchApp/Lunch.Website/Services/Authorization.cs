@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Linq;
 using System.Security.Principal;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Web;
 using System.Web.Mvc;
@@ -21,8 +23,18 @@ namespace Lunch.Website.Services
 
             // if the user is already authenticated let them in fast
             if (_webSecurityService.IsAuthenticated)
-                return true;
+            {
+                var roleAuthorized = false;
+                foreach (var role in Regex.Split(Roles, @"\s*,\s*"))
+                {
+                    roleAuthorized = httpContext.User.IsInRole(role);
+                }
+                if (!roleAuthorized)
+                    return false;
 
+                return true;
+            }
+                
             // if we're not authenticated and there's a guid check if it matches a user
             var guid = Guid.Empty;
             if (!string.IsNullOrWhiteSpace(httpContext.Request.QueryString.Get("guid")))
@@ -45,8 +57,7 @@ namespace Lunch.Website.Services
                 }
             }
 
-            // let the base class handle the rest
-            return base.AuthorizeCore(httpContext);
+            return false;
         }
     }
 }

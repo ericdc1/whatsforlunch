@@ -3,7 +3,7 @@ using Lunch.Website.Services;
 
 namespace Lunch.Website.Controllers
 {
-    [LunchAuthorize]
+    [LunchAuthorize(Roles = "User")]
     public class BaseController : Controller
     {
         

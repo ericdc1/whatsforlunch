@@ -11,7 +11,6 @@
 {
     @Html.ValidationSummary(true)
     
-    
     <fieldset>
         <legend>User</legend>
 
@@ -35,6 +34,15 @@
             @Html.EditorFor(model => model.Email)
             @Html.ValidationMessageFor(model => model.Email)
         </div>
+        
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Administrator)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Administrator)
+            @Html.ValidationMessageFor(model => model.Administrator)
+        </div>
 
 
         <div class="editor-label">
@@ -45,7 +53,6 @@
             @Html.ValidationMessageFor(model => model.SendMail1)
         </div>
 
-        
         <div class="editor-label">
             @Html.LabelFor(model => model.SendMail2)
         </div>
@@ -54,7 +61,6 @@
             @Html.ValidationMessageFor(model => model.SendMail2)
         </div>
 
-        
         <div class="editor-label">
             @Html.LabelFor(model => model.SendMail3)
         </div>
@@ -63,7 +69,6 @@
             @Html.ValidationMessageFor(model => model.SendMail3)
         </div>
 
-        
         <div class="editor-label">
             @Html.LabelFor(model => model.SendMail4)
         </div>

@@ -29,6 +29,6 @@ namespace Lunch.Website.ViewModels
         [DisplayName("After Lunch To Email")]
         public virtual bool SendMail4 { get; set; }
 
-
+        public virtual bool Administrator { get; set; }
     }
 }

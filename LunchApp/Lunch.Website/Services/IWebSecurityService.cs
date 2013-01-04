@@ -8,6 +8,7 @@ namespace Lunch.Website.Services
 		bool ConfirmAccount(string accountConfirmationToken);
 		string CreateAccount(string userName, string password, bool requireConfirmationToken = false);
 		string CreateUserAndAccount(string userName, string password, object propertyValues = null, bool requireConfirmationToken = false);
+	    void DeleteUserAndAccount(string userName);
 		string GeneratePasswordResetToken(string userName, int tokenExpirationInMinutesFromNow = 0x5a0);
 		DateTime GetCreateDate(string userName);
 		DateTime GetLastPasswordFailureDate(string userName);
