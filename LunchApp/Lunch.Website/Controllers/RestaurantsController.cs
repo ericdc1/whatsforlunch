@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System.Linq;
+using System.Web.Mvc;
 using AutoMapper;
 using Lunch.Core.Logic;
 using Lunch.Core.Models;
@@ -23,7 +24,7 @@ namespace Lunch.Website.Controllers
         {
             ViewBag.HasCategoryFilter = categoryid > 0;
             var result = _restaurantLogic.GetAllDetailed(categoryid);
-            return View(result);
+            return View(result.OrderBy(f => f.RestaurantName));
         }
 
         public ActionResult Details(int id)

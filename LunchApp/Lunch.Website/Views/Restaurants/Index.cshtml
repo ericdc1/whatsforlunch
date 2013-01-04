@@ -40,7 +40,14 @@
                 @Html.DisplayFor(modelItem => item.PreferredDayOfWeek)
             </td>
             <td>
-                @Html.ActionLink(item.TypeName, "index", new { categoryid = item.RestaurantTypeId })
+                @if (item.RestaurantTypeId == null)
+                {
+                    <span>Undefined</span>
+                } else
+                {
+                    @Html.ActionLink(item.TypeName, "index", new { categoryid = item.RestaurantTypeId })
+                }
+                
             </td>
             <td>
                 <a href="@Url.Action("Edit", new { ID = item.Id })"><i class="icon-pencil"></i></a>
