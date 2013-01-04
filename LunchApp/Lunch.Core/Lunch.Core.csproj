@@ -61,6 +61,8 @@
     <Compile Include="Jobs\JobScheduler.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Logic\Implementations\RestaurantRatingLogic.cs" />
+    <Compile Include="Logic\IRestaurantRatingLogic.cs" />
     <Compile Include="Logic\IHolidayLogic.cs" />
     <Compile Include="Logic\Implementations\HolidayLogic.cs" />
     <Compile Include="Logic\Implementations\UserLogic.cs" />
@@ -76,7 +78,7 @@
     <Compile Include="Logic\Implementations\RestaurantTypeLogic.cs" />
     <Compile Include="Logic\IRestaurantTypeLogic.cs" />
     <Compile Include="Models\Holiday.cs" />
-    <Compile Include="Models\Rating.cs" />
+    <Compile Include="Models\RestaurantRating.cs" />
     <Compile Include="Models\Template\ModelGenerator.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -84,6 +86,7 @@
     </Compile>
     <Compile Include="Models\Views\RestaurantDetails.cs" />
     <Compile Include="Models\Vote.cs" />
+    <Compile Include="RepositoryInterfaces\IRestaurantRatingRepository.cs" />
     <Compile Include="RepositoryInterfaces\IHolidayRepository.cs" />
     <Compile Include="RepositoryInterfaces\IUserRepository.cs" />
     <Compile Include="RepositoryInterfaces\IJobLogRepository.cs" />

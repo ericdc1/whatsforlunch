@@ -39,7 +39,7 @@ namespace Lunch.Core.Jobs
                 }
 
                 var baseurl = System.Configuration.ConfigurationManager.AppSettings.Get("BaseURL");
-                var link = string.Format("{0}?u={1}", baseurl, user.GUID);
+                var link = string.Format("{0}?GUID={1}", baseurl, user.GUID);
                 messagesb.Append(string.Format("Click here to vote - <a href='{0}'>Login</a>", link));
 
                 Core.Jobs.Helpers.SendMail(user.Email, fromaddress, "What's for Lunch Message of the day", messagesb.ToString()); 
@@ -68,7 +68,7 @@ namespace Lunch.Core.Jobs
                 }
 
                 var baseurl = System.Configuration.ConfigurationManager.AppSettings.Get("BaseURL");
-                var link = string.Format("{0}?u={1}", baseurl, user.GUID);
+                var link = string.Format("{0}?GUID={1}", baseurl, user.GUID);
                 messagesb.Append(string.Format("Click here to override - <a href='{0}'>Login</a>", link));
 
                 Core.Jobs.Helpers.SendMail(user.Email, fromaddress, "What's for Lunch Message of the day", messagesb.ToString());
