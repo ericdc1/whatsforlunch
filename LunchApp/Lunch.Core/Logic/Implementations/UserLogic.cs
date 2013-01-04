@@ -31,6 +31,8 @@ namespace Lunch.Core.Logic.Implementations
 
         public User Update(User entity)
         {
+            entity.GUID = Get(entity.Id).GUID;
+
             return _userRepository.Update(entity);
         }
 
