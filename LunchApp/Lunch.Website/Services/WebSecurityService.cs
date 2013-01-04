@@ -28,6 +28,12 @@ namespace Lunch.Website.Services
 			return WebSecurity.CreateUserAndAccount(userName, password, propertyValues, requireConfirmationToken);
 		}
 
+        public void DeleteUserAndAccount(string userName)
+		{
+            ((SimpleMembershipProvider)Membership.Provider).DeleteAccount(userName); // deletes record from webpages_Membership table
+            ((SimpleMembershipProvider)Membership.Provider).DeleteUser(userName, true);
+		}
+        
 		public string GeneratePasswordResetToken(string userName, int tokenExpirationInMinutesFromNow = 0x5a0)
 		{
 			return WebSecurity.GeneratePasswordResetToken(userName, tokenExpirationInMinutesFromNow);

@@ -4,7 +4,7 @@ using System.Web.Mvc;
 
 namespace Lunch.Website.ViewModels
 {
-    public class User
+    public class UserEdit
     {
         [Key]
         [HiddenInput(DisplayValue = false)]

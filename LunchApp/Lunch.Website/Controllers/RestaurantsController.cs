@@ -11,14 +11,13 @@ namespace Lunch.Website.Controllers
         private readonly IRestaurantLogic _restaurantLogic;
         private readonly IRestaurantTypeLogic _restaurantTypeLogic;
 
-
         public RestaurantsController(IRestaurantLogic restaurantLogic, IRestaurantTypeLogic restaurantTypeLogic)
         {
             _restaurantLogic = restaurantLogic;
             _restaurantTypeLogic = restaurantTypeLogic;
         }
 
-        //[LunchAuthorize]
+
         public ActionResult Index(int? categoryid)
         {
             ViewBag.HasCategoryFilter = categoryid > 0;

@@ -8,7 +8,7 @@ using Lunch.Core.Models;
 
 namespace Lunch.Website.Controllers
 {
-    public class JobsController : Controller
+    public class JobsController : BaseController
     {
         private readonly IJobLogic _jobLogic;
        

@@ -4,7 +4,7 @@ using System.Web.Mvc;
 
 namespace Lunch.Website.ViewModels
 {
-    public class User
+    public class UserCreate
     {
         [Key]
         [HiddenInput(DisplayValue = false)]
@@ -16,6 +16,15 @@ namespace Lunch.Website.ViewModels
 
         [DataType(DataType.EmailAddress)]
         public virtual string Email { get; set; }
+
+        [Required]
+        [DataType(DataType.Password)]
+        public virtual string Password { get; set; }
+
+        [Required]
+        [DataType(DataType.Password)]
+        [System.ComponentModel.DataAnnotations.Compare("Password")]
+        public virtual string ConfirmPassword { get; set; }
 
         [DisplayName("Morning Email")]
         public virtual bool SendMail1 { get; set; }

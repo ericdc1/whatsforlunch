@@ -10,7 +10,7 @@ using Lunch.Website.ViewModels;
 
 namespace Lunch.Website.Controllers
 {
-    public class ManagementController : Controller
+    public class ManagementController : BaseController
     {
         private const string SessionName = "WhatsForLunchRestaurantsImport";
 

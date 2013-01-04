@@ -7,7 +7,7 @@ using Lunch.Core.Models;
 
 namespace Lunch.Website.Controllers
 {
-    public class HolidaysController : Controller
+    public class HolidaysController : BaseController
     {
         private readonly IHolidayLogic _holidayLogic; 
 

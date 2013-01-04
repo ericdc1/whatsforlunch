@@ -1,5 +1,5 @@
 ﻿@using System.Globalization
-@model Lunch.Website.ViewModels.User
+@model Lunch.Website.ViewModels.UserEdit
 
 @{
     ViewBag.Title = "Edit";
@@ -18,7 +18,6 @@
         <div class="editor-field">
             @Html.EditorFor(model => model.Id)
             @Html.ValidationMessageFor(model => model.Id)
-            @Html.HiddenFor(model => model.GUID)
         </div>
 
         <div class="editor-label">
@@ -72,8 +71,6 @@
             @Html.EditorFor(model => model.SendMail4)
             @Html.ValidationMessageFor(model => model.SendMail4)
         </div>
-
-
 
         <p>
             <input type="submit" value="Save" />
