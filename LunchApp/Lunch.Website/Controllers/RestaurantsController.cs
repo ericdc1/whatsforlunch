@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System.Linq;
+using System.Web.Mvc;
 using AutoMapper;
 using Lunch.Core.Logic;
 using Lunch.Core.Models;
@@ -6,11 +7,11 @@ using Lunch.Website.Services;
 
 namespace Lunch.Website.Controllers
 {
+    [LunchAuthorize(Roles = "Administrator")]
     public class RestaurantsController : BaseController
     {
         private readonly IRestaurantLogic _restaurantLogic;
         private readonly IRestaurantTypeLogic _restaurantTypeLogic;
-
 
         public RestaurantsController(IRestaurantLogic restaurantLogic, IRestaurantTypeLogic restaurantTypeLogic)
         {
@@ -18,12 +19,12 @@ namespace Lunch.Website.Controllers
             _restaurantTypeLogic = restaurantTypeLogic;
         }
 
-        //[LunchAuthorize]
+
         public ActionResult Index(int? categoryid)
         {
             ViewBag.HasCategoryFilter = categoryid > 0;
             var result = _restaurantLogic.GetAllDetailed(categoryid);
-            return View(result);
+            return View(result.OrderBy(f => f.RestaurantName));
         }
 
         public ActionResult Details(int id)

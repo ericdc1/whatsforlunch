@@ -1,4 +1,4 @@
-﻿@model Lunch.Website.ViewModels.ImportRestaurantsViewModel
+﻿@model Lunch.Core.Models.Views.ImportRestaurant
 
 @{
     ViewBag.Title = "DisplayRestaurants";
@@ -13,14 +13,14 @@
     <fieldset>
         <legend>Restaurants List</legend>
             
-        <div>Search: <input id="searchbox" type="text" url="/Management/Search" /></div>
+        <div>Search: <input id="searchbox" type="text" url="/Management/Search" /> Minimun 3 characters required for search</div>
         
         <div id="results_container">
             @Html.Partial("_ImportRestaurantsList", Model)
         </div>    
 
         <p>
-            <input type="submit" value="Save" class="btn btn-primary" />
+            <input id="SaveImports" type="button" url="/Management/SaveImports" value="Save" class="btn btn-primary" />
         </p>
 
     </fieldset>
@@ -31,13 +31,51 @@
     $(document).ready(function () {
 
         $('#searchbox').keyup(function () {
-            var url = $(this).attr('url') + '?term=' + $(this).val();
+            var url = $(this).attr('url');
+            if ($(this).val().length >= 3) {
+                url += '?term=' + $(this).val();
+            }
             $.ajax({
                 url: url,
-                success: function(html) {
+                success: function (html) {
                     $("#results_container").html(html);
                 }
             });
+        });
+
+        $("#SaveImports").click(function () {
+            var url = $(this).attr('url');
+            var data = '';
+            for (var i = 0; i <= $(".IsSelected").length; i++) {
+                if ($('.IsSelected:eq(' + i + ')').is(':checked')) {
+                    if (data == '') {
+                        data = "{ 'Restaurants': [ {";
+                    } else {
+                        data += ' }, { ';
+                    }
+                    var name = $('.RestaurantName:eq(' + i + ')').val().replace(/'/g, "\\'");
+                    var day = $('.SpecialDay:eq(' + i + ')').val().replace(/'/g, "\\'");
+                    var type = $('.RestaurantType:eq(' + i + ')').val().replace(/'/g, "\\'");
+                    data += "'RestaurantName': '" + name + "', 'IsSelected': '" + $('.IsSelected:eq(' + i + ')').val() + "', 'PreferredDayOfWeek': '" + day + "', 'RestaurantTypeID': '" + type + "'";
+                }
+            }
+            if (data != '') {
+                data += '} ] }';
+                $.ajax({
+                    type: "POST",
+                    url: url,
+                    data: data,
+                    contentType: 'application/json; charset=utf-8',
+                    dataType: 'html',
+                    cache: false,
+                    success: function (html) {
+                        $("#results_container").html(html);
+                    },
+                    error: function () {
+                        alert("Import FAILED");
+                    }
+                });
+            }
         });
 
     });

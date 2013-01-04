@@ -4,10 +4,12 @@ using System.Linq;
 using System.Web.Mvc;
 using Lunch.Core.Logic;
 using Lunch.Core.Models;
+using Lunch.Website.Services;
 
 namespace Lunch.Website.Controllers
 {
-    public class HolidaysController : Controller
+    [LunchAuthorize(Roles = "Administrator")]
+    public class HolidaysController : BaseController
     {
         private readonly IHolidayLogic _holidayLogic; 
 
@@ -15,7 +17,9 @@ namespace Lunch.Website.Controllers
         {
             _holidayLogic = holidayLogic;
         }
-                public ActionResult Index()
+
+
+        public ActionResult Index()
         {
             var blackoutDays = new SortedList();
             var model = new SortedList();
@@ -38,8 +42,6 @@ namespace Lunch.Website.Controllers
             return View(model);
         }
 
-
-
         public JsonResult AddDate(DateTime selecteddate)
         {
             var holiday = new Holiday() {ExcludedDate = selecteddate};
@@ -53,7 +55,6 @@ namespace Lunch.Website.Controllers
             _holidayLogic.Delete(holiday);
             return Json("Saved");
         }
-
 
     }
 }

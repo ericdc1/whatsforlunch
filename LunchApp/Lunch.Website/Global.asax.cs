@@ -10,7 +10,6 @@ using Lunch.Website.DependencyResolution;
 using StackExchange.Profiling;
 using StructureMap;
 
-
 namespace Lunch.Website
 {
     // Note: For instructions on enabling IIS6 or IIS7 classic mode, 
@@ -25,7 +24,6 @@ namespace Lunch.Website
             ObjectFactory.Initialize(i => i.AddRegistry<StructureMapRegistry>());
             ObjectFactory.AssertConfigurationIsValid();
     
-
             AreaRegistration.RegisterAllAreas();
 
             WebApiConfig.Register(GlobalConfiguration.Configuration);
@@ -37,10 +35,6 @@ namespace Lunch.Website
             ControllerBuilder.Current.SetControllerFactory(new StructureMapControllerFactory());
             
             CreateMaps();
-
-            //WebSecurity.InitializeDatabaseConnection(ConfigurationManager.ConnectionStrings["AzureSQL"].ConnectionString, "System.Data.SqlServer", "User", "Id", "Email", false);
-            //if (!WebSecurity.UserExists("jdehlin@gmail.com"))
-            //    WebSecurity.CreateUserAndAccount("jdehlin@gmail.com", "foobar");
         }
 
 
@@ -50,30 +44,17 @@ namespace Lunch.Website
             Mapper.CreateMap<ViewModels.Restaurant, Restaurant>();
             Mapper.CreateMap<User, ViewModels.User>();
             Mapper.CreateMap<ViewModels.User, User>();
+            Mapper.CreateMap<User, ViewModels.UserCreate>();
+            Mapper.CreateMap<ViewModels.UserCreate, User>();
+            Mapper.CreateMap<User, ViewModels.UserEdit>();
+            Mapper.CreateMap<ViewModels.UserEdit, User>();
         }
 
         private void Application_BeginRequest()
         {
-            //_webSecurityService = ObjectFactory.GetInstance<IWebSecurityService>();
-            //_userLogic = ObjectFactory.GetInstance<IUserLogic>();
-
             StackExchange.Profiling.MiniProfiler.Start();
             StackExchange.Profiling.MiniProfiler.Settings.PopupRenderPosition = RenderPosition.Right;    
         }
-
-        //private void Application_PostAuthenticateRequest(object sender, EventArgs e)
-        //{
-        //    var guid = Guid.Empty;
-        //    if (!string.IsNullOrWhiteSpace(Request.QueryString.Get("guid")))
-        //        guid = Guid.Parse(Request.QueryString.Get("guid"));
-
-        //    if (!_webSecurityService.IsAuthenticated && guid != Guid.Empty)
-        //    {
-        //        var user = _userLogic.Get(guid);
-
-        //        Thread.CurrentPrincipal = new GenericPrincipal(new GenericIdentity(user.Email), new string[] { });
-        //    }
-        //}
 
         private void Application_EndRequest()
         {

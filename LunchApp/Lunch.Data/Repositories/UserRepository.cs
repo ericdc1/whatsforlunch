@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Data.Common;
 using System.Linq;
-using System.Linq.Expressions;
 using Lunch.Core.Models;
 using Lunch.Core.RepositoryInterfaces;
 using Dapper;
@@ -38,28 +37,21 @@ namespace Lunch.Data.Repositories
             }
         }
 
-        public User SaveOrUpdate(User entity)
+        public User Update(User entity)
         {
             using (_connection = Utilities.GetProfiledOpenConnection())
             {
-                if (entity.Id > 0)
-                {
-                    _connection.Update(entity);
-                }
-                else
-                {
-                    entity.Id = _connection.Insert(entity);
-                }
+                _connection.Update(entity);
+                
                 return entity;
             }
         }
 
         public int Delete(int id)
         {
-            using (_connection = Utilities.GetProfiledOpenConnection())
-            {
-                return _connection.Delete<User>(id);
-            }
+            // Do not use this!
+            // Use Simple Membership
+            throw new NotImplementedException();
         }
     }
 }

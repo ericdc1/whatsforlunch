@@ -7,13 +7,13 @@ namespace Lunch.Website.ViewModels
 {
     public class ImportRestaurantsViewModel
     {
-        private List<RestaurantViewModel> _restaurants = new List<RestaurantViewModel>();
+        private IList<RestaurantViewModel> _restaurants = new List<RestaurantViewModel>();
 
         public int TotalResults { get; set; }
         public int Page { get; set; }
         public int FirstHit { get; set; }
         public int LastHit { get; set; }
-        public List<RestaurantViewModel> Restaurants
+        public IList<RestaurantViewModel> Restaurants
         {
             get { return _restaurants; }
             set { _restaurants = value; }
@@ -22,8 +22,20 @@ namespace Lunch.Website.ViewModels
 
     public class RestaurantViewModel
     {
-        public string  Name { get; set; }
+        public string RestaurantName { get; set; }
         public bool Selected { get; set; }
-        public DayOfWeek? SpecialDay { get; set; }
+        public DayOfWeek? PreferredDayOfWeek { get; set; }
+        public int? RestaurantTypeID { get; set; }
+        public bool AlreadyImported { get; set; }
+
+        public Core.Models.Restaurant ToDomainModel()
+        {
+            var entity = new Core.Models.Restaurant
+                             { RestaurantName = RestaurantName, 
+                               RestaurantTypeID = RestaurantTypeID,
+                               PreferredDayOfWeek = (int?)PreferredDayOfWeek
+                             };
+            return entity;
+        }
     }
 }

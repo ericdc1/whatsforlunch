@@ -1,19 +1,10 @@
-﻿using System;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 
 namespace Lunch.Website.ViewModels
 {
-    [Serializable]
-    [Flags]
-    public enum LunchRoles
-    {
-        User = 1,
-        Administrator = 2
-    }
-
-    public class User
+    public class UserEdit
     {
         [Key]
         [HiddenInput(DisplayValue = false)]

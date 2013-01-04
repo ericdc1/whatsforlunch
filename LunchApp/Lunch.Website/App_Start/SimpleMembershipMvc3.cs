@@ -1,7 +1,5 @@
-using System;
 using System.Collections.Specialized;
 using System.Configuration;
-using System.Web.Mvc;
 using System.Web.Security;
 using Lunch.Website.Services;
 using WebMatrix.WebData;
@@ -29,6 +27,11 @@ namespace Lunch.Website.App_Start
 		    var webSecurityService = StructureMap.ObjectFactory.GetInstance<IWebSecurityService>();
             webSecurityService.InitializeDatabaseConnection(connectionStringName: "AzureSQL", userTableName: "Users", userIdColumn: "Id", userNameColumn: "Email", autoCreateTables: true);
 
+            if (!Roles.RoleExists("User"))
+                Roles.CreateRole("User");
+            if (!Roles.RoleExists("Administrator"))
+                Roles.CreateRole("Administrator");
+            
             //if (!WebSecurity.UserExists("jdehlin@gmail.com"))
             //    WebSecurity.CreateUserAndAccount("jdehlin@gmail.com", "foobar", new {FullName = "Jack Dehlin", GUID = Guid.NewGuid()});
 		}

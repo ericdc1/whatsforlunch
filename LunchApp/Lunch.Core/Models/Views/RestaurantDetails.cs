@@ -14,7 +14,7 @@ namespace Lunch.Core.Models.Views
         [DisplayName("Genre")]
         public string TypeName { get; set; }
         [DisplayName("Genre ID")]
-        public int RestaurantTypeId { get; set; }
+        public int? RestaurantTypeId { get; set; }
        
     }
 }
