@@ -6,22 +6,21 @@ namespace Lunch.Core.Models
     [Table("RestaurantRatings")]
     public class RestaurantRating
     {
-
-
         #region DatabaseFields
-        public int ID { get; set; }
-        public int UserID { get; set; }
-        public int RestaurantID { get; set; }
-        public int Rating { get; set; }
-        #endregion
 
+        [Key]
+        public int Id { get; set; }
+        public int UserId { get; set; }
+        public int RestaurantId { get; set; }
+        public int Rating { get; set; }
+
+        #endregion
 
         #region AdditionalFields
+
         [Editable(false)]
         public string RestaurantName { get; set; }
+
         #endregion
-
-
-
     }
 }

@@ -10,16 +10,31 @@ namespace Lunch.Core.Logic.Implementations
 {
     public class RestaurantRatingLogic : IRestaurantRatingLogic 
     {
-          private readonly IRestaurantRatingRepository _restaurantRatingRepository;
+        private readonly IRestaurantRatingRepository _restaurantRatingRepository;
+        private readonly IUserLogic _userLogic;
 
-        public RestaurantRatingLogic(IRestaurantRatingRepository restaurantRatingRepository)
+        public RestaurantRatingLogic(IRestaurantRatingRepository restaurantRatingRepository, IUserLogic userLogic)
         {
             _restaurantRatingRepository = restaurantRatingRepository;
+            _userLogic = userLogic;
         }
 
-        public IEnumerable<RestaurantRating> GetAllByUser(int UserID)
+        public IEnumerable<RestaurantRating> GetAll()
         {
-            return _restaurantRatingRepository.GetAllByUser(UserID);
+            var ratings = new List<RestaurantRating>();
+            var users = _userLogic.GetList(new {});
+
+            foreach (var user in users)
+            {
+                ratings.AddRange(_restaurantRatingRepository.GetAllByUser(user.Id));
+            }
+
+            return ratings;
+        }
+
+        public IEnumerable<RestaurantRating> GetAllByUser(int userID)
+        {
+            return _restaurantRatingRepository.GetAllByUser(userID);
         }
 
         public RestaurantRating SaveOrUpdate(RestaurantRating entity)

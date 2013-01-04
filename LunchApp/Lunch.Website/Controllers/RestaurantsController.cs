@@ -19,6 +19,14 @@ namespace Lunch.Website.Controllers
         }
 
 
+        public ActionResult GetTop()
+        {
+            var temp = _restaurantLogic.GetTop();
+
+            return View(temp);
+        }
+
+
         public ActionResult Index(int? categoryid)
         {
             ViewBag.HasCategoryFilter = categoryid > 0;

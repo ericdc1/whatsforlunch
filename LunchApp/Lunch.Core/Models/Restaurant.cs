@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Lunch.Core.Models
 {
@@ -28,6 +29,13 @@ namespace Lunch.Core.Models
 
         public virtual RestaurantType RestaurantType { get; set; }
         public virtual IList<RestaurantHistory> RestaurantHistories { get; set; }
+
+        #endregion
+
+        #region additional
+
+        [Editable(false)]
+        public double Rating { get; set; }
 
         #endregion
     }

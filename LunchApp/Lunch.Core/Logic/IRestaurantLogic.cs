@@ -6,6 +6,7 @@ namespace Lunch.Core.Logic
 {
     public interface IRestaurantLogic
     {
+        IEnumerable<Restaurant> GetTop(int count = 5);
         IEnumerable<Restaurant> GetList(object parameters);
         IEnumerable<Restaurant> GenerateRestaurants();
         IEnumerable<RestaurantDetails> GetAllDetailed(int? categoryId);

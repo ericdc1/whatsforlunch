@@ -5,7 +5,7 @@ namespace Lunch.Core.RepositoryInterfaces
 {
     public interface IRestaurantRatingRepository
     {
-        IEnumerable<RestaurantRating> GetAllByUser(int UserID);
+        IEnumerable<RestaurantRating> GetAllByUser(int userID);
         RestaurantRating SaveOrUpdate(RestaurantRating entity);
     }
 }
