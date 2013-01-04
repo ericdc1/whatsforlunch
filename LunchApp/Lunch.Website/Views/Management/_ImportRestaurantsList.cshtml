@@ -1,4 +1,4 @@
-﻿@model Lunch.Website.ViewModels.ImportRestaurantsViewModel
+﻿@model Lunch.Core.Models.Views.ImportRestaurant
 
 @if (Model.Restaurants == null || Model.Restaurants.Count == 0)
 {
@@ -11,20 +11,37 @@
                         Restaurants
                     </th>
                     <th>
-                        Speacials Day
+                        Specials Day
+                    </th>
+                    <th>
+                        Restaurant Type
                     </th>
             </tr>
                 
             @for (var i = 0; i < Model.Restaurants.Count; i++)
             {
-                <tr>
-                    <td>@Html.CheckBoxFor(model => model.Restaurants[i].Selected, new { Class = "IsSelected" })</td>
-                    <td>
-                        @Html.HiddenFor(model => model.Restaurants[i].Name)
-                        @Model.Restaurants[i].Name
-                    </td>
-                    <td>@Html.DropDownListFor(model => model.Restaurants[i].SpecialDay, (SelectList)ViewBag.DaysOfWeek, "-- NONE --", new { Class = "SpecialDay" })</td>
-                </tr>
+                if (Model.Restaurants[i].AlreadyImported)
+                {
+                   <tr>
+                        <td></td>
+                        <td>
+                            <span style="color: green;" title="Restaurant is already imported">@Model.Restaurants[i].RestaurantName</span>
+                        </td>
+                        <td>@Html.DropDownListFor(model => model.Restaurants[i].PreferredDayOfWeek, (SelectList)ViewBag.DaysOfWeek, "-- NONE --", new { disabled = "disabled" })</td>
+                        <td>@Html.DropDownListFor(model => model.Restaurants[i].RestaurantTypeID, (SelectList)ViewBag.RestaurantTypes, "-- UNDEFINED --", new { disabled = "disabled" })</td>
+                    </tr>   
+                } else
+                {
+                    <tr>
+                        <td>@Html.CheckBoxFor(model => model.Restaurants[i].Selected, new { Class = "IsSelected" })</td>
+                        <td>
+                            @Html.HiddenFor(model => model.Restaurants[i].RestaurantName, new {Class = "RestaurantName"})
+                            @Model.Restaurants[i].RestaurantName
+                        </td>
+                        <td>@Html.DropDownListFor(model => model.Restaurants[i].PreferredDayOfWeek, (SelectList)ViewBag.DaysOfWeek, "-- NONE --", new { Class = "SpecialDay" })</td>
+                        <td>@Html.DropDownListFor(model => model.Restaurants[i].RestaurantTypeID, (SelectList)ViewBag.RestaurantTypes, "-- UNDEFINED --", new { Class = "RestaurantType" })</td>
+                    </tr>   
+                }
             }
 
         </tbody>

@@ -4,7 +4,13 @@
     ViewBag.Title = "Restaurants";
 }
 
-<h2>Restaurants</h2>
+<div id="content" class="reports">
+    <div class="bgOne"></div>
+    <div class="mask"></div>
+    <div id="info">
+        <div class="management">
+
+<h1>Restaurants</h1>
 
 <div class="btn-toolbar">
     @Html.ActionLink("Create New", "Create", null, new {@class="btn btn-primary"})
@@ -15,6 +21,18 @@
         @Html.ActionLink("Show all", "index", null, new {@class="btn"})
     }
 </div>
+
+    @foreach (var item in Model)
+    {
+        <div class="restaurant">
+            @Html.DisplayFor(modelItem => item.RestaurantName)
+            @Html.DisplayFor(modelItem => item.PreferredDayOfWeek)
+            @Html.ActionLink(item.TypeName, "index", new { categoryid = item.RestaurantTypeId })
+            <br />
+            <a href="@Url.Action("Edit", new { ID = item.Id })"><i class="icon-pencil"></i></a>
+            <a href="@Url.Action("Delete", new { ID = item.Id })" role="button" data-toggle="modal"><i class="icon-remove"></i></a>
+        </div>
+    }
 
 <table class="table table-striped">
     <tr>
@@ -40,7 +58,14 @@
                 @Html.DisplayFor(modelItem => item.PreferredDayOfWeek)
             </td>
             <td>
-                @Html.ActionLink(item.TypeName, "index", new { categoryid = item.RestaurantTypeId })
+                @if (item.RestaurantTypeId == null)
+                {
+                    <span>Undefined</span>
+                } else
+                {
+                    @Html.ActionLink(item.TypeName, "index", new { categoryid = item.RestaurantTypeId })
+                }
+                
             </td>
             <td>
                 <a href="@Url.Action("Edit", new { ID = item.Id })"><i class="icon-pencil"></i></a>
@@ -50,3 +75,7 @@
     }
 
 </table>
+
+        </div>
+    </div>
+</div>

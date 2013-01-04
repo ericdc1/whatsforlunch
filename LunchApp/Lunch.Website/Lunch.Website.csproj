@@ -190,13 +190,61 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\images\glyphicons-halflings-white.png" />
     <Content Include="Content\images\glyphicons-halflings.png" />
+    <Content Include="Content\images\user001.png" />
+    <Content Include="Content\images\user002.png" />
+    <Content Include="Content\images\user003.png" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\slate.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Resources\CSS\StyleSheet.less" />
+    <Content Include="Resources\CSS\StyleSheetNew.less" />
     <None Include="Scripts\jquery-1.8.3.intellisense.js" />
     <Content Include="img\glyphicons-halflings-white.png" />
     <Content Include="img\glyphicons-halflings.png" />
+    <Content Include="Resources\CSS\StyleSheet.css" />
+    <Content Include="Resources\CSS\StyleSheet.min.css" />
+    <Content Include="Resources\CSS\StyleSheetNew.css" />
+    <Content Include="Resources\CSS\StyleSheetNew.min.css" />
+    <Content Include="Resources\Images\badges-32.png" />
+    <Content Include="Resources\Images\BG-Burger.png" />
+    <Content Include="Resources\Images\BG-Chicken.png" />
+    <Content Include="Resources\Images\BG-RAW-Images\Burger.jpg" />
+    <Content Include="Resources\Images\BG-RAW-Images\Chicken.jpg" />
+    <Content Include="Resources\Images\BG-RAW-Images\Pizza.jpg" />
+    <Content Include="Resources\Images\desktop\history-24-Alt.png" />
+    <Content Include="Resources\Images\desktop\history-24.png" />
+    <Content Include="Resources\Images\desktop\historyAlt.png" />
+    <Content Include="Resources\Images\desktop\lunch-24-Alt.png" />
+    <Content Include="Resources\Images\desktop\lunch-24.png" />
+    <Content Include="Resources\Images\desktop\lunchAlt.png" />
+    <Content Include="Resources\Images\desktop\ratings-24-Alt.png" />
+    <Content Include="Resources\Images\desktop\ratings-24.png" />
+    <Content Include="Resources\Images\desktop\ratingsAlt.png" />
+    <Content Include="Resources\Images\desktop\spriteDesktop.png" />
+    <Content Include="Resources\Images\desktop\stats-24-Alt.png" />
+    <Content Include="Resources\Images\desktop\stats-24.png" />
+    <Content Include="Resources\Images\desktop\statsAlt.png" />
+    <Content Include="Resources\Images\lunchLogo.png" />
+    <Content Include="Resources\Images\lunchLogo120.png" />
+    <Content Include="Resources\Images\mobile\history.png" />
+    <Content Include="Resources\Images\mobile\historyAlt.png" />
+    <Content Include="Resources\Images\mobile\lunch.png" />
+    <Content Include="Resources\Images\mobile\lunchAlt.png" />
+    <Content Include="Resources\Images\mobile\ratings.png" />
+    <Content Include="Resources\Images\mobile\ratingsAlt.png" />
+    <Content Include="Resources\Images\mobile\stats.png" />
+    <Content Include="Resources\Images\mobile\statsAlt.png" />
+    <Content Include="Resources\Images\overrides-32.png" />
+    <Content Include="Resources\Images\repeatBlack.png" />
+    <Content Include="Resources\Images\repeatBlue.png" />
+    <Content Include="Resources\Images\repeatRed.png" />
+    <Content Include="Resources\Images\repeatWhite.png" />
+    <Content Include="Resources\Images\repeatWhite90.png" />
+    <Content Include="Resources\Images\veto-32.png" />
+    <Content Include="Resources\Images\WFL-Logo-799.png" />
+    <Content Include="Resources\Images\WFL-Logo-960.png" />
+    <Content Include="Resources\Images\WFL-Logo.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.8.3.js" />
@@ -266,6 +314,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Management\DisplayRestaurants.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\Scripts\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -25,7 +25,7 @@ namespace Lunch.Data.Repositories
                 var result =_connection.Query<RestaurantDetails>(
                         @"Select restaurant.Id, restaurant.RestaurantName , restaurant.PreferredDayOfWeek, restauranttype.Id as RestaurantTypeID, restauranttype.typename as TypeName
                         from Restaurant
-                        INNER JOIN RestaurantType
+                        LEFT OUTER JOIN RestaurantType
                         ON Restaurant.RestaurantTypeId=Restauranttype.Id");
                 if (categoryId != null)
                     result = result.Where(f => f.RestaurantTypeId == categoryId);

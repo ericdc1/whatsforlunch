@@ -1,24 +1,40 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Configuration;
-using System.IO;
 using System.Linq;
-using System.Net;
 using System.Web.Mvc;
-using Lunch.Core.Jobs;
-using Lunch.Website.Services;
-using Lunch.Website.ViewModels;
+using Lunch.Core.Logic;
+using Lunch.Core.Models;
+using Lunch.Core.Models.Views;
 
 namespace Lunch.Website.Controllers
 {
-    [LunchAuthorize(Roles = "Administrator")]
-    public class ManagementController : BaseController
-    {
+    public class ManagementController : Controller
+    {        
+        #region "Fields"
+
+        private readonly IRestaurantTypeLogic _restaurantTypeLogic;
+        private readonly IRestaurantLogic _restaurantLogic;
+        private readonly IImportRestaurantLogic _importRestaurantLogic;
         private const string SessionName = "WhatsForLunchRestaurantsImport";
+
+        #endregion
+
+        #region "Constructors"
+
+        public ManagementController(IRestaurantLogic restaurantLogic, IRestaurantTypeLogic restaurantTypeLogic, IImportRestaurantLogic importRestaurantLogic)
+        {
+            _restaurantTypeLogic = restaurantTypeLogic;
+            _restaurantLogic = restaurantLogic;
+            _importRestaurantLogic = importRestaurantLogic;
+        }
+
+        #endregion
 
         public ActionResult Index()
         {
             var defaults = GetDefaultImportSetting();
-            var model = new ImportSettingsViewModel
+            var model = new RestaurantImportSettings
             {
                 UseDefaults = true,
                 PublisherKey = defaults.PublisherKey,
@@ -31,11 +47,11 @@ namespace Lunch.Website.Controllers
         }
 
         [HttpPost]
-        public ActionResult Index(ImportSettingsViewModel model)
+        public ActionResult Index(RestaurantImportSettings model)
         {
             if (ModelState.IsValid)
             {
-                var results = GetRestaurantsFromApi(model);
+                var results = _importRestaurantLogic.GetRestaurantsFromApi(ConfigurationManager.AppSettings.Get("RestaurantProviderURL"), model);
                 Session.Add(SessionName, results);
                 GenerateDropDownLists();
                 return View("DisplayRestaurants", results);
@@ -45,65 +61,47 @@ namespace Lunch.Website.Controllers
 
         public PartialViewResult Search(string term)
         {
-            ImportRestaurantsViewModel results;
+            ImportRestaurant results;
             if (Session[SessionName] == null)
             {
-                results = GetRestaurantsFromApi(GetDefaultImportSetting());
+                results = _importRestaurantLogic.GetRestaurantsFromApi(ConfigurationManager.AppSettings.Get("RestaurantProviderURL"), GetDefaultImportSetting());
             }
             else
             {
-                results = (ImportRestaurantsViewModel)Session[SessionName];
+                results = (ImportRestaurant)Session[SessionName];
+                results.Restaurants = _importRestaurantLogic.CheckAlreadyImported(results.Restaurants);
             }
-            var model = new ImportRestaurantsViewModel { TotalResults = results.TotalResults, Page = results.Page, FirstHit = results.FirstHit, LastHit = results.LastHit, Restaurants = results.Restaurants };
+            var model = new ImportRestaurant { TotalResults = results.TotalResults, Page = results.Page, FirstHit = results.FirstHit, LastHit = results.LastHit, Restaurants = results.Restaurants };
             if (!string.IsNullOrWhiteSpace(term) && term.Length > 1)
-                model.Restaurants = model.Restaurants.Where(f => f.Name.ToLower().Contains(term.ToLower())).ToList();
+                model.Restaurants = model.Restaurants.Where(f => f.RestaurantName.ToLower().Contains(term.ToLower())).ToList();
             GenerateDropDownLists();
             return PartialView("_ImportRestaurantsList", model);
         }
 
         [HttpPost]
-        public ActionResult SaveImports(ImportRestaurantsViewModel model)
+        public PartialViewResult SaveImports(ImportRestaurant model)
         {
-            return View(model);
+            if (model != null && model.Restaurants.Any())
+            {
+                var restaurantsToImport = new List<Restaurant>();
+                model.Restaurants = _importRestaurantLogic.CheckAlreadyImported(model.Restaurants);
+                foreach (var restaurant in model.Restaurants)
+                {
+                    if (!restaurant.AlreadyImported)
+                        restaurantsToImport.Add(restaurant.ToDomainModel());
+                }
+                _restaurantLogic.SaveOrUpdateAll(restaurantsToImport.ToArray());
+                model.Restaurants = _importRestaurantLogic.CheckAlreadyImported(model.Restaurants);
+            }
+            GenerateDropDownLists();
+            return PartialView("~/Views/Management/_ImportRestaurantsList.cshtml", model);
         }
 
         #region Helpers
 
-        private ImportRestaurantsViewModel GetRestaurantsFromApi(ImportSettingsViewModel settings)
+        private static RestaurantImportSettings GetDefaultImportSetting()
         {
-            var page = 1;
-            var results = new ImportRestaurantsViewModel { TotalResults = 51 };
-            while (results.TotalResults > page * 50)
-            {
-                var apiUrl = Helpers.GenerateRestaurantApi(settings.PublisherKey, settings.Latitude, settings.Longitude, settings.Radius, page);
-                var objRequest = WebRequest.Create(apiUrl);
-                var objResponse = objRequest.GetResponse();
-                string strResult;
-                using (var sr = new StreamReader(objResponse.GetResponseStream()))
-                {
-                    strResult = sr.ReadToEnd();
-                }
-                var data = System.Web.Helpers.Json.Decode(strResult);
-                results.TotalResults = data.results.total_hits;
-                results.FirstHit = data.results.first_hit;
-                results.LastHit = data.results.last_hit;
-                results.Page = data.results.page;
-                foreach (var item in data.results.locations)
-                {
-                    if (results.Restaurants.Find(f => f.Name == item.name) == null)
-                    {
-                        results.Restaurants.Add(new RestaurantViewModel { Name = item.name, Selected = false, SpecialDay = null });
-                    }
-                }
-                page++;
-            }
-            results.Restaurants = results.Restaurants.OrderBy(f => f.Name).ToList();
-            return results;
-        }
-
-        private static ImportSettingsViewModel GetDefaultImportSetting()
-        {
-            var defaultSettings = new ImportSettingsViewModel
+            var defaultSettings = new RestaurantImportSettings
             {
                 PublisherKey = ConfigurationManager.AppSettings["RestaurantProviderPublisherKey"],
                 Latitude = ConfigurationManager.AppSettings["RestaurantProviderLatitude"],
@@ -115,8 +113,11 @@ namespace Lunch.Website.Controllers
 
         private void GenerateDropDownLists()
         {
-            var values = from DayOfWeek e in Enum.GetValues(typeof(DayOfWeek)) select new { Id = e, Name = e.ToString() };
+            // Specials day.
+            var values = from DayOfWeek e in Enum.GetValues(typeof(DayOfWeek)) select new { Id = (int)e, Name = e.ToString() };
             ViewBag.DaysOfWeek = new SelectList(values, "Id", "Name");
+            // Restaurant type.
+            ViewBag.RestaurantTypes = new SelectList(_restaurantTypeLogic.GetAll().OrderBy(f => f.TypeName), "Id", "TypeName");
         }
 
         #endregion
