@@ -45,11 +45,12 @@ namespace Lunch.Website.Controllers
             if (ModelState.IsValid)
             {
                 var guid = Guid.NewGuid();
-                var userName = _webSecurityService.CreateUserAndAccount(model.Email, model.Password, new { model.FullName, model.SendMail1, model.SendMail2, model.SendMail3, model.SendMail4, GUID = guid });
+                _webSecurityService.CreateUserAndAccount(model.Email, model.Password, new { model.FullName, model.SendMail1, model.SendMail2, model.SendMail3, model.SendMail4, GUID = guid });
 
                 if (model.Administrator)
-                    Roles.AddUserToRole(userName, LunchRoles.Administrator.ToString());
-                Roles.AddUserToRole(userName, "User");
+                    Roles.AddUserToRole(model.Email, LunchRoles.Administrator.ToString());
+                
+                Roles.AddUserToRole(model.Email, "User");
 
                 return RedirectToAction("Index");
             }
