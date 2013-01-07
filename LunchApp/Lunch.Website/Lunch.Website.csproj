@@ -264,7 +264,6 @@
     <Content Include="Views\Users\Create.cshtml" />
     <Content Include="Views\Users\Edit.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Management\_ImportRestaurantsList.cshtml" />
     <Content Include="Views\Management\SaveImports.cshtml" />
     <Content Include="Views\Holidays\Index.cshtml" />
