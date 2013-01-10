@@ -1,0 +1,17 @@
+﻿@model Lunch.Core.Jobs.MailDetails
+
+<h2>What's for lunch - Voting is Over!</h2>
+
+<div>
+    Hello @Model.User.FullName,
+    <br />
+
+    Today's restaurant choice is:
+    <ul>
+        <li>@Model.Restaurants.ToList()[0].RestaurantName - @Model.Restaurants.ToList()[0].RestaurantType</li>
+    </ul>
+
+    <br />
+    You have an available override.
+    <a href="@Model.Url">Click here to change today's restaurant to @Model.Restaurants.ToList()[0].RestaurantName - @Model.Restaurants.ToList()[0].RestaurantType</a>
+</div>

@@ -267,6 +267,9 @@
     <Content Include="Views\Management\_ImportRestaurantsList.cshtml" />
     <Content Include="Views\Management\SaveImports.cshtml" />
     <Content Include="Views\Holidays\Index.cshtml" />
+    <Content Include="Views\_MailTemplates\Morning.cshtml" />
+    <Content Include="Views\_MailTemplates\WhereGoing.cshtml" />
+    <Content Include="Views\_MailTemplates\VotingOver.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

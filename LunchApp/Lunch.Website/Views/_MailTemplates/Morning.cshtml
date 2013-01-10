@@ -1,0 +1,18 @@
+﻿@model Lunch.Core.Jobs.MailDetails
+
+<h2>What's for lunch - Morning voting.</h2>
+
+<div>Hello @Model.User.FullName,
+    <br/>
+    
+    Today's restaurant choices are:
+    <ul>
+        @foreach(var restaurant in Model.Restaurants)
+        {
+            <li>@restaurant.RestaurantName - @restaurant.RestaurantType</li>
+        }
+    </ul>
+    
+    <br/>
+    <a href="@Model.Url">Click here to vote</a>
+</div>

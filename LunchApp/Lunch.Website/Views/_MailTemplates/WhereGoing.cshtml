@@ -1,0 +1,16 @@
+﻿@model Lunch.Core.Jobs.MailDetails
+
+<h2>What's for lunch - Where are we going?</h2>
+
+<div>
+    Hello @Model.User.FullName,
+    <br />
+
+    Today's restaurant choice is:
+    <ul>
+        <li>@Model.Restaurants.ToList()[0].RestaurantName - @Model.Restaurants.ToList()[0].RestaurantType</li>
+    </ul>
+
+    <br />
+    We are leaving at 11:45.
+</div>
