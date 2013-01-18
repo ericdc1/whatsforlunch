@@ -26,6 +26,12 @@
 		   }
 }
 
+.btn { background: #ccc; width: auto; height: 40px; padding: 7px 15px; color: #fff; font-size: 1em; line-height: 16px; border: none; margin: 0; cursor: pointer; text-decoration: none;
+	   &.submit { background: #5bbd62; 
+				   &:hover { background: #3a9e41; }
+	   }
+}
+
 #secondaryContent #veto,#overrides,#badges { cursor: pointer; }
 
 
@@ -90,6 +96,7 @@
 					   }
 					   .management { width: 100%; margin: 0 auto; height: auto; overflow: hidden; padding-bottom: 70px;
 									 h1 { font-size: 2em; line-height: 34px; word-spacing: -1px; color: #fff; margin: 10px 0 20px 0; text-align: center; }
+									 h3 { font-size: 1em; line-height: 16px; word-spacing: -1px; color: #00addc; margin: -10px 0 20px 0; text-align: center; }
 									 .jobsReport { width: 100%; height: auto; float: left; margin-right: 1px; margin-bottom: 10px; overflow: hidden;
 												   .checkBox,.jobName,.runDate,.createdDate,.json { vertical-align: top; }
 												   .checkBox { background: #5bbd62; border-bottom: solid 1px #3a9e41; width: 10%; height: 40px; float: left; 
@@ -100,6 +107,28 @@
 																 .runDate { p { font-size: 0.75em; color: #333; margin: 5px 10px 0 10px; } } 
 																 .createdDate,.json { display: none; }
 												   }
+									 }
+									 .btnToolbar { width: auto; height: 40px; margin-bottom: 4px; clear: both;
+												   .btn { float: left; height: 26px; padding: 8px 15px 6px 15px; line-height: 22px; }
+									 }
+									 #searchWrap { background: #fff; width: auto; height: 50px; position: relative;
+												   input { position: absolute; width: auto; height: 50px; top: 0; right: 0; bottom: 0; left: 0; border: 1px solid #fff; margin: 0; padding: 0 10px; font-size: 1.25em; line-height: 26px; }
+												   .icon-search { position: absolute; z-index: 1; width: 30px; height: 30px; top: 10px; right: 10px; font-size: 1.875em; color: #5bbd62; }
+									 }
+									 #manageFormWrap { background: url('/Resources/Images/repeatWhite.png') repeat; width: auto; height: auto; position: relative; padding: 20px 0; overflow: hidden; margin-bottom: 4px;
+													   .formRowWrap { padding: 0 10px; width: auto; height: auto; overflow: hidden; 
+																	  &.columnThird { }
+																	  .editorLabel { color: #fff; position: relative; margin-bottom: 5px; }
+																	  .editorField { width: 100%; height: 40px; margin: 0 0 10px 0; position: relative;
+																					 &.checkBox { height: 20px; }
+																					 input { background: #fff; border: 1px solid #076d8c; font-size: 1em; color: #333; position: absolute; top: 0; right: 0; bottom: 0; left: 0; padding: 0 10px; margin: 0; }
+																	  }
+													   }
+									 }
+									 .btn { background: #ccc; width: auto; height: 40px; padding: 7px 15px; color: #fff; font-size: 1em; line-height: 16px; border: none; margin: 0; cursor: pointer; text-decoration: none;
+											&.submit { background: #5bbd62; 
+													   &:hover { background: #3a9e41; }
+											}
 									 }
 					   }
 			   }
@@ -174,6 +203,7 @@
 					   }
 					   .management { width: 90%; margin: 0 auto;
 									 h1 { font-size: 2em; line-height: 34px; word-spacing: -1px; color: #fff; margin: 0 0 20px 0; }
+									 h3 { font-size: 1em; line-height: 16px; word-spacing: -1px; color: #00addc; margin: -10px 0 20px 0; }
 									 .jobsReport { width: 100%; height: auto; float: left; margin-right: 1px; margin-bottom: 10px; overflow: hidden;
 												   .checkBox,.jobName,.runDate,.createdDate,.json { vertical-align: top; }
 												   .checkBox { background: #5bbd62; border-bottom: solid 1px #3a9e41; width: 10%; height: 40px; float: left; 
@@ -184,6 +214,28 @@
 																 .runDate { p { font-size: 0.75em; color: #333; margin: 5px 10px 0 10px; } } 
 																 .createdDate,.json { display: none; }
 												   }
+									 }
+									 .btnToolbar { width: auto; height: 40px; margin-bottom: 4px; clear: both;
+												   .btn { float: left; height: 26px; padding: 8px 15px 6px 15px; line-height: 22px; }
+									 }
+									 #searchWrap { background: #fff; width: 90%; padding: 0 20px; height: 50px; position: relative;
+												   input { position: absolute; width: auto; height: 50px; top: 0; right: 0; bottom: 0; left: 0; border: 1px solid #fff; margin: 0; padding: 0 10px; font-size: 1.25em; line-height: 26px; }
+												   .icon-search { position: absolute; z-index: 1; width: 30px; height: 30px; top: 10px; right: 10px; font-size: 1.875em; color: #5bbd62; }
+									 }
+									 #manageFormWrap { background: url('/Resources/Images/repeatWhite.png') repeat; width: 90%; height: auto; padding: 20px; overflow: hidden; margin-bottom: 4px;
+													   .formRowWrap { padding: 0; width: auto; height: auto; overflow: hidden; 
+																	  &.columnThird { width: 100%; float: left; }
+																	  .editorLabel { color: #fff; position: relative; margin-bottom: 5px; }
+																	  .editorField { width: 100%; height: 40px; margin: 0 0 10px 0; position: relative;
+																					 &.checkBox { height: 20px; }
+																					 input { background: #fff; border: 1px solid #076d8c; font-size: 1em; color: #333; position: absolute; top: 0; right: 0; bottom: 0; left: 0; padding: 0 10px; margin: 0; }
+																	  }
+													   }
+									 }
+									 .btn { background: #ccc; width: auto; height: 40px; padding: 7px 15px; color: #fff; font-size: 1em; line-height: 16px; border: none; margin: 0; cursor: pointer; text-decoration: none;
+											&.submit { background: #5bbd62; 
+													   &:hover { background: #3a9e41; }
+											}
 									 }
 					   }
 			   }
@@ -269,6 +321,7 @@
 					   }
 					   .management { width: 90%; float: left; margin-bottom: 20px;
 									 h1 { font-size: 2em; line-height: 34px; word-spacing: -1px; color: #fff; margin: 20px 0; }
+									 h3 { font-size: 1em; line-height: 16px; word-spacing: -1px; color: #00addc; margin: -10px 0 20px 0; }
 									 .jobsReport { width: 100%; height: auto; float: left; margin-right: 1px; margin-bottom: 10px; overflow: hidden;
 												   .checkBox,.jobName,.runDate,.createdDate,.json { vertical-align: top; }
 												   .checkBox { background: #5bbd62; border-bottom: solid 1px #3a9e41; width: 10%; height: 40px; float: left; 
@@ -279,6 +332,28 @@
 																 .runDate { p { font-size: 0.75em; color: #333; margin: 5px 10px 0 10px; } } 
 																 .createdDate,.json { display: none; }
 												   }
+									 }
+									 .btnToolbar { width: auto; height: 40px; margin-bottom: 4px; clear: both;
+												   .btn { float: left; height: 26px; padding: 8px 15px 6px 15px; line-height: 22px; }
+									 }
+									 #searchWrap { background: #fff; width: 80%; padding: 0 20px; height: 50px; position: relative;
+												   input { position: absolute; width: auto; height: 50px; top: 0; right: 0; bottom: 0; left: 0; border: 1px solid #fff; margin: 0; padding: 0 10px; font-size: 1.25em; line-height: 26px; }
+												   .icon-search { position: absolute; z-index: 1; width: 30px; height: 30px; top: 10px; right: 10px; font-size: 1.875em; color: #5bbd62; }
+									 }
+									 #manageFormWrap { background: url('/Resources/Images/repeatWhite.png') repeat; width: 80%; height: auto; padding: 20px; overflow: hidden; margin-bottom: 4px;
+													   .formRowWrap { padding: 0; width: auto; height: auto; overflow: hidden; 
+																	  &.columnThird { width: 25%; margin-right: 2%; float: left; }
+																	  .editorLabel { color: #fff; position: relative; margin-bottom: 5px; }
+																	  .editorField { width: 100%; height: 40px; margin: 0 0 10px 0; position: relative;
+																					 &.checkBox { height: 20px; }
+																					 input { background: #fff; border: 1px solid #076d8c; font-size: 1em; color: #333; position: absolute; top: 0; right: 0; bottom: 0; left: 0; padding: 0 10px; margin: 0; }
+																	  }
+													   }
+									 }
+									 .btn { background: #ccc; width: auto; height: 40px; padding: 7px 15px; color: #fff; font-size: 1em; line-height: 16px; border: none; margin: 0; cursor: pointer; text-decoration: none;
+											&.submit { background: #5bbd62; 
+													   &:hover { background: #3a9e41; }
+											}
 									 }
 					   }
 			   }
@@ -361,6 +436,7 @@
 					   }
 					   .management { width: 90%; float: left; 
 									 h1 { font-size: 2em; line-height: 34px; word-spacing: -1px; color: #fff; margin: 20px 0; }
+									 h3 { font-size: 1em; line-height: 16px; word-spacing: -1px; color: #00addc; margin: -10px 0 20px 0; }
 									 .jobsReport { width: 33%; height: auto; float: left; margin-right: 1px; margin-bottom: 5px; overflow: hidden;
 												   .checkBox,.jobName,.runDate,.createdDate,.json { vertical-align: top; }
 												   .checkBox { background: #5bbd62; border-bottom: solid 1px #3a9e41; width: 10%; height: 40px; float: left; 
@@ -371,6 +447,28 @@
 																 .runDate { p { font-size: 0.75em; color: #333; margin: 5px 10px 0 10px; } } 
 																 .createdDate,.json { display: none; }
 												   }
+									 }
+									 .btnToolbar { width: auto; height: 40px; margin-bottom: 4px; clear: both;
+												   .btn { float: left; height: 26px; padding: 8px 15px 6px 15px; line-height: 22px; }
+									 }
+									 #searchWrap { background: #fff; width: 80%; padding: 0 20px; height: 50px; position: relative;
+												   input { position: absolute; width: auto; height: 50px; top: 0; right: 0; bottom: 0; left: 0; border: 1px solid #fff; margin: 0; padding: 0 10px; font-size: 1.25em; line-height: 26px; }
+												   .icon-search { position: absolute; z-index: 1; width: 30px; height: 30px; top: 10px; right: 10px; font-size: 1.875em; color: #5bbd62; }
+									 }
+									 #manageFormWrap { background: url('/Resources/Images/repeatWhite.png') repeat; width: 80%; height: auto; padding: 20px; overflow: hidden; margin-bottom: 4px;
+													   .formRowWrap { padding: 0; width: auto; height: auto; overflow: hidden; 
+																	  &.columnThird { width: 20%; margin-right: 2%; float: left; }
+																	  .editorLabel { color: #fff; position: relative; margin-bottom: 5px; }
+																	  .editorField { width: 100%; height: 40px; margin: 0 0 10px 0; position: relative;
+																					 &.checkBox { height: 20px; }
+																					 input { background: #fff; border: 1px solid #076d8c; font-size: 1em; color: #333; position: absolute; top: 0; right: 0; bottom: 0; left: 0; padding: 0 10px; margin: 0; }
+																	  }
+													   }
+									 }
+									 .btn { background: #ccc; width: auto; height: 40px; padding: 7px 15px; color: #fff; font-size: 1em; line-height: 16px; border: none; margin: 0; cursor: pointer; text-decoration: none;
+											&.submit { background: #5bbd62; 
+													   &:hover { background: #3a9e41; }
+											}
 									 }
 					   }
 			   }
@@ -456,6 +554,7 @@
 					   }
 					   .management { width: auto; margin: 0 auto; 
 									 h1 { font-size: 2em; line-height: 34px; word-spacing: -1px; color: #076d8c; margin: 0 0 20px 0; }
+									 h3 { font-size: 1em; line-height: 16px; word-spacing: -1px; color: #00addc; margin: -10px 0 20px 0; }
 									 .jobsReport { width: 33.3%; height: auto; float: left; margin-bottom: 5px; overflow: hidden;
 												   .checkBox,.jobName,.runDate,.createdDate,.json { vertical-align: top; }
 												   .checkBox { background: #5bbd62; border-bottom: solid 1px #3a9e41; width: 10%; height: 40px; float: left; 
@@ -467,6 +566,28 @@
 																							   p { color: #333; font-size: 0.75em; margin: 0; padding: 5px 10px 5px 45px; }
 																 }
 												   }
+									 }
+									 .btnToolbar { width: auto; height: 40px; margin-bottom: 4px; clear: both;
+												   .btn { float: left; height: 26px; padding: 8px 15px 6px 15px; line-height: 22px; }
+									 }
+									 #searchWrap { background: #fff; width: 100%; height: 50px; position: relative;
+												   input { position: absolute; width: auto; height: 50px; top: 0; right: 0; bottom: 0; left: 0; border: 1px solid #4BC3E4; margin: 0; padding: 0 10px; font-size: 1.25em; line-height: 26px; }
+												   .icon-search { position: absolute; z-index: 1; width: 30px; height: 30px; top: 10px; right: 10px; font-size: 1.875em; color: #5bbd62; }
+									 }
+									 #manageFormWrap { background: url('/Resources/Images/repeatBlue.png') repeat; width: 100%; height: auto; overflow: hidden; padding: 20px 0;
+													   .formRowWrap { padding: 0 20px; width: auto; height: auto; overflow: hidden; 
+																	  &.columnThird { width: 20%; float: left; }
+																	  .editorLabel { color: #fff; position: relative; margin-bottom: 5px; }
+																	  .editorField { width: 100%; height: 40px; margin: 0 0 10px 0; position: relative;
+																					 &.checkBox { height: 20px; }
+																					 input { background: #fff; border: 1px solid #076d8c; font-size: 1em; color: #333; position: absolute; top: 0; right: 0; bottom: 0; left: 0; padding: 0 10px; margin: 0; }
+																	  }
+													   }
+									 }
+									 .btn { background: #ccc; width: auto; height: 40px; padding: 7px 15px; color: #fff; font-size: 1em; line-height: 16px; border: none; margin: 0; cursor: pointer; text-decoration: none;
+											&.submit { background: #5bbd62; 
+													   &:hover { background: #3a9e41; }
+											}
 									 }
 					   }
 			   }
@@ -553,6 +674,7 @@
 					   }
 					   .management { width: auto; margin: 0 auto; padding: 0 186px; 
 									 h1 { font-size: 2em; line-height: 34px; word-spacing: -1px; color: #076d8c; margin: 0 0 20px 0; }
+									 h3 { font-size: 1em; line-height: 16px; word-spacing: -1px; color: #00addc; margin: -10px 0 20px 0; }
 									 .jobsReport { width: 33.3%; height: auto; float: left; margin-bottom: 5px; overflow: hidden;
 												   .checkBox,.jobName,.runDate,.createdDate,.json { vertical-align: top; }
 												   .checkBox { background: #5bbd62; border-bottom: solid 1px #3a9e41; width: 10%; height: 40px; float: left; 
@@ -564,6 +686,28 @@
 																							   p { color: #333; font-size: 0.75em; margin: 0; padding: 5px 10px 5px 45px; }
 																 }
 												   }
+									 }
+									 .btnToolbar { width: auto; height: 40px; margin-bottom: 4px; clear: both;
+												   .btn { float: left; height: 26px; padding: 8px 15px 6px 15px; line-height: 22px; }
+									 }
+									 #searchWrap { background: #fff; width: 100%; height: 50px; position: relative;
+												   input { position: absolute; width: auto; height: 50px; top: 0; right: 0; bottom: 0; left: 0; border: 1px solid #4BC3E4; margin: 0; padding: 0 10px; font-size: 1.25em; line-height: 26px; }
+												   .icon-search { position: absolute; z-index: 1; width: 30px; height: 30px; top: 10px; right: 10px; font-size: 1.875em; color: #5bbd62; }
+									 }
+									 #manageFormWrap { background: url('/Resources/Images/repeatBlue.png') repeat; width: 100%; height: auto; overflow: hidden; padding: 20px 0; margin-bottom: 4px;
+													   .formRowWrap { padding: 0 20px; width: auto; height: auto; overflow: hidden; 
+																	  &.columnThird { width: 20%; float: left; }
+																	  .editorLabel { color: #fff; position: relative; margin-bottom: 5px; }
+																	  .editorField { width: 100%; height: 40px; margin: 0 0 10px 0; position: relative;
+																					 &.checkBox { height: 20px; }
+																					 input { background: #fff; border: 1px solid #076d8c; font-size: 1em; color: #333; position: absolute; top: 0; right: 0; bottom: 0; left: 0; padding: 0 10px; margin: 0; }
+																	  }
+													   }
+									 }
+									 .btn { background: #ccc; width: auto; height: 40px; padding: 7px 15px; color: #fff; font-size: 1em; line-height: 16px; border: none; margin: 0; cursor: pointer; text-decoration: none;
+											&.submit { background: #5bbd62; 
+													   &:hover { background: #3a9e41; }
+											}
 									 }
 					   }
 			   }
@@ -651,6 +795,7 @@
 					   }
 					   .management { width: 1280px; margin: 0 auto; 
 									 h1 { font-size: 2em; line-height: 34px; word-spacing: -1px; color: #076d8c; margin: 0 0 20px 0; }
+									 h3 { font-size: 1em; line-height: 16px; word-spacing: -1px; color: #00addc; margin: -10px 0 20px 0; }
 									 .jobsReport { width: 33.3%; height: auto; float: left; margin-bottom: 5px; overflow: hidden;
 												   .checkBox,.jobName,.runDate,.createdDate,.json { vertical-align: top; }
 												   .checkBox { background: #5bbd62; border-bottom: solid 1px #3a9e41; width: 10%; height: 40px; float: left; 
@@ -664,6 +809,23 @@
 												   }
 									 }
 									 .restaurant { background: url('/Resources/Images/repeatBlue.png') repeat; width: 220px; height: 220px; margin: 0 2px 2px 0; float: left; }
+									 .btnToolbar { width: auto; height: 40px; margin-bottom: 4px; clear: both;
+												   .btn { float: left; height: 26px; padding: 8px 15px 6px 15px; line-height: 22px; }
+									 }
+									 #searchWrap { background: #fff; width: 100%; height: 50px; position: relative;
+												   input { position: absolute; width: auto; height: 50px; top: 0; right: 0; bottom: 0; left: 0; border: 1px solid #4BC3E4; margin: 0; padding: 0 10px; font-size: 1.25em; line-height: 26px; }
+												   .icon-search { position: absolute; z-index: 1; width: 30px; height: 30px; top: 10px; right: 10px; font-size: 1.875em; color: #5bbd62; }
+									 }
+									 #manageFormWrap { background: url('/Resources/Images/repeatBlue.png') repeat; width: 100%; height: auto; overflow: hidden; padding: 20px 0; margin-bottom: 4px;
+													   .formRowWrap { padding: 0 20px; width: auto; height: auto; overflow: hidden; 
+																	  &.columnThird { width: 30%; float: left; }
+																	  .editorLabel { color: #fff; position: relative; margin-bottom: 5px; }
+																	  .editorField { width: 100%; height: 40px; margin: 0 0 10px 0; position: relative;
+																					 &.checkBox { height: 20px; }
+																					 input { background: #fff; border: 1px solid #076d8c; font-size: 1em; color: #333; position: absolute; top: 0; right: 0; bottom: 0; left: 0; padding: 0 10px; margin: 0; }
+																	  }
+													   }
+									 }
 					   }
 			   }
 	}

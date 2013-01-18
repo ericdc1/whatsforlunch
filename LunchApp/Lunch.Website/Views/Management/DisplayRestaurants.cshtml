@@ -4,27 +4,37 @@
     ViewBag.Title = "DisplayRestaurants";
 }
 
-<h2>Restaurants Import</h2>
+<div id="content" class="reports">
+    <div class="bgOne"></div>
+    <div class="mask"></div>
+    <div id="info">
+        <div class="management">
 
-@using (Html.BeginForm("SaveImports", "Management"))
-{
-    @Html.ValidationSummary(true)
+            <h1>Restaurant Import</h1>
+            <h3>Restaurants List</h3>
 
-    <fieldset>
-        <legend>Restaurants List</legend>
+            @using (Html.BeginForm("SaveImports", "Management"))
+            {
+                @Html.ValidationSummary(true)
             
-        <div>Search: <input id="searchbox" type="text" url="/Management/Search" /> Minimun 3 characters required for search</div>
+                <div id="searchWrap">
+                    <input id="searchbox" type="text" url="/Management/Search" placeholder="Minimun 3 characters required for search" />
+                    <i class="icon-search"></i>
+                </div>
         
-        <div id="results_container">
-            @Html.Partial("_ImportRestaurantsList", Model)
-        </div>    
+                <div id="manageFormWrap">
 
-        <p>
-            <input id="SaveImports" type="button" url="/Management/SaveImports" value="Save" class="btn btn-primary" />
-        </p>
+                    <div id="results_container">
+                        @Html.Partial("_ImportRestaurantsList", Model)
+                    </div>    
 
-    </fieldset>
-}
+                </div>
+                
+                <input id="SaveImports" type="button" url="/Management/SaveImports" value="Save" class="btn submit" />
+            }
+        </div>
+    </div>
+</div>
 
 <script type="text/javascript">
 

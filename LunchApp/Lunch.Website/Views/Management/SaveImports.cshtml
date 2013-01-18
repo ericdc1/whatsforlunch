@@ -4,9 +4,20 @@
     ViewBag.Title = "Save Imports";
 }
 
-<h2>Save Imports</h2>
+<div id="content" class="reports">
+    <div class="bgOne"></div>
+    <div class="mask"></div>
+    <div id="info">
+        <div class="management">
 
-@foreach (var restaurant in Model.Restaurants)
-{
-    <p>@restaurant.Name (@(restaurant.Selected ? "SELECTED" : "IGNORED"))</p>
-}
+            <h1>Management</h1>
+            <h3>Save Imports</h3>
+
+            @foreach (var restaurant in Model.Restaurants)
+            {
+                <p>@restaurant.Name (@(restaurant.Selected ? "SELECTED" : "IGNORED"))</p>
+            }
+
+        </div>
+    </div>
+</div>

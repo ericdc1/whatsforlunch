@@ -4,74 +4,81 @@
     ViewBag.Title = "Users";
 }
 
-<div id="content">
-        <div class="bgOne"></div>
+<div id="content" class="reports">
+    <div class="bgOne"></div>
     <div class="mask"></div>
-    
-<div id="info">
-    <h2>Users</h2>
+    <div id="info">
+        <div class="management">
 
-    <div class="btn-toolbar">
-        @Html.ActionLink("Create New", "Create", null, new {@class="btn btn-primary"})
+            <h1>Users</h1>
+
+            <div class="btnToolbar">
+                @Html.ActionLink("Create New", "Create", null, new {@class="btn submit"})
+            </div>
+
+            <div id="manageFormWrap">
+
+                <table class="table table-striped">
+                    <tr>
+                        <th>
+                            Admin
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.FullName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Email)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.SendMail1)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.SendMail2)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.SendMail3)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.SendMail4)
+                        </th>
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Administrator)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FullName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Email)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.SendMail1)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.SendMail2)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.SendMail3)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.SendMail4)
+                            </td>
+                            <td>
+                                <a href="@Url.Action("Edit", new { ID = item.Id })">Edit</a>
+                                <a href="@Url.Action("Delete", new { ID = item.Id })" role="button" data-toggle="modal">Delete</a>
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+
+            </div>
+
+        </div>
     </div>
-
-    <table class="table table-striped">
-        <tr>
-            <th>
-                Admin
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FullName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Email)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SendMail1)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SendMail2)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SendMail3)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SendMail4)
-            </th>
-            <th></th>
-        </tr>
-
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Administrator)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.FullName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Email)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.SendMail1)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.SendMail2)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.SendMail3)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.SendMail4)
-                </td>
-                <td>
-                    <a href="@Url.Action("Edit", new { ID = item.Id })">Edit</a>
-                    <a href="@Url.Action("Delete", new { ID = item.Id })" role="button" data-toggle="modal">Delete</a>
-                </td>
-            </tr>
-        }
-
-    </table>
 </div>
-    </div>

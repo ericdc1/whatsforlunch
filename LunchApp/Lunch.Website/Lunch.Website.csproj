@@ -197,15 +197,31 @@
     <Content Include="Content\slate.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <None Include="Resources\CSS\font-awesome.less" />
+    <Content Include="Resources\CSS\font-awesome.css">
+      <DependentUpon>font-awesome.less</DependentUpon>
+    </Content>
+    <Content Include="Resources\CSS\font-awesome.min.css">
+      <DependentUpon>font-awesome.less</DependentUpon>
+    </Content>
+    <Content Include="Resources\CSS\StyleSheet.css">
+      <DependentUpon>StyleSheet.less</DependentUpon>
+    </Content>
     <Content Include="Resources\CSS\StyleSheet.less" />
+    <Content Include="Resources\CSS\StyleSheet.min.css">
+      <DependentUpon>StyleSheet.less</DependentUpon>
+    </Content>
     <Content Include="Resources\CSS\StyleSheetNew.less" />
+    <Content Include="Resources\fonts\fontawesome-webfont.eot" />
+    <Content Include="Resources\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Resources\fonts\fontawesome-webfont.woff" />
+    <Content Include="Resources\fonts\FontAwesome.otf" />
     <None Include="Scripts\jquery-1.8.3.intellisense.js" />
     <Content Include="img\glyphicons-halflings-white.png" />
     <Content Include="img\glyphicons-halflings.png" />
-    <Content Include="Resources\CSS\StyleSheet.css" />
-    <Content Include="Resources\CSS\StyleSheet.min.css" />
     <Content Include="Resources\CSS\StyleSheetNew.css" />
     <Content Include="Resources\CSS\StyleSheetNew.min.css" />
+    <Content Include="Resources\fonts\fontawesome-webfont.svg" />
     <Content Include="Resources\Images\badges-32.png" />
     <Content Include="Resources\Images\BG-Burger.png" />
     <Content Include="Resources\Images\BG-Chicken.png" />

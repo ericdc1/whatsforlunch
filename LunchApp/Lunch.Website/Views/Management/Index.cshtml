@@ -13,59 +13,67 @@
     <div id="info">
         <div class="management">
 
-@using (Html.BeginForm()) {
-    @Html.ValidationSummary(true)
+            <h1>Management</h1>
+            <h3>Import Settings</h3>
 
-    <fieldset id="formdata">
-        <legend>Import Settings</legend>
+            @using (Html.BeginForm()) {
+                @Html.ValidationSummary(true)
+
+                <div id="manageFormWrap">
         
-        <div class="editor-label">
-            @Html.LabelFor(model => model.UseDefaults)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.UseDefaults)
-            @Html.ValidationMessageFor(model => model.UseDefaults)
-        </div>
+                    <div class="formRowWrap">
+                        <div class="editorLabel">
+                            @Html.LabelFor(model => model.UseDefaults)
+                        </div>
+                        <div class="editorField checkBox">
+                            @Html.EditorFor(model => model.UseDefaults)
+                            @Html.ValidationMessageFor(model => model.UseDefaults)
+                        </div>
+                    </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.PublisherKey)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.PublisherKey)
-            @Html.ValidationMessageFor(model => model.PublisherKey)
-        </div>
+                    <div class="formRowWrap">
+                        <div class="editorLabel">
+                            @Html.LabelFor(model => model.PublisherKey)
+                        </div>
+                        <div class="editorField">
+                            @Html.EditorFor(model => model.PublisherKey)
+                            @Html.ValidationMessageFor(model => model.PublisherKey)
+                        </div>
+                    </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Latitude)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Latitude)
-            @Html.ValidationMessageFor(model => model.Latitude)
-        </div>
+                    <div class="formRowWrap columnThird">
+                        <div class="editorLabel">
+                            @Html.LabelFor(model => model.Latitude)
+                        </div>
+                        <div class="editorField">
+                            @Html.EditorFor(model => model.Latitude)
+                            @Html.ValidationMessageFor(model => model.Latitude)
+                        </div>
+                    </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Longitude)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Longitude)
-            @Html.ValidationMessageFor(model => model.Longitude)
-        </div>
+                    <div class="formRowWrap columnThird">
+                        <div class="editorLabel">
+                            @Html.LabelFor(model => model.Longitude)
+                        </div>
+                        <div class="editorField">
+                            @Html.EditorFor(model => model.Longitude)
+                            @Html.ValidationMessageFor(model => model.Longitude)
+                        </div>
+                    </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Radius)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Radius)
-            @Html.ValidationMessageFor(model => model.Radius)
-        </div>
+                    <div class="formRowWrap columnThird">
+                        <div class="editorLabel">
+                            @Html.LabelFor(model => model.Radius)
+                        </div>
+                        <div class="editorField">
+                            @Html.EditorFor(model => model.Radius)
+                            @Html.ValidationMessageFor(model => model.Radius)
+                        </div>
+                    </div>
 
-    </fieldset>
-    
-    <hr/>
-    <p>
-        <input type="submit" value="Proceed" class="btn btn-primary" />
-    </p>
-}
+                </div>
+                <input type="submit" value="Proceed" class="btn submit" />
+            }
 
         </div>
     </div>

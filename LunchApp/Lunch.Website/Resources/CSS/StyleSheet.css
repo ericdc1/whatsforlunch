@@ -60,6 +60,25 @@
 #content #info .primary .listingWrap .listing {
   cursor: pointer;
 }
+.btn {
+  background: #ccc;
+  width: auto;
+  height: 40px;
+  padding: 7px 15px;
+  color: #fff;
+  font-size: 1em;
+  line-height: 16px;
+  border: none;
+  margin: 0;
+  cursor: pointer;
+  text-decoration: none;
+}
+.btn.submit {
+  background: #5bbd62;
+}
+.btn.submit:hover {
+  background: #3a9e41;
+}
 #secondaryContent #veto,
 #overrides,
 #badges {
@@ -323,6 +342,14 @@
     margin: 10px 0 20px 0;
     text-align: center;
   }
+  #content #info .management h3 {
+    font-size: 1em;
+    line-height: 16px;
+    word-spacing: -1px;
+    color: #00addc;
+    margin: -10px 0 20px 0;
+    text-align: center;
+  }
   #content #info .management .jobsReport {
     width: 100%;
     height: auto;
@@ -376,6 +403,109 @@
   #content #info .management .jobsReport .jobDetails .createdDate,
   #content #info .management .jobsReport .jobDetails .json {
     display: none;
+  }
+  #content #info .management .btnToolbar {
+    width: auto;
+    height: 40px;
+    margin-bottom: 4px;
+    clear: both;
+  }
+  #content #info .management .btnToolbar .btn {
+    float: left;
+    height: 26px;
+    padding: 8px 15px 6px 15px;
+    line-height: 22px;
+  }
+  #content #info .management #searchWrap {
+    background: #fff;
+    width: auto;
+    height: 50px;
+    position: relative;
+  }
+  #content #info .management #searchWrap input {
+    position: absolute;
+    width: auto;
+    height: 50px;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border: 1px solid #fff;
+    margin: 0;
+    padding: 0 10px;
+    font-size: 1.25em;
+    line-height: 26px;
+  }
+  #content #info .management #searchWrap .icon-search {
+    position: absolute;
+    z-index: 1;
+    width: 30px;
+    height: 30px;
+    top: 10px;
+    right: 10px;
+    font-size: 1.875em;
+    color: #5bbd62;
+  }
+  #content #info .management #manageFormWrap {
+    background: url('/Resources/Images/repeatWhite.png') repeat;
+    width: auto;
+    height: auto;
+    position: relative;
+    padding: 20px 0;
+    overflow: hidden;
+    margin-bottom: 4px;
+  }
+  #content #info .management #manageFormWrap .formRowWrap {
+    padding: 0 10px;
+    width: auto;
+    height: auto;
+    overflow: hidden;
+  }
+  #content #info .management #manageFormWrap .formRowWrap .editorLabel {
+    color: #fff;
+    position: relative;
+    margin-bottom: 5px;
+  }
+  #content #info .management #manageFormWrap .formRowWrap .editorField {
+    width: 100%;
+    height: 40px;
+    margin: 0 0 10px 0;
+    position: relative;
+  }
+  #content #info .management #manageFormWrap .formRowWrap .editorField.checkBox {
+    height: 20px;
+  }
+  #content #info .management #manageFormWrap .formRowWrap .editorField input {
+    background: #fff;
+    border: 1px solid #076d8c;
+    font-size: 1em;
+    color: #333;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 0 10px;
+    margin: 0;
+  }
+  #content #info .management .btn {
+    background: #ccc;
+    width: auto;
+    height: 40px;
+    padding: 7px 15px;
+    color: #fff;
+    font-size: 1em;
+    line-height: 16px;
+    border: none;
+    margin: 0;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  #content #info .management .btn.submit {
+    background: #5bbd62;
+  }
+  #content #info .management .btn.submit:hover {
+    background: #3a9e41;
   }
   #secondaryContent {
     position: fixed;
@@ -654,6 +784,13 @@
     color: #fff;
     margin: 0 0 20px 0;
   }
+  #content #info .management h3 {
+    font-size: 1em;
+    line-height: 16px;
+    word-spacing: -1px;
+    color: #00addc;
+    margin: -10px 0 20px 0;
+  }
   #content #info .management .jobsReport {
     width: 100%;
     height: auto;
@@ -707,6 +844,113 @@
   #content #info .management .jobsReport .jobDetails .createdDate,
   #content #info .management .jobsReport .jobDetails .json {
     display: none;
+  }
+  #content #info .management .btnToolbar {
+    width: auto;
+    height: 40px;
+    margin-bottom: 4px;
+    clear: both;
+  }
+  #content #info .management .btnToolbar .btn {
+    float: left;
+    height: 26px;
+    padding: 8px 15px 6px 15px;
+    line-height: 22px;
+  }
+  #content #info .management #searchWrap {
+    background: #fff;
+    width: 90%;
+    padding: 0 20px;
+    height: 50px;
+    position: relative;
+  }
+  #content #info .management #searchWrap input {
+    position: absolute;
+    width: auto;
+    height: 50px;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border: 1px solid #fff;
+    margin: 0;
+    padding: 0 10px;
+    font-size: 1.25em;
+    line-height: 26px;
+  }
+  #content #info .management #searchWrap .icon-search {
+    position: absolute;
+    z-index: 1;
+    width: 30px;
+    height: 30px;
+    top: 10px;
+    right: 10px;
+    font-size: 1.875em;
+    color: #5bbd62;
+  }
+  #content #info .management #manageFormWrap {
+    background: url('/Resources/Images/repeatWhite.png') repeat;
+    width: 90%;
+    height: auto;
+    padding: 20px;
+    overflow: hidden;
+    margin-bottom: 4px;
+  }
+  #content #info .management #manageFormWrap .formRowWrap {
+    padding: 0;
+    width: auto;
+    height: auto;
+    overflow: hidden;
+  }
+  #content #info .management #manageFormWrap .formRowWrap.columnThird {
+    width: 100%;
+    float: left;
+  }
+  #content #info .management #manageFormWrap .formRowWrap .editorLabel {
+    color: #fff;
+    position: relative;
+    margin-bottom: 5px;
+  }
+  #content #info .management #manageFormWrap .formRowWrap .editorField {
+    width: 100%;
+    height: 40px;
+    margin: 0 0 10px 0;
+    position: relative;
+  }
+  #content #info .management #manageFormWrap .formRowWrap .editorField.checkBox {
+    height: 20px;
+  }
+  #content #info .management #manageFormWrap .formRowWrap .editorField input {
+    background: #fff;
+    border: 1px solid #076d8c;
+    font-size: 1em;
+    color: #333;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 0 10px;
+    margin: 0;
+  }
+  #content #info .management .btn {
+    background: #ccc;
+    width: auto;
+    height: 40px;
+    padding: 7px 15px;
+    color: #fff;
+    font-size: 1em;
+    line-height: 16px;
+    border: none;
+    margin: 0;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  #content #info .management .btn.submit {
+    background: #5bbd62;
+  }
+  #content #info .management .btn.submit:hover {
+    background: #3a9e41;
   }
   #secondaryContent {
     position: fixed;
@@ -1053,6 +1297,13 @@
     color: #fff;
     margin: 20px 0;
   }
+  #content #info .management h3 {
+    font-size: 1em;
+    line-height: 16px;
+    word-spacing: -1px;
+    color: #00addc;
+    margin: -10px 0 20px 0;
+  }
   #content #info .management .jobsReport {
     width: 100%;
     height: auto;
@@ -1106,6 +1357,114 @@
   #content #info .management .jobsReport .jobDetails .createdDate,
   #content #info .management .jobsReport .jobDetails .json {
     display: none;
+  }
+  #content #info .management .btnToolbar {
+    width: auto;
+    height: 40px;
+    margin-bottom: 4px;
+    clear: both;
+  }
+  #content #info .management .btnToolbar .btn {
+    float: left;
+    height: 26px;
+    padding: 8px 15px 6px 15px;
+    line-height: 22px;
+  }
+  #content #info .management #searchWrap {
+    background: #fff;
+    width: 80%;
+    padding: 0 20px;
+    height: 50px;
+    position: relative;
+  }
+  #content #info .management #searchWrap input {
+    position: absolute;
+    width: auto;
+    height: 50px;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border: 1px solid #fff;
+    margin: 0;
+    padding: 0 10px;
+    font-size: 1.25em;
+    line-height: 26px;
+  }
+  #content #info .management #searchWrap .icon-search {
+    position: absolute;
+    z-index: 1;
+    width: 30px;
+    height: 30px;
+    top: 10px;
+    right: 10px;
+    font-size: 1.875em;
+    color: #5bbd62;
+  }
+  #content #info .management #manageFormWrap {
+    background: url('/Resources/Images/repeatWhite.png') repeat;
+    width: 80%;
+    height: auto;
+    padding: 20px;
+    overflow: hidden;
+    margin-bottom: 4px;
+  }
+  #content #info .management #manageFormWrap .formRowWrap {
+    padding: 0;
+    width: auto;
+    height: auto;
+    overflow: hidden;
+  }
+  #content #info .management #manageFormWrap .formRowWrap.columnThird {
+    width: 25%;
+    margin-right: 2%;
+    float: left;
+  }
+  #content #info .management #manageFormWrap .formRowWrap .editorLabel {
+    color: #fff;
+    position: relative;
+    margin-bottom: 5px;
+  }
+  #content #info .management #manageFormWrap .formRowWrap .editorField {
+    width: 100%;
+    height: 40px;
+    margin: 0 0 10px 0;
+    position: relative;
+  }
+  #content #info .management #manageFormWrap .formRowWrap .editorField.checkBox {
+    height: 20px;
+  }
+  #content #info .management #manageFormWrap .formRowWrap .editorField input {
+    background: #fff;
+    border: 1px solid #076d8c;
+    font-size: 1em;
+    color: #333;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 0 10px;
+    margin: 0;
+  }
+  #content #info .management .btn {
+    background: #ccc;
+    width: auto;
+    height: 40px;
+    padding: 7px 15px;
+    color: #fff;
+    font-size: 1em;
+    line-height: 16px;
+    border: none;
+    margin: 0;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  #content #info .management .btn.submit {
+    background: #5bbd62;
+  }
+  #content #info .management .btn.submit:hover {
+    background: #3a9e41;
   }
   #secondaryContent {
     position: absolute;
@@ -1446,6 +1805,13 @@
     color: #fff;
     margin: 20px 0;
   }
+  #content #info .management h3 {
+    font-size: 1em;
+    line-height: 16px;
+    word-spacing: -1px;
+    color: #00addc;
+    margin: -10px 0 20px 0;
+  }
   #content #info .management .jobsReport {
     width: 33%;
     height: auto;
@@ -1499,6 +1865,114 @@
   #content #info .management .jobsReport .jobDetails .createdDate,
   #content #info .management .jobsReport .jobDetails .json {
     display: none;
+  }
+  #content #info .management .btnToolbar {
+    width: auto;
+    height: 40px;
+    margin-bottom: 4px;
+    clear: both;
+  }
+  #content #info .management .btnToolbar .btn {
+    float: left;
+    height: 26px;
+    padding: 8px 15px 6px 15px;
+    line-height: 22px;
+  }
+  #content #info .management #searchWrap {
+    background: #fff;
+    width: 80%;
+    padding: 0 20px;
+    height: 50px;
+    position: relative;
+  }
+  #content #info .management #searchWrap input {
+    position: absolute;
+    width: auto;
+    height: 50px;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border: 1px solid #fff;
+    margin: 0;
+    padding: 0 10px;
+    font-size: 1.25em;
+    line-height: 26px;
+  }
+  #content #info .management #searchWrap .icon-search {
+    position: absolute;
+    z-index: 1;
+    width: 30px;
+    height: 30px;
+    top: 10px;
+    right: 10px;
+    font-size: 1.875em;
+    color: #5bbd62;
+  }
+  #content #info .management #manageFormWrap {
+    background: url('/Resources/Images/repeatWhite.png') repeat;
+    width: 80%;
+    height: auto;
+    padding: 20px;
+    overflow: hidden;
+    margin-bottom: 4px;
+  }
+  #content #info .management #manageFormWrap .formRowWrap {
+    padding: 0;
+    width: auto;
+    height: auto;
+    overflow: hidden;
+  }
+  #content #info .management #manageFormWrap .formRowWrap.columnThird {
+    width: 20%;
+    margin-right: 2%;
+    float: left;
+  }
+  #content #info .management #manageFormWrap .formRowWrap .editorLabel {
+    color: #fff;
+    position: relative;
+    margin-bottom: 5px;
+  }
+  #content #info .management #manageFormWrap .formRowWrap .editorField {
+    width: 100%;
+    height: 40px;
+    margin: 0 0 10px 0;
+    position: relative;
+  }
+  #content #info .management #manageFormWrap .formRowWrap .editorField.checkBox {
+    height: 20px;
+  }
+  #content #info .management #manageFormWrap .formRowWrap .editorField input {
+    background: #fff;
+    border: 1px solid #076d8c;
+    font-size: 1em;
+    color: #333;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 0 10px;
+    margin: 0;
+  }
+  #content #info .management .btn {
+    background: #ccc;
+    width: auto;
+    height: 40px;
+    padding: 7px 15px;
+    color: #fff;
+    font-size: 1em;
+    line-height: 16px;
+    border: none;
+    margin: 0;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  #content #info .management .btn.submit {
+    background: #5bbd62;
+  }
+  #content #info .management .btn.submit:hover {
+    background: #3a9e41;
   }
   #secondaryContent {
     position: fixed;
@@ -1843,6 +2317,13 @@
     color: #076d8c;
     margin: 0 0 20px 0;
   }
+  #content #info .management h3 {
+    font-size: 1em;
+    line-height: 16px;
+    word-spacing: -1px;
+    color: #00addc;
+    margin: -10px 0 20px 0;
+  }
   #content #info .management .jobsReport {
     width: 33.3%;
     height: auto;
@@ -1901,6 +2382,111 @@
     font-size: 0.75em;
     margin: 0;
     padding: 5px 10px 5px 45px;
+  }
+  #content #info .management .btnToolbar {
+    width: auto;
+    height: 40px;
+    margin-bottom: 4px;
+    clear: both;
+  }
+  #content #info .management .btnToolbar .btn {
+    float: left;
+    height: 26px;
+    padding: 8px 15px 6px 15px;
+    line-height: 22px;
+  }
+  #content #info .management #searchWrap {
+    background: #fff;
+    width: 100%;
+    height: 50px;
+    position: relative;
+  }
+  #content #info .management #searchWrap input {
+    position: absolute;
+    width: auto;
+    height: 50px;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border: 1px solid #4BC3E4;
+    margin: 0;
+    padding: 0 10px;
+    font-size: 1.25em;
+    line-height: 26px;
+  }
+  #content #info .management #searchWrap .icon-search {
+    position: absolute;
+    z-index: 1;
+    width: 30px;
+    height: 30px;
+    top: 10px;
+    right: 10px;
+    font-size: 1.875em;
+    color: #5bbd62;
+  }
+  #content #info .management #manageFormWrap {
+    background: url('/Resources/Images/repeatBlue.png') repeat;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    padding: 20px 0;
+  }
+  #content #info .management #manageFormWrap .formRowWrap {
+    padding: 0 20px;
+    width: auto;
+    height: auto;
+    overflow: hidden;
+  }
+  #content #info .management #manageFormWrap .formRowWrap.columnThird {
+    width: 20%;
+    float: left;
+  }
+  #content #info .management #manageFormWrap .formRowWrap .editorLabel {
+    color: #fff;
+    position: relative;
+    margin-bottom: 5px;
+  }
+  #content #info .management #manageFormWrap .formRowWrap .editorField {
+    width: 100%;
+    height: 40px;
+    margin: 0 0 10px 0;
+    position: relative;
+  }
+  #content #info .management #manageFormWrap .formRowWrap .editorField.checkBox {
+    height: 20px;
+  }
+  #content #info .management #manageFormWrap .formRowWrap .editorField input {
+    background: #fff;
+    border: 1px solid #076d8c;
+    font-size: 1em;
+    color: #333;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 0 10px;
+    margin: 0;
+  }
+  #content #info .management .btn {
+    background: #ccc;
+    width: auto;
+    height: 40px;
+    padding: 7px 15px;
+    color: #fff;
+    font-size: 1em;
+    line-height: 16px;
+    border: none;
+    margin: 0;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  #content #info .management .btn.submit {
+    background: #5bbd62;
+  }
+  #content #info .management .btn.submit:hover {
+    background: #3a9e41;
   }
   #secondaryContent {
     position: absolute;
@@ -2206,6 +2792,13 @@
     color: #076d8c;
     margin: 0 0 20px 0;
   }
+  #content #info .management h3 {
+    font-size: 1em;
+    line-height: 16px;
+    word-spacing: -1px;
+    color: #00addc;
+    margin: -10px 0 20px 0;
+  }
   #content #info .management .jobsReport {
     width: 33.3%;
     height: auto;
@@ -2264,6 +2857,112 @@
     font-size: 0.75em;
     margin: 0;
     padding: 5px 10px 5px 45px;
+  }
+  #content #info .management .btnToolbar {
+    width: auto;
+    height: 40px;
+    margin-bottom: 4px;
+    clear: both;
+  }
+  #content #info .management .btnToolbar .btn {
+    float: left;
+    height: 26px;
+    padding: 8px 15px 6px 15px;
+    line-height: 22px;
+  }
+  #content #info .management #searchWrap {
+    background: #fff;
+    width: 100%;
+    height: 50px;
+    position: relative;
+  }
+  #content #info .management #searchWrap input {
+    position: absolute;
+    width: auto;
+    height: 50px;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border: 1px solid #4BC3E4;
+    margin: 0;
+    padding: 0 10px;
+    font-size: 1.25em;
+    line-height: 26px;
+  }
+  #content #info .management #searchWrap .icon-search {
+    position: absolute;
+    z-index: 1;
+    width: 30px;
+    height: 30px;
+    top: 10px;
+    right: 10px;
+    font-size: 1.875em;
+    color: #5bbd62;
+  }
+  #content #info .management #manageFormWrap {
+    background: url('/Resources/Images/repeatBlue.png') repeat;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    padding: 20px 0;
+    margin-bottom: 4px;
+  }
+  #content #info .management #manageFormWrap .formRowWrap {
+    padding: 0 20px;
+    width: auto;
+    height: auto;
+    overflow: hidden;
+  }
+  #content #info .management #manageFormWrap .formRowWrap.columnThird {
+    width: 20%;
+    float: left;
+  }
+  #content #info .management #manageFormWrap .formRowWrap .editorLabel {
+    color: #fff;
+    position: relative;
+    margin-bottom: 5px;
+  }
+  #content #info .management #manageFormWrap .formRowWrap .editorField {
+    width: 100%;
+    height: 40px;
+    margin: 0 0 10px 0;
+    position: relative;
+  }
+  #content #info .management #manageFormWrap .formRowWrap .editorField.checkBox {
+    height: 20px;
+  }
+  #content #info .management #manageFormWrap .formRowWrap .editorField input {
+    background: #fff;
+    border: 1px solid #076d8c;
+    font-size: 1em;
+    color: #333;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 0 10px;
+    margin: 0;
+  }
+  #content #info .management .btn {
+    background: #ccc;
+    width: auto;
+    height: 40px;
+    padding: 7px 15px;
+    color: #fff;
+    font-size: 1em;
+    line-height: 16px;
+    border: none;
+    margin: 0;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  #content #info .management .btn.submit {
+    background: #5bbd62;
+  }
+  #content #info .management .btn.submit:hover {
+    background: #3a9e41;
   }
   #secondaryContent {
     position: relative;
@@ -2586,6 +3285,13 @@
     color: #076d8c;
     margin: 0 0 20px 0;
   }
+  #content #info .management h3 {
+    font-size: 1em;
+    line-height: 16px;
+    word-spacing: -1px;
+    color: #00addc;
+    margin: -10px 0 20px 0;
+  }
   #content #info .management .jobsReport {
     width: 33.3%;
     height: auto;
@@ -2651,6 +3357,93 @@
     height: 220px;
     margin: 0 2px 2px 0;
     float: left;
+  }
+  #content #info .management .btnToolbar {
+    width: auto;
+    height: 40px;
+    margin-bottom: 4px;
+    clear: both;
+  }
+  #content #info .management .btnToolbar .btn {
+    float: left;
+    height: 26px;
+    padding: 8px 15px 6px 15px;
+    line-height: 22px;
+  }
+  #content #info .management #searchWrap {
+    background: #fff;
+    width: 100%;
+    height: 50px;
+    position: relative;
+  }
+  #content #info .management #searchWrap input {
+    position: absolute;
+    width: auto;
+    height: 50px;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border: 1px solid #4BC3E4;
+    margin: 0;
+    padding: 0 10px;
+    font-size: 1.25em;
+    line-height: 26px;
+  }
+  #content #info .management #searchWrap .icon-search {
+    position: absolute;
+    z-index: 1;
+    width: 30px;
+    height: 30px;
+    top: 10px;
+    right: 10px;
+    font-size: 1.875em;
+    color: #5bbd62;
+  }
+  #content #info .management #manageFormWrap {
+    background: url('/Resources/Images/repeatBlue.png') repeat;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    padding: 20px 0;
+    margin-bottom: 4px;
+  }
+  #content #info .management #manageFormWrap .formRowWrap {
+    padding: 0 20px;
+    width: auto;
+    height: auto;
+    overflow: hidden;
+  }
+  #content #info .management #manageFormWrap .formRowWrap.columnThird {
+    width: 30%;
+    float: left;
+  }
+  #content #info .management #manageFormWrap .formRowWrap .editorLabel {
+    color: #fff;
+    position: relative;
+    margin-bottom: 5px;
+  }
+  #content #info .management #manageFormWrap .formRowWrap .editorField {
+    width: 100%;
+    height: 40px;
+    margin: 0 0 10px 0;
+    position: relative;
+  }
+  #content #info .management #manageFormWrap .formRowWrap .editorField.checkBox {
+    height: 20px;
+  }
+  #content #info .management #manageFormWrap .formRowWrap .editorField input {
+    background: #fff;
+    border: 1px solid #076d8c;
+    font-size: 1em;
+    color: #333;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 0 10px;
+    margin: 0;
   }
   #secondaryContent {
     width: 1280px;
