@@ -36,6 +36,13 @@
     <div id="veto" class=""><div class="vetoIcon"></div><div class="secondaryText">3</div></div>
     <div id="overrides" class="empty"><div class="overridesIcon"></div><div class="secondaryText">2</div></div>
     <div id="badges" class="new"><div class="badgesIcon"></div><div class="secondaryText">3</div></div>
+    <a href="@Url.Action("Manage", "Account")" id="myAccount"><i class="icon-cog"></i></a>
+    @if(Roles.IsUserInRole("Administrator"))
+    {
+        <a href="@Url.Action("Index", "Users")" id="users">
+            <i class="icon-user"></i>
+        </a>
+    }
 </div>
 
 <script>

@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Log On";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
 }
 
 <div id="content" class="reports">
@@ -37,9 +38,11 @@
                             </div>
                         </div>
 
-                        <div class="editorLabel">
-                            @Html.CheckBoxFor(m => m.RememberMe)
-                            @Html.LabelFor(m => m.RememberMe)
+                        <div class="formRowWrap">
+                            <div class="editorLabel">
+                                @Html.CheckBoxFor(m => m.RememberMe)
+                                @Html.LabelFor(m => m.RememberMe)
+                            </div>
                         </div>
 
                     </div>

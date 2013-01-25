@@ -32,7 +32,7 @@
 	   }
 }
 
-#secondaryContent #veto,#overrides,#badges { cursor: pointer; }
+#secondaryContent #veto,#overrides,#badges,#users,#myAccount { cursor: pointer; }
 
 
 /* SECONDARY CONTENT - BAGDES/VETOES/OVERRIDES */
@@ -122,6 +122,9 @@
 																	  .editorField { width: 100%; height: 40px; margin: 0 0 10px 0; position: relative;
 																					 &.checkBox { height: 20px; }
 																					 input { background: #fff; border: 1px solid #076d8c; font-size: 1em; color: #333; position: absolute; top: 0; right: 0; bottom: 0; left: 0; padding: 0 10px; margin: 0; }
+																	  }
+																	  .btn { background: #fff; display: block; width: auto; height: 20px; padding: 7px 15px; font-size: 1em; line-height: 16px; border: none; margin: 0 2px 12px 0; color: #229abb; float: left; 
+																			 &:hover { background: #fff; }
 																	  }
 													   }
 									 }
@@ -230,6 +233,9 @@
 																					 &.checkBox { height: 20px; }
 																					 input { background: #fff; border: 1px solid #076d8c; font-size: 1em; color: #333; position: absolute; top: 0; right: 0; bottom: 0; left: 0; padding: 0 10px; margin: 0; }
 																	  }
+																	  .btn { background: #fff; display: block; width: auto; height: 20px; padding: 7px 15px; font-size: 1em; line-height: 16px; border: none; margin: 0 2px 12px 0; color: #229abb; float: left; 
+																			 &:hover { background: #fff; }
+																	  }
 													   }
 									 }
 									 .btn { background: #ccc; width: auto; height: 40px; padding: 7px 15px; color: #fff; font-size: 1em; line-height: 16px; border: none; margin: 0; cursor: pointer; text-decoration: none;
@@ -242,15 +248,17 @@
 	}
 
 	#secondaryContent { position: fixed; bottom: 0; right: 0; width: auto;
-             #veto,#overrides,#badges { background: url('/Resources/Images/repeatBlue.png') repeat; width: 75px; height: 73px; overflow: hidden; border-top: 2px solid #229abb; float: left; 
-										&.new { background: #5bbd62; border-top: 2px solid #3a9e41;
-												.secondaryText { display: block; }
-												.vetoIcon { -moz-animation: iconVetoRoll 4s infinite; -webkit-animation: iconVetoRoll 4s infinite; }
-												.overridesIcon { -moz-animation: iconVetoRoll 4s infinite .5s; -webkit-animation: iconVetoRoll 4s infinite .5s; }
-												.badgesIcon { -moz-animation: iconVetoRoll 4s infinite 1s; -webkit-animation: iconVetoRoll 4s infinite 1s; }
-										}
-										&.empty { background: #ccc; border-top: 2px solid #888; }
-										.secondaryText { color: #fff; font-family: 'Lobster', cursive; font-size: 2em; line-height: 32px; text-align: center; display: none; margin-top: -112px; }
+             #veto,#overrides,#badges,#users,#myAccount { background: url('/Resources/Images/repeatBlue.png') repeat; width: 75px; height: 73px; overflow: hidden; border-top: 2px solid #229abb; float: left; text-decoration: none;
+														  &:hover { background: #229abb; }
+														  &.new { background: #5bbd62; border-top: 2px solid #3a9e41;
+																  &:hover { background: #3a9e41; }
+																  .secondaryText { display: block; }
+																  .vetoIcon { -moz-animation: iconVetoRoll 4s infinite; -webkit-animation: iconVetoRoll 4s infinite; }
+																  .overridesIcon { -moz-animation: iconVetoRoll 4s infinite .5s; -webkit-animation: iconVetoRoll 4s infinite .5s; }
+																  .badgesIcon { -moz-animation: iconVetoRoll 4s infinite 1s; -webkit-animation: iconVetoRoll 4s infinite 1s; }
+														  }
+														  &.empty { background: #ccc; border-top: 2px solid #888; cursor: default; }
+														  .secondaryText { color: #fff; font-family: 'Lobster', cursive; font-size: 2em; line-height: 32px; text-align: center; display: none; margin-top: -112px; }
 			}
 			#veto { margin-right: 2px;
 					.vetoIcon { background: url('/Resources/Images/veto-32.png') no-repeat; width: 32px; height: 32px; margin: 20px auto 0 auto; }
@@ -258,8 +266,14 @@
 			#overrides { margin-right: 2px;
 							.overridesIcon { background: url('/Resources/Images/overrides-32.png') no-repeat; width: 32px; height: 32px; margin: 20px auto 0 auto; }
 			}
-			#badges {
+			#badges { margin-right: 10px;
 						.badgesIcon { background: url('/Resources/Images/badges-32.png') no-repeat; width: 20px; height: 32px; margin: 20px auto 0 auto; }
+			}
+			#users { float: right; text-align: center; padding-top: 16px; height: 57px; margin-right: 2px;
+								 .icon-user { color: #fff; font-size: 40px; }
+			}
+			#myAccount { float: right; text-align: center; padding-top: 16px; height: 57px;
+							.icon-cog { color: #fff; font-size: 40px; }
 			}
 	}
 
@@ -348,6 +362,9 @@
 																					 &.checkBox { height: 20px; }
 																					 input { background: #fff; border: 1px solid #076d8c; font-size: 1em; color: #333; position: absolute; top: 0; right: 0; bottom: 0; left: 0; padding: 0 10px; margin: 0; }
 																	  }
+																	  .btn { background: #fff; display: block; width: auto; height: 20px; padding: 7px 15px; font-size: 1em; line-height: 16px; border: none; margin: 0 2px 12px 0; color: #229abb; float: left; 
+																			 &:hover { background: #fff; }
+																	  }
 													   }
 									 }
 									 .btn { background: #ccc; width: auto; height: 40px; padding: 7px 15px; color: #fff; font-size: 1em; line-height: 16px; border: none; margin: 0; cursor: pointer; text-decoration: none;
@@ -359,16 +376,18 @@
 			   }
 	}
 
-	#secondaryContent { position: absolute; right: 10px; bottom: 10px; width: 235px;
-			 #veto,#overrides,#badges { background: url('/Resources/Images/repeatBlue.png') repeat; width: 75px; height: 73px; overflow: hidden; border-top: 2px solid #229abb; float: left; 
-										&.new { background: #5bbd62; border-top: 2px solid #3a9e41;
-												.secondaryText { display: block; }
-												.vetoIcon { -moz-animation: iconVetoRoll 4s infinite; -webkit-animation: iconVetoRoll 4s infinite; }
-												.overridesIcon { -moz-animation: iconVetoRoll 4s infinite .5s; -webkit-animation: iconVetoRoll 4s infinite .5s; }
-												.badgesIcon { -moz-animation: iconVetoRoll 4s infinite 1s; -webkit-animation: iconVetoRoll 4s infinite 1s; }
-										}
-										&.empty { background: #ccc; border-top: 2px solid #888;  }
-										.secondaryText { color: #fff; font-family: 'Lobster', cursive; font-size: 2em; line-height: 32px; text-align: center; display: none; margin-top: -112px; }
+	#secondaryContent { position: absolute; right: 10px; bottom: 10px; width: 391px;
+			 #veto,#overrides,#badges,#users,#myAccount { background: url('/Resources/Images/repeatBlue.png') repeat; width: 75px; height: 73px; overflow: hidden; border-top: 2px solid #229abb; float: left; text-decoration: none;
+														  &:hover { background: #229abb; }
+														  &.new { background: #5bbd62; border-top: 2px solid #3a9e41;
+																  &:hover { background: #3a9e41; }
+																  .secondaryText { display: block; }
+																  .vetoIcon { -moz-animation: iconVetoRoll 4s infinite; -webkit-animation: iconVetoRoll 4s infinite; }
+																  .overridesIcon { -moz-animation: iconVetoRoll 4s infinite .5s; -webkit-animation: iconVetoRoll 4s infinite .5s; }
+																  .badgesIcon { -moz-animation: iconVetoRoll 4s infinite 1s; -webkit-animation: iconVetoRoll 4s infinite 1s; }
+														  }
+														  &.empty { background: #ccc; border-top: 2px solid #888;  }
+														  .secondaryText { color: #fff; font-family: 'Lobster', cursive; font-size: 2em; line-height: 32px; text-align: center; display: none; margin-top: -112px; }
 			}
 			#veto { margin-right: 2px;
 					.vetoIcon { background: url('/Resources/Images/veto-32.png') no-repeat; width: 32px; height: 32px; margin: 20px auto 0 auto; }
@@ -376,8 +395,14 @@
 			#overrides { margin-right: 2px;
 							.overridesIcon { background: url('/Resources/Images/overrides-32.png') no-repeat; width: 32px; height: 32px; margin: 20px auto 0 auto; }
 			}
-			#badges {
+			#badges { margin-right: 10px;
 						.badgesIcon { background: url('/Resources/Images/badges-32.png') no-repeat; width: 20px; height: 32px; margin: 20px auto 0 auto; }
+			}
+			#users { float: right; text-align: center; padding-top: 16px; height: 57px; margin-right: 2px;
+								 .icon-user { color: #fff; font-size: 40px; }
+			}
+			#myAccount { float: right; text-align: center; padding-top: 16px; height: 57px;
+							.icon-cog { color: #fff; font-size: 40px; }
 			}
 	}
 
@@ -463,6 +488,9 @@
 																					 &.checkBox { height: 20px; }
 																					 input { background: #fff; border: 1px solid #076d8c; font-size: 1em; color: #333; position: absolute; top: 0; right: 0; bottom: 0; left: 0; padding: 0 10px; margin: 0; }
 																	  }
+																	  .btn { background: #fff; display: block; width: auto; height: 20px; padding: 7px 15px; font-size: 1em; line-height: 16px; border: none; margin: 0 2px 12px 0; color: #229abb; float: left; 
+																			 &:hover { background: #fff; }
+																	  }
 													   }
 									 }
 									 .btn { background: #ccc; width: auto; height: 40px; padding: 7px 15px; color: #fff; font-size: 1em; line-height: 16px; border: none; margin: 0; cursor: pointer; text-decoration: none;
@@ -474,16 +502,18 @@
 			   }
 	}
 
-	#secondaryContent { position: fixed; right: 10px; bottom: 10px;
-					    #veto,#overrides,#badges { background: url('/Resources/Images/repeatBlue.png') repeat; width: 75px; height: 73px; overflow: hidden; border-top: 2px solid #229abb; float: left; 
-												   &.new { background: #5bbd62; border-top: 2px solid #3a9e41;
-														   .secondaryText { display: block; }
-														   .vetoIcon { -moz-animation: iconVetoRoll 4s infinite; -webkit-animation: iconVetoRoll 4s infinite; }
-														   .overridesIcon { -moz-animation: iconVetoRoll 4s infinite .5s; -webkit-animation: iconVetoRoll 4s infinite .5s; }
-														   .badgesIcon { -moz-animation: iconVetoRoll 4s infinite 1s; -webkit-animation: iconVetoRoll 4s infinite 1s; }
-												   }
-												   &.empty { background: #ccc; border-top: 2px solid #888;  }
-												   .secondaryText { color: #fff; font-family: 'Lobster', cursive; font-size: 2em; line-height: 32px; text-align: center; display: none; margin-top: -112px; }
+	#secondaryContent { position: fixed; right: 3%; bottom: 10px;
+					    #veto,#overrides,#badges,#users,#myAccount { background: url('/Resources/Images/repeatBlue.png') repeat; width: 75px; height: 73px; overflow: hidden; border-top: 2px solid #229abb; float: left; text-decoration: none;
+																	 &:hover { background: #229abb; }
+																	 &.new { background: #5bbd62; border-top: 2px solid #3a9e41;
+																			 &:hover { background: #3a9e41; }
+																			 .secondaryText { display: block; }
+																			 .vetoIcon { -moz-animation: iconVetoRoll 4s infinite; -webkit-animation: iconVetoRoll 4s infinite; }
+																			 .overridesIcon { -moz-animation: iconVetoRoll 4s infinite .5s; -webkit-animation: iconVetoRoll 4s infinite .5s; }
+																			 .badgesIcon { -moz-animation: iconVetoRoll 4s infinite 1s; -webkit-animation: iconVetoRoll 4s infinite 1s; }
+																	 }
+																	 &.empty { background: #ccc; border-top: 2px solid #888; cursor: default; }
+																	 .secondaryText { color: #fff; font-family: 'Lobster', cursive; font-size: 2em; line-height: 32px; text-align: center; display: none; margin-top: -112px; }
 						}
 						#veto { margin-right: 2px;
 								.vetoIcon { background: url('/Resources/Images/veto-32.png') no-repeat; width: 32px; height: 32px; margin: 20px auto 0 auto; }
@@ -491,8 +521,14 @@
 						#overrides { margin-right: 2px;
 									 .overridesIcon { background: url('/Resources/Images/overrides-32.png') no-repeat; width: 32px; height: 32px; margin: 20px auto 0 auto; }
 						}
-						#badges {
+						#badges { margin-right: 10px;
 								  .badgesIcon { background: url('/Resources/Images/badges-32.png') no-repeat; width: 20px; height: 32px; margin: 20px auto 0 auto; }
+						}
+						#users { float: right; text-align: center; padding-top: 16px; height: 57px; margin-right: 2px;
+								 .icon-user { color: #fff; font-size: 40px; }
+						}
+						#myAccount { float: right; text-align: center; padding-top: 16px; height: 57px;
+									 .icon-cog { color: #fff; font-size: 40px; }
 						}
 	}
 
@@ -582,6 +618,9 @@
 																					 &.checkBox { height: 20px; }
 																					 input { background: #fff; border: 1px solid #076d8c; font-size: 1em; color: #333; position: absolute; top: 0; right: 0; bottom: 0; left: 0; padding: 0 10px; margin: 0; }
 																	  }
+																	  .btn { background: #fff; display: block; width: auto; height: 20px; padding: 7px 15px; font-size: 1em; line-height: 16px; border: none; margin: 0 2px 12px 0; color: #229abb; float: left; 
+																			 &:hover { background: #fff; }
+																	  }
 													   }
 									 }
 									 .btn { background: #ccc; width: auto; height: 40px; padding: 7px 15px; color: #fff; font-size: 1em; line-height: 16px; border: none; margin: 0; cursor: pointer; text-decoration: none;
@@ -594,7 +633,7 @@
 	}
 
 	#secondaryContent { position: absolute; right: 10px; bottom: 10px;
-					    #veto,#overrides,#badges { background: url('/Resources/Images/repeatBlue.png') repeat; width: 75px; height: 73px; overflow: hidden; border-top: 2px solid #229abb; float: left; 
+					    #veto,#overrides,#badges,#users,#myAccount { background: url('/Resources/Images/repeatBlue.png') repeat; width: 75px; height: 73px; overflow: hidden; border-top: 2px solid #229abb; float: left; 
 												   &.new { background: #5bbd62; border-top: 2px solid #3a9e41;
 														   .secondaryText { display: block; }
 														   .vetoIcon { -moz-animation: iconVetoRoll 4s infinite; -webkit-animation: iconVetoRoll 4s infinite; }
@@ -612,6 +651,12 @@
 						}
 						#badges {
 								  .badgesIcon { background: url('/Resources/Images/badges-32.png') no-repeat; width: 20px; height: 32px; margin: 20px auto 0 auto; }
+						}
+						#users { float: right; text-align: center; padding-top: 16px; height: 57px; margin-right: 2px;
+								 .icon-user { color: #fff; font-size: 40px; }
+						}
+						#myAccount { float: right; text-align: center; padding-top: 16px; height: 57px;
+									 .icon-cog { color: #fff; font-size: 40px; }
 						}
 	}
 
@@ -702,6 +747,9 @@
 																					 &.checkBox { height: 20px; }
 																					 input { background: #fff; border: 1px solid #076d8c; font-size: 1em; color: #333; position: absolute; top: 0; right: 0; bottom: 0; left: 0; padding: 0 10px; margin: 0; }
 																	  }
+																	  .btn { background: #fff; display: block; width: auto; height: 20px; padding: 7px 15px; font-size: 1em; line-height: 16px; border: none; margin: 0 2px 12px 0; color: #229abb; float: left; 
+																			 &:hover { background: #fff; }
+																	  }
 													   }
 									 }
 									 .btn { background: #ccc; width: auto; height: 40px; padding: 7px 15px; color: #fff; font-size: 1em; line-height: 16px; border: none; margin: 0; cursor: pointer; text-decoration: none;
@@ -713,15 +761,17 @@
 			   }
 	}
 
-	#secondaryContent { position: relative; margin-top: -20px; margin-left: 186px;
-						#veto,#overrides,#badges { background: url('/Resources/Images/repeatBlue.png') repeat; width: 75px; height: 73px; overflow: hidden; border-top: 2px solid #229abb; float: left; 
+	#secondaryContent { position: relative; margin-top: -20px; margin-left: 186px; margin-right: 186px;
+						#veto,#overrides,#badges,#users,#myAccount { background: url('/Resources/Images/repeatBlue.png') repeat; width: 75px; height: 73px; overflow: hidden; border-top: 2px solid #229abb; float: left; text-decoration: none;
+												   &:hover { background: #229abb; }
 												   &.new { background: #5bbd62; border-top: 2px solid #3a9e41;
+														   &:hover { background: #3a9e41; }
 														   .secondaryText { display: block; }
 														   .vetoIcon { -moz-animation: iconVetoRoll 4s infinite; -webkit-animation: iconVetoRoll 4s infinite; }
 														   .overridesIcon { -moz-animation: iconVetoRoll 4s infinite .5s; -webkit-animation: iconVetoRoll 4s infinite .5s; }
 														   .badgesIcon { -moz-animation: iconVetoRoll 4s infinite 1s; -webkit-animation: iconVetoRoll 4s infinite 1s; }
 												   }
-												   &.empty { background: #ccc; border-top: 2px solid #888;  }
+												   &.empty { background: #ccc; border-top: 2px solid #888; cursor: default; }
 												   .secondaryText { color: #fff; font-family: 'Lobster', cursive; font-size: 2em; line-height: 32px; text-align: center; display: none; margin-top: -112px; }
 						}
 						#veto { margin-right: 2px;
@@ -732,6 +782,12 @@
 						}
 						#badges {
 								  .badgesIcon { background: url('/Resources/Images/badges-32.png') no-repeat; width: 20px; height: 32px; margin: 20px auto 0 auto; }
+						}
+						#users { float: right; text-align: center; padding-top: 16px; height: 57px; margin-right: 2px;
+								 .icon-user { color: #fff; font-size: 40px; }
+						}
+						#myAccount { float: right; text-align: center; padding-top: 16px; height: 57px;
+									 .icon-cog { color: #fff; font-size: 40px; }
 						}
 	}
 
@@ -824,6 +880,9 @@
 																					 &.checkBox { height: 20px; }
 																					 input { background: #fff; border: 1px solid #076d8c; font-size: 1em; color: #333; position: absolute; top: 0; right: 0; bottom: 0; left: 0; padding: 0 10px; margin: 0; }
 																	  }
+																	  .btn { background: #fff; display: block; width: auto; height: 20px; padding: 7px 15px; font-size: 1em; line-height: 16px; border: none; margin: 0 2px 12px 0; color: #229abb; float: left; 
+																			 &:hover { background: #fff; }
+																	  }
 													   }
 									 }
 					   }
@@ -831,15 +890,17 @@
 	}
 
 	#secondaryContent { width: 1280px; margin: 0 auto; margin-top: -20px;
-						#veto,#overrides,#badges { background: url('/Resources/Images/repeatBlue.png') repeat; width: 75px; height: 73px; overflow: hidden; border-top: 2px solid #229abb; float: left; 
-												   &.new { background: #5bbd62; border-top: 2px solid #3a9e41;
-														   .secondaryText { display: block; }
-														   .vetoIcon { -moz-animation: iconVetoRoll 4s infinite; -webkit-animation: iconVetoRoll 4s infinite; }
-														   .overridesIcon { -moz-animation: iconVetoRoll 4s infinite .5s; -webkit-animation: iconVetoRoll 4s infinite .5s; }
-														   .badgesIcon { -moz-animation: iconVetoRoll 4s infinite 1s; -webkit-animation: iconVetoRoll 4s infinite 1s; }
-												   }
-												   &.empty { background: #ccc; border-top: 2px solid #888;  }
-												   .secondaryText { color: #fff; font-family: 'Lobster', cursive; font-size: 2em; line-height: 32px; text-align: center; display: none; margin-top: -112px; }
+						#veto,#overrides,#badges,#users,#myAccount { background: url('/Resources/Images/repeatBlue.png') repeat; width: 75px; height: 73px; overflow: hidden; border-top: 2px solid #229abb; float: left; text-decoration: none;
+															  &:hover { background: #229abb; }
+															  &.new { background: #5bbd62; border-top: 2px solid #3a9e41;
+																	  &:hover { background: #3a9e41; }
+																	  .secondaryText { display: block; }
+																	  .vetoIcon { -moz-animation: iconVetoRoll 4s infinite; -webkit-animation: iconVetoRoll 4s infinite; }
+																	  .overridesIcon { -moz-animation: iconVetoRoll 4s infinite .5s; -webkit-animation: iconVetoRoll 4s infinite .5s; }
+																	  .badgesIcon { -moz-animation: iconVetoRoll 4s infinite 1s; -webkit-animation: iconVetoRoll 4s infinite 1s; }
+															  }
+															  &.empty { background: #ccc; border-top: 2px solid #888; cursor: default; }
+															  .secondaryText { color: #fff; font-family: 'Lobster', cursive; font-size: 2em; line-height: 32px; text-align: center; display: none; margin-top: -112px; }
 						}
 						#veto { margin-right: 2px;
 								.vetoIcon { background: url('/Resources/Images/veto-32.png') no-repeat; width: 32px; height: 32px; margin: 20px auto 0 auto; }
@@ -849,6 +910,12 @@
 						}
 						#badges {
 								  .badgesIcon { background: url('/Resources/Images/badges-32.png') no-repeat; width: 20px; height: 32px; margin: 20px auto 0 auto; }
+						}
+						#users { float: right; text-align: center; padding-top: 16px; height: 57px; margin-right: 2px;
+								 .icon-user { color: #fff; font-size: 40px; }
+						}
+						#myAccount { float: right; text-align: center; padding-top: 16px; height: 57px;
+									 .icon-cog { color: #fff; font-size: 40px; }
 						}
 	}
 

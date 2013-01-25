@@ -10,9 +10,7 @@
     <div id="info">
         <div class="management">
 
-            <h1 class="pull-left">Manage Account</h1>
-            @Html.ActionLink("Change Password", "ChangePassword", null, new {@class = "btn submit pull-right"})
-            @Html.ActionLink("Regenerate GUID", "RegenerateGuid", null, new {id = "regenerateGuid", @class = "btn submit pull-right", style = "margin-right:10px;"})
+            <h1>Manage Account</h1>
 
             @using (Html.BeginForm())
             {
@@ -33,6 +31,11 @@
                             @Html.EditorFor(model => model.FullName)
                             @Html.ValidationMessageFor(model => model.FullName)
                         </div>
+                    </div>
+
+                    <div class="formRowWrap">
+                        @Html.ActionLink("Change Password", "ChangePassword", null, new {@class = "btn submit"})
+                        @Html.ActionLink("Regenerate GUID", "RegenerateGuid", null, new {id = "regenerateGuid", @class = "btn submit"})
                     </div>
                     
                     <div class="formRowWrap">

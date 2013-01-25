@@ -300,6 +300,8 @@
     <Content Include="Views\Restaurants\GetTop.cshtml" />
     <Content Include="Views\Account\Manage.cshtml" />
     <Content Include="Views\Home\EmailTest.cshtml" />
+    <Content Include="Views\Shared\_LayoutLogin.cshtml" />
+    <Content Include="Views\Account\LogOn1.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

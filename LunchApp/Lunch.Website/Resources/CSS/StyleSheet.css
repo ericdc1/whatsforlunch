@@ -81,7 +81,9 @@
 }
 #secondaryContent #veto,
 #overrides,
-#badges {
+#badges,
+#users,
+#myAccount {
   cursor: pointer;
 }
 /* SECONDARY CONTENT - BAGDES/VETOES/OVERRIDES */
@@ -487,6 +489,22 @@
     left: 0;
     padding: 0 10px;
     margin: 0;
+  }
+  #content #info .management #manageFormWrap .formRowWrap .btn {
+    background: #fff;
+    display: block;
+    width: auto;
+    height: 20px;
+    padding: 7px 15px;
+    font-size: 1em;
+    line-height: 16px;
+    border: none;
+    margin: 0 2px 12px 0;
+    color: #229abb;
+    float: left;
+  }
+  #content #info .management #manageFormWrap .formRowWrap .btn:hover {
+    background: #fff;
   }
   #content #info .management .btn {
     background: #ccc;
@@ -933,6 +951,22 @@
     padding: 0 10px;
     margin: 0;
   }
+  #content #info .management #manageFormWrap .formRowWrap .btn {
+    background: #fff;
+    display: block;
+    width: auto;
+    height: 20px;
+    padding: 7px 15px;
+    font-size: 1em;
+    line-height: 16px;
+    border: none;
+    margin: 0 2px 12px 0;
+    color: #229abb;
+    float: left;
+  }
+  #content #info .management #manageFormWrap .formRowWrap .btn:hover {
+    background: #fff;
+  }
   #content #info .management .btn {
     background: #ccc;
     width: auto;
@@ -960,52 +994,84 @@
   }
   #secondaryContent #veto,
   #secondaryContent #overrides,
-  #secondaryContent #badges {
+  #secondaryContent #badges,
+  #secondaryContent #users,
+  #secondaryContent #myAccount {
     background: url('/Resources/Images/repeatBlue.png') repeat;
     width: 75px;
     height: 73px;
     overflow: hidden;
     border-top: 2px solid #229abb;
     float: left;
+    text-decoration: none;
+  }
+  #secondaryContent #veto:hover,
+  #secondaryContent #overrides:hover,
+  #secondaryContent #badges:hover,
+  #secondaryContent #users:hover,
+  #secondaryContent #myAccount:hover {
+    background: #229abb;
   }
   #secondaryContent #veto.new,
   #secondaryContent #overrides.new,
-  #secondaryContent #badges.new {
+  #secondaryContent #badges.new,
+  #secondaryContent #users.new,
+  #secondaryContent #myAccount.new {
     background: #5bbd62;
     border-top: 2px solid #3a9e41;
   }
+  #secondaryContent #veto.new:hover,
+  #secondaryContent #overrides.new:hover,
+  #secondaryContent #badges.new:hover,
+  #secondaryContent #users.new:hover,
+  #secondaryContent #myAccount.new:hover {
+    background: #3a9e41;
+  }
   #secondaryContent #veto.new .secondaryText,
   #secondaryContent #overrides.new .secondaryText,
-  #secondaryContent #badges.new .secondaryText {
+  #secondaryContent #badges.new .secondaryText,
+  #secondaryContent #users.new .secondaryText,
+  #secondaryContent #myAccount.new .secondaryText {
     display: block;
   }
   #secondaryContent #veto.new .vetoIcon,
   #secondaryContent #overrides.new .vetoIcon,
-  #secondaryContent #badges.new .vetoIcon {
+  #secondaryContent #badges.new .vetoIcon,
+  #secondaryContent #users.new .vetoIcon,
+  #secondaryContent #myAccount.new .vetoIcon {
     -moz-animation: iconVetoRoll 4s infinite;
     -webkit-animation: iconVetoRoll 4s infinite;
   }
   #secondaryContent #veto.new .overridesIcon,
   #secondaryContent #overrides.new .overridesIcon,
-  #secondaryContent #badges.new .overridesIcon {
+  #secondaryContent #badges.new .overridesIcon,
+  #secondaryContent #users.new .overridesIcon,
+  #secondaryContent #myAccount.new .overridesIcon {
     -moz-animation: iconVetoRoll 4s infinite .5s;
     -webkit-animation: iconVetoRoll 4s infinite .5s;
   }
   #secondaryContent #veto.new .badgesIcon,
   #secondaryContent #overrides.new .badgesIcon,
-  #secondaryContent #badges.new .badgesIcon {
+  #secondaryContent #badges.new .badgesIcon,
+  #secondaryContent #users.new .badgesIcon,
+  #secondaryContent #myAccount.new .badgesIcon {
     -moz-animation: iconVetoRoll 4s infinite 1s;
     -webkit-animation: iconVetoRoll 4s infinite 1s;
   }
   #secondaryContent #veto.empty,
   #secondaryContent #overrides.empty,
-  #secondaryContent #badges.empty {
+  #secondaryContent #badges.empty,
+  #secondaryContent #users.empty,
+  #secondaryContent #myAccount.empty {
     background: #ccc;
     border-top: 2px solid #888;
+    cursor: default;
   }
   #secondaryContent #veto .secondaryText,
   #secondaryContent #overrides .secondaryText,
-  #secondaryContent #badges .secondaryText {
+  #secondaryContent #badges .secondaryText,
+  #secondaryContent #users .secondaryText,
+  #secondaryContent #myAccount .secondaryText {
     color: #fff;
     font-family: 'Lobster', cursive;
     font-size: 2em;
@@ -1032,11 +1098,35 @@
     height: 32px;
     margin: 20px auto 0 auto;
   }
+  #secondaryContent #badges {
+    margin-right: 10px;
+  }
   #secondaryContent #badges .badgesIcon {
     background: url('/Resources/Images/badges-32.png') no-repeat;
     width: 20px;
     height: 32px;
     margin: 20px auto 0 auto;
+  }
+  #secondaryContent #users {
+    float: right;
+    text-align: center;
+    padding-top: 16px;
+    height: 57px;
+    margin-right: 2px;
+  }
+  #secondaryContent #users .icon-user {
+    color: #fff;
+    font-size: 40px;
+  }
+  #secondaryContent #myAccount {
+    float: right;
+    text-align: center;
+    padding-top: 16px;
+    height: 57px;
+  }
+  #secondaryContent #myAccount .icon-cog {
+    color: #fff;
+    font-size: 40px;
   }
 }
 @media only screen and (min-width: 800px) and (max-width: 959px) {
@@ -1447,6 +1537,22 @@
     padding: 0 10px;
     margin: 0;
   }
+  #content #info .management #manageFormWrap .formRowWrap .btn {
+    background: #fff;
+    display: block;
+    width: auto;
+    height: 20px;
+    padding: 7px 15px;
+    font-size: 1em;
+    line-height: 16px;
+    border: none;
+    margin: 0 2px 12px 0;
+    color: #229abb;
+    float: left;
+  }
+  #content #info .management #manageFormWrap .formRowWrap .btn:hover {
+    background: #fff;
+  }
   #content #info .management .btn {
     background: #ccc;
     width: auto;
@@ -1470,56 +1576,87 @@
     position: absolute;
     right: 10px;
     bottom: 10px;
-    width: 235px;
+    width: 391px;
   }
   #secondaryContent #veto,
   #secondaryContent #overrides,
-  #secondaryContent #badges {
+  #secondaryContent #badges,
+  #secondaryContent #users,
+  #secondaryContent #myAccount {
     background: url('/Resources/Images/repeatBlue.png') repeat;
     width: 75px;
     height: 73px;
     overflow: hidden;
     border-top: 2px solid #229abb;
     float: left;
+    text-decoration: none;
+  }
+  #secondaryContent #veto:hover,
+  #secondaryContent #overrides:hover,
+  #secondaryContent #badges:hover,
+  #secondaryContent #users:hover,
+  #secondaryContent #myAccount:hover {
+    background: #229abb;
   }
   #secondaryContent #veto.new,
   #secondaryContent #overrides.new,
-  #secondaryContent #badges.new {
+  #secondaryContent #badges.new,
+  #secondaryContent #users.new,
+  #secondaryContent #myAccount.new {
     background: #5bbd62;
     border-top: 2px solid #3a9e41;
   }
+  #secondaryContent #veto.new:hover,
+  #secondaryContent #overrides.new:hover,
+  #secondaryContent #badges.new:hover,
+  #secondaryContent #users.new:hover,
+  #secondaryContent #myAccount.new:hover {
+    background: #3a9e41;
+  }
   #secondaryContent #veto.new .secondaryText,
   #secondaryContent #overrides.new .secondaryText,
-  #secondaryContent #badges.new .secondaryText {
+  #secondaryContent #badges.new .secondaryText,
+  #secondaryContent #users.new .secondaryText,
+  #secondaryContent #myAccount.new .secondaryText {
     display: block;
   }
   #secondaryContent #veto.new .vetoIcon,
   #secondaryContent #overrides.new .vetoIcon,
-  #secondaryContent #badges.new .vetoIcon {
+  #secondaryContent #badges.new .vetoIcon,
+  #secondaryContent #users.new .vetoIcon,
+  #secondaryContent #myAccount.new .vetoIcon {
     -moz-animation: iconVetoRoll 4s infinite;
     -webkit-animation: iconVetoRoll 4s infinite;
   }
   #secondaryContent #veto.new .overridesIcon,
   #secondaryContent #overrides.new .overridesIcon,
-  #secondaryContent #badges.new .overridesIcon {
+  #secondaryContent #badges.new .overridesIcon,
+  #secondaryContent #users.new .overridesIcon,
+  #secondaryContent #myAccount.new .overridesIcon {
     -moz-animation: iconVetoRoll 4s infinite .5s;
     -webkit-animation: iconVetoRoll 4s infinite .5s;
   }
   #secondaryContent #veto.new .badgesIcon,
   #secondaryContent #overrides.new .badgesIcon,
-  #secondaryContent #badges.new .badgesIcon {
+  #secondaryContent #badges.new .badgesIcon,
+  #secondaryContent #users.new .badgesIcon,
+  #secondaryContent #myAccount.new .badgesIcon {
     -moz-animation: iconVetoRoll 4s infinite 1s;
     -webkit-animation: iconVetoRoll 4s infinite 1s;
   }
   #secondaryContent #veto.empty,
   #secondaryContent #overrides.empty,
-  #secondaryContent #badges.empty {
+  #secondaryContent #badges.empty,
+  #secondaryContent #users.empty,
+  #secondaryContent #myAccount.empty {
     background: #ccc;
     border-top: 2px solid #888;
   }
   #secondaryContent #veto .secondaryText,
   #secondaryContent #overrides .secondaryText,
-  #secondaryContent #badges .secondaryText {
+  #secondaryContent #badges .secondaryText,
+  #secondaryContent #users .secondaryText,
+  #secondaryContent #myAccount .secondaryText {
     color: #fff;
     font-family: 'Lobster', cursive;
     font-size: 2em;
@@ -1546,11 +1683,35 @@
     height: 32px;
     margin: 20px auto 0 auto;
   }
+  #secondaryContent #badges {
+    margin-right: 10px;
+  }
   #secondaryContent #badges .badgesIcon {
     background: url('/Resources/Images/badges-32.png') no-repeat;
     width: 20px;
     height: 32px;
     margin: 20px auto 0 auto;
+  }
+  #secondaryContent #users {
+    float: right;
+    text-align: center;
+    padding-top: 16px;
+    height: 57px;
+    margin-right: 2px;
+  }
+  #secondaryContent #users .icon-user {
+    color: #fff;
+    font-size: 40px;
+  }
+  #secondaryContent #myAccount {
+    float: right;
+    text-align: center;
+    padding-top: 16px;
+    height: 57px;
+  }
+  #secondaryContent #myAccount .icon-cog {
+    color: #fff;
+    font-size: 40px;
   }
 }
 @media only screen and (min-width: 960px) and (max-width: 1280px) {
@@ -1955,6 +2116,22 @@
     padding: 0 10px;
     margin: 0;
   }
+  #content #info .management #manageFormWrap .formRowWrap .btn {
+    background: #fff;
+    display: block;
+    width: auto;
+    height: 20px;
+    padding: 7px 15px;
+    font-size: 1em;
+    line-height: 16px;
+    border: none;
+    margin: 0 2px 12px 0;
+    color: #229abb;
+    float: left;
+  }
+  #content #info .management #manageFormWrap .formRowWrap .btn:hover {
+    background: #fff;
+  }
   #content #info .management .btn {
     background: #ccc;
     width: auto;
@@ -1976,57 +2153,89 @@
   }
   #secondaryContent {
     position: fixed;
-    right: 10px;
+    right: 3%;
     bottom: 10px;
   }
   #secondaryContent #veto,
   #secondaryContent #overrides,
-  #secondaryContent #badges {
+  #secondaryContent #badges,
+  #secondaryContent #users,
+  #secondaryContent #myAccount {
     background: url('/Resources/Images/repeatBlue.png') repeat;
     width: 75px;
     height: 73px;
     overflow: hidden;
     border-top: 2px solid #229abb;
     float: left;
+    text-decoration: none;
+  }
+  #secondaryContent #veto:hover,
+  #secondaryContent #overrides:hover,
+  #secondaryContent #badges:hover,
+  #secondaryContent #users:hover,
+  #secondaryContent #myAccount:hover {
+    background: #229abb;
   }
   #secondaryContent #veto.new,
   #secondaryContent #overrides.new,
-  #secondaryContent #badges.new {
+  #secondaryContent #badges.new,
+  #secondaryContent #users.new,
+  #secondaryContent #myAccount.new {
     background: #5bbd62;
     border-top: 2px solid #3a9e41;
   }
+  #secondaryContent #veto.new:hover,
+  #secondaryContent #overrides.new:hover,
+  #secondaryContent #badges.new:hover,
+  #secondaryContent #users.new:hover,
+  #secondaryContent #myAccount.new:hover {
+    background: #3a9e41;
+  }
   #secondaryContent #veto.new .secondaryText,
   #secondaryContent #overrides.new .secondaryText,
-  #secondaryContent #badges.new .secondaryText {
+  #secondaryContent #badges.new .secondaryText,
+  #secondaryContent #users.new .secondaryText,
+  #secondaryContent #myAccount.new .secondaryText {
     display: block;
   }
   #secondaryContent #veto.new .vetoIcon,
   #secondaryContent #overrides.new .vetoIcon,
-  #secondaryContent #badges.new .vetoIcon {
+  #secondaryContent #badges.new .vetoIcon,
+  #secondaryContent #users.new .vetoIcon,
+  #secondaryContent #myAccount.new .vetoIcon {
     -moz-animation: iconVetoRoll 4s infinite;
     -webkit-animation: iconVetoRoll 4s infinite;
   }
   #secondaryContent #veto.new .overridesIcon,
   #secondaryContent #overrides.new .overridesIcon,
-  #secondaryContent #badges.new .overridesIcon {
+  #secondaryContent #badges.new .overridesIcon,
+  #secondaryContent #users.new .overridesIcon,
+  #secondaryContent #myAccount.new .overridesIcon {
     -moz-animation: iconVetoRoll 4s infinite .5s;
     -webkit-animation: iconVetoRoll 4s infinite .5s;
   }
   #secondaryContent #veto.new .badgesIcon,
   #secondaryContent #overrides.new .badgesIcon,
-  #secondaryContent #badges.new .badgesIcon {
+  #secondaryContent #badges.new .badgesIcon,
+  #secondaryContent #users.new .badgesIcon,
+  #secondaryContent #myAccount.new .badgesIcon {
     -moz-animation: iconVetoRoll 4s infinite 1s;
     -webkit-animation: iconVetoRoll 4s infinite 1s;
   }
   #secondaryContent #veto.empty,
   #secondaryContent #overrides.empty,
-  #secondaryContent #badges.empty {
+  #secondaryContent #badges.empty,
+  #secondaryContent #users.empty,
+  #secondaryContent #myAccount.empty {
     background: #ccc;
     border-top: 2px solid #888;
+    cursor: default;
   }
   #secondaryContent #veto .secondaryText,
   #secondaryContent #overrides .secondaryText,
-  #secondaryContent #badges .secondaryText {
+  #secondaryContent #badges .secondaryText,
+  #secondaryContent #users .secondaryText,
+  #secondaryContent #myAccount .secondaryText {
     color: #fff;
     font-family: 'Lobster', cursive;
     font-size: 2em;
@@ -2053,11 +2262,35 @@
     height: 32px;
     margin: 20px auto 0 auto;
   }
+  #secondaryContent #badges {
+    margin-right: 10px;
+  }
   #secondaryContent #badges .badgesIcon {
     background: url('/Resources/Images/badges-32.png') no-repeat;
     width: 20px;
     height: 32px;
     margin: 20px auto 0 auto;
+  }
+  #secondaryContent #users {
+    float: right;
+    text-align: center;
+    padding-top: 16px;
+    height: 57px;
+    margin-right: 2px;
+  }
+  #secondaryContent #users .icon-user {
+    color: #fff;
+    font-size: 40px;
+  }
+  #secondaryContent #myAccount {
+    float: right;
+    text-align: center;
+    padding-top: 16px;
+    height: 57px;
+  }
+  #secondaryContent #myAccount .icon-cog {
+    color: #fff;
+    font-size: 40px;
   }
 }
 /* IPAD ONLY QUERY */
@@ -2469,6 +2702,22 @@
     padding: 0 10px;
     margin: 0;
   }
+  #content #info .management #manageFormWrap .formRowWrap .btn {
+    background: #fff;
+    display: block;
+    width: auto;
+    height: 20px;
+    padding: 7px 15px;
+    font-size: 1em;
+    line-height: 16px;
+    border: none;
+    margin: 0 2px 12px 0;
+    color: #229abb;
+    float: left;
+  }
+  #content #info .management #manageFormWrap .formRowWrap .btn:hover {
+    background: #fff;
+  }
   #content #info .management .btn {
     background: #ccc;
     width: auto;
@@ -2495,7 +2744,9 @@
   }
   #secondaryContent #veto,
   #secondaryContent #overrides,
-  #secondaryContent #badges {
+  #secondaryContent #badges,
+  #secondaryContent #users,
+  #secondaryContent #myAccount {
     background: url('/Resources/Images/repeatBlue.png') repeat;
     width: 75px;
     height: 73px;
@@ -2505,42 +2756,56 @@
   }
   #secondaryContent #veto.new,
   #secondaryContent #overrides.new,
-  #secondaryContent #badges.new {
+  #secondaryContent #badges.new,
+  #secondaryContent #users.new,
+  #secondaryContent #myAccount.new {
     background: #5bbd62;
     border-top: 2px solid #3a9e41;
   }
   #secondaryContent #veto.new .secondaryText,
   #secondaryContent #overrides.new .secondaryText,
-  #secondaryContent #badges.new .secondaryText {
+  #secondaryContent #badges.new .secondaryText,
+  #secondaryContent #users.new .secondaryText,
+  #secondaryContent #myAccount.new .secondaryText {
     display: block;
   }
   #secondaryContent #veto.new .vetoIcon,
   #secondaryContent #overrides.new .vetoIcon,
-  #secondaryContent #badges.new .vetoIcon {
+  #secondaryContent #badges.new .vetoIcon,
+  #secondaryContent #users.new .vetoIcon,
+  #secondaryContent #myAccount.new .vetoIcon {
     -moz-animation: iconVetoRoll 4s infinite;
     -webkit-animation: iconVetoRoll 4s infinite;
   }
   #secondaryContent #veto.new .overridesIcon,
   #secondaryContent #overrides.new .overridesIcon,
-  #secondaryContent #badges.new .overridesIcon {
+  #secondaryContent #badges.new .overridesIcon,
+  #secondaryContent #users.new .overridesIcon,
+  #secondaryContent #myAccount.new .overridesIcon {
     -moz-animation: iconVetoRoll 4s infinite .5s;
     -webkit-animation: iconVetoRoll 4s infinite .5s;
   }
   #secondaryContent #veto.new .badgesIcon,
   #secondaryContent #overrides.new .badgesIcon,
-  #secondaryContent #badges.new .badgesIcon {
+  #secondaryContent #badges.new .badgesIcon,
+  #secondaryContent #users.new .badgesIcon,
+  #secondaryContent #myAccount.new .badgesIcon {
     -moz-animation: iconVetoRoll 4s infinite 1s;
     -webkit-animation: iconVetoRoll 4s infinite 1s;
   }
   #secondaryContent #veto.empty,
   #secondaryContent #overrides.empty,
-  #secondaryContent #badges.empty {
+  #secondaryContent #badges.empty,
+  #secondaryContent #users.empty,
+  #secondaryContent #myAccount.empty {
     background: #ccc;
     border-top: 2px solid #888;
   }
   #secondaryContent #veto .secondaryText,
   #secondaryContent #overrides .secondaryText,
-  #secondaryContent #badges .secondaryText {
+  #secondaryContent #badges .secondaryText,
+  #secondaryContent #users .secondaryText,
+  #secondaryContent #myAccount .secondaryText {
     color: #fff;
     font-family: 'Lobster', cursive;
     font-size: 2em;
@@ -2572,6 +2837,27 @@
     width: 20px;
     height: 32px;
     margin: 20px auto 0 auto;
+  }
+  #secondaryContent #users {
+    float: right;
+    text-align: center;
+    padding-top: 16px;
+    height: 57px;
+    margin-right: 2px;
+  }
+  #secondaryContent #users .icon-user {
+    color: #fff;
+    font-size: 40px;
+  }
+  #secondaryContent #myAccount {
+    float: right;
+    text-align: center;
+    padding-top: 16px;
+    height: 57px;
+  }
+  #secondaryContent #myAccount .icon-cog {
+    color: #fff;
+    font-size: 40px;
   }
 }
 @media only screen and (min-width: 1281px) and (max-width: 1650px) {
@@ -2945,6 +3231,22 @@
     padding: 0 10px;
     margin: 0;
   }
+  #content #info .management #manageFormWrap .formRowWrap .btn {
+    background: #fff;
+    display: block;
+    width: auto;
+    height: 20px;
+    padding: 7px 15px;
+    font-size: 1em;
+    line-height: 16px;
+    border: none;
+    margin: 0 2px 12px 0;
+    color: #229abb;
+    float: left;
+  }
+  #content #info .management #manageFormWrap .formRowWrap .btn:hover {
+    background: #fff;
+  }
   #content #info .management .btn {
     background: #ccc;
     width: auto;
@@ -2968,55 +3270,88 @@
     position: relative;
     margin-top: -20px;
     margin-left: 186px;
+    margin-right: 186px;
   }
   #secondaryContent #veto,
   #secondaryContent #overrides,
-  #secondaryContent #badges {
+  #secondaryContent #badges,
+  #secondaryContent #users,
+  #secondaryContent #myAccount {
     background: url('/Resources/Images/repeatBlue.png') repeat;
     width: 75px;
     height: 73px;
     overflow: hidden;
     border-top: 2px solid #229abb;
     float: left;
+    text-decoration: none;
+  }
+  #secondaryContent #veto:hover,
+  #secondaryContent #overrides:hover,
+  #secondaryContent #badges:hover,
+  #secondaryContent #users:hover,
+  #secondaryContent #myAccount:hover {
+    background: #229abb;
   }
   #secondaryContent #veto.new,
   #secondaryContent #overrides.new,
-  #secondaryContent #badges.new {
+  #secondaryContent #badges.new,
+  #secondaryContent #users.new,
+  #secondaryContent #myAccount.new {
     background: #5bbd62;
     border-top: 2px solid #3a9e41;
   }
+  #secondaryContent #veto.new:hover,
+  #secondaryContent #overrides.new:hover,
+  #secondaryContent #badges.new:hover,
+  #secondaryContent #users.new:hover,
+  #secondaryContent #myAccount.new:hover {
+    background: #3a9e41;
+  }
   #secondaryContent #veto.new .secondaryText,
   #secondaryContent #overrides.new .secondaryText,
-  #secondaryContent #badges.new .secondaryText {
+  #secondaryContent #badges.new .secondaryText,
+  #secondaryContent #users.new .secondaryText,
+  #secondaryContent #myAccount.new .secondaryText {
     display: block;
   }
   #secondaryContent #veto.new .vetoIcon,
   #secondaryContent #overrides.new .vetoIcon,
-  #secondaryContent #badges.new .vetoIcon {
+  #secondaryContent #badges.new .vetoIcon,
+  #secondaryContent #users.new .vetoIcon,
+  #secondaryContent #myAccount.new .vetoIcon {
     -moz-animation: iconVetoRoll 4s infinite;
     -webkit-animation: iconVetoRoll 4s infinite;
   }
   #secondaryContent #veto.new .overridesIcon,
   #secondaryContent #overrides.new .overridesIcon,
-  #secondaryContent #badges.new .overridesIcon {
+  #secondaryContent #badges.new .overridesIcon,
+  #secondaryContent #users.new .overridesIcon,
+  #secondaryContent #myAccount.new .overridesIcon {
     -moz-animation: iconVetoRoll 4s infinite .5s;
     -webkit-animation: iconVetoRoll 4s infinite .5s;
   }
   #secondaryContent #veto.new .badgesIcon,
   #secondaryContent #overrides.new .badgesIcon,
-  #secondaryContent #badges.new .badgesIcon {
+  #secondaryContent #badges.new .badgesIcon,
+  #secondaryContent #users.new .badgesIcon,
+  #secondaryContent #myAccount.new .badgesIcon {
     -moz-animation: iconVetoRoll 4s infinite 1s;
     -webkit-animation: iconVetoRoll 4s infinite 1s;
   }
   #secondaryContent #veto.empty,
   #secondaryContent #overrides.empty,
-  #secondaryContent #badges.empty {
+  #secondaryContent #badges.empty,
+  #secondaryContent #users.empty,
+  #secondaryContent #myAccount.empty {
     background: #ccc;
     border-top: 2px solid #888;
+    cursor: default;
   }
   #secondaryContent #veto .secondaryText,
   #secondaryContent #overrides .secondaryText,
-  #secondaryContent #badges .secondaryText {
+  #secondaryContent #badges .secondaryText,
+  #secondaryContent #users .secondaryText,
+  #secondaryContent #myAccount .secondaryText {
     color: #fff;
     font-family: 'Lobster', cursive;
     font-size: 2em;
@@ -3048,6 +3383,27 @@
     width: 20px;
     height: 32px;
     margin: 20px auto 0 auto;
+  }
+  #secondaryContent #users {
+    float: right;
+    text-align: center;
+    padding-top: 16px;
+    height: 57px;
+    margin-right: 2px;
+  }
+  #secondaryContent #users .icon-user {
+    color: #fff;
+    font-size: 40px;
+  }
+  #secondaryContent #myAccount {
+    float: right;
+    text-align: center;
+    padding-top: 16px;
+    height: 57px;
+  }
+  #secondaryContent #myAccount .icon-cog {
+    color: #fff;
+    font-size: 40px;
   }
 }
 @media only screen and (min-width: 1651px) {
@@ -3445,6 +3801,22 @@
     padding: 0 10px;
     margin: 0;
   }
+  #content #info .management #manageFormWrap .formRowWrap .btn {
+    background: #fff;
+    display: block;
+    width: auto;
+    height: 20px;
+    padding: 7px 15px;
+    font-size: 1em;
+    line-height: 16px;
+    border: none;
+    margin: 0 2px 12px 0;
+    color: #229abb;
+    float: left;
+  }
+  #content #info .management #manageFormWrap .formRowWrap .btn:hover {
+    background: #fff;
+  }
   #secondaryContent {
     width: 1280px;
     margin: 0 auto;
@@ -3452,52 +3824,84 @@
   }
   #secondaryContent #veto,
   #secondaryContent #overrides,
-  #secondaryContent #badges {
+  #secondaryContent #badges,
+  #secondaryContent #users,
+  #secondaryContent #myAccount {
     background: url('/Resources/Images/repeatBlue.png') repeat;
     width: 75px;
     height: 73px;
     overflow: hidden;
     border-top: 2px solid #229abb;
     float: left;
+    text-decoration: none;
+  }
+  #secondaryContent #veto:hover,
+  #secondaryContent #overrides:hover,
+  #secondaryContent #badges:hover,
+  #secondaryContent #users:hover,
+  #secondaryContent #myAccount:hover {
+    background: #229abb;
   }
   #secondaryContent #veto.new,
   #secondaryContent #overrides.new,
-  #secondaryContent #badges.new {
+  #secondaryContent #badges.new,
+  #secondaryContent #users.new,
+  #secondaryContent #myAccount.new {
     background: #5bbd62;
     border-top: 2px solid #3a9e41;
   }
+  #secondaryContent #veto.new:hover,
+  #secondaryContent #overrides.new:hover,
+  #secondaryContent #badges.new:hover,
+  #secondaryContent #users.new:hover,
+  #secondaryContent #myAccount.new:hover {
+    background: #3a9e41;
+  }
   #secondaryContent #veto.new .secondaryText,
   #secondaryContent #overrides.new .secondaryText,
-  #secondaryContent #badges.new .secondaryText {
+  #secondaryContent #badges.new .secondaryText,
+  #secondaryContent #users.new .secondaryText,
+  #secondaryContent #myAccount.new .secondaryText {
     display: block;
   }
   #secondaryContent #veto.new .vetoIcon,
   #secondaryContent #overrides.new .vetoIcon,
-  #secondaryContent #badges.new .vetoIcon {
+  #secondaryContent #badges.new .vetoIcon,
+  #secondaryContent #users.new .vetoIcon,
+  #secondaryContent #myAccount.new .vetoIcon {
     -moz-animation: iconVetoRoll 4s infinite;
     -webkit-animation: iconVetoRoll 4s infinite;
   }
   #secondaryContent #veto.new .overridesIcon,
   #secondaryContent #overrides.new .overridesIcon,
-  #secondaryContent #badges.new .overridesIcon {
+  #secondaryContent #badges.new .overridesIcon,
+  #secondaryContent #users.new .overridesIcon,
+  #secondaryContent #myAccount.new .overridesIcon {
     -moz-animation: iconVetoRoll 4s infinite .5s;
     -webkit-animation: iconVetoRoll 4s infinite .5s;
   }
   #secondaryContent #veto.new .badgesIcon,
   #secondaryContent #overrides.new .badgesIcon,
-  #secondaryContent #badges.new .badgesIcon {
+  #secondaryContent #badges.new .badgesIcon,
+  #secondaryContent #users.new .badgesIcon,
+  #secondaryContent #myAccount.new .badgesIcon {
     -moz-animation: iconVetoRoll 4s infinite 1s;
     -webkit-animation: iconVetoRoll 4s infinite 1s;
   }
   #secondaryContent #veto.empty,
   #secondaryContent #overrides.empty,
-  #secondaryContent #badges.empty {
+  #secondaryContent #badges.empty,
+  #secondaryContent #users.empty,
+  #secondaryContent #myAccount.empty {
     background: #ccc;
     border-top: 2px solid #888;
+    cursor: default;
   }
   #secondaryContent #veto .secondaryText,
   #secondaryContent #overrides .secondaryText,
-  #secondaryContent #badges .secondaryText {
+  #secondaryContent #badges .secondaryText,
+  #secondaryContent #users .secondaryText,
+  #secondaryContent #myAccount .secondaryText {
     color: #fff;
     font-family: 'Lobster', cursive;
     font-size: 2em;
@@ -3529,6 +3933,27 @@
     width: 20px;
     height: 32px;
     margin: 20px auto 0 auto;
+  }
+  #secondaryContent #users {
+    float: right;
+    text-align: center;
+    padding-top: 16px;
+    height: 57px;
+    margin-right: 2px;
+  }
+  #secondaryContent #users .icon-user {
+    color: #fff;
+    font-size: 40px;
+  }
+  #secondaryContent #myAccount {
+    float: right;
+    text-align: center;
+    padding-top: 16px;
+    height: 57px;
+  }
+  #secondaryContent #myAccount .icon-cog {
+    color: #fff;
+    font-size: 40px;
   }
 }
 @-moz-keyframes iconVetoRoll {
