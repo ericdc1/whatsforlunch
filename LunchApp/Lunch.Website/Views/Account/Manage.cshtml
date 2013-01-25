@@ -12,6 +12,7 @@
 
             <h1 class="pull-left">Manage Account</h1>
             @Html.ActionLink("Change Password", "ChangePassword", null, new {@class = "btn submit pull-right"})
+            @Html.ActionLink("Regenerate GUID", "RegenerateGuid", null, new {id = "regenerateGuid", @class = "btn submit pull-right", style = "margin-right:10px;"})
 
             @using (Html.BeginForm())
             {
@@ -82,3 +83,21 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+
+    $('#regenerateGuid').click(function(event) {
+        event.preventDefault();
+
+        $.ajax({
+            url: $(this).attr('href'),
+            type: 'POST',
+            success: function(response) {
+                if(response == 'success') {
+                    alert('Guid Regenerated');
+                }
+            }
+        });
+    });
+
+</script>

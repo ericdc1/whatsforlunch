@@ -166,5 +166,14 @@ namespace Lunch.Website.Controllers
 
             return View(result);
         }
+
+        public JsonResult RegenerateGuid()
+        {
+            var result = _userLogic.Get(User.Identity.Name);
+
+            result.GUID = Guid.NewGuid();
+
+            return new JsonResult{Data = "success"};
+        }
     }
 }

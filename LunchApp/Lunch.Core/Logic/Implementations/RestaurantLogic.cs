@@ -11,25 +11,29 @@ namespace Lunch.Core.Logic.Implementations
     {
         private readonly IRestaurantRepository _restaurantRepository;
         private readonly IRestaurantRatingLogic _restaurantRatingLogic;
+        private readonly IVoteLogic _voteLogic;
 
-        public RestaurantLogic(IRestaurantRepository restaurantRepository, IRestaurantRatingLogic restaurantRatingLogic)
+        public RestaurantLogic(IRestaurantRepository restaurantRepository, IRestaurantRatingLogic restaurantRatingLogic, IVoteLogic voteLogic)
         {
             _restaurantRepository = restaurantRepository;
             _restaurantRatingLogic = restaurantRatingLogic;
+            _voteLogic = voteLogic;
         }
 
 
         public IEnumerable<Restaurant> GetTop(int count = 5)
         {
             var restaurants = _restaurantRepository.GetList(new {}).ToList();
+            var ratings = _restaurantRatingLogic.GetAll().ToList();
+            
+            // multiply each users ratings by their weight
 
-            var allRatings = _restaurantRatingLogic.GetAll().ToList();
 
+            // for each restaurant find the average
             foreach (var restaurant in restaurants)
             {
-                var i = restaurant;
-                var ratings = allRatings.Where(r => r.RestaurantId == i.Id).ToList();
-                restaurant.Rating = (double)ratings.Sum(r => r.Rating) / (double)ratings.Count();
+                var restaurantRatings = ratings.Where(r => r.RestaurantId == restaurant.Id).ToList();
+                restaurant.Rating = (double)restaurantRatings.Sum(r => r.Rating) / (double)restaurantRatings.Count();
             }
 
             return restaurants.Take(count);

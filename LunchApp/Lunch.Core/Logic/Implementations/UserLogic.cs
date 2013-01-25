@@ -38,8 +38,8 @@ namespace Lunch.Core.Logic.Implementations
         {
             var current = Get(entity.Id);
 
-            entity.GUID = current.GUID;
-
+            if (entity.GUID == Guid.Empty)
+                entity.GUID = current.GUID;
             if (String.IsNullOrWhiteSpace(entity.Email))
                 entity.Email = current.Email;
 

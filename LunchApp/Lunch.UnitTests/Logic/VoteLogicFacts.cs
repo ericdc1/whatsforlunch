@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Lunch.Core.Logic;
 using Lunch.Core.Logic.Implementations;
 using Lunch.Core.RepositoryInterfaces;
+using Xunit;
 using Moq;
 
 namespace Lunch.UnitTests.Logic
@@ -23,7 +24,7 @@ namespace Lunch.UnitTests.Logic
 
         public class SaveVote : VoteLogicFacts
         {
-            [Test]
+            [Fact]
             public void IfModelIsNullReturnsModelInstance()
             {
                 
