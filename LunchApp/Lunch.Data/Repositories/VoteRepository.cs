@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Data.Common;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Dapper;
 using Lunch.Core.Models;
 using Lunch.Core.RepositoryInterfaces;
@@ -27,8 +25,8 @@ namespace Lunch.Data.Repositories
             using (_connection = Utilities.GetProfiledOpenConnection())
             {
                 return _connection.Query("SELECT * FROM Votes " +
-                                         "WHERE UserID = @UserID AND " +
-                                         "DATEPART(mm, VoteDate) = DATEPART(mm, @VoteDate) " +
+                                         "WHERE UserID = @UserID " +
+                                         "AND DATEPART(mm, VoteDate) = DATEPART(mm, @VoteDate) " +
                                          "AND DATEPART(dd, VoteDate) = DATEPART(dd, @VoteDate) " +
                                          "AND DATEPART(yyyy, VoteDate) = DATEPART(yyyy, @VoteDate)", 
                                          new Vote { UserID = userID, VoteDate = date }).FirstOrDefault();
@@ -39,19 +37,28 @@ namespace Lunch.Data.Repositories
         {
             using (_connection = Utilities.GetProfiledOpenConnection())
             {
-                // return _connection.GetList<Vote>()
+                return _connection.GetList<Vote>(new {UserID = userID}).ToList();
             }
-            throw new NotImplementedException();
         }
 
         public IList<Vote> GetItemsByRestaurant(int restaurantID)
         {
-            throw new NotImplementedException();
+            using (_connection = Utilities.GetProfiledOpenConnection())
+            {
+                return _connection.GetList<Vote>(new { RestaurantID = restaurantID }).ToList();
+            }
         }
 
         public IList<Vote> GetItemsByRestaurant(int restaurantID, DateTime? date)
         {
-            throw new NotImplementedException();
+            using (_connection = Utilities.GetProfiledOpenConnection())
+            {
+                return _connection.Query<Vote>("SELECT * FROM Votes WHERE RestaurantID = @RestaurantID " +
+                                         "AND DATEPART(mm, VoteDate) = DATEPART(mm, @VoteDate) " +
+                                         "AND DATEPART(dd, VoteDate) = DATEPART(dd, @VoteDate) " +
+                                         "AND DATEPART(yyyy, VoteDate) = DATEPART(yyyy, @VoteDate)", 
+                                         new Vote {RestaurantID = restaurantID, VoteDate = date}).ToList();
+            }
         }
 
         public Vote SaveOrUpdate(Vote entity)
