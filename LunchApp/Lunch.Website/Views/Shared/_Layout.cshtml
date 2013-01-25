@@ -59,7 +59,18 @@
 
         <div id="nav">
             <div id="title"><div class="logo"></div></div>
-            <div id="navWrap">
+            <div id="navWrap" style="width:500px;">
+                @if(Roles.IsUserInRole("Administrator"))
+                {
+                    <a href="@Url.Action("Index", "Users")" class="button">
+                        <div class="text">users</div>
+                        <div class="">Users</div>
+                    </a>
+                }
+                <a href="@Url.Action("Manage", "Account")" class="button">
+                    <div class="text">my account</div>
+                    <div class="">My Account</div>
+                </a>
                 <div class="button active">
                     <div class="text">today</div>
                     <div class="lunchIcon"></div>

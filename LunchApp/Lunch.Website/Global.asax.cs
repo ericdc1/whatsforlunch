@@ -49,6 +49,8 @@ namespace Lunch.Website
             Mapper.CreateMap<ViewModels.UserCreate, User>();
             Mapper.CreateMap<User, ViewModels.UserEdit>();
             Mapper.CreateMap<ViewModels.UserEdit, User>();
+            Mapper.CreateMap<ViewModels.UserManage, User>();
+            Mapper.CreateMap<User, ViewModels.UserManage>();
         }
 
         private void Application_BeginRequest()

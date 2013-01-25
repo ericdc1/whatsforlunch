@@ -37,6 +37,14 @@ namespace Lunch.Data.Repositories
             }
         }
 
+        public User Get(string email)
+        {
+            using (_connection = Utilities.GetProfiledOpenConnection())
+            {
+                return _connection.GetList<User>(new { Email = email }).FirstOrDefault();
+            }
+        }
+
         public User Update(User entity)
         {
             using (_connection = Utilities.GetProfiledOpenConnection())

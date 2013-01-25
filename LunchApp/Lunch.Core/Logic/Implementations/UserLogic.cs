@@ -29,9 +29,19 @@ namespace Lunch.Core.Logic.Implementations
             return _userRepository.Get(guid);
         }
 
+        public User Get(string email)
+        {
+            return _userRepository.Get(email);
+        }
+
         public User Update(User entity)
         {
-            entity.GUID = Get(entity.Id).GUID;
+            var current = Get(entity.Id);
+
+            entity.GUID = current.GUID;
+
+            if (String.IsNullOrWhiteSpace(entity.Email))
+                entity.Email = current.Email;
 
             return _userRepository.Update(entity);
         }

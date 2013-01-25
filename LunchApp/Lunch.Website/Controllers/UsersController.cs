@@ -92,9 +92,17 @@ namespace Lunch.Website.Controllers
             return View(model);
         }
 
+        [HttpPost]
         public ActionResult Delete(int id)
         {
-            var rest = _userLogic.Delete(id);
+            var user = _userLogic.Get(id);
+
+            if (Roles.IsUserInRole(user.Email, LunchRoles.Administrator.ToString()))
+                Roles.RemoveUserFromRole(user.Email, LunchRoles.Administrator.ToString());
+            if (Roles.IsUserInRole(user.Email, LunchRoles.User.ToString()))
+                Roles.RemoveUserFromRole(user.Email, LunchRoles.User.ToString());
+            _webSecurityService.DeleteUserAndAccount(user.Email);
+
             return RedirectToAction("Index");
         }
     }

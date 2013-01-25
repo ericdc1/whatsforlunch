@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Web.Mvc;
 using System.Web.Routing;
+using AutoMapper;
+using Lunch.Core.Logic;
 using Lunch.Website.Services;
 using Lunch.Website.ViewModels;
 
@@ -8,13 +10,13 @@ namespace Lunch.Website.Controllers
 {
     public class AccountController : BaseController
     {
-        public IWebSecurityService WebSecurityService { get; set; }
+        private readonly IWebSecurityService _webSecurityService;
+        private readonly IUserLogic _userLogic;
 
-        protected override void Initialize(RequestContext requestContext)
+        public AccountController(IWebSecurityService webSecurityService, IUserLogic userLogic)
         {
-            if (WebSecurityService == null) { WebSecurityService = new WebSecurityService(); }
-
-            base.Initialize(requestContext);
+            _webSecurityService = webSecurityService;
+            _userLogic = userLogic;
         }
 
 
@@ -36,7 +38,7 @@ namespace Lunch.Website.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (WebSecurityService.Login(model.UserName, model.Password, model.RememberMe))
+                if (_webSecurityService.Login(model.UserName, model.Password, model.RememberMe))
                 {
                     if (Url.IsLocalUrl(returnUrl))
                     {
@@ -64,7 +66,7 @@ namespace Lunch.Website.Controllers
 
         public ActionResult LogOff()
         {
-            WebSecurityService.Logout();
+            _webSecurityService.Logout();
 
             return RedirectToAction("Index", "Home");
         }
@@ -114,7 +116,7 @@ namespace Lunch.Website.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (WebSecurityService.ChangePassword(User.Identity.Name, model.OldPassword, model.NewPassword))
+                if (_webSecurityService.ChangePassword(User.Identity.Name, model.OldPassword, model.NewPassword))
                 {
                     return RedirectToAction("ChangePasswordSuccess");
                 }
@@ -125,7 +127,7 @@ namespace Lunch.Website.Controllers
             }
 
             // If we got this far, something failed, redisplay form
-            ViewBag.PasswordLength = WebSecurityService.MinPasswordLength;
+            ViewBag.PasswordLength = _webSecurityService.MinPasswordLength;
             return View(model);
         }
 
@@ -139,5 +141,30 @@ namespace Lunch.Website.Controllers
             return View();
         }
 
+        public ActionResult Manage()
+        {
+            var result = Mapper.Map<Core.Models.User, UserManage>(_userLogic.Get(User.Identity.Name));
+
+            return View(result);
+        }
+
+        [HttpPost]
+        public ActionResult Manage(UserManage entity)
+        {
+            var result = new UserManage();
+
+            if (ModelState.IsValid)
+            {
+                result = Mapper.Map<Core.Models.User, UserManage>(_userLogic.Update(Mapper.Map<UserManage, Core.Models.User>(entity)));
+
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                ModelState.AddModelError("", "There was a problem updating your account.");
+            }
+
+            return View(result);
+        }
     }
 }

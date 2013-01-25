@@ -1,0 +1,84 @@
+﻿@model Lunch.Website.ViewModels.UserManage
+
+@{
+    ViewBag.Title = "Manage Account";
+}
+
+<div id="content" class="reports">
+    <div class="bgOne"></div>
+    <div class="mask"></div>
+    <div id="info">
+        <div class="management">
+
+            <h1 class="pull-left">Manage Account</h1>
+            @Html.ActionLink("Change Password", "ChangePassword", null, new {@class = "btn submit pull-right"})
+
+            @using (Html.BeginForm())
+            {
+                @Html.ValidationSummary(true)
+    
+                <div id="manageFormWrap">
+
+                    <div class="editorField">
+                        @Html.EditorFor(model => model.Id)
+                        @Html.ValidationMessageFor(model => model.Id)
+                    </div>
+
+                    <div class="formRowWrap">
+                        <div class="editorLabel">
+                            @Html.LabelFor(model => model.FullName)
+                        </div>
+                        <div class="editorField">
+                            @Html.EditorFor(model => model.FullName)
+                            @Html.ValidationMessageFor(model => model.FullName)
+                        </div>
+                    </div>
+                    
+                    <div class="formRowWrap">
+                        <div class="editorLabel">
+                            @Html.LabelFor(model => model.SendMail1)
+                        </div>
+                        <div class="editorField checkBox">
+                            @Html.EditorFor(model => model.SendMail1)
+                            @Html.ValidationMessageFor(model => model.SendMail1)
+                        </div>
+                    </div>
+
+                    <div class="formRowWrap">
+                        <div class="editorLabel">
+                            @Html.LabelFor(model => model.SendMail2)
+                        </div>
+                        <div class="editorField checkBox">
+                            @Html.EditorFor(model => model.SendMail2)
+                            @Html.ValidationMessageFor(model => model.SendMail2)
+                        </div>
+                    </div>
+
+                    <div class="formRowWrap">
+                        <div class="editorLabel">
+                            @Html.LabelFor(model => model.SendMail3)
+                        </div>
+                        <div class="editorField checkBox">
+                            @Html.EditorFor(model => model.SendMail3)
+                            @Html.ValidationMessageFor(model => model.SendMail3)
+                        </div>
+                    </div>
+
+                    <div class="formRowWrap">
+                        <div class="editorLabel">
+                            @Html.LabelFor(model => model.SendMail4)
+                        </div>
+                        <div class="editorField checkBox">
+                            @Html.EditorFor(model => model.SendMail4)
+                            @Html.ValidationMessageFor(model => model.SendMail4)
+                        </div>
+                    </div>
+
+                </div>
+                
+                <input type="submit" value="Save" class="btn submit" />
+            }
+            
+        </div>
+    </div>
+</div>
