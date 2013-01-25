@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Lunch.Core.Models;
 using Lunch.Core.RepositoryInterfaces;
 
@@ -8,11 +9,17 @@ namespace Lunch.Core.Logic.Implementations
     public class VoteLogic : IVoteLogic
     {
         private readonly IVoteRepository _voteRepository;
+        private readonly IRestaurantRepository _restaurantRepository;
+        private readonly IUserRepository _userRepository;
 
-        public VoteLogic(IVoteRepository voteRepository)
+        public VoteLogic(IVoteRepository voteRepository, IRestaurantRepository restaurantRepository, IUserRepository userRepository)
         {
-            if (voteRepository == null) throw new ArgumentNullException("voteRepository", "Value cannot be null.");
+            if (voteRepository == null) throw new ArgumentNullException("voteRepository");
+            if (restaurantRepository == null) throw new ArgumentNullException("restaurantRepository");
+            if (userRepository == null) throw new ArgumentNullException("userRepository");
             _voteRepository = voteRepository;
+            _restaurantRepository = restaurantRepository;
+            _userRepository = userRepository;
         }
 
         public Vote GetItem(int id)
@@ -37,6 +44,11 @@ namespace Lunch.Core.Logic.Implementations
         {
             return _voteRepository.GetItemsByRestaurant(restaurantID, date);        }
 
+        public IList<Vote> GetItemsByMonthAndYear(int month, int year)
+        {
+            return _voteRepository.GetItemsByMonthAndYear(month, year);
+        }
+
         public Vote SaveVote(Vote entity)
         {
             if (entity == null || entity.UserID == 0 || entity.RestaurantID == 0) return entity;
@@ -53,6 +65,44 @@ namespace Lunch.Core.Logic.Implementations
         {
             var entity = new Vote {RestaurantID = restaurantID, UserID = userID};
             return SaveVote(entity);
+        }
+
+        public IDictionary<int, int> GetRestaurantMonthlyVoteCount()
+        {
+            var results = new Dictionary<int, int>();
+            var restaurants = _restaurantRepository.GetList(null);
+            if (restaurants != null)
+            {
+                var votes = _voteRepository.GetItemsByMonthAndYear(DateTime.Now.Month, DateTime.Now.Year);
+                foreach (var restaurant in restaurants.ToList())
+                {
+                    var count = votes.Count(f => f.RestaurantID == restaurant.Id);
+                    if (!results.ContainsKey(restaurant.Id))
+                    {
+                        results.Add(restaurant.Id, count);
+                    }
+                }
+            }
+            return results;
+        }
+
+        public IDictionary<int, int> GetUserMonthlyVoteCount()
+        {
+            var results = new Dictionary<int, int>();
+            var users = _userRepository.GetList(null);
+            if (users != null)
+            {
+                var votes = _voteRepository.GetItemsByMonthAndYear(DateTime.Now.Month, DateTime.Now.Year);
+                foreach (var user in users.ToList())
+                {
+                    var count = votes.Count(f => f.UserID == user.Id);
+                    if (!results.ContainsKey(user.Id))
+                    {
+                        results.Add(user.Id, count);
+                    }
+                }
+            }
+            return results;
         }
     }
 }

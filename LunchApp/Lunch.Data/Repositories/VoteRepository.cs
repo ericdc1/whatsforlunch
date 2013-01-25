@@ -61,6 +61,17 @@ namespace Lunch.Data.Repositories
             }
         }
 
+        public IList<Vote> GetItemsByMonthAndYear(int month, int year)
+        {
+            using (_connection = Utilities.GetProfiledOpenConnection())
+            {
+                return _connection.Query<Vote>("SELECT * FROM Votes " +
+                                               "WHERE DATEPART(mm, VoteDate) = @Month " +
+                                               "AND DATEPART(yyyy, VoteDate) = @Year", 
+                                               new { Month = month, Year = year}).ToList();
+            }
+        }
+
         public Vote SaveOrUpdate(Vote entity)
         {
             using (_connection = Utilities.GetProfiledOpenConnection())
