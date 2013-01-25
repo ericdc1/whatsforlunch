@@ -12,10 +12,10 @@ namespace Lunch.Core.Models
         Restaurants = 1
     }
 
-    public class RestaurantType
+    public class RestaurantType : Template.RestaurantType
     {
-        public virtual int Id { get; set; }
-        public virtual string TypeName { get; set; }
+        public override int Id { get; set; }
+        public override string TypeName { get; set; }
         public virtual IList<Restaurant> Restaurants { get; set; }
     }
 }

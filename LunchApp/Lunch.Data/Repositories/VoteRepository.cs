@@ -20,7 +20,7 @@ namespace Lunch.Data.Repositories
             }
         }
 
-        public Vote GetItem(int userID, DateTime? date)
+        public Vote GetItem(int userID, DateTime date)
         {
             using (_connection = Utilities.GetProfiledOpenConnection())
             {
@@ -49,7 +49,7 @@ namespace Lunch.Data.Repositories
             }
         }
 
-        public IList<Vote> GetItemsByRestaurant(int restaurantID, DateTime? date)
+        public IList<Vote> GetItemsByRestaurant(int restaurantID, DateTime date)
         {
             using (_connection = Utilities.GetProfiledOpenConnection())
             {

@@ -14,14 +14,15 @@ namespace Lunch.Core.Models
         RestaurantHistories = 2
     }
 
-    public class Restaurant
+    public class Restaurant : Template.Restaurant
     {
         #region persisted
 
-        public int Id { get; set; }
-        public string RestaurantName { get; set; }
-        public int? PreferredDayOfWeek { get; set; }
-        public int? RestaurantTypeID { get; set; }
+        [Key]
+        public override int Id { get; set; }
+        public override string RestaurantName { get; set; }
+        public override int? PreferredDayOfWeek { get; set; }
+        public override int? RestaurantTypeID { get; set; }
 
         #endregion
 
