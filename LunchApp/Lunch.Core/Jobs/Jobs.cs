@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using Lunch.Core.Logic;
 using Lunch.Core.Models;
+using RazorEngine;
 using Xipton.Razor;
 
 namespace Lunch.Core.Jobs
@@ -28,7 +30,7 @@ namespace Lunch.Core.Jobs
             var peopletoreceivemail = _userLogic.GetList(new { SendMail1 = true });
             var todayschoices = _restaurantLogic.GenerateRestaurants().ToList();
             var fromaddress = System.Configuration.ConfigurationManager.AppSettings.Get("FromEmail");
-            var rm = new RazorMachine();
+            var messagemodel = new MailDetails();
 
             //send email to each person who is eligible
             foreach (var user in peopletoreceivemail)
@@ -38,9 +40,17 @@ namespace Lunch.Core.Jobs
                 //ITemplate template = rm.ExecuteContent(text, new { FirstName = "Eric", GUID = "wewewewqewqeq" },null,true);
                 var baseurl = System.Configuration.ConfigurationManager.AppSettings.Get("BaseURL");
                 var link = string.Format("{0}?GUID={1}", baseurl, user.GUID);
-                ITemplate template = rm.ExecuteUrl("~/_MailTemplates/Morning.cshtml", new MailDetails { User = user, Restaurants = todayschoices, Url = link }, null, true);
+                //ITemplate template = rm.ExecuteUrl("~/_MailTemplates/Morning.cshtml", new MailDetails { User = user, Restaurants = todayschoices, Url = link }, null, true);
+                var path = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
+                path = path.Replace("bin", "");
+                path = path + "Views\\_MailTemplates\\";
+                path = path.Replace("\\", "/");
+                path = path.Replace("file:/", "");
+                var template = System.IO.File.ReadAllText((path + "Morning.cshtml"));
 
-                Core.Jobs.Helpers.SendMail(user.Email, fromaddress, "What's for Lunch Message of the day", template.Result);
+                string result = Razor.Parse(template, messagemodel);
+                Helpers.SendMail("edehaan@hsc.wvu.edu", fromaddress, "What's for Lunch Message of the day2", result);
+
 
                 //add log
                 var entity = new JobLog() { JobID = id, Category = "MorningMessage", Message = string.Format("Morning message sent to {0}", user.FullName) };

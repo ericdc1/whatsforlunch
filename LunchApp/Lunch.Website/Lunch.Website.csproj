@@ -70,6 +70,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="RazorEngine">
+      <HintPath>..\packages\RazorEngine.3.2.0\lib\net40\RazorEngine.dll</HintPath>
+    </Reference>
     <Reference Include="StackExchange.Exceptional, Version=2012.10.8.52, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\StackExchange.Exceptional.1.0.52\lib\StackExchange.Exceptional.dll</HintPath>
@@ -216,6 +219,7 @@
     <Content Include="Resources\fonts\fontawesome-webfont.ttf" />
     <Content Include="Resources\fonts\fontawesome-webfont.woff" />
     <Content Include="Resources\fonts\FontAwesome.otf" />
+    <Content Include="Morning.cshtml" />
     <None Include="Scripts\jquery-1.8.3.intellisense.js" />
     <Content Include="img\glyphicons-halflings-white.png" />
     <Content Include="img\glyphicons-halflings.png" />
@@ -287,6 +291,9 @@
     <Content Include="Views\_MailTemplates\WhereGoing.cshtml" />
     <Content Include="Views\_MailTemplates\VotingOver.cshtml" />
     <Content Include="Views\Restaurants\GetTop.cshtml" />
+    <Content Include="Views\Home\EmailTest.cshtml" />
+    <Content Include="Views\_MailTemplates\View1.cshtml" />
+    <Content Include="Views\_MailTemplates\Copy of Morning.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
