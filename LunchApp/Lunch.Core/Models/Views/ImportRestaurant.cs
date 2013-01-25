@@ -27,7 +27,7 @@ namespace Lunch.Core.Models.Views
             var entity = new Restaurant
             {
                 RestaurantName = RestaurantName,
-                RestaurantTypeID = RestaurantTypeID,
+                RestaurantTypeId = RestaurantTypeId,
                 PreferredDayOfWeek = PreferredDayOfWeek
             };
             return entity;

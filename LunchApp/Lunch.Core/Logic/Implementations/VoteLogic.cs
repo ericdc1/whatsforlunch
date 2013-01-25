@@ -51,8 +51,8 @@ namespace Lunch.Core.Logic.Implementations
 
         public Vote SaveVote(Vote entity)
         {
-            if (entity == null || entity.UserID == 0 || entity.RestaurantID == 0) return entity;
-            var match = _voteRepository.GetItem(entity.UserID, DateTime.Now);
+            if (entity == null || entity.UserId == 0 || entity.RestaurantId == 0) return entity;
+            var match = _voteRepository.GetItem(entity.UserId, DateTime.Now);
             if (match == null)
             {
                 entity.VoteDate = DateTime.Now;
@@ -63,7 +63,7 @@ namespace Lunch.Core.Logic.Implementations
 
         public Vote SaveVote(int restaurantID, int userID)
         {
-            var entity = new Vote {RestaurantID = restaurantID, UserID = userID};
+            var entity = new Vote {RestaurantId = restaurantID, UserId = userID};
             return SaveVote(entity);
         }
 
@@ -76,7 +76,7 @@ namespace Lunch.Core.Logic.Implementations
                 var votes = _voteRepository.GetItemsByMonthAndYear(DateTime.Now.Month, DateTime.Now.Year);
                 foreach (var restaurant in restaurants.ToList())
                 {
-                    var count = votes.Count(f => f.RestaurantID == restaurant.Id);
+                    var count = votes.Count(f => f.RestaurantId == restaurant.Id);
                     if (!results.ContainsKey(restaurant.Id))
                     {
                         results.Add(restaurant.Id, count);
@@ -95,7 +95,7 @@ namespace Lunch.Core.Logic.Implementations
                 var votes = _voteRepository.GetItemsByMonthAndYear(DateTime.Now.Month, DateTime.Now.Year);
                 foreach (var user in users.ToList())
                 {
-                    var count = votes.Count(f => f.UserID == user.Id);
+                    var count = votes.Count(f => f.UserId == user.Id);
                     if (!results.ContainsKey(user.Id))
                     {
                         results.Add(user.Id, count);

@@ -49,7 +49,7 @@ namespace Lunch.Core.Jobs
                 {
                     //add log
                     var _jobLogLogic = ObjectFactory.GetInstance<IJobLogLogic>();
-                    var entity = new JobLog() { JobID = 0, Category = "System", Message = "Running recurring job" };
+                    var entity = new JobLog() { JobId = 0, Category = "System", Message = "Running recurring job" };
                     _jobLogLogic.SaveOrUpdate(entity);
 
                     var _jobLogic = ObjectFactory.GetInstance<IJobLogic>();
@@ -64,7 +64,7 @@ namespace Lunch.Core.Jobs
                     {
                         new Core.Jobs.Helpers().CreateJobs();
 
-                        entity = new JobLog() { JobID = 0, Category = "System", Message = "Creating Jobs" };
+                        entity = new JobLog() { JobId = 0, Category = "System", Message = "Creating Jobs" };
                         _jobLogLogic.SaveOrUpdate(entity);
                     }
 
@@ -81,7 +81,7 @@ namespace Lunch.Core.Jobs
 
                         entity = new JobLog()
                                      {
-                                         JobID = 0,
+                                         JobId = 0,
                                          Category = "System",
                                          Message = string.Format("Running Job {0}", job.MethodName)
                                      };
@@ -95,7 +95,7 @@ namespace Lunch.Core.Jobs
                 var _jobLogLogic = ObjectFactory.GetInstance<IJobLogLogic>();
                 var entity = new JobLog()
                 {
-                    JobID = 0,
+                    JobId = 0,
                     Category = "Error",
                     Message = string.Format("Error in job execution: {0}", ex.Message)
                 };

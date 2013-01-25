@@ -35,7 +35,7 @@ namespace Lunch.Core.Jobs
             foreach (var user in peopletoreceivemail)
             {
                 var baseurl = System.Configuration.ConfigurationManager.AppSettings.Get("BaseURL");
-                var link = string.Format("{0}?GUID={1}", baseurl, user.GUID);
+                var link = string.Format("{0}?GUID={1}", baseurl, user.Guid);
                 var path = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
                 var template = File.ReadAllText(new Uri(path + "/Views/_MailTemplates/Morning.cshtml").AbsolutePath);
                 var messagemodel = new MailDetails() {User = user, Restaurants = todayschoices, Url = link};
@@ -44,7 +44,7 @@ namespace Lunch.Core.Jobs
                 Helpers.SendMail("ecoffman@hsc.wvu.edu", fromaddress, "What's for Lunch Message of the day", result);
 
                 //add log
-                var entity = new JobLog() { JobID = id, Category = "MorningMessage", Message = string.Format("Morning message sent to {0}", user.FullName) };
+                var entity = new JobLog() { JobId = id, Category = "MorningMessage", Message = string.Format("Morning message sent to {0}", user.FullName) };
                 _jobLogLogic.SaveOrUpdate(entity);
             }
 
@@ -61,7 +61,7 @@ namespace Lunch.Core.Jobs
             foreach (var user in peopletoreceivemail)
             {
                 var baseurl = System.Configuration.ConfigurationManager.AppSettings.Get("BaseURL");
-                var link = string.Format("{0}?GUID={1}", baseurl, user.GUID);
+                var link = string.Format("{0}?GUID={1}", baseurl, user.Guid);
 
                 var path = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
                 var template = File.ReadAllText(new Uri(path + "/Views/_MailTemplates/Morning.cshtml").AbsolutePath);
@@ -70,7 +70,7 @@ namespace Lunch.Core.Jobs
                 Helpers.SendMail(user.Email, fromaddress, "What's for Lunch Voting Is Over", result);
 
                 //add log
-                var entity = new JobLog() { JobID = id, Category = "VotingIsOverMessage", Message = string.Format("Voting is over message sent to {0}", user.FullName) };
+                var entity = new JobLog() { JobId = id, Category = "VotingIsOverMessage", Message = string.Format("Voting is over message sent to {0}", user.FullName) };
                 _jobLogLogic.SaveOrUpdate(entity);
             }
 
@@ -88,7 +88,7 @@ namespace Lunch.Core.Jobs
             foreach (var user in peopletoreceivemail)
             {
                 var baseurl = System.Configuration.ConfigurationManager.AppSettings.Get("BaseURL");
-                var link = string.Format("{0}?GUID={1}", baseurl, user.GUID);
+                var link = string.Format("{0}?GUID={1}", baseurl, user.Guid);
 
                 var path = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
                 var template = File.ReadAllText(new Uri(path + "/Views/_MailTemplates/WhereGoing.cshtml").AbsolutePath);
@@ -97,7 +97,7 @@ namespace Lunch.Core.Jobs
                 Helpers.SendMail(user.Email, fromaddress, "What's for Lunch Message of the day", result);
 
                 //add log
-                var entity = new JobLog() { JobID = id, Category = "VotingIsOverMessage", Message = string.Format("Where are we going message sent to {0}", user.FullName) };
+                var entity = new JobLog() { JobId= id, Category = "VotingIsOverMessage", Message = string.Format("Where are we going message sent to {0}", user.FullName) };
                 _jobLogLogic.SaveOrUpdate(entity);
             }
 

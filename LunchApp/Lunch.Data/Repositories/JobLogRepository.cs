@@ -33,14 +33,14 @@ namespace Lunch.Data.Repositories
         {
             using (_connection = Utilities.GetProfiledOpenConnection())
             {
-                if (entity.Id > 0)
+                if (entity.JobLogId > 0)
                 {
-                    entity.Id = _connection.Update(entity);
+                    entity.JobLogId = _connection.Update(entity);
                 }
                 else
                 {
                     var insert = _connection.Insert(entity);
-                        entity.Id = (int)insert;
+                        entity.JobLogId = (int)insert;
                 }
                 return entity;
             }

@@ -14,17 +14,9 @@ namespace Lunch.Core.Models
         RestaurantHistories = 2
     }
 
-    public class Restaurant : Template.Restaurant
+    public class Restaurant : Database.Restaurant
     {
-        #region persisted
 
-        [Key]
-        public override int Id { get; set; }
-        public override string RestaurantName { get; set; }
-        public override int? PreferredDayOfWeek { get; set; }
-        public override int? RestaurantTypeID { get; set; }
-
-        #endregion
 
         #region relationships
 

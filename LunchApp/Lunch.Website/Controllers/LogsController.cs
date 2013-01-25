@@ -1,6 +1,8 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Web.Mvc;
 using Lunch.Core.Logic;
+using Lunch.Core.Models;
 using Lunch.Website.Services;
 
 namespace Lunch.Website.Controllers
@@ -17,8 +19,12 @@ namespace Lunch.Website.Controllers
 
         public ActionResult Index(int? categoryid)
         {
+
+            var newlog = new JobLog() {Category = "mycat", CreatedAt = DateTime.Now, JobId = 1, Message = "Created"};
+            _jobLogLogic.SaveOrUpdate(newlog);
+
             ViewBag.HasCategoryFilter = categoryid > 0;
-            var result = _jobLogLogic.GetAll().OrderByDescending(f=>f.Id).Take(250);
+            var result = _jobLogLogic.GetAll().OrderByDescending(f=>f.JobLogId).Take(250);
             return View(result);
         }
     }

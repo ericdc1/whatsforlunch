@@ -29,7 +29,7 @@ namespace Lunch.Data.Repositories
                                          "AND DATEPART(mm, VoteDate) = DATEPART(mm, @VoteDate) " +
                                          "AND DATEPART(dd, VoteDate) = DATEPART(dd, @VoteDate) " +
                                          "AND DATEPART(yyyy, VoteDate) = DATEPART(yyyy, @VoteDate)", 
-                                         new Vote { UserID = userID, VoteDate = date }).FirstOrDefault();
+                                         new Vote { UserId = userID, VoteDate = date }).FirstOrDefault();
             }
         }
 
@@ -57,7 +57,7 @@ namespace Lunch.Data.Repositories
                                          "AND DATEPART(mm, VoteDate) = DATEPART(mm, @VoteDate) " +
                                          "AND DATEPART(dd, VoteDate) = DATEPART(dd, @VoteDate) " +
                                          "AND DATEPART(yyyy, VoteDate) = DATEPART(yyyy, @VoteDate)", 
-                                         new Vote {RestaurantID = restaurantID, VoteDate = date}).ToList();
+                                         new Vote {RestaurantId = restaurantID, VoteDate = date}).ToList();
             }
         }
 

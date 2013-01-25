@@ -72,7 +72,7 @@ namespace Lunch.Core.Jobs
 
             //add log
             var _jobLogLogic = ObjectFactory.GetInstance<IJobLogLogic>();
-            var entity = new JobLog() { JobID = 0, Category = "System", Message = "Create where are we going is over mail job" };
+            var entity = new JobLog() { JobId = 0, Category = "System", Message = "Create where are we going is over mail job" };
             _jobLogLogic.SaveOrUpdate(entity);
         }
 
@@ -84,7 +84,7 @@ namespace Lunch.Core.Jobs
 
             //add log
             var _jobLogLogic = ObjectFactory.GetInstance<IJobLogLogic>();
-            var entity = new JobLog() { JobID = 0, Category = "System", Message = "Create voting is over mail job" };
+            var entity = new JobLog() { JobId = 0, Category = "System", Message = "Create voting is over mail job" };
             _jobLogLogic.SaveOrUpdate(entity);
         }
 
@@ -96,7 +96,7 @@ namespace Lunch.Core.Jobs
 
             //add log
             var _jobLogLogic = ObjectFactory.GetInstance<IJobLogLogic>();
-            var entity = new JobLog() { JobID = 0, Category = "System", Message = "Create morning mail job" };
+            var entity = new JobLog() { JobId = 0, Category = "System", Message = "Create morning mail job" };
             _jobLogLogic.SaveOrUpdate(entity);
         }
 
@@ -120,7 +120,7 @@ namespace Lunch.Core.Jobs
             {
                 //add log
                 var _jobLogLogic = ObjectFactory.GetInstance<IJobLogLogic>();
-                var entity = new JobLog() { JobID = 0, Category = "Error" , Message=string.Format("Running job {0} failed",methodname) };
+                var entity = new JobLog() { JobId = 0, Category = "Error" , Message=string.Format("Running job {0} failed",methodname) };
                 _jobLogLogic.SaveOrUpdate(entity);
             }
         }

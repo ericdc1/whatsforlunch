@@ -26,7 +26,7 @@ namespace Lunch.Core.Logic.Implementations
         }
         public JobLog SaveOrUpdate(JobLog entity)
         {
-            entity.LogDTM = DateTime.UtcNow;
+            entity.CreatedAt = DateTime.UtcNow;
             return _jobLogRepository.SaveOrUpdate(entity);
         }
 

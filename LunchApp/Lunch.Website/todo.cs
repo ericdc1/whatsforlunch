@@ -44,6 +44,8 @@
 //todo: make stats pages
 //top restaurants, etc
 
+//todo: messaging system for "saved"
+
 //todo: phonegap
 //todo: windows store app
 

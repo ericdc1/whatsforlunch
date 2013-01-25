@@ -18,6 +18,8 @@ namespace Lunch.Website.Controllers
 
         public ActionResult Index(int? categoryid)
         {
+
+
             ViewBag.HasCategoryFilter = categoryid > 0;
             var result = _jobLogic.GetAll().Take(50).OrderByDescending(f=>f.Id);
             return View(result);

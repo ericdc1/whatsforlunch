@@ -91,7 +91,7 @@
     <Compile Include="Logic\IVoteLogic.cs" />
     <Compile Include="Models\Holiday.cs" />
     <Compile Include="Models\RestaurantRating.cs" />
-    <Compile Include="Models\Template\ModelGenerator.cs">
+    <Compile Include="Models\Database\ModelGenerator.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelGenerator.tt</DependentUpon>
@@ -121,7 +121,7 @@
     <Compile Include="RepositoryInterfaces\IVoteRepository.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Models\Template\ModelGenerator.tt">
+    <None Include="Models\Database\ModelGenerator.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ModelGenerator.cs</LastGenOutput>
     </None>

@@ -171,7 +171,7 @@ namespace Lunch.Website.Controllers
         {
             var result = _userLogic.Get(User.Identity.Name);
 
-            result.GUID = Guid.NewGuid();
+            result.Guid = Guid.NewGuid();
 
             return new JsonResult{Data = "success"};
         }

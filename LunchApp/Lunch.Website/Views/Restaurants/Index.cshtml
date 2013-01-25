@@ -27,7 +27,11 @@
         <div class="restaurant">
             @Html.DisplayFor(modelItem => item.RestaurantName)
             @Html.DisplayFor(modelItem => item.PreferredDayOfWeek)
-            @Html.ActionLink(item.TypeName, "index", new { categoryid = item.RestaurantTypeId })
+            @if (item.RestaurantTypeId != null)
+            {
+                Html.ActionLink(item.TypeName, "index", new {categoryid = item.RestaurantTypeId});
+            }
+               
             <br />
             <a href="@Url.Action("Edit", new { ID = item.Id })"><i class="icon-pencil"></i></a>
             <a href="@Url.Action("Delete", new { ID = item.Id })" role="button" data-toggle="modal"><i class="icon-remove"></i></a>

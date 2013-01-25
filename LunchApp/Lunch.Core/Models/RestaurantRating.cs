@@ -4,17 +4,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Lunch.Core.Models
 {
     [Table("RestaurantRatings")]
-    public class RestaurantRating
+    public class RestaurantRating : Database.RestaurantRating
     {
-        #region DatabaseFields
-
-        [Key]
-        public int Id { get; set; }
-        public int UserId { get; set; }
-        public int RestaurantId { get; set; }
-        public int Rating { get; set; }
-
-        #endregion
 
         #region AdditionalFields
 

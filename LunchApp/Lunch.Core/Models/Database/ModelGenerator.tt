@@ -32,7 +32,7 @@ It is based on the T4 template from the PetaPoco project which in turn is based 
 	// Settings
     ConnectionStringName = "AzureSQL"; // Uses last connection string in config if not specified
 	ConfigPath = @"..\..\..\Lunch.Website\web.config"; //Looks in current project by default. This overrides to a relative path.
-    Namespace = "Lunch.Core.Models.Template";
+    Namespace = "Lunch.Core.Models.Database";
 	ClassPrefix = "";
 	ClassSuffix = "";
     IncludeViews = true;
@@ -64,7 +64,7 @@ foreach(Table tbl in from t in tables where !t.Ignore select t){
     /// A class which represents the <#=tbl.Name#> <#=(tbl.IsView)?"view":"table"#>.
     /// </summary>
 	[Table("<#=tbl.Name#>")]
-	public partial class <#=tbl.ClassName#>
+	public abstract class <#=tbl.ClassName#>
 	{
 <#foreach(Column col in from c in tbl.Columns where !c.Ignore select c)
 {#>

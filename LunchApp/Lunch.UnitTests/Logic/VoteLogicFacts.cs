@@ -38,7 +38,7 @@ namespace Lunch.UnitTests.Logic
             [Fact]
             public void IfModelUserIDIs0ReturnsModel()
             {
-                var model = new Vote() {UserID = 0, RestaurantID = 1};
+                var model = new Vote() {UserId = 0, RestaurantId = 1};
 
                 var result = _voteLogic.SaveVote(model);
 
@@ -48,7 +48,7 @@ namespace Lunch.UnitTests.Logic
             [Fact]
             public void IfModelRestaurantIDIs0ReturnsModel()
             {
-                var model = new Vote { UserID = 1, RestaurantID = 0 };
+                var model = new Vote { UserId = 1, RestaurantId = 0 };
 
                 var result = _voteLogic.SaveVote(model);
 
@@ -64,11 +64,11 @@ namespace Lunch.UnitTests.Logic
 
                 _mockVoteRepository.Verify();
 
-                _voteLogic.SaveVote(new Vote { UserID = 1, RestaurantID = 0 });
+                _voteLogic.SaveVote(new Vote { UserId = 1, RestaurantId = 0 });
 
                 _mockVoteRepository.Verify();
 
-                _voteLogic.SaveVote(new Vote { UserID = 0, RestaurantID = 1 });
+                _voteLogic.SaveVote(new Vote { UserId = 0, RestaurantId = 1 });
 
                 _mockVoteRepository.Verify();
             }

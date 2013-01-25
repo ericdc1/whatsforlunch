@@ -13,19 +13,8 @@ namespace Lunch.Core.Models
         JobLogs = 1
     }
 
-    public class Job : Template.Job
+    public class Job : Database.Job
     {
-        public override int Id { get;  set; }
-        [DisplayName("Method Name")]
-        public override string MethodName { get; set; }
-        [DisplayName("Parameters")]
-        public override string ParametersJson { get; set; }
-        [DisplayName("Run Date")]
-        public override DateTime RunDate { get; set; }
-        [DisplayName("Created Date")]
-        public override DateTime CreatedDate { get; set; }
-        public virtual IList<JobLog> JobLogs { get; set; }
-        [DisplayName("Has Run")]
-        public override bool HasRun { get; set; }
+
     }
 }

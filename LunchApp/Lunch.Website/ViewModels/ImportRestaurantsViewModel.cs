@@ -32,7 +32,7 @@ namespace Lunch.Website.ViewModels
         {
             var entity = new Core.Models.Restaurant
                              { RestaurantName = RestaurantName, 
-                               RestaurantTypeID = RestaurantTypeID,
+                               RestaurantTypeId = RestaurantTypeID,
                                PreferredDayOfWeek = (int?)PreferredDayOfWeek
                              };
             return entity;

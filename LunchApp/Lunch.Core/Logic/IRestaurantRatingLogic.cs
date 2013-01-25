@@ -6,7 +6,7 @@ namespace Lunch.Core.Logic
     public interface IRestaurantRatingLogic
     {
         IEnumerable<RestaurantRating> GetAll();
-        IEnumerable<RestaurantRating> GetAllByUser(int userID);
+        IEnumerable<RestaurantRating> GetAllByUser(int userId);
         RestaurantRating SaveOrUpdate(RestaurantRating entity);
     }
 }

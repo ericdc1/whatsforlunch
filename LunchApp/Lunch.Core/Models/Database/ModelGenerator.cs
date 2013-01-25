@@ -12,18 +12,18 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Lunch.Core.Models.Template
+namespace Lunch.Core.Models.Database
 {
     /// <summary>
     /// A class which represents the RestaurantRatings table.
     /// </summary>
 	[Table("RestaurantRatings")]
-	public partial class RestaurantRating
+	public abstract class RestaurantRating
 	{
 		[Key]
-		public virtual int ID { get; set; }
-		public virtual int UserID { get; set; }
-		public virtual int RestaurantID { get; set; }
+		public virtual int Id { get; set; }
+		public virtual int UserId { get; set; }
+		public virtual int RestaurantId { get; set; }
 		public virtual int Rating { get; set; }
 	}
 
@@ -31,34 +31,46 @@ namespace Lunch.Core.Models.Template
     /// A class which represents the Votes table.
     /// </summary>
 	[Table("Votes")]
-	public partial class Vote
+	public abstract class Vote
 	{
 		[Key]
 		public virtual int Id { get; set; }
-		public virtual int UserID { get; set; }
-		public virtual int RestaurantID { get; set; }
+		public virtual int UserId { get; set; }
+		public virtual int RestaurantId { get; set; }
 		public virtual DateTime VoteDate { get; set; }
 	}
 
     /// <summary>
-    /// A class which represents the JobLog table.
+    /// A class which represents the RestaurantOptions table.
     /// </summary>
-	[Table("JobLog")]
-	public partial class JobLog
+	[Table("RestaurantOptions")]
+	public abstract class RestaurantOption
 	{
-		[Key]
 		public virtual int Id { get; set; }
-		public virtual string Category { get; set; }
-		public virtual string Message { get; set; }
-		public virtual DateTime LogDTM { get; set; }
-		public virtual int? JobID { get; set; }
+		public virtual int RestaurantId { get; set; }
+		public virtual DateTime SelectedDate { get; set; }
+		public virtual int Selected { get; set; }
 	}
 
     /// <summary>
-    /// A class which represents the Job table.
+    /// A class which represents the JobLogs table.
     /// </summary>
-	[Table("Job")]
-	public partial class Job
+	[Table("JobLogs")]
+	public abstract class JobLog
+	{
+		[Key]
+		public virtual int JobLogId { get; set; }
+		public virtual string Category { get; set; }
+		public virtual string Message { get; set; }
+		public virtual DateTime CreatedAt { get; set; }
+		public virtual int? JobId { get; set; }
+	}
+
+    /// <summary>
+    /// A class which represents the Jobs table.
+    /// </summary>
+	[Table("Jobs")]
+	public abstract class Job
 	{
 		[Key]
 		public virtual int Id { get; set; }
@@ -70,23 +82,23 @@ namespace Lunch.Core.Models.Template
 	}
 
     /// <summary>
-    /// A class which represents the Restaurant table.
+    /// A class which represents the Restaurants table.
     /// </summary>
-	[Table("Restaurant")]
-	public partial class Restaurant
+	[Table("Restaurants")]
+	public abstract class Restaurant
 	{
 		[Key]
 		public virtual int Id { get; set; }
 		public virtual string RestaurantName { get; set; }
 		public virtual int? PreferredDayOfWeek { get; set; }
-		public virtual int? RestaurantTypeID { get; set; }
+		public virtual int? RestaurantTypeId { get; set; }
 	}
 
     /// <summary>
-    /// A class which represents the RestaurantType table.
+    /// A class which represents the RestaurantTypes table.
     /// </summary>
-	[Table("RestaurantType")]
-	public partial class RestaurantType
+	[Table("RestaurantTypes")]
+	public abstract class RestaurantType
 	{
 		[Key]
 		public virtual int Id { get; set; }
@@ -97,13 +109,13 @@ namespace Lunch.Core.Models.Template
     /// A class which represents the Users table.
     /// </summary>
 	[Table("Users")]
-	public partial class User
+	public abstract class User
 	{
 		[Key]
 		public virtual int Id { get; set; }
 		public virtual string FullName { get; set; }
 		public virtual string Email { get; set; }
-		public virtual Guid? GUID { get; set; }
+		public virtual Guid? Guid { get; set; }
 		public virtual bool SendMail1 { get; set; }
 		public virtual bool SendMail2 { get; set; }
 		public virtual bool SendMail3 { get; set; }
@@ -114,10 +126,10 @@ namespace Lunch.Core.Models.Template
     /// A class which represents the Holidays table.
     /// </summary>
 	[Table("Holidays")]
-	public partial class Holiday
+	public abstract class Holiday
 	{
 		[Key]
-		public virtual int ID { get; set; }
+		public virtual int Id { get; set; }
 		public virtual DateTime ExcludedDate { get; set; }
 	}
 

@@ -10,10 +10,10 @@
 <table class="table table-striped">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.JobID)
+            @Html.DisplayNameFor(model => model.JobLogId)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.LogDTM)
+            @Html.DisplayNameFor(model => model.CreatedAt)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Category)
@@ -27,10 +27,10 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.JobID)
+                @Html.DisplayFor(modelItem => item.JobLogId)
             </td>
-            <td title="UTC: @item.LogDTM">
-                @Helpers.AdjustTimeOffsetFromUtc(item.LogDTM)
+            <td title="UTC: @item.CreatedAt">
+                @Helpers.AdjustTimeOffsetFromUtc(item.CreatedAt)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Category)
