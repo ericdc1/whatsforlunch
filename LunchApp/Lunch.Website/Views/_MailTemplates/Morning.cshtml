@@ -1,18 +1,33 @@
 ﻿@model Lunch.Core.Jobs.MailDetails
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>What's For Lunch?</title>
+        <!-- Le Styles ====================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-<h2>What's for lunch - Morning voting.</h2>
+</head>
 
-<div>Hello @Model.User.FullName,
-    <br/>
+<body>
+
+    <h2>What's for lunch - Morning voting.</h2>
+
+    <div>Hello @Model.User.FullName,
+        <br/>
     
-    Today's restaurant choices are:
-    <ul>
-        @foreach(var restaurant in Model.Restaurants)
-        {
-            <li>@restaurant.RestaurantName - @restaurant.RestaurantType</li>
-        }
-    </ul>
+        Today's restaurant choices are:
+        <ul>
+            @foreach(var restaurant in Model.Restaurants)
+            {
+                <li>@restaurant.RestaurantName - @restaurant.RestaurantType</li>
+            }
+        </ul>
     
-    <br/>
-    <a href="@Model.Url">Click here to vote</a>
-</div>
+        <br/>
+        <a href="@Model.Url">Click here to vote</a>
+    </div>
+</body>
+    </html>
