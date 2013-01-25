@@ -28,11 +28,11 @@ namespace Lunch.Core.Logic.Implementations
             foreach (var restaurant in restaurants)
             {
                 var i = restaurant;
-                var ratings = allRatings.Where(r => r.Id == i.Id).ToList();
-                restaurant.Rating = ratings.Sum(r => r.Rating) / ratings.Count();
+                var ratings = allRatings.Where(r => r.RestaurantId == i.Id).ToList();
+                restaurant.Rating = (double)ratings.Sum(r => r.Rating) / (double)ratings.Count();
             }
 
-            return restaurants;
+            return restaurants.Take(count);
         }
 
         public IEnumerable<Restaurant> GetList(object parameters)

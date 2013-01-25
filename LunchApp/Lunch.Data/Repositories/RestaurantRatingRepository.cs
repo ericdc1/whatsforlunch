@@ -12,24 +12,39 @@ namespace Lunch.Data.Repositories
         private DbConnection _connection;
 
 
-        public IEnumerable<RestaurantRating> GetAllByUser(int userID)
+        public IEnumerable<RestaurantRating> GetAllByUser(int userId)
         {
             using (_connection = Utilities.GetProfiledOpenConnection())
             {
-                // TODO: All kinds of broken
-
-                var temp = 
+                var results = 
                     _connection.Query<RestaurantRating>(
-                        @"Select RestaurantRatings.Id AS Id, UserId, RestaurantId, 
-                        COALESCE((Select Rating from RestaurantRatings where UserID = @UserID and RestaurantID = Restaurant.ID), 5) as Rating
-                        from RestaurantRatings
-                        INNER JOIN Restaurant
-                        ON Restaurant.Id = RestaurantRatings.RestaurantId",
-                        new {UserID = userID});
+                        @"SELECT RR.Id, RR.UserId, R.Id AS RestaurantId, 
+                            COALESCE((SELECT Rating FROM RestaurantRatings RR WHERE RR.UserID = @UserId and RR.RestaurantId = R.Id), 5) AS Rating 
+                            FROM Restaurant R
+                            CROSS JOIN RestaurantRatings RR
+                            WHERE RR.UserID = @UserId",
+                        new {UserId = userId});
 
-                return temp;
+                return results;
             }
         }
+
+        public IEnumerable<RestaurantRating> GetAll()
+        {
+            using(_connection = Utilities.GetProfiledOpenConnection())
+            {
+                var results = 
+                    _connection.Query<RestaurantRating>(
+                        @"SELECT RR.Id, RR.UserId, R.Id AS RestaurantId, 
+                            COALESCE((SELECT Rating FROM RestaurantRatings RR WHERE RR.UserId = U.Id and RR.RestaurantId = R.Id), 5) AS Rating 
+                            FROM Restaurant R
+                            CROSS JOIN Users U
+                            FULL OUTER JOIN RestaurantRatings RR ON RR.UserId = U.Id
+                            ORDER BY R.Id, U.Id");
+
+                return results;
+            }
+        } 
 
         public RestaurantRating SaveOrUpdate(RestaurantRating entity)
         {

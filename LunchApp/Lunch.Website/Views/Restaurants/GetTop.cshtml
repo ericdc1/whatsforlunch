@@ -1,0 +1,13 @@
+﻿@model IEnumerable<Lunch.Core.Models.Restaurant>
+
+@{
+    ViewBag.Title = "GetTop";
+}
+
+<h2>GetTop</h2>
+
+@foreach(var restaurant in Model)
+{
+    @restaurant.RestaurantName <span>|</span> @restaurant.Rating
+    <br />
+}

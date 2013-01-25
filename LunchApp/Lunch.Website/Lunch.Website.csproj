@@ -286,6 +286,7 @@
     <Content Include="Views\_MailTemplates\Morning.cshtml" />
     <Content Include="Views\_MailTemplates\WhereGoing.cshtml" />
     <Content Include="Views\_MailTemplates\VotingOver.cshtml" />
+    <Content Include="Views\Restaurants\GetTop.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

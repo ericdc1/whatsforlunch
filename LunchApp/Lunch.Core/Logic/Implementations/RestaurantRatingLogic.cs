@@ -21,13 +21,7 @@ namespace Lunch.Core.Logic.Implementations
 
         public IEnumerable<RestaurantRating> GetAll()
         {
-            var ratings = new List<RestaurantRating>();
-            var users = _userLogic.GetList(new {});
-
-            foreach (var user in users)
-            {
-                ratings.AddRange(_restaurantRatingRepository.GetAllByUser(user.Id));
-            }
+            var ratings = _restaurantRatingRepository.GetAll();
 
             return ratings;
         }
