@@ -110,7 +110,6 @@ namespace Lunch.Core.Jobs
                 {
                     if (method.Name == methodname)
                     {
-                        //object jobsInstance =  Activator.CreateInstance(calledType);
                         object jobsInstance = ObjectFactory.GetInstance(calledType);
                         calledType.InvokeMember(methodname, BindingFlags.InvokeMethod| BindingFlags.Public | BindingFlags.Instance, null, jobsInstance, new object[] { parameters, id });
                         break;
