@@ -1,18 +1,18 @@
 ﻿//done: admit that we failed at nhibernate - EC/JD/MM/LD
-//todo: bring in the UI - SRK
+//done?: bring in the UI - SRK
 //todo: ui for editing lists and search/filter lists - TY/SRK
 //todo: ui for email messages - TY
 //done: CRUD for restaurants - MM
 //add stats columns - last visited, last up for vote, times in last 90 days, average rating based on weighted averages of attendees
 //todo: user voting for restaurants
 
-//inprogress: possibly pull from some external data source - MM -- http://api.citygridmedia.com/content/places/v2/search/latlon?lat=39.653319&lon=-79.95735&radius=1&type=restaurant&publisher=10000004484&rpp=50
+//done: possibly pull from some external data source - MM -- http://api.citygridmedia.com/content/places/v2/search/latlon?lat=39.653319&lon=-79.95735&radius=1&type=restaurant&publisher=10000004484&rpp=50
 //done: create remaining jobs 
 
 //inprogress: views for jobs and job logs (filter and date range) - MM
 
-//inprogress: CRUD for users - JD 
-//inprogress: User logins - allow login with username/password and with guid - JD
+//done: CRUD for users - JD 
+//done: User logins - allow login with username/password and with guid - JD
 //todo: Allow users to edit profile including mail preferences - JD
 //done: make holidays tables and logic
 
@@ -26,15 +26,12 @@
 //ID, JobID, RestaurantID, EventDate, WasSelectedFLG (maybe time out / time in)
 
 
-//todo: CR for voting -
+//done: CR for voting -
 //ID, RestaurantID, UserID, EventDate, (maybe IsOverrideFLG?)
 
 //todo: try knockout or backbone for voting and restaurants to vote for
 
-//todo: Email templates ED/LD 
-//http://kazimanzurrashid.com/posts/use-razor-for-email-template-outside-asp-dot-net-mvc
-//https://github.com/smsohan/MvcMailer/wiki/MvcMailer-Step-by-Step-Guide
-
+//done: Email templates ED/LD 
 //todo: webapi methods for voting, restaurant list EC/LD
 // GetTodaysRestaurant, //Vote
 
@@ -42,8 +39,7 @@
 //http://umbraco.codeplex.com/SourceControl/changeset/view/570e4433bee6#src/umbraco.datalayer/Utility/Installer/DefaultInstallerUtility.cs
 //http://msdn.microsoft.com/en-us/library/49b92ztk(v=vs.100).aspx
  
-
-//todo: setup stackexchange exceptional
+//done: setup stackexchange exceptional
 
 //todo: make stats pages
 //top restaurants, etc
