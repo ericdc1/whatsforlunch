@@ -27,7 +27,7 @@ namespace Lunch.Core.Logic.Implementations
             return _voteRepository.GetItem(id);
         }
 
-        public Vote GetItem(int userID, DateTime? date)
+        public Vote GetItem(int userID, DateTime date)
         {
             return _voteRepository.GetItem(userID, date);
         }
@@ -40,7 +40,7 @@ namespace Lunch.Core.Logic.Implementations
         {
             return _voteRepository.GetItemsByRestaurant(restaurantID);        }
 
-        public IList<Vote> GetItemsByRestaurant(int restaurantID, DateTime? date)
+        public IList<Vote> GetItemsByRestaurant(int restaurantID, DateTime date)
         {
             return _voteRepository.GetItemsByRestaurant(restaurantID, date);        }
 

@@ -26,7 +26,7 @@ namespace Lunch.Data.Repositories
         {
             using (_connection = Utilities.GetProfiledOpenConnection())
             {
-                entity.Id = _connection.Insert(entity);
+                entity.ID = _connection.Insert(entity);
                 return entity;
             }
         }

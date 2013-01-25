@@ -12,15 +12,15 @@ namespace Lunch.Core.Models
         Job = 1
     }
 
-    public class JobLog
+    public class JobLog : Template.JobLog
     {
-        public virtual int Id { get;  set; }
+        public override int Id { get;  set; }
         [DisplayName("Job ID")]
-        public virtual int JobID { get; set; }
+        public override int? JobID { get; set; }
         [DisplayName("Log Date")]
-        public virtual DateTime LogDTM { get; set; }
-        public virtual string Category { get; set; }
-        public virtual string Message { get; set; }
+        public override DateTime LogDTM { get; set; }
+        public override string Category { get; set; }
+        public override string Message { get; set; }
         public virtual Job Job { get; set; }
 
 

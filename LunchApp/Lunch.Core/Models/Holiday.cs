@@ -4,10 +4,10 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Lunch.Core.Models
 {
     [Table("Holidays")]
-    public class Holiday
+    public class Holiday : Template.Holiday
     {
-        public int Id { get; set; }
-        public DateTime ExcludedDate { get; set; }
+        public override int ID { get; set; }
+        public override DateTime ExcludedDate { get; set; }
     }
 
 }
