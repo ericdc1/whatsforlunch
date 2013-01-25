@@ -288,14 +288,18 @@
     <Content Include="Views\Management\_ImportRestaurantsList.cshtml" />
     <Content Include="Views\Management\SaveImports.cshtml" />
     <Content Include="Views\Holidays\Index.cshtml" />
-    <Content Include="Views\_MailTemplates\Morning.cshtml" />
-    <Content Include="Views\_MailTemplates\WhereGoing.cshtml" />
-    <Content Include="Views\_MailTemplates\VotingOver.cshtml" />
+    <Content Include="Views\_MailTemplates\Morning.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\_MailTemplates\WhereGoing.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\_MailTemplates\VotingOver.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Views\Restaurants\GetTop.cshtml" />
     <Content Include="Views\Account\Manage.cshtml" />
     <Content Include="Views\Home\EmailTest.cshtml" />
-    <Content Include="Views\_MailTemplates\View1.cshtml" />
-    <Content Include="Views\_MailTemplates\Copy of Morning.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

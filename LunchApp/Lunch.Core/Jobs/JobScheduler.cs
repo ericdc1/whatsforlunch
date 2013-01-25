@@ -6,7 +6,6 @@ using Lunch.Core.Models;
 using Quartz;
 using Quartz.Impl;
 using StructureMap;
-using Xipton.Razor;
 
 namespace Lunch.Core.Jobs
 {
