@@ -35,7 +35,7 @@ namespace Lunch.Data.Repositories
             {
                 var results = 
                     _connection.Query<RestaurantRating>(
-                        @"SELECT RR.Id, RR.UserId, R.Id AS RestaurantId, 
+                        @"SELECT RR.Id, U.Id AS UserId, R.Id AS RestaurantId, 
                             COALESCE((SELECT Rating FROM RestaurantRatings RR WHERE RR.UserId = U.Id and RR.RestaurantId = R.Id), 5) AS Rating 
                             FROM Restaurant R
                             CROSS JOIN Users U

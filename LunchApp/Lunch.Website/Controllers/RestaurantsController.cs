@@ -22,7 +22,7 @@ namespace Lunch.Website.Controllers
 
         public ActionResult GetTop()
         {
-            var results = _restaurantLogic.GetTop();
+            var results = _restaurantLogic.GetSelection();
 
             return View(results);
         }

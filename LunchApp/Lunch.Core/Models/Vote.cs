@@ -1,7 +1,10 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Web.DynamicData;
 
 namespace Lunch.Core.Models
 {
+    [Table("Votes")]
     public class Vote
     {
         public virtual int Id { get; set; }
