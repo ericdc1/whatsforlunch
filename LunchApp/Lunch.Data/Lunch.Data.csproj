@@ -65,6 +65,7 @@
     </Compile>
     <Compile Include="Repositories\RestaurantTypeRepository.cs" />
     <Compile Include="Repositories\RestaurantRepository.cs" />
+    <Compile Include="Repositories\VoteRepository.cs" />
     <Compile Include="Utilities.cs" />
   </ItemGroup>
   <ItemGroup>

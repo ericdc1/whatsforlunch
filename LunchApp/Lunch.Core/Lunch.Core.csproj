@@ -70,6 +70,7 @@
     </Compile>
     <Compile Include="Jobs\MailDetails.cs" />
     <Compile Include="Logic\Implementations\RestaurantRatingLogic.cs" />
+    <Compile Include="Logic\Implementations\VoteLogic.cs" />
     <Compile Include="Logic\IRestaurantRatingLogic.cs" />
     <Compile Include="Logic\IHolidayLogic.cs" />
     <Compile Include="Logic\Implementations\HolidayLogic.cs" />
@@ -87,6 +88,7 @@
     </Compile>
     <Compile Include="Logic\Implementations\RestaurantTypeLogic.cs" />
     <Compile Include="Logic\IRestaurantTypeLogic.cs" />
+    <Compile Include="Logic\IVoteLogic.cs" />
     <Compile Include="Models\Holiday.cs" />
     <Compile Include="Models\RestaurantRating.cs" />
     <Compile Include="Models\Template\ModelGenerator.cs">
@@ -116,6 +118,7 @@
     <Compile Include="Models\RestaurantType.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RepositoryInterfaces\IVoteRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Models\Template\ModelGenerator.tt">

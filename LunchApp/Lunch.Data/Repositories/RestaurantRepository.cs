@@ -60,7 +60,7 @@ namespace Lunch.Data.Repositories
                 else
                 {
                     var insert = _connection.Insert(entity);
-                    entity.Id = (int)insert;
+                    entity.Id = insert;
                 }
                 return entity;
             }
