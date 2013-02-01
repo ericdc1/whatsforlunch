@@ -13,5 +13,6 @@ namespace Lunch.Core.RepositoryInterfaces
         IList<Vote> GetItemsByRestaurant(int restaurantID, DateTime date);
         IList<Vote> GetItemsByMonthAndYear(int month, int year);
         Vote SaveOrUpdate(Vote entity);
+        void Delete(int id);
     }
 }

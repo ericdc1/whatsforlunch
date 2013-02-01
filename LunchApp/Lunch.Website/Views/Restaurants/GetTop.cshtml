@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Lunch.Core.Models.Restaurant>
+﻿@model IEnumerable<Lunch.Core.Models.RestaurantOption>
 
 @{
     ViewBag.Title = "GetTop";
@@ -6,8 +6,8 @@
 
 <h2>GetTop</h2>
 
-@foreach(var restaurant in Model)
+@foreach(var restaurantOption in Model)
 {
-    @restaurant.RestaurantName 
+    @restaurantOption.Restaurant.RestaurantName 
     <br />
 }

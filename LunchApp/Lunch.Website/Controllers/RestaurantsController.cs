@@ -12,21 +12,24 @@ namespace Lunch.Website.Controllers
     {
         private readonly IRestaurantLogic _restaurantLogic;
         private readonly IRestaurantTypeLogic _restaurantTypeLogic;
+        private readonly IRestaurantOptionLogic _restaurantOptionLogic;
 
-        public RestaurantsController(IRestaurantLogic restaurantLogic, IRestaurantTypeLogic restaurantTypeLogic)
+        public RestaurantsController(IRestaurantLogic restaurantLogic, IRestaurantTypeLogic restaurantTypeLogic, IRestaurantOptionLogic restaurantOptionLogic)
         {
             _restaurantLogic = restaurantLogic;
             _restaurantTypeLogic = restaurantTypeLogic;
+            _restaurantOptionLogic = restaurantOptionLogic;
         }
 
-
+        //TODO: delete this?
         public ActionResult GetTop()
         {
-            var results = _restaurantLogic.GetSelection();
+            var temp = _restaurantLogic.GetTopByVote(null);
+
+            var results = _restaurantOptionLogic.GetAndSaveOptions();
 
             return View(results);
         }
-
 
         public ActionResult Index(int? categoryid)
         {

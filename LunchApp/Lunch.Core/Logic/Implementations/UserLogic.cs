@@ -19,6 +19,13 @@ namespace Lunch.Core.Logic.Implementations
             return _userRepository.GetList(parameters);
         }
 
+        public IEnumerable<User> GetListByVotedDate(DateTime? dateTime)
+        {
+            if (dateTime == null) dateTime = DateTime.Now;
+
+            return _userRepository.GetListByVotedDate(dateTime.Value);
+        }
+
         public User Get(int id)
         {
             return _userRepository.Get(id);

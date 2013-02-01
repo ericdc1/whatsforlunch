@@ -16,8 +16,6 @@ namespace Lunch.Core.Models
 
     public class Restaurant : Database.Restaurant
     {
-
-
         #region relationships
 
         public virtual RestaurantType RestaurantType { get; set; }
@@ -29,6 +27,9 @@ namespace Lunch.Core.Models
 
         [Editable(false)]
         public double Rating { get; set; }
+
+        [Editable(false)]
+        public int Votes { get; set; }
 
         #endregion
     }

@@ -16,5 +16,6 @@ namespace Lunch.Core.Logic
         Vote SaveVote(int restaurantID, int userID);
         IDictionary<int, int> GetRestaurantMonthlyVoteCount();
         IDictionary<int, int> GetUserMonthlyVoteCount();
+        void Delete(int id);
     }
 }

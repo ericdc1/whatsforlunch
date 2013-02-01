@@ -79,7 +79,7 @@ namespace Lunch.UnitTests.Logic
                 _mockVoteRepository.Setup(f => f.GetItem(It.IsAny<int>(), It.IsAny<DateTime>())).Returns((Vote)null);
                 _mockVoteRepository.Setup(f => f.SaveOrUpdate(It.IsAny<Vote>())).Verifiable();
 
-                _voteLogic.SaveVote(new Vote {UserID = 1, RestaurantID = 1});
+                _voteLogic.SaveVote(new Vote {UserId = 1, RestaurantId = 1});
 
                 _mockVoteRepository.Verify();
             }
@@ -87,10 +87,10 @@ namespace Lunch.UnitTests.Logic
             [Fact]
             public void IfUserAlreadyVotedDoesNotRunSaveOrUpdateMethod()
             {
-                _mockVoteRepository.Setup(f => f.GetItem(It.IsAny<int>(), It.IsAny<DateTime>())).Returns(new Vote {UserID = 1, RestaurantID = 1});
+                _mockVoteRepository.Setup(f => f.GetItem(It.IsAny<int>(), It.IsAny<DateTime>())).Returns(new Vote {UserId = 1, RestaurantId = 1});
                 _mockVoteRepository.Setup(f => f.SaveOrUpdate(It.IsAny<Vote>())).Throws(new Exception("Method should not run."));
 
-                _voteLogic.SaveVote(new Vote { UserID = 1, RestaurantID = 1 });
+                _voteLogic.SaveVote(new Vote { UserId = 1, RestaurantId = 1 });
             }
         }
 

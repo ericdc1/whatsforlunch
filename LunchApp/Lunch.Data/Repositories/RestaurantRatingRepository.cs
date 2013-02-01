@@ -20,7 +20,7 @@ namespace Lunch.Data.Repositories
                     _connection.Query<RestaurantRating>(
                         @"SELECT RR.Id, RR.UserId, R.Id AS RestaurantId, 
                             COALESCE((SELECT Rating FROM RestaurantRatings RR WHERE RR.UserID = @UserId and RR.RestaurantId = R.Id), 5) AS Rating 
-                            FROM Restaurant R
+                            FROM Restaurants R
                             CROSS JOIN RestaurantRatings RR
                             WHERE RR.UserID = @UserId",
                         new {UserId = userId});
@@ -37,7 +37,7 @@ namespace Lunch.Data.Repositories
                     _connection.Query<RestaurantRating>(
                         @"SELECT RR.Id, U.Id AS UserId, R.Id AS RestaurantId, 
                             COALESCE((SELECT Rating FROM RestaurantRatings RR WHERE RR.UserId = U.Id and RR.RestaurantId = R.Id), 5) AS Rating 
-                            FROM Restaurant R
+                            FROM Restaurants R
                             CROSS JOIN Users U
                             FULL OUTER JOIN RestaurantRatings RR ON RR.UserId = U.Id
                             ORDER BY R.Id, U.Id");

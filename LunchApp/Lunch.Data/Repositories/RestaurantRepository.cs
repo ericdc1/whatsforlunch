@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.Common;
 using System.Linq;
 using Lunch.Core.Models;
@@ -23,12 +24,27 @@ namespace Lunch.Data.Repositories
             using (_connection = Utilities.GetProfiledOpenConnection())
             {
                 var result =_connection.Query<RestaurantDetails>(
-                        @"Select restaurant.Id, restaurant.RestaurantName , restaurant.PreferredDayOfWeek, restauranttype.Id as RestaurantTypeID, restauranttype.typename as TypeName
-                        from Restaurant
+                        @"Select restaurants.Id, restaurants.RestaurantName , restaurants.PreferredDayOfWeek, restauranttype.Id as RestaurantTypeID, restauranttype.typename as TypeName
+                        from Restaurants
                         LEFT OUTER JOIN RestaurantType
-                        ON Restaurant.RestaurantTypeId=Restauranttype.Id");
+                        ON Restaurants.RestaurantTypeId=Restauranttype.Id");
                 if (categoryId != null)
                     result = result.Where(f => f.RestaurantTypeId == categoryId);
+
+                return result;
+            }
+        }
+
+        public IEnumerable<Restaurant> GetAllByVote(DateTime dateTime)
+        {
+            using (_connection = Utilities.GetProfiledOpenConnection())
+            {
+                var result = _connection.Query<Restaurant>(
+                        @"SELECT R.*, (SELECT COUNT(*) AS Votes FROM Votes V WHERE V.RestaurantId = R.Id AND V.VoteDate > @start AND V.VoteDate < @end) Votes
+                            FROM Restaurants R
+                            ORDER BY Votes DESC
+                            ", new {start = dateTime.Date.AddDays(-1),
+                                    end = dateTime.Date.AddDays(1)});
 
                 return result;
             }
