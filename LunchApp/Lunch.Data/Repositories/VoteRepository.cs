@@ -24,7 +24,7 @@ namespace Lunch.Data.Repositories
         {
             using (_connection = Utilities.GetProfiledOpenConnection())
             {
-                return _connection.Query("SELECT * FROM Votes " +
+                return _connection.Query<Vote>("SELECT * FROM Votes " +
                                          "WHERE UserID = @UserID " +
                                          "AND DATEPART(mm, VoteDate) = DATEPART(mm, @VoteDate) " +
                                          "AND DATEPART(dd, VoteDate) = DATEPART(dd, @VoteDate) " +
