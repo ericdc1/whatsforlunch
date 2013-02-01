@@ -50,7 +50,7 @@ namespace Lunch.Website.Controllers
                 {
                     RestaurantsForToday = _restaurantOptionLogic.GetAndSaveOptions().ToList(),
                     YourVote = _voteLogic.GetItem(CurrentUser.Id, Helpers.AdjustTimeOffsetFromUtc(DateTime.UtcNow)),
-                    // PeopleWhoVotedToday = _userLogic. 
+                    PeopleWhoVotedToday = _userLogic.GetListByVotedDate(null).ToList()
                 };
             if (model.YourVote != null)
             {

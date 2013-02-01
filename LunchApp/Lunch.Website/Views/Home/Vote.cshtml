@@ -1,6 +1,7 @@
 ﻿@model Lunch.Website.ViewModels.Homepage
 
 @using System.Collections
+@using System.Security.Cryptography
 @using System.Text
 @{
     ViewBag.Title = "Index";
@@ -11,6 +12,27 @@
     <p>You already voted for @Model.YourVote.Restaurant.RestaurantName!</p>
 }
 
+@functions
+{
+
+    public string CalculateMD5Hash(string input)
+    {
+        // step 1, calculate MD5 hash from input
+        MD5 md5 = System.Security.Cryptography.MD5.Create();
+        byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes(input);
+        byte[] hash = md5.ComputeHash(inputBytes);
+
+        // step 2, convert byte array to hex string
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < hash.Length; i++)
+        {
+            sb.Append(hash[i].ToString("X2"));
+        }
+        return sb.ToString();
+    }
+
+}
+
 <div id="content">
     <div class="bgOne"></div>
     <div class="mask"></div>
@@ -19,10 +41,11 @@
         <div class="primary">
             
             <div class="usersWrap">
-                <img src="~/content/images/user001.png" />
-                <img src="~/content/images/user002.png" />
-                <img src="~/content/images/user003.png" />
-                <p>3 picks</p>
+                @foreach (var voter in Model.PeopleWhoVotedToday)
+                {
+                    <img title="@voter.FullNameWithEmail" src="http://www.gravatar.com/avatar/@CalculateMD5Hash(voter.Email)?s=200" />
+                }
+                <p>@Model.PeopleWhoVotedToday.Count picks</p>
             </div>
             
             <p class="titleLabel">where would you like to eat?</p>
