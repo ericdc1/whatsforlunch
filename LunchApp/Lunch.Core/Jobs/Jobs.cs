@@ -43,7 +43,7 @@ namespace Lunch.Core.Jobs
                 var messagemodel = new MailDetails() {User = user, Restaurants = todayschoices, Url = link};
 
                 string result = Razor.Parse(template, messagemodel);
-                //Helpers.SendMail("ecoffman@hsc.wvu.edu", fromaddress, "What's for Lunch Message of the day", result);
+                Helpers.SendMail(user.Email, fromaddress, "What's for Lunch Message of the day", result);
 
                 //add log
                 var entity = new JobLog() { JobId = id, Category = "MorningMessage", Message = string.Format("Morning message sent to {0}", user.FullName) };
