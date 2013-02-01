@@ -9,7 +9,7 @@ namespace Lunch.Website.ViewModels
     public class Homepage
     {
 
-        public List<Core.Models.Restaurant> RestaurantsForToday { get; set; }
+        public List<Core.Models.RestaurantOption> RestaurantsForToday { get; set; }
         public List<Core.Models.User> PeopleWhoVotedToday { get; set; }
         public Vote YourVote { get; set; }
 

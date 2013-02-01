@@ -1,0 +1,9 @@
+﻿@model Lunch.Website.ViewModels.Homepage
+
+@{
+    ViewBag.Title = "Rate";
+}
+
+<h2>You already voted for @Model.YourVote.Restaurant.RestaurantName</h2>
+
+<a href="/Home/DeleteVote/@Model.YourVote.Id">Delete</a>

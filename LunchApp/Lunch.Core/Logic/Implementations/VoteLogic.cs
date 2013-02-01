@@ -104,5 +104,10 @@ namespace Lunch.Core.Logic.Implementations
             }
             return results;
         }
+
+        public void Delete(int id)
+        {
+            _voteRepository.Delete(id);
+        }
     }
 }

@@ -305,6 +305,7 @@
     <Content Include="Views\Home\Rate.cshtml" />
     <Content Include="Views\Home\Going.cshtml" />
     <Content Include="Views\Home\ComeBackTomorrow.cshtml" />
+    <Content Include="Views\Home\Voted.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

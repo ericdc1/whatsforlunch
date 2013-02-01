@@ -83,5 +83,13 @@ namespace Lunch.Data.Repositories
             }
             return entity;
         }
+
+        public void Delete(int id)
+        {
+            using (_connection = Utilities.GetProfiledOpenConnection())
+            {
+                _connection.Delete<Vote>(id);
+            }
+        }
     }
 }

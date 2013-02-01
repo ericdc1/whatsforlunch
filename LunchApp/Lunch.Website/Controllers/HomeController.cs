@@ -23,27 +23,35 @@ namespace Lunch.Website.Controllers
     {
        
         private readonly IRestaurantLogic _restaurantLogic;
-        private readonly IRestaurantTypeLogic _restaurantTypeLogic;
+        private readonly IRestaurantOptionLogic _restaurantOptionLogic;
         private readonly IVoteLogic _voteLogic;
+        private readonly IUserLogic _userLogic;
+
+        public DateTime Overridetime = new DateTime(2013, 2, 1, 8, 00, 0);
 
 
-        public DateTime Overridetime = new DateTime(2013, 2, 1, 14, 16, 0);
-
-
-        public HomeController(IRestaurantLogic restaurantLogic, IRestaurantTypeLogic restaurantTypeLogic, IVoteLogic voteLogic)
+        public HomeController(IRestaurantLogic restaurantLogic, IVoteLogic voteLogic, IRestaurantOptionLogic restaurantOptionLogic, IUserLogic userLogic)
         {
             _restaurantLogic = restaurantLogic;
-            _restaurantTypeLogic = restaurantTypeLogic;
             _voteLogic = voteLogic;
+            _restaurantOptionLogic = restaurantOptionLogic;
+            _userLogic = userLogic;
         }
 
+        public ActionResult DeleteVote(int id)
+        {
+            _voteLogic.Delete(id);
+            return RedirectToAction("Index");
+        }
 
         public ActionResult Index()
         {
-            var model = new Homepage();
-            model.RestaurantsForToday = _restaurantLogic.GetSelection().ToList();
-            model.YourVote = _voteLogic.GetItem(CurrentUser.Id, Helpers.AdjustTimeOffsetFromUtc(DateTime.UtcNow));
-            model.PeopleWhoVotedToday = new List<Core.Models.User>(); // TODO: Call the method to populate this.
+            var model = new Homepage
+                {
+                    RestaurantsForToday = _restaurantOptionLogic.GetAndSaveOptions().ToList(),
+                    YourVote = _voteLogic.GetItem(CurrentUser.Id, Helpers.AdjustTimeOffsetFromUtc(DateTime.UtcNow)),
+                    // PeopleWhoVotedToday = _userLogic. 
+                };
             if (model.YourVote != null)
             {
                 model.YourVote.Restaurant = _restaurantLogic.Get(model.YourVote.RestaurantId);
