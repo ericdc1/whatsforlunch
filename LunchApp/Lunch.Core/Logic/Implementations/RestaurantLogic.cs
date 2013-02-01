@@ -21,17 +21,12 @@ namespace Lunch.Core.Logic.Implementations
         }
 
 
-        public IEnumerable<Restaurant> GetTop(int count = 10)
+        public IEnumerable<Restaurant> GetTopByRating(int count = 10)
         {
             var restaurants = _restaurantRepository.GetList(new {}).ToList();
             var ratings = _restaurantRatingLogic.GetAll().ToList();
             var userVotes = _voteLogic.GetUserMonthlyVoteCount();
             var restaurantVotes = _voteLogic.GetRestaurantMonthlyVoteCount();
-
-            // put in some temp data
-            //_voteLogic.SaveVote(3, 37);
-            //_voteLogic.SaveVote(8, 38);
-            //_voteLogic.SaveVote(9, 39);
 
             // multiply each users ratings by their vote weight
             var userVoteMax = userVotes.OrderByDescending(v => v.Value).First().Value;
@@ -69,11 +64,20 @@ namespace Lunch.Core.Logic.Implementations
             return restaurants.Take(count);
         }
 
+        public IEnumerable<Restaurant> GetTopByVote(DateTime? date, int count = 2)
+        {
+            if (date == null) date = DateTime.Now;
+
+            var restaurants = _restaurantRepository.GetAllByVote(date.Value);
+
+            return restaurants.Take(count);
+        }
+
         public IEnumerable<Restaurant> GetSelection()
         {
             var selection = new List<Restaurant>();
 
-            var topRestaurants = GetTop().ToList();
+            var topRestaurants = GetTopByRating().ToList();
             var allRestaurants = GetList(new {}).ToList();
 
             // TODO: remove those picked recently
@@ -88,15 +92,15 @@ namespace Lunch.Core.Logic.Implementations
             selection.AddRange(allRestaurants.OrderBy(x => random.Next()).Take(2));
             allRestaurants.RemoveAll(m => m.Id == selection[2].Id || m.Id == selection[3].Id);
 
+            // if there is a restaurant with a special replace the last one with it
             var specialRestaurants = allRestaurants.Where(r => r.PreferredDayOfWeek != null);
-
             var specialRestaurant = specialRestaurants.OrderBy(x => random.Next()).Take(1).FirstOrDefault();
             if (specialRestaurant != null)
-                selection.Add(specialRestaurant);
+                selection[selection.Count] = specialRestaurant;
 
             return selection;
-        } 
-
+        }
+        
         public IEnumerable<Restaurant> GetList(object parameters)
         {
             return _restaurantRepository.GetList(parameters);

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Lunch.Core.Models;
 using Lunch.Core.Models.Views;
 
@@ -6,7 +7,8 @@ namespace Lunch.Core.Logic
 {
     public interface IRestaurantLogic
     {
-        IEnumerable<Restaurant> GetTop(int count = 5);
+        IEnumerable<Restaurant> GetTopByRating(int count = 10);
+        IEnumerable<Restaurant> GetTopByVote(DateTime? date, int count = 2);
         IEnumerable<Restaurant> GetSelection();
         IEnumerable<Restaurant> GetList(object parameters);
         IEnumerable<Restaurant> GenerateRestaurants();
