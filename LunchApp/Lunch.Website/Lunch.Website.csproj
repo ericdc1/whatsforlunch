@@ -234,6 +234,7 @@
     <Content Include="Resources\Images\BG-RAW-Images\Burger.jpg" />
     <Content Include="Resources\Images\BG-RAW-Images\Chicken.jpg" />
     <Content Include="Resources\Images\BG-RAW-Images\Pizza.jpg" />
+    <Content Include="Resources\Images\BG-Closed.jpg" />
     <Content Include="Resources\Images\desktop\history-24-Alt.png" />
     <Content Include="Resources\Images\desktop\history-24.png" />
     <Content Include="Resources\Images\desktop\historyAlt.png" />

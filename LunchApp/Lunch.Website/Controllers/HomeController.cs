@@ -27,7 +27,7 @@ namespace Lunch.Website.Controllers
         private readonly IVoteLogic _voteLogic;
         private readonly IUserLogic _userLogic;
 
-        public DateTime Overridetime = new DateTime(2013, 2, 1, 8, 00, 0);
+        public DateTime Overridetime = new DateTime(2013, 2, 1, 19, 00, 0);
 
 
         public HomeController(IRestaurantLogic restaurantLogic, IVoteLogic voteLogic, IRestaurantOptionLogic restaurantOptionLogic, IUserLogic userLogic)
@@ -112,10 +112,16 @@ namespace Lunch.Website.Controllers
                 return View("going", model);
             }
 
-            if (currenttime > new DateTime(currenttime.Year, currenttime.Month, currenttime.Day, 14, 0, 0))
+            if (currenttime > new DateTime(currenttime.Year, currenttime.Month, currenttime.Day, 14, 0, 0) && currenttime < new DateTime(currenttime.Year, currenttime.Month, currenttime.Day, 17, 0, 0))
             {
                 return View(model.YourVote == null ? "comebacktomorrow" : "Rate", model);
             }
+
+            if (currenttime > new DateTime(currenttime.Year, currenttime.Month, currenttime.Day, 17, 0, 0))
+            {
+                return View("notyet", model);
+            }
+
             return null;
         }
 

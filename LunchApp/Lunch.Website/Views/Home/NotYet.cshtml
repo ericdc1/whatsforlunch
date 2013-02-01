@@ -4,4 +4,55 @@
     ViewBag.Title = "NotYet";
 }
 
-<h2>It isn't time to vote yet. Come back after 7:30 am. Go to bed!</h2>
+<div id="content">
+    <div class="bgOne"></div>
+    <div class="mask"></div>
+    <div id="info">
+
+        <div class="primary">
+
+            <p class="closed">Sorry, we're<br /><span class="font">Closed</span></p>
+            <div class="closedHours">
+                <div class="label">our hours are</div>
+                <div class="hourBox">7:30am</div>
+                <div class="hourBox">5:00pm</div>
+                <div class="dayLabel">Monday-Friday (excluding holidays)</div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<div id="secondaryContent">
+    <div id="veto" class=""><div class="vetoIcon"></div><div class="secondaryText">3</div></div>
+    <div id="overrides" class="empty"><div class="overridesIcon"></div><div class="secondaryText">2</div></div>
+    <div id="badges" class="new"><div class="badgesIcon"></div><div class="secondaryText">3</div></div>
+    <a href="@Url.Action("Manage", "Account")" id="myAccount"><i class="icon-user"></i></a>
+    @if(Roles.IsUserInRole("Administrator"))
+    {
+        <a href="@Url.Action("Index", "Management")" id="users">
+            <i class="icon-cog"></i>
+        </a>
+    }
+</div>
+
+<script>
+    $(document).ready(function () {
+        if ($.browser.msie) {
+            function interval() {
+                $('.new').children().not('.secondaryText').delay(1500).animate({ marginTop: "100px" }, 1000, function () {
+                    $(this).delay(500).animate({ marginTop: "20px" }, 1000);
+                });
+            }
+
+            setInterval(function () {
+                interval();
+            }, 1500);
+        }
+
+        $('#hiddenNav').click(function () {
+            $('#secondaryContent').toggle();
+        });
+    });
+</script>
