@@ -20,8 +20,6 @@ namespace Lunch.Website.Controllers
 
         public ActionResult Index(int? categoryid, int? page)
         {
-            var newlog = new JobLog() {Category = "mycat", CreatedAt = DateTime.Now, JobId = 1, Message = "Created"};
-            _jobLogLogic.SaveOrUpdate(newlog);
 
             ViewBag.HasCategoryFilter = categoryid > 0;
             var pageNumber = page ?? 1;
