@@ -176,6 +176,7 @@
     <Compile Include="Services\WebSecurityService.cs" />
     <Compile Include="todo.cs" />
     <Compile Include="ViewModels\Account.cs" />
+    <Compile Include="ViewModels\Homepage.cs" />
     <Compile Include="ViewModels\UserManage.cs" />
     <Compile Include="ViewModels\User.cs" />
     <Compile Include="ViewModels\UserEdit.cs" />

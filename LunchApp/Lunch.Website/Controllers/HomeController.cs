@@ -1,21 +1,23 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net.Mime;
 using System.Reflection;
 using System.Web.Mvc;
 using Lunch.Core.Logic;
+using Lunch.Core.Models;
 using Lunch.Data.Repositories;
 using Lunch.Website.Services;
-using Lunch.Website.ViewModels;
 using StackExchange.Exceptional;
 using Lunch.Core.Jobs;
 using StructureMap;
 using RazorEngine;
 using System.IO;
+using Restaurant = Lunch.Website.ViewModels.Restaurant;
+using User = Lunch.Website.ViewModels.User;
 
 namespace Lunch.Website.Controllers
 {
-    [AllowAnonymous]
     public class HomeController : BaseController
     {
         public ActionResult Index()
