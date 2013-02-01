@@ -1,0 +1,102 @@
+﻿@using Lunch.Core.Models.Views
+
+@model RestaurantImportSettings
+
+@{
+    ViewBag.Title = "Restaurant Import";
+    var defaults = (RestaurantImportSettings)ViewBag.DefaultSettings ?? new RestaurantImportSettings();
+}
+
+<div id="content" class="reports">
+    <div class="bgOne"></div>
+    <div class="mask"></div>
+    <div id="info">
+        <div class="management">
+
+            <h1>Management</h1>
+            <h3>Import Settings</h3>
+
+            @using (Html.BeginForm()) {
+                @Html.ValidationSummary(true)
+
+                <div id="manageFormWrap">
+        
+                    <div class="formRowWrap">
+                        <div class="editorLabel">
+                            @Html.LabelFor(model => model.UseDefaults)
+                        </div>
+                        <div class="editorField checkBox">
+                            @Html.EditorFor(model => model.UseDefaults)
+                            @Html.ValidationMessageFor(model => model.UseDefaults)
+                        </div>
+                    </div>
+
+                    <div class="formRowWrap">
+                        <div class="editorLabel">
+                            @Html.LabelFor(model => model.PublisherKey)
+                        </div>
+                        <div class="editorField">
+                            @Html.EditorFor(model => model.PublisherKey)
+                            @Html.ValidationMessageFor(model => model.PublisherKey)
+                        </div>
+                    </div>
+
+                    <div class="formRowWrap columnThird">
+                        <div class="editorLabel">
+                            @Html.LabelFor(model => model.Latitude)
+                        </div>
+                        <div class="editorField">
+                            @Html.EditorFor(model => model.Latitude)
+                            @Html.ValidationMessageFor(model => model.Latitude)
+                        </div>
+                    </div>
+
+                    <div class="formRowWrap columnThird">
+                        <div class="editorLabel">
+                            @Html.LabelFor(model => model.Longitude)
+                        </div>
+                        <div class="editorField">
+                            @Html.EditorFor(model => model.Longitude)
+                            @Html.ValidationMessageFor(model => model.Longitude)
+                        </div>
+                    </div>
+
+                    <div class="formRowWrap columnThird">
+                        <div class="editorLabel">
+                            @Html.LabelFor(model => model.Radius)
+                        </div>
+                        <div class="editorField">
+                            @Html.EditorFor(model => model.Radius)
+                            @Html.ValidationMessageFor(model => model.Radius)
+                        </div>
+                    </div>
+
+                </div>
+                <input type="submit" value="Proceed" class="btn submit" />
+            }
+
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    $(document).ready(function() {
+
+        $("#UseDefaults").change(function() {
+            if ($(this).is(':checked')) {
+                $('#PublisherKey').val('@(defaults.PublisherKey)');
+                $('#Latitude').val('@(defaults.Latitude)');
+                $('#Longitude').val('@(defaults.Longitude)');
+                $('#Radius').val('@(defaults.Radius)');
+            } else {
+                $('#PublisherKey').val('');
+                $('#Latitude').val('');
+                $('#Longitude').val('');
+                $('#Radius').val('');
+            }
+        });
+
+    });
+
+</script>

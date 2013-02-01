@@ -301,6 +301,7 @@
     <Content Include="Views\Account\Manage.cshtml" />
     <Content Include="Views\Home\EmailTest.cshtml" />
     <Content Include="Views\Shared\_LayoutLogin.cshtml" />
+    <Content Include="Views\Management\ImportSettings.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

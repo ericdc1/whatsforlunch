@@ -33,6 +33,11 @@ namespace Lunch.Website.Controllers
 
         public ActionResult Index()
         {
+            return View();
+        }
+
+        public ActionResult ImportSettings()
+        {
             var defaults = GetDefaultImportSetting();
             var model = new RestaurantImportSettings
             {

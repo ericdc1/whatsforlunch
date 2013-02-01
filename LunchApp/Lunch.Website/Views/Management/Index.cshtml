@@ -1,79 +1,36 @@
-﻿@using Lunch.Core.Models.Views
-
-@model RestaurantImportSettings
-
-@{
+﻿@{
     ViewBag.Title = "Restaurant Import";
-    var defaults = (RestaurantImportSettings)ViewBag.DefaultSettings ?? new RestaurantImportSettings();
 }
 
 <div id="content" class="reports">
     <div class="bgOne"></div>
     <div class="mask"></div>
     <div id="info">
+
         <div class="management">
 
             <h1>Management</h1>
-            <h3>Import Settings</h3>
 
-            @using (Html.BeginForm()) {
-                @Html.ValidationSummary(true)
-
-                <div id="manageFormWrap">
-        
-                    <div class="formRowWrap">
-                        <div class="editorLabel">
-                            @Html.LabelFor(model => model.UseDefaults)
-                        </div>
-                        <div class="editorField checkBox">
-                            @Html.EditorFor(model => model.UseDefaults)
-                            @Html.ValidationMessageFor(model => model.UseDefaults)
-                        </div>
-                    </div>
-
-                    <div class="formRowWrap">
-                        <div class="editorLabel">
-                            @Html.LabelFor(model => model.PublisherKey)
-                        </div>
-                        <div class="editorField">
-                            @Html.EditorFor(model => model.PublisherKey)
-                            @Html.ValidationMessageFor(model => model.PublisherKey)
-                        </div>
-                    </div>
-
-                    <div class="formRowWrap columnThird">
-                        <div class="editorLabel">
-                            @Html.LabelFor(model => model.Latitude)
-                        </div>
-                        <div class="editorField">
-                            @Html.EditorFor(model => model.Latitude)
-                            @Html.ValidationMessageFor(model => model.Latitude)
-                        </div>
-                    </div>
-
-                    <div class="formRowWrap columnThird">
-                        <div class="editorLabel">
-                            @Html.LabelFor(model => model.Longitude)
-                        </div>
-                        <div class="editorField">
-                            @Html.EditorFor(model => model.Longitude)
-                            @Html.ValidationMessageFor(model => model.Longitude)
-                        </div>
-                    </div>
-
-                    <div class="formRowWrap columnThird">
-                        <div class="editorLabel">
-                            @Html.LabelFor(model => model.Radius)
-                        </div>
-                        <div class="editorField">
-                            @Html.EditorFor(model => model.Radius)
-                            @Html.ValidationMessageFor(model => model.Radius)
-                        </div>
-                    </div>
-
-                </div>
-                <input type="submit" value="Proceed" class="btn submit" />
-            }
+            <a class="manageOption" href="~/Management/ImportSettings">
+                <span class="manageTitle">Restaurants</span>
+                <span class="manageIcon"><i class="icon-beer"></i></span>
+            </a>
+            <a class="manageOption" href="~/Users/Index">
+                <span class="manageTitle">Users</span>
+                <span class="manageIcon"><i class="icon-user"></i></span>
+            </a>
+            <a class="manageOption" href="~/Jobs/Index">
+                <span class="manageTitle">Jobs</span>
+                <span class="manageIcon"><i class="icon-cogs"></i></span>
+            </a>
+            <a class="manageOption" href="~/Logs/Index">
+                <span class="manageTitle">Logs</span>
+                <span class="manageIcon"><i class="icon-beaker"></i></span>
+            </a>
+            <a class="manageOption" href="~/Holidays/Index">
+                <span class="manageTitle">Holidays</span>
+                <span class="manageIcon"><i class="icon-star"></i></span>
+            </a>
 
         </div>
     </div>
@@ -81,22 +38,6 @@
 
 <script type="text/javascript">
 
-    $(document).ready(function() {
 
-        $("#UseDefaults").change(function() {
-            if ($(this).is(':checked')) {
-                $('#PublisherKey').val('@(defaults.PublisherKey)');
-                $('#Latitude').val('@(defaults.Latitude)');
-                $('#Longitude').val('@(defaults.Longitude)');
-                $('#Radius').val('@(defaults.Radius)');
-            } else {
-                $('#PublisherKey').val('');
-                $('#Latitude').val('');
-                $('#Longitude').val('');
-                $('#Radius').val('');
-            }
-        });
-
-    });
 
 </script>

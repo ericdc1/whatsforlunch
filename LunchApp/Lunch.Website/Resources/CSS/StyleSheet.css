@@ -160,6 +160,18 @@
     right: 50%;
     margin-right: -5px;
   }
+  #nav #hiddenNav {
+    background: #00addc;
+    display: block;
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    padding: 5px 10px;
+  }
+  #nav #hiddenNav .icon-reorder {
+    font-size: 1.25em;
+    color: #fff;
+  }
   #nav .button {
     background: #fff;
     width: 75px;
@@ -491,20 +503,77 @@
     margin: 0;
   }
   #content #info .management #manageFormWrap .formRowWrap .btn {
-    background: #fff;
+    background: url('/Resources/Images/repeatBlue.png') repeat;
     display: block;
     width: auto;
     height: 20px;
-    padding: 7px 15px;
+    padding: 10px 15px;
     font-size: 1em;
-    line-height: 16px;
+    line-height: 18px;
     border: none;
     margin: 0 2px 12px 0;
-    color: #229abb;
+    color: #fff;
     float: left;
   }
   #content #info .management #manageFormWrap .formRowWrap .btn:hover {
+    background: #076d8c;
+  }
+  #content #info .management .manageOption {
     background: #fff;
+    width: 100%;
+    height: 40px;
+    margin: 2px 0;
+    float: left;
+    position: relative;
+    display: block;
+    cursor: pointer;
+  }
+  #content #info .management .manageOption:hover {
+    background: #00ADDC;
+  }
+  #content #info .management .manageOption:hover .manageTitle,
+  #content #info .management .manageOption:hover .manageIcon {
+    color: #fff;
+  }
+  #content #info .management .manageOption:hover .manageTitle .icon-beer,
+  #content #info .management .manageOption:hover .manageIcon .icon-beer,
+  #content #info .management .manageOption:hover .manageTitle .icon-user,
+  #content #info .management .manageOption:hover .manageIcon .icon-user,
+  #content #info .management .manageOption:hover .manageTitle .icon-cogs,
+  #content #info .management .manageOption:hover .manageIcon .icon-cogs,
+  #content #info .management .manageOption:hover .manageTitle .icon-beaker,
+  #content #info .management .manageOption:hover .manageIcon .icon-beaker,
+  #content #info .management .manageOption:hover .manageTitle .icon-star,
+  #content #info .management .manageOption:hover .manageIcon .icon-star {
+    color: #fff;
+  }
+  #content #info .management .manageOption:first-child {
+    margin-top: 160px;
+  }
+  #content #info .management .manageOption .manageTitle {
+    position: absolute;
+    top: 5px;
+    right: 60px;
+    bottom: 5px;
+    left: 20px;
+    font-size: 1.25em;
+    color: #00ADDC;
+  }
+  #content #info .management .manageOption .manageIcon {
+    position: absolute;
+    bottom: 5px;
+    right: 20px;
+    width: 36px;
+    height: 27px;
+    text-align: right;
+  }
+  #content #info .management .manageOption .manageIcon .icon-beer,
+  #content #info .management .manageOption .manageIcon .icon-user,
+  #content #info .management .manageOption .manageIcon .icon-cogs,
+  #content #info .management .manageOption .manageIcon .icon-beaker,
+  #content #info .management .manageOption .manageIcon .icon-star {
+    font-size: 1.5em;
+    color: #00ADDC;
   }
   #content #info .management .btn {
     background: #ccc;
@@ -526,19 +595,141 @@
     background: #3a9e41;
   }
   #secondaryContent {
+    background: #333;
     position: fixed;
-    top: 0;
-    left: 42%;
-    margin-left: 2px;
+    top: 55px;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    padding-bottom: 3px;
+    border-bottom: 2px solid #fff;
     display: none;
   }
-  #secondaryContent #badges {
-    background: url('/Resources/Images/repeatWhite.png') repeat;
-    min-width: 50px;
-    width: 50px;
-    max-width: 50px;
-    height: 20px;
+  #secondaryContent #veto,
+  #secondaryContent #overrides,
+  #secondaryContent #badges,
+  #secondaryContent #users,
+  #secondaryContent #myAccount {
+    background: url('/Resources/Images/repeatBlue.png') repeat;
+    width: 100%;
+    height: 50px;
     overflow: hidden;
+    border-top: 2px solid #229abb;
+    float: left;
+    text-decoration: none;
+  }
+  #secondaryContent #veto:hover,
+  #secondaryContent #overrides:hover,
+  #secondaryContent #badges:hover,
+  #secondaryContent #users:hover,
+  #secondaryContent #myAccount:hover {
+    background: #229abb;
+  }
+  #secondaryContent #veto.new,
+  #secondaryContent #overrides.new,
+  #secondaryContent #badges.new,
+  #secondaryContent #users.new,
+  #secondaryContent #myAccount.new {
+    background: #5bbd62;
+    border-top: 2px solid #3a9e41;
+  }
+  #secondaryContent #veto.new:hover,
+  #secondaryContent #overrides.new:hover,
+  #secondaryContent #badges.new:hover,
+  #secondaryContent #users.new:hover,
+  #secondaryContent #myAccount.new:hover {
+    background: #3a9e41;
+  }
+  #secondaryContent #veto.new .secondaryText,
+  #secondaryContent #overrides.new .secondaryText,
+  #secondaryContent #badges.new .secondaryText,
+  #secondaryContent #users.new .secondaryText,
+  #secondaryContent #myAccount.new .secondaryText {
+    display: block;
+  }
+  #secondaryContent #veto.new .vetoIcon,
+  #secondaryContent #overrides.new .vetoIcon,
+  #secondaryContent #badges.new .vetoIcon,
+  #secondaryContent #users.new .vetoIcon,
+  #secondaryContent #myAccount.new .vetoIcon {
+    -moz-animation: iconVetoRollMobile 4s infinite;
+    -webkit-animation: iconVetoRollMobile 4s infinite;
+  }
+  #secondaryContent #veto.new .overridesIcon,
+  #secondaryContent #overrides.new .overridesIcon,
+  #secondaryContent #badges.new .overridesIcon,
+  #secondaryContent #users.new .overridesIcon,
+  #secondaryContent #myAccount.new .overridesIcon {
+    -moz-animation: iconVetoRollMobile 4s infinite .5s;
+    -webkit-animation: iconVetoRollMobile 4s infinite .5s;
+  }
+  #secondaryContent #veto.new .badgesIcon,
+  #secondaryContent #overrides.new .badgesIcon,
+  #secondaryContent #badges.new .badgesIcon,
+  #secondaryContent #users.new .badgesIcon,
+  #secondaryContent #myAccount.new .badgesIcon {
+    -moz-animation: iconVetoRollMobile 4s infinite 1s;
+    -webkit-animation: iconVetoRollMobile 4s infinite 1s;
+  }
+  #secondaryContent #veto.empty,
+  #secondaryContent #overrides.empty,
+  #secondaryContent #badges.empty,
+  #secondaryContent #users.empty,
+  #secondaryContent #myAccount.empty {
+    background: #ccc;
+    border-top: 2px solid #888;
+    cursor: default;
+  }
+  #secondaryContent #veto .secondaryText,
+  #secondaryContent #overrides .secondaryText,
+  #secondaryContent #badges .secondaryText,
+  #secondaryContent #users .secondaryText,
+  #secondaryContent #myAccount .secondaryText {
+    color: #fff;
+    font-family: 'Lobster', cursive;
+    font-size: 2em;
+    line-height: 32px;
+    text-align: center;
+    display: none;
+    margin-top: -112px;
+  }
+  #secondaryContent #veto .vetoIcon {
+    background: url('/Resources/Images/veto-32.png') no-repeat;
+    width: 32px;
+    height: 32px;
+    margin: 8px auto 0 auto;
+  }
+  #secondaryContent #overrides .overridesIcon {
+    background: url('/Resources/Images/overrides-32.png') no-repeat;
+    width: 32px;
+    height: 32px;
+    margin: 9px auto 0 auto;
+  }
+  #secondaryContent #badges .badgesIcon {
+    background: url('/Resources/Images/badges-32.png') no-repeat;
+    width: 20px;
+    height: 32px;
+    margin: 10px auto 0 auto;
+  }
+  #secondaryContent #users {
+    float: right;
+    text-align: center;
+    padding-top: 10px;
+    height: 42px;
+  }
+  #secondaryContent #users .icon-cog {
+    color: #fff;
+    font-size: 30px;
+  }
+  #secondaryContent #myAccount {
+    float: right;
+    text-align: center;
+    padding-top: 10px;
+    height: 42px;
+  }
+  #secondaryContent #myAccount .icon-user {
+    color: #fff;
+    font-size: 30px;
   }
 }
 @media only screen and (min-width: 481px) and (max-width: 799px) {
@@ -576,6 +767,9 @@
     width: 120px;
     height: 33px;
     margin: 8px auto;
+  }
+  #nav #hiddenNav {
+    display: none;
   }
   #nav .button {
     background: #fff;
@@ -924,6 +1118,10 @@
     width: 100%;
     float: left;
   }
+  #content #info .management #manageFormWrap .formRowWrap.columnQuarter {
+    width: 25%;
+    float: left;
+  }
   #content #info .management #manageFormWrap .formRowWrap .editorLabel {
     color: #fff;
     position: relative;
@@ -952,20 +1150,77 @@
     margin: 0;
   }
   #content #info .management #manageFormWrap .formRowWrap .btn {
-    background: #fff;
+    background: url('/Resources/Images/repeatBlue.png') repeat;
     display: block;
     width: auto;
     height: 20px;
-    padding: 7px 15px;
+    padding: 10px 15px;
     font-size: 1em;
-    line-height: 16px;
+    line-height: 18px;
     border: none;
     margin: 0 2px 12px 0;
-    color: #229abb;
+    color: #fff;
     float: left;
   }
   #content #info .management #manageFormWrap .formRowWrap .btn:hover {
+    background: #076d8c;
+  }
+  #content #info .management .manageOption {
     background: #fff;
+    width: 100%;
+    height: 40px;
+    margin: 2px 0;
+    float: left;
+    position: relative;
+    display: block;
+    cursor: pointer;
+  }
+  #content #info .management .manageOption:hover {
+    background: #00ADDC;
+  }
+  #content #info .management .manageOption:hover .manageTitle,
+  #content #info .management .manageOption:hover .manageIcon {
+    color: #fff;
+  }
+  #content #info .management .manageOption:hover .manageTitle .icon-beer,
+  #content #info .management .manageOption:hover .manageIcon .icon-beer,
+  #content #info .management .manageOption:hover .manageTitle .icon-user,
+  #content #info .management .manageOption:hover .manageIcon .icon-user,
+  #content #info .management .manageOption:hover .manageTitle .icon-cogs,
+  #content #info .management .manageOption:hover .manageIcon .icon-cogs,
+  #content #info .management .manageOption:hover .manageTitle .icon-beaker,
+  #content #info .management .manageOption:hover .manageIcon .icon-beaker,
+  #content #info .management .manageOption:hover .manageTitle .icon-star,
+  #content #info .management .manageOption:hover .manageIcon .icon-star {
+    color: #fff;
+  }
+  #content #info .management .manageOption:first-child {
+    margin-top: 160px;
+  }
+  #content #info .management .manageOption .manageTitle {
+    position: absolute;
+    top: 5px;
+    right: 60px;
+    bottom: 5px;
+    left: 20px;
+    font-size: 1.25em;
+    color: #00ADDC;
+  }
+  #content #info .management .manageOption .manageIcon {
+    position: absolute;
+    bottom: 5px;
+    right: 20px;
+    width: 36px;
+    height: 27px;
+    text-align: right;
+  }
+  #content #info .management .manageOption .manageIcon .icon-beer,
+  #content #info .management .manageOption .manageIcon .icon-user,
+  #content #info .management .manageOption .manageIcon .icon-cogs,
+  #content #info .management .manageOption .manageIcon .icon-beaker,
+  #content #info .management .manageOption .manageIcon .icon-star {
+    font-size: 1.5em;
+    color: #00ADDC;
   }
   #content #info .management .btn {
     background: #ccc;
@@ -1114,7 +1369,7 @@
     height: 57px;
     margin-right: 2px;
   }
-  #secondaryContent #users .icon-user {
+  #secondaryContent #users .icon-cog {
     color: #fff;
     font-size: 40px;
   }
@@ -1124,12 +1379,12 @@
     padding-top: 16px;
     height: 57px;
   }
-  #secondaryContent #myAccount .icon-cog {
+  #secondaryContent #myAccount .icon-user {
     color: #fff;
     font-size: 40px;
   }
 }
-@media only screen and (min-width: 800px) and (max-width: 959px) {
+@media only screen and (min-width: 800px) and (max-width: 1280px) {
   #nav {
     width: 150px;
     height: 784px;
@@ -1160,6 +1415,9 @@
     background: url('/Resources/Images/lunchLogo120.png') no-repeat;
     width: 120px;
     height: 33px;
+  }
+  #nav #hiddenNav {
+    display: none;
   }
   #nav .button {
     width: 150px;
@@ -1310,6 +1568,7 @@
   }
   #content #info {
     width: 100%;
+    max-width: 900px;
     position: relative;
   }
   #content #info .primary {
@@ -1332,8 +1591,12 @@
   }
   #content #info .primary .listingWrap .listing {
     background: url('/Resources/Images/repeatBlue.png') repeat;
-    width: 150px;
-    height: 150px;
+    min-width: 150px;
+    min-height: 150px;
+    width: 24%;
+    height: 0;
+    padding-top: 10%;
+    padding-bottom: 10%;
     margin-right: 2px;
     float: left;
     display: table;
@@ -1346,7 +1609,7 @@
     background: #076d8c;
   }
   #content #info .primary .listingWrap .listing p {
-    font-size: 1.5em;
+    font-size: 1.25em;
     line-height: 24px;
     letter-spacing: -1px;
     color: #fff;
@@ -1510,6 +1773,10 @@
     margin-right: 2%;
     float: left;
   }
+  #content #info .management #manageFormWrap .formRowWrap.columnQuarter {
+    width: 25%;
+    float: left;
+  }
   #content #info .management #manageFormWrap .formRowWrap .editorLabel {
     color: #fff;
     position: relative;
@@ -1538,20 +1805,77 @@
     margin: 0;
   }
   #content #info .management #manageFormWrap .formRowWrap .btn {
-    background: #fff;
+    background: url('/Resources/Images/repeatBlue.png') repeat;
     display: block;
     width: auto;
     height: 20px;
-    padding: 7px 15px;
+    padding: 10px 15px;
     font-size: 1em;
-    line-height: 16px;
+    line-height: 18px;
     border: none;
     margin: 0 2px 12px 0;
-    color: #229abb;
+    color: #fff;
     float: left;
   }
   #content #info .management #manageFormWrap .formRowWrap .btn:hover {
+    background: #076d8c;
+  }
+  #content #info .management .manageOption {
     background: #fff;
+    width: 90%;
+    height: 40px;
+    margin: 2px 0;
+    float: left;
+    position: relative;
+    display: block;
+    cursor: pointer;
+  }
+  #content #info .management .manageOption:hover {
+    background: #00ADDC;
+  }
+  #content #info .management .manageOption:hover .manageTitle,
+  #content #info .management .manageOption:hover .manageIcon {
+    color: #fff;
+  }
+  #content #info .management .manageOption:hover .manageTitle .icon-beer,
+  #content #info .management .manageOption:hover .manageIcon .icon-beer,
+  #content #info .management .manageOption:hover .manageTitle .icon-user,
+  #content #info .management .manageOption:hover .manageIcon .icon-user,
+  #content #info .management .manageOption:hover .manageTitle .icon-cogs,
+  #content #info .management .manageOption:hover .manageIcon .icon-cogs,
+  #content #info .management .manageOption:hover .manageTitle .icon-beaker,
+  #content #info .management .manageOption:hover .manageIcon .icon-beaker,
+  #content #info .management .manageOption:hover .manageTitle .icon-star,
+  #content #info .management .manageOption:hover .manageIcon .icon-star {
+    color: #fff;
+  }
+  #content #info .management .manageOption:first-child {
+    margin-top: 160px;
+  }
+  #content #info .management .manageOption .manageTitle {
+    position: absolute;
+    top: 5px;
+    right: 60px;
+    bottom: 5px;
+    left: 20px;
+    font-size: 1.25em;
+    color: #00ADDC;
+  }
+  #content #info .management .manageOption .manageIcon {
+    position: absolute;
+    bottom: 5px;
+    right: 20px;
+    width: 36px;
+    height: 27px;
+    text-align: right;
+  }
+  #content #info .management .manageOption .manageIcon .icon-beer,
+  #content #info .management .manageOption .manageIcon .icon-user,
+  #content #info .management .manageOption .manageIcon .icon-cogs,
+  #content #info .management .manageOption .manageIcon .icon-beaker,
+  #content #info .management .manageOption .manageIcon .icon-star {
+    font-size: 1.5em;
+    color: #00ADDC;
   }
   #content #info .management .btn {
     background: #ccc;
@@ -1699,7 +2023,7 @@
     height: 57px;
     margin-right: 2px;
   }
-  #secondaryContent #users .icon-user {
+  #secondaryContent #users .icon-cog {
     color: #fff;
     font-size: 40px;
   }
@@ -1709,1160 +2033,15 @@
     padding-top: 16px;
     height: 57px;
   }
-  #secondaryContent #myAccount .icon-cog {
+  #secondaryContent #myAccount .icon-user {
     color: #fff;
     font-size: 40px;
   }
 }
-@media only screen and (min-width: 960px) and (max-width: 1280px) {
-  #nav {
-    width: 150px;
-    height: 794px;
-    position: absolute;
-    top: 10px;
-    bottom: 10px;
-    left: 10px;
-    z-index: 1;
-  }
-  #nav #title {
-    background: #fff;
-    width: 135px;
-    height: 95px;
-    padding-top: 55px;
-    padding-left: 15px;
-  }
-  #nav #title:after {
-    content: "";
-    position: absolute;
-    z-index: 1;
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-top: 5px solid #fff;
-    bottom: -5px;
-    left: 46%;
-  }
-  #nav #title .logo {
-    background: url('/Resources/Images/lunchLogo120.png') no-repeat;
-    width: 120px;
-    height: 33px;
-  }
-  #nav .button {
-    width: 150px;
-    height: 150px;
-    margin-bottom: 1px;
-    text-align: center;
-    position: relative;
-  }
-  #nav .button:hover {
-    background: #fff;
-  }
-  #nav .button:hover .text {
-    color: #00addc;
-  }
-  #nav .button:hover .lunchIcon {
-    background: url('/Resources/Images/desktop/spriteDesktop.png') -37px -130px no-repeat;
-    width: 24px;
-    height: 24px;
-    position: absolute;
-    right: 10px;
-    bottom: 10px;
-  }
-  #nav .button:hover .historyIcon {
-    background: url('/Resources/Images/desktop/spriteDesktop.png') -37px -36px no-repeat;
-    width: 24px;
-    height: 24px;
-    position: absolute;
-    right: 10px;
-    bottom: 10px;
-  }
-  #nav .button:hover .ratingsIcon {
-    background: url('/Resources/Images/desktop/spriteDesktop.png') -37px -99px no-repeat;
-    width: 24px;
-    height: 22px;
-    position: absolute;
-    right: 10px;
-    bottom: 10px;
-  }
-  #nav .button:hover .statsIcon {
-    background: url('/Resources/Images/desktop/spriteDesktop.png') -37px -70px no-repeat;
-    width: 24px;
-    height: 20px;
-    position: absolute;
-    right: 10px;
-    bottom: 10px;
-  }
-  #nav .button.active {
-    background: #00addc;
-  }
-  #nav .button.active:hover .text {
-    color: #fff;
-    font-size: 1.825em;
-    line-height: 30px;
-    padding-top: 38%;
-  }
-  #nav .button.active:hover .lunchIcon {
-    background: url('/Resources/Images/desktop/lunch-24.png') no-repeat;
-    width: 24px;
-    height: 24px;
-    position: absolute;
-    right: 10px;
-    bottom: 10px;
-  }
-  #nav .button.active:hover .historyIcon {
-    background: url('/Resources/Images/desktop/history-24.png') no-repeat;
-    width: 24px;
-    height: 24px;
-    position: absolute;
-    right: 10px;
-    bottom: 10px;
-  }
-  #nav .button.active:hover .ratingsIcon {
-    background: url('/Resources/Images/desktop/ratings-24.png') no-repeat;
-    width: 24px;
-    height: 22px;
-    position: absolute;
-    right: 10px;
-    bottom: 10px;
-  }
-  #nav .button.active:hover .statsIcon {
-    background: url('/Resources/Images/desktop/stats-24.png') no-repeat;
-    width: 24px;
-    height: 20px;
-    position: absolute;
-    right: 10px;
-    bottom: 10px;
-  }
-  #nav .button .text {
-    color: #fff;
-    font-size: 1.825em;
-    line-height: 30px;
-    padding-top: 38%;
-  }
-  #nav .button .lunchIcon {
-    background: url('/Resources/Images/desktop/lunch-24.png') no-repeat;
-    width: 24px;
-    height: 24px;
-    position: absolute;
-    right: 10px;
-    bottom: 10px;
-  }
-  #nav .button .historyIcon {
-    background: url('/Resources/Images/desktop/history-24.png') no-repeat;
-    width: 24px;
-    height: 24px;
-    position: absolute;
-    right: 10px;
-    bottom: 10px;
-  }
-  #nav .button .ratingsIcon {
-    background: url('/Resources/Images/desktop/ratings-24.png') no-repeat;
-    width: 24px;
-    height: 22px;
-    position: absolute;
-    right: 10px;
-    bottom: 10px;
-  }
-  #nav .button .statsIcon {
-    background: url('/Resources/Images/desktop/stats-24.png') no-repeat;
-    width: 24px;
-    height: 20px;
-    position: absolute;
-    right: 10px;
-    bottom: 10px;
-  }
-  #nav footer {
-    width: 150px;
-    height: 30px;
-  }
-  #content {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    overflow: hidden;
-    padding-left: 190px;
-  }
-  #content.reports {
-    height: auto;
-  }
-  #content #info {
-    width: 100%;
-    position: relative;
-  }
-  #content #info .primary {
-    font-size: 2.25em;
-    color: #fff;
-    margin-top: 160px;
-  }
-  #content #info .primary p {
-    margin: 0;
-    padding: 0;
-    font-size: inherit;
-    text-shadow: 1px 1px 2px #000;
-  }
-  #content #info .primary .listingWrap {
-    width: 100%;
-    height: 100%;
-    padding-bottom: 5px;
-    overflow: hidden;
-    margin-top: 30px;
-  }
-  #content #info .primary .listingWrap .listing {
-    background: url('/Resources/Images/repeatBlue.png') repeat;
-    width: 24%;
-    height: 0;
-    padding-top: 10%;
-    padding-bottom: 10%;
-    margin-right: 2px;
-    float: left;
-    display: table;
-    box-shadow: 0 0 5px #000;
-  }
-  #content #info .primary .listingWrap .listing:last-child {
-    margin-right: 0;
-  }
-  #content #info .primary .listingWrap .listing:hover {
-    background: #076d8c;
-  }
-  #content #info .primary .listingWrap .listing p {
-    font-size: 1.5em;
-    line-height: 24px;
-    letter-spacing: -1px;
-    color: #fff;
-    text-align: center;
-    display: table-cell;
-    vertical-align: middle;
-    padding-bottom: 7px;
-  }
-  #content #info .primary .usersWrap {
-    width: 100%;
-    height: auto;
-    overflow: hidden;
-    margin-bottom: 14px;
-  }
-  #content #info .primary .usersWrap p {
-    display: inline-block;
-    vertical-align: top;
-    padding-left: 10px;
-    font-family: 'Lobster', cursive;
-    letter-spacing: 0;
-    font-size: 2em;
-    text-align: left;
-    color: #FFB400;
-  }
-  #content #info .primary .usersWrap img {
-    width: 40px;
-    height: 40px;
-  }
-  #content #info .management {
-    width: 90%;
-    float: left;
-  }
-  #content #info .management h1 {
-    font-size: 2em;
-    line-height: 34px;
-    word-spacing: -1px;
-    color: #fff;
-    margin: 20px 0;
-  }
-  #content #info .management h3 {
-    font-size: 1em;
-    line-height: 16px;
-    word-spacing: -1px;
-    color: #00addc;
-    margin: -10px 0 20px 0;
-  }
-  #content #info .management .jobsReport {
-    width: 33%;
-    height: auto;
-    float: left;
-    margin-right: 1px;
-    margin-bottom: 5px;
-    overflow: hidden;
-  }
-  #content #info .management .jobsReport .checkBox,
-  #content #info .management .jobsReport .jobName,
-  #content #info .management .jobsReport .runDate,
-  #content #info .management .jobsReport .createdDate,
-  #content #info .management .jobsReport .json {
-    vertical-align: top;
-  }
-  #content #info .management .jobsReport .checkBox {
-    background: #5bbd62;
-    border-bottom: solid 1px #3a9e41;
-    width: 10%;
-    height: 40px;
-    float: left;
-  }
-  #content #info .management .jobsReport .checkBox input {
-    width: 80%;
-    height: 90%;
-  }
-  #content #info .management .jobsReport .jobName {
-    background: #5bbd62;
-    border-bottom: solid 1px #3a9e41;
-    color: #fff;
-    font-size: 1em;
-    line-height: 36px;
-    padding-top: 3px;
-    width: 90%;
-    height: 37px;
-    float: left;
-  }
-  #content #info .management .jobsReport .jobDetails {
-    background: #f5f5f5;
-    border-bottom: solid 1px #ccc;
-    width: 100%;
-    height: auto;
-    padding-bottom: 5px;
-    overflow: hidden;
-  }
-  #content #info .management .jobsReport .jobDetails .runDate p {
-    font-size: 0.75em;
-    color: #333;
-    margin: 5px 10px 0 10px;
-  }
-  #content #info .management .jobsReport .jobDetails .createdDate,
-  #content #info .management .jobsReport .jobDetails .json {
-    display: none;
-  }
-  #content #info .management .btnToolbar {
-    width: auto;
-    height: 40px;
-    margin-bottom: 4px;
-    clear: both;
-  }
-  #content #info .management .btnToolbar .btn {
-    float: left;
-    height: 26px;
-    padding: 8px 15px 6px 15px;
-    line-height: 22px;
-  }
-  #content #info .management #searchWrap {
-    background: #fff;
-    width: 80%;
-    padding: 0 20px;
-    height: 50px;
-    position: relative;
-  }
-  #content #info .management #searchWrap input {
-    position: absolute;
-    width: auto;
-    height: 50px;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    border: 1px solid #fff;
-    margin: 0;
-    padding: 0 10px;
-    font-size: 1.25em;
-    line-height: 26px;
-  }
-  #content #info .management #searchWrap .icon-search {
-    position: absolute;
-    z-index: 1;
-    width: 30px;
-    height: 30px;
-    top: 10px;
-    right: 10px;
-    font-size: 1.875em;
-    color: #5bbd62;
-  }
-  #content #info .management #manageFormWrap {
-    background: url('/Resources/Images/repeatWhite.png') repeat;
-    width: 80%;
-    height: auto;
-    padding: 20px;
-    overflow: hidden;
-    margin-bottom: 4px;
-  }
-  #content #info .management #manageFormWrap .formRowWrap {
-    padding: 0;
-    width: auto;
-    height: auto;
-    overflow: hidden;
-  }
-  #content #info .management #manageFormWrap .formRowWrap.columnThird {
-    width: 20%;
-    margin-right: 2%;
-    float: left;
-  }
-  #content #info .management #manageFormWrap .formRowWrap .editorLabel {
-    color: #fff;
-    position: relative;
-    margin-bottom: 5px;
-  }
-  #content #info .management #manageFormWrap .formRowWrap .editorField {
-    width: 100%;
-    height: 40px;
-    margin: 0 0 10px 0;
-    position: relative;
-  }
-  #content #info .management #manageFormWrap .formRowWrap .editorField.checkBox {
-    height: 20px;
-  }
-  #content #info .management #manageFormWrap .formRowWrap .editorField input {
-    background: #fff;
-    border: 1px solid #076d8c;
-    font-size: 1em;
-    color: #333;
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    padding: 0 10px;
-    margin: 0;
-  }
-  #content #info .management #manageFormWrap .formRowWrap .btn {
-    background: #fff;
-    display: block;
-    width: auto;
-    height: 20px;
-    padding: 7px 15px;
-    font-size: 1em;
-    line-height: 16px;
-    border: none;
-    margin: 0 2px 12px 0;
-    color: #229abb;
-    float: left;
-  }
-  #content #info .management #manageFormWrap .formRowWrap .btn:hover {
-    background: #fff;
-  }
-  #content #info .management .btn {
-    background: #ccc;
-    width: auto;
-    height: 40px;
-    padding: 7px 15px;
-    color: #fff;
-    font-size: 1em;
-    line-height: 16px;
-    border: none;
-    margin: 0;
-    cursor: pointer;
-    text-decoration: none;
-  }
-  #content #info .management .btn.submit {
-    background: #5bbd62;
-  }
-  #content #info .management .btn.submit:hover {
-    background: #3a9e41;
-  }
-  #secondaryContent {
-    position: fixed;
-    right: 3%;
-    bottom: 10px;
-  }
-  #secondaryContent #veto,
-  #secondaryContent #overrides,
-  #secondaryContent #badges,
-  #secondaryContent #users,
-  #secondaryContent #myAccount {
-    background: url('/Resources/Images/repeatBlue.png') repeat;
-    width: 75px;
-    height: 73px;
-    overflow: hidden;
-    border-top: 2px solid #229abb;
-    float: left;
-    text-decoration: none;
-  }
-  #secondaryContent #veto:hover,
-  #secondaryContent #overrides:hover,
-  #secondaryContent #badges:hover,
-  #secondaryContent #users:hover,
-  #secondaryContent #myAccount:hover {
-    background: #229abb;
-  }
-  #secondaryContent #veto.new,
-  #secondaryContent #overrides.new,
-  #secondaryContent #badges.new,
-  #secondaryContent #users.new,
-  #secondaryContent #myAccount.new {
-    background: #5bbd62;
-    border-top: 2px solid #3a9e41;
-  }
-  #secondaryContent #veto.new:hover,
-  #secondaryContent #overrides.new:hover,
-  #secondaryContent #badges.new:hover,
-  #secondaryContent #users.new:hover,
-  #secondaryContent #myAccount.new:hover {
-    background: #3a9e41;
-  }
-  #secondaryContent #veto.new .secondaryText,
-  #secondaryContent #overrides.new .secondaryText,
-  #secondaryContent #badges.new .secondaryText,
-  #secondaryContent #users.new .secondaryText,
-  #secondaryContent #myAccount.new .secondaryText {
-    display: block;
-  }
-  #secondaryContent #veto.new .vetoIcon,
-  #secondaryContent #overrides.new .vetoIcon,
-  #secondaryContent #badges.new .vetoIcon,
-  #secondaryContent #users.new .vetoIcon,
-  #secondaryContent #myAccount.new .vetoIcon {
-    -moz-animation: iconVetoRoll 4s infinite;
-    -webkit-animation: iconVetoRoll 4s infinite;
-  }
-  #secondaryContent #veto.new .overridesIcon,
-  #secondaryContent #overrides.new .overridesIcon,
-  #secondaryContent #badges.new .overridesIcon,
-  #secondaryContent #users.new .overridesIcon,
-  #secondaryContent #myAccount.new .overridesIcon {
-    -moz-animation: iconVetoRoll 4s infinite .5s;
-    -webkit-animation: iconVetoRoll 4s infinite .5s;
-  }
-  #secondaryContent #veto.new .badgesIcon,
-  #secondaryContent #overrides.new .badgesIcon,
-  #secondaryContent #badges.new .badgesIcon,
-  #secondaryContent #users.new .badgesIcon,
-  #secondaryContent #myAccount.new .badgesIcon {
-    -moz-animation: iconVetoRoll 4s infinite 1s;
-    -webkit-animation: iconVetoRoll 4s infinite 1s;
-  }
-  #secondaryContent #veto.empty,
-  #secondaryContent #overrides.empty,
-  #secondaryContent #badges.empty,
-  #secondaryContent #users.empty,
-  #secondaryContent #myAccount.empty {
-    background: #ccc;
-    border-top: 2px solid #888;
-    cursor: default;
-  }
-  #secondaryContent #veto .secondaryText,
-  #secondaryContent #overrides .secondaryText,
-  #secondaryContent #badges .secondaryText,
-  #secondaryContent #users .secondaryText,
-  #secondaryContent #myAccount .secondaryText {
-    color: #fff;
-    font-family: 'Lobster', cursive;
-    font-size: 2em;
-    line-height: 32px;
-    text-align: center;
-    display: none;
-    margin-top: -112px;
-  }
-  #secondaryContent #veto {
-    margin-right: 2px;
-  }
-  #secondaryContent #veto .vetoIcon {
-    background: url('/Resources/Images/veto-32.png') no-repeat;
-    width: 32px;
-    height: 32px;
-    margin: 20px auto 0 auto;
-  }
-  #secondaryContent #overrides {
-    margin-right: 2px;
-  }
-  #secondaryContent #overrides .overridesIcon {
-    background: url('/Resources/Images/overrides-32.png') no-repeat;
-    width: 32px;
-    height: 32px;
-    margin: 20px auto 0 auto;
-  }
-  #secondaryContent #badges {
-    margin-right: 10px;
-  }
-  #secondaryContent #badges .badgesIcon {
-    background: url('/Resources/Images/badges-32.png') no-repeat;
-    width: 20px;
-    height: 32px;
-    margin: 20px auto 0 auto;
-  }
-  #secondaryContent #users {
-    float: right;
-    text-align: center;
-    padding-top: 16px;
-    height: 57px;
-    margin-right: 2px;
-  }
-  #secondaryContent #users .icon-user {
-    color: #fff;
-    font-size: 40px;
-  }
-  #secondaryContent #myAccount {
-    float: right;
-    text-align: center;
-    padding-top: 16px;
-    height: 57px;
-  }
-  #secondaryContent #myAccount .icon-cog {
-    color: #fff;
-    font-size: 40px;
-  }
-}
-/* IPAD ONLY QUERY */
-@media screen and (device-width: 768px) and (orientation: portrait), screen and (device-width: 1009px) and (orientation: landscape) {
-  #nav {
-    width: 150px;
-    height: 784px;
-    position: absolute;
-    top: 10px;
-    bottom: 10px;
-    left: 10px;
-    z-index: 1;
-  }
-  #nav #title {
-    background: #FFF;
-    width: 135px;
-    height: 95px;
-    padding-top: 55px;
-    padding-left: 15px;
-  }
-  #nav #title:after {
-    content: "";
-    position: absolute;
-    z-index: 1;
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-top: 5px solid #fff;
-    bottom: -5px;
-    left: 46%;
-  }
-  #nav #title .logo {
-    background: url('/Resources/Images/lunchLogo120.png') no-repeat;
-    width: 120px;
-    height: 33px;
-  }
-  #nav .button {
-    width: 150px;
-    height: 150px;
-    margin-bottom: 1px;
-    text-align: center;
-    position: relative;
-  }
-  #nav .button:hover {
-    background: #fff;
-  }
-  #nav .button:hover .text {
-    color: #00addc;
-  }
-  #nav .button:hover .lunchIcon {
-    background: url('/Resources/Images/desktop/spriteDesktop.png') -37px -130px no-repeat;
-    width: 24px;
-    height: 24px;
-    position: absolute;
-    right: 10px;
-    bottom: 10px;
-  }
-  #nav .button:hover .historyIcon {
-    background: url('/Resources/Images/desktop/spriteDesktop.png') -37px -36px no-repeat;
-    width: 24px;
-    height: 24px;
-    position: absolute;
-    right: 10px;
-    bottom: 10px;
-  }
-  #nav .button:hover .ratingsIcon {
-    background: url('/Resources/Images/desktop/spriteDesktop.png') -37px -99px no-repeat;
-    width: 24px;
-    height: 22px;
-    position: absolute;
-    right: 10px;
-    bottom: 10px;
-  }
-  #nav .button:hover .statsIcon {
-    background: url('/Resources/Images/desktop/spriteDesktop.png') -37px -70px no-repeat;
-    width: 24px;
-    height: 20px;
-    position: absolute;
-    right: 10px;
-    bottom: 10px;
-  }
-  #nav .button.active {
-    background: #00addc;
-  }
-  #nav .button.active:hover .text {
-    color: #fff;
-    font-size: 1.825em;
-    line-height: 30px;
-    padding-top: 38%;
-  }
-  #nav .button.active:hover .lunchIcon {
-    background: url('/Resources/Images/desktop/lunch-24.png') no-repeat;
-    width: 24px;
-    height: 24px;
-    position: absolute;
-    right: 10px;
-    bottom: 10px;
-  }
-  #nav .button.active:hover .historyIcon {
-    background: url('/Resources/Images/desktop/history-24.png') no-repeat;
-    width: 24px;
-    height: 24px;
-    position: absolute;
-    right: 10px;
-    bottom: 10px;
-  }
-  #nav .button.active:hover .ratingsIcon {
-    background: url('/Resources/Images/desktop/ratings-24.png') no-repeat;
-    width: 24px;
-    height: 22px;
-    position: absolute;
-    right: 10px;
-    bottom: 10px;
-  }
-  #nav .button.active:hover .statsIcon {
-    background: url('/Resources/Images/desktop/stats-24.png') no-repeat;
-    width: 24px;
-    height: 20px;
-    position: absolute;
-    right: 10px;
-    bottom: 10px;
-  }
-  #nav .button .text {
-    color: #fff;
-    font-size: 1.825em;
-    line-height: 30px;
-    padding-top: 38%;
-  }
-  #nav .button .lunchIcon {
-    background: url('/Resources/Images/desktop/lunch-24.png') no-repeat;
-    width: 24px;
-    height: 24px;
-    position: absolute;
-    right: 10px;
-    bottom: 10px;
-  }
-  #nav .button .historyIcon {
-    background: url('/Resources/Images/desktop/history-24.png') no-repeat;
-    width: 24px;
-    height: 24px;
-    position: absolute;
-    right: 10px;
-    bottom: 10px;
-  }
-  #nav .button .ratingsIcon {
-    background: url('/Resources/Images/desktop/ratings-24.png') no-repeat;
-    width: 24px;
-    height: 22px;
-    position: absolute;
-    right: 10px;
-    bottom: 10px;
-  }
-  #nav .button .statsIcon {
-    background: url('/Resources/Images/desktop/stats-24.png') no-repeat;
-    width: 24px;
-    height: 20px;
-    position: absolute;
-    right: 10px;
-    bottom: 10px;
-  }
-  #nav footer {
-    width: 150px;
-    height: 30px;
-  }
-  #content {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    overflow: hidden;
-    padding-left: 190px;
-  }
-  #content.reports {
-    height: auto;
-  }
-  #content.reports .bgOne,
-  #content.reports .mask {
-    display: none;
-  }
-  #content #info {
-    width: 100%;
-    position: relative;
-  }
-  #content #info .primary {
-    font-size: 2.25em;
-    color: #fff;
-    margin-top: 225px;
-  }
-  #content #info .primary p {
-    margin: 0;
-    padding: 0;
-    font-size: inherit;
-    text-shadow: 1px 1px 2px #000;
-  }
-  #content #info .primary .listingWrap {
-    width: 100%;
-    height: 100%;
-    padding-bottom: 5px;
-    overflow: hidden;
-    margin-top: 30px;
-  }
-  #content #info .primary .listingWrap .listing {
-    background: url('/Resources/Images/repeatBlue.png') repeat;
-    width: 24%;
-    height: 0;
-    padding-top: 10%;
-    padding-bottom: 10%;
-    margin-right: 2px;
-    float: left;
-    display: table;
-    box-shadow: 0 0 5px #000;
-  }
-  #content #info .primary .listingWrap .listing:last-child {
-    margin-right: 0;
-  }
-  #content #info .primary .listingWrap .listing:hover {
-    background: #076d8c;
-  }
-  #content #info .primary .listingWrap .listing p {
-    font-size: 1.5em;
-    line-height: 24px;
-    letter-spacing: -1px;
-    color: #fff;
-    text-align: center;
-    display: table-cell;
-    vertical-align: middle;
-    padding-bottom: 7px;
-  }
-  #content #info .primary .usersWrap {
-    width: 100%;
-    height: auto;
-    overflow: hidden;
-    margin-bottom: 14px;
-  }
-  #content #info .primary .usersWrap p {
-    display: inline-block;
-    vertical-align: top;
-    padding-left: 10px;
-    font-family: 'Lobster', cursive;
-    letter-spacing: 0;
-    font-size: 2em;
-    text-align: left;
-    color: #FFB400;
-  }
-  #content #info .primary .usersWrap img {
-    width: 40px;
-    height: 40px;
-  }
-  #content #info .management {
-    width: auto;
-    margin: 0 auto;
-  }
-  #content #info .management h1 {
-    font-size: 2em;
-    line-height: 34px;
-    word-spacing: -1px;
-    color: #076d8c;
-    margin: 0 0 20px 0;
-  }
-  #content #info .management h3 {
-    font-size: 1em;
-    line-height: 16px;
-    word-spacing: -1px;
-    color: #00addc;
-    margin: -10px 0 20px 0;
-  }
-  #content #info .management .jobsReport {
-    width: 33.3%;
-    height: auto;
-    float: left;
-    margin-bottom: 5px;
-    overflow: hidden;
-  }
-  #content #info .management .jobsReport .checkBox,
-  #content #info .management .jobsReport .jobName,
-  #content #info .management .jobsReport .runDate,
-  #content #info .management .jobsReport .createdDate,
-  #content #info .management .jobsReport .json {
-    vertical-align: top;
-  }
-  #content #info .management .jobsReport .checkBox {
-    background: #5bbd62;
-    border-bottom: solid 1px #3a9e41;
-    width: 10%;
-    height: 40px;
-    float: left;
-  }
-  #content #info .management .jobsReport .checkBox input {
-    width: 80%;
-    height: 90%;
-  }
-  #content #info .management .jobsReport .jobName {
-    background: #5bbd62;
-    border-bottom: solid 1px #3a9e41;
-    color: #fff;
-    font-size: 1.25em;
-    line-height: 36px;
-    width: 90%;
-    height: 40px;
-    float: left;
-  }
-  #content #info .management .jobsReport .jobDetails {
-    background: #f5f5f5;
-    border-bottom: solid 1px #ccc;
-    width: 100%;
-    height: auto;
-    padding-bottom: 5px;
-    overflow: hidden;
-  }
-  #content #info .management .jobsReport .jobDetails .runDate,
-  #content #info .management .jobsReport .jobDetails .createdDate,
-  #content #info .management .jobsReport .jobDetails .json {
-    background: #f5f5f5;
-    width: 100%;
-    height: 20px;
-    float: left;
-  }
-  #content #info .management .jobsReport .jobDetails .runDate p,
-  #content #info .management .jobsReport .jobDetails .createdDate p,
-  #content #info .management .jobsReport .jobDetails .json p {
-    color: #333;
-    font-size: 0.75em;
-    margin: 0;
-    padding: 5px 10px 5px 45px;
-  }
-  #content #info .management .btnToolbar {
-    width: auto;
-    height: 40px;
-    margin-bottom: 4px;
-    clear: both;
-  }
-  #content #info .management .btnToolbar .btn {
-    float: left;
-    height: 26px;
-    padding: 8px 15px 6px 15px;
-    line-height: 22px;
-  }
-  #content #info .management #searchWrap {
-    background: #fff;
-    width: 100%;
-    height: 50px;
-    position: relative;
-  }
-  #content #info .management #searchWrap input {
-    position: absolute;
-    width: auto;
-    height: 50px;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    border: 1px solid #4BC3E4;
-    margin: 0;
-    padding: 0 10px;
-    font-size: 1.25em;
-    line-height: 26px;
-  }
-  #content #info .management #searchWrap .icon-search {
-    position: absolute;
-    z-index: 1;
-    width: 30px;
-    height: 30px;
-    top: 10px;
-    right: 10px;
-    font-size: 1.875em;
-    color: #5bbd62;
-  }
-  #content #info .management #manageFormWrap {
-    background: url('/Resources/Images/repeatBlue.png') repeat;
-    width: 100%;
-    height: auto;
-    overflow: hidden;
-    padding: 20px 0;
-  }
-  #content #info .management #manageFormWrap .formRowWrap {
-    padding: 0 20px;
-    width: auto;
-    height: auto;
-    overflow: hidden;
-  }
-  #content #info .management #manageFormWrap .formRowWrap.columnThird {
-    width: 20%;
-    float: left;
-  }
-  #content #info .management #manageFormWrap .formRowWrap .editorLabel {
-    color: #fff;
-    position: relative;
-    margin-bottom: 5px;
-  }
-  #content #info .management #manageFormWrap .formRowWrap .editorField {
-    width: 100%;
-    height: 40px;
-    margin: 0 0 10px 0;
-    position: relative;
-  }
-  #content #info .management #manageFormWrap .formRowWrap .editorField.checkBox {
-    height: 20px;
-  }
-  #content #info .management #manageFormWrap .formRowWrap .editorField input {
-    background: #fff;
-    border: 1px solid #076d8c;
-    font-size: 1em;
-    color: #333;
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    padding: 0 10px;
-    margin: 0;
-  }
-  #content #info .management #manageFormWrap .formRowWrap .btn {
-    background: #fff;
-    display: block;
-    width: auto;
-    height: 20px;
-    padding: 7px 15px;
-    font-size: 1em;
-    line-height: 16px;
-    border: none;
-    margin: 0 2px 12px 0;
-    color: #229abb;
-    float: left;
-  }
-  #content #info .management #manageFormWrap .formRowWrap .btn:hover {
-    background: #fff;
-  }
-  #content #info .management .btn {
-    background: #ccc;
-    width: auto;
-    height: 40px;
-    padding: 7px 15px;
-    color: #fff;
-    font-size: 1em;
-    line-height: 16px;
-    border: none;
-    margin: 0;
-    cursor: pointer;
-    text-decoration: none;
-  }
-  #content #info .management .btn.submit {
-    background: #5bbd62;
-  }
-  #content #info .management .btn.submit:hover {
-    background: #3a9e41;
-  }
-  #secondaryContent {
-    position: absolute;
-    right: 10px;
-    bottom: 10px;
-  }
-  #secondaryContent #veto,
-  #secondaryContent #overrides,
-  #secondaryContent #badges,
-  #secondaryContent #users,
-  #secondaryContent #myAccount {
-    background: url('/Resources/Images/repeatBlue.png') repeat;
-    width: 75px;
-    height: 73px;
-    overflow: hidden;
-    border-top: 2px solid #229abb;
-    float: left;
-  }
-  #secondaryContent #veto.new,
-  #secondaryContent #overrides.new,
-  #secondaryContent #badges.new,
-  #secondaryContent #users.new,
-  #secondaryContent #myAccount.new {
-    background: #5bbd62;
-    border-top: 2px solid #3a9e41;
-  }
-  #secondaryContent #veto.new .secondaryText,
-  #secondaryContent #overrides.new .secondaryText,
-  #secondaryContent #badges.new .secondaryText,
-  #secondaryContent #users.new .secondaryText,
-  #secondaryContent #myAccount.new .secondaryText {
-    display: block;
-  }
-  #secondaryContent #veto.new .vetoIcon,
-  #secondaryContent #overrides.new .vetoIcon,
-  #secondaryContent #badges.new .vetoIcon,
-  #secondaryContent #users.new .vetoIcon,
-  #secondaryContent #myAccount.new .vetoIcon {
-    -moz-animation: iconVetoRoll 4s infinite;
-    -webkit-animation: iconVetoRoll 4s infinite;
-  }
-  #secondaryContent #veto.new .overridesIcon,
-  #secondaryContent #overrides.new .overridesIcon,
-  #secondaryContent #badges.new .overridesIcon,
-  #secondaryContent #users.new .overridesIcon,
-  #secondaryContent #myAccount.new .overridesIcon {
-    -moz-animation: iconVetoRoll 4s infinite .5s;
-    -webkit-animation: iconVetoRoll 4s infinite .5s;
-  }
-  #secondaryContent #veto.new .badgesIcon,
-  #secondaryContent #overrides.new .badgesIcon,
-  #secondaryContent #badges.new .badgesIcon,
-  #secondaryContent #users.new .badgesIcon,
-  #secondaryContent #myAccount.new .badgesIcon {
-    -moz-animation: iconVetoRoll 4s infinite 1s;
-    -webkit-animation: iconVetoRoll 4s infinite 1s;
-  }
-  #secondaryContent #veto.empty,
-  #secondaryContent #overrides.empty,
-  #secondaryContent #badges.empty,
-  #secondaryContent #users.empty,
-  #secondaryContent #myAccount.empty {
-    background: #ccc;
-    border-top: 2px solid #888;
-  }
-  #secondaryContent #veto .secondaryText,
-  #secondaryContent #overrides .secondaryText,
-  #secondaryContent #badges .secondaryText,
-  #secondaryContent #users .secondaryText,
-  #secondaryContent #myAccount .secondaryText {
-    color: #fff;
-    font-family: 'Lobster', cursive;
-    font-size: 2em;
-    line-height: 32px;
-    text-align: center;
-    display: none;
-    margin-top: -112px;
-  }
-  #secondaryContent #veto {
-    margin-right: 2px;
-  }
-  #secondaryContent #veto .vetoIcon {
-    background: url('/Resources/Images/veto-32.png') no-repeat;
-    width: 32px;
-    height: 32px;
-    margin: 20px auto 0 auto;
-  }
-  #secondaryContent #overrides {
-    margin-right: 2px;
-  }
-  #secondaryContent #overrides .overridesIcon {
-    background: url('/Resources/Images/overrides-32.png') no-repeat;
-    width: 32px;
-    height: 32px;
-    margin: 20px auto 0 auto;
-  }
-  #secondaryContent #badges .badgesIcon {
-    background: url('/Resources/Images/badges-32.png') no-repeat;
-    width: 20px;
-    height: 32px;
-    margin: 20px auto 0 auto;
-  }
-  #secondaryContent #users {
-    float: right;
-    text-align: center;
-    padding-top: 16px;
-    height: 57px;
-    margin-right: 2px;
-  }
-  #secondaryContent #users .icon-user {
-    color: #fff;
-    font-size: 40px;
-  }
-  #secondaryContent #myAccount {
-    float: right;
-    text-align: center;
-    padding-top: 16px;
-    height: 57px;
-  }
-  #secondaryContent #myAccount .icon-cog {
-    color: #fff;
-    font-size: 40px;
-  }
-}
-@media only screen and (min-width: 1281px) and (max-width: 1650px) {
+@media only screen and (min-width: 1281px) {
   #threshold {
     width: 100%;
+    max-width: 1651px;
     height: auto;
     position: relative;
     overflow: hidden;
@@ -2972,6 +2151,9 @@
     position: absolute;
     margin-top: -10px;
     left: 44%;
+  }
+  #nav #hiddenNav {
+    display: none;
   }
   #nav footer {
     display: none;
@@ -3204,6 +2386,10 @@
     width: 20%;
     float: left;
   }
+  #content #info .management #manageFormWrap .formRowWrap.columnQuarter {
+    width: 20%;
+    float: left;
+  }
   #content #info .management #manageFormWrap .formRowWrap .editorLabel {
     color: #fff;
     position: relative;
@@ -3232,13 +2418,13 @@
     margin: 0;
   }
   #content #info .management #manageFormWrap .formRowWrap .btn {
-    background: #fff;
+    background: url('/Resources/Images/repeatWhite.png') repeat;
     display: block;
     width: auto;
     height: 20px;
-    padding: 7px 15px;
+    padding: 10px 15px;
     font-size: 1em;
-    line-height: 16px;
+    line-height: 18px;
     border: none;
     margin: 0 2px 12px 0;
     color: #229abb;
@@ -3246,6 +2432,43 @@
   }
   #content #info .management #manageFormWrap .formRowWrap .btn:hover {
     background: #fff;
+  }
+  #content #info .management .manageOption {
+    background: url('/Resources/Images/repeatBlue.png') repeat;
+    width: 18%;
+    padding-top: 18%;
+    margin: 0 1%;
+    float: left;
+    position: relative;
+    display: block;
+    cursor: pointer;
+  }
+  #content #info .management .manageOption:hover {
+    background: #076d8c;
+  }
+  #content #info .management .manageOption .manageTitle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    bottom: 20px;
+    left: 20px;
+    color: #fff;
+  }
+  #content #info .management .manageOption .manageIcon {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 36px;
+    height: 32px;
+    text-align: right;
+  }
+  #content #info .management .manageOption .manageIcon .icon-beer,
+  #content #info .management .manageOption .manageIcon .icon-user,
+  #content #info .management .manageOption .manageIcon .icon-cogs,
+  #content #info .management .manageOption .manageIcon .icon-beaker,
+  #content #info .management .manageOption .manageIcon .icon-star {
+    font-size: 2em;
+    color: #fff;
   }
   #content #info .management .btn {
     background: #ccc;
@@ -3391,7 +2614,7 @@
     height: 57px;
     margin-right: 2px;
   }
-  #secondaryContent #users .icon-user {
+  #secondaryContent #users .icon-cog {
     color: #fff;
     font-size: 40px;
   }
@@ -3401,557 +2624,7 @@
     padding-top: 16px;
     height: 57px;
   }
-  #secondaryContent #myAccount .icon-cog {
-    color: #fff;
-    font-size: 40px;
-  }
-}
-@media only screen and (min-width: 1651px) {
-  #threshold {
-    width: 1651px;
-    height: auto;
-    position: relative;
-    overflow: hidden;
-    margin: 0 auto;
-  }
-  #nav {
-    position: relative;
-    width: 1280px;
-    height: 100px;
-    padding-top: 25px;
-    margin: 0 auto;
-  }
-  #nav #title,
-  #nav .button,
-  #nav footer {
-    float: left;
-    margin-bottom: 0;
-  }
-  #nav #title {
-    margin-right: 0;
-    width: 326px;
-    height: 63px;
-    padding-top: 12px;
-  }
-  #nav #title:after {
-    border-left: 5px solid #fff;
-    border-right: none;
-    border-top: 5px solid transparent;
-    border-bottom: 5px solid transparent;
-    bottom: 43%;
-    left: 326px;
-  }
-  #nav #title .logo {
-    background: url('/Resources/Images/lunchLogo.png') no-repeat;
-    width: 190px;
-    height: 52px;
-  }
-  #nav #navWrap {
-    width: 173px;
-    float: right;
-  }
-  #nav #navWrap .button {
-    width: 32px;
-    height: 53px;
-    padding-top: 22px;
-    margin-left: 15px;
-    position: relative;
-  }
-  #nav #navWrap .button:first-child {
-    margin-left: 0;
-  }
-  #nav #navWrap .button.active {
-    background: transparent;
-  }
-  #nav #navWrap .button.active .lunchIcon {
-    opacity: 1.0;
-  }
-  #nav #navWrap .button.active .historyIcon {
-    opacity: 1.0;
-  }
-  #nav #navWrap .button.active .ratingsIcon {
-    opacity: 1.0;
-  }
-  #nav #navWrap .button.active .statsIcon {
-    opacity: 1.0;
-  }
-  #nav #navWrap .button:hover .text {
-    display: block;
-  }
-  #nav #navWrap .button .lunchIcon {
-    background: url('/Resources/Images/desktop/spriteDesktop.png') -2px -130px no-repeat;
-    width: 32px;
-    height: 31px;
-    opacity: 0.5;
-    margin-bottom: 1px;
-  }
-  #nav #navWrap .button .historyIcon {
-    background: url('/Resources/Images/desktop/spriteDesktop.png') -2px -36px no-repeat;
-    width: 32px;
-    height: 32px;
-    opacity: 0.5;
-  }
-  #nav #navWrap .button .ratingsIcon {
-    background: url('/Resources/Images/desktop/spriteDesktop.png') -2px -99px no-repeat;
-    width: 32px;
-    height: 29px;
-    opacity: 0.5;
-    margin-bottom: 3px;
-  }
-  #nav #navWrap .button .statsIcon {
-    background: url('/Resources/Images/desktop/spriteDesktop.png') -2px -70px no-repeat;
-    width: 32px;
-    height: 27px;
-    opacity: 0.5;
-    margin-bottom: 5px;
-  }
-  #nav #navWrap .button .text {
-    background: #333;
-    width: 80px;
-    height: 25px;
-    border-radius: 3px;
-    display: none;
-    padding-top: 5px;
-    position: absolute;
-    z-index: 1;
-    top: 60px;
-    right: -75%;
-    text-align: center;
-    color: #fff;
-    font-size: 0.8125em;
-  }
-  #nav #navWrap .button .text:before {
-    content: "";
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-bottom: 5px solid #333;
-    position: absolute;
-    margin-top: -10px;
-    left: 44%;
-  }
-  #nav footer {
-    display: none;
-  }
-  #content {
-    position: relative;
-    width: 100%;
-    height: 620px;
-    padding-left: 0;
-  }
-  #content.reports {
-    height: auto;
-  }
-  #content.reports .bgOne,
-  #content.reports .mask {
-    display: none;
-  }
-  #content .bgOne,
-  #content .bgTwo {
-    top: -85px;
-    height: 685px;
-  }
-  #content .mask {
-    height: 600px;
-  }
-  #content #info {
-    position: relative;
-  }
-  #content #info .primary {
-    font-size: 2.25em;
-    color: #fff;
-    margin-top: 90px;
-    margin-left: 70px;
-  }
-  #content #info .primary p {
-    margin: 0;
-    padding: 0;
-    font-size: inherit;
-    font-size: 1.5em;
-    letter-spacing: -1px;
-    text-shadow: 1px 1px 2px #000;
-  }
-  #content #info .primary .listingWrap {
-    width: 100%;
-    height: auto;
-    overflow: hidden;
-    margin-top: 30px;
-    padding-bottom: 5px;
-  }
-  #content #info .primary .listingWrap .listing {
-    background: url('/Resources/Images/repeatBlue.png') repeat;
-    width: 180px;
-    height: 220px;
-    padding: 0 20px;
-    margin-right: 2px;
-    float: left;
-    display: table;
-    box-shadow: 0 0 5px #000;
-  }
-  #content #info .primary .listingWrap .listing:last-child {
-    margin-right: 0;
-  }
-  #content #info .primary .listingWrap .listing:hover {
-    background: #076d8c;
-  }
-  #content #info .primary .listingWrap .listing p {
-    display: table-cell;
-    vertical-align: middle;
-    text-align: center;
-    font-size: 2em;
-    line-height: 34px;
-  }
-  #content #info .primary .usersWrap {
-    background: url('/Resources/Images/repeatBlack.png') repeat;
-    height: auto;
-    overflow: hidden;
-    margin-bottom: 14px;
-    position: absolute;
-    top: -90px;
-    right: 69px;
-    bottom: -197px;
-    width: 189px;
-    padding: 95px 31px 0 31px;
-    text-align: left;
-    border-left: 2px solid #000;
-    border-right: 1px solid #888;
-  }
-  #content #info .primary .usersWrap p {
-    width: 250px;
-    position: absolute;
-    top: 42px;
-    left: 30px;
-    font-family: 'Lobster', cursive;
-    letter-spacing: 0;
-    font-size: 2em;
-    text-align: left;
-    color: #FFB400;
-  }
-  #content #info .primary .usersWrap img {
-    width: 60px;
-    height: 60px;
-  }
-  #content #info .management {
-    width: 1280px;
-    margin: 0 auto;
-  }
-  #content #info .management h1 {
-    font-size: 2em;
-    line-height: 34px;
-    word-spacing: -1px;
-    color: #076d8c;
-    margin: 0 0 20px 0;
-  }
-  #content #info .management h3 {
-    font-size: 1em;
-    line-height: 16px;
-    word-spacing: -1px;
-    color: #00addc;
-    margin: -10px 0 20px 0;
-  }
-  #content #info .management .jobsReport {
-    width: 33.3%;
-    height: auto;
-    float: left;
-    margin-bottom: 5px;
-    overflow: hidden;
-  }
-  #content #info .management .jobsReport .checkBox,
-  #content #info .management .jobsReport .jobName,
-  #content #info .management .jobsReport .runDate,
-  #content #info .management .jobsReport .createdDate,
-  #content #info .management .jobsReport .json {
-    vertical-align: top;
-  }
-  #content #info .management .jobsReport .checkBox {
-    background: #5bbd62;
-    border-bottom: solid 1px #3a9e41;
-    width: 10%;
-    height: 40px;
-    float: left;
-  }
-  #content #info .management .jobsReport .checkBox input {
-    width: 80%;
-    height: 90%;
-  }
-  #content #info .management .jobsReport .jobName {
-    background: #5bbd62;
-    border-bottom: solid 1px #3a9e41;
-    color: #fff;
-    font-size: 1.25em;
-    line-height: 36px;
-    width: 90%;
-    height: 40px;
-    float: left;
-  }
-  #content #info .management .jobsReport .jobDetails {
-    background: #f5f5f5;
-    border-bottom: solid 1px #ccc;
-    width: 100%;
-    height: auto;
-    padding-bottom: 5px;
-    overflow: hidden;
-  }
-  #content #info .management .jobsReport .jobDetails .runDate,
-  #content #info .management .jobsReport .jobDetails .createdDate,
-  #content #info .management .jobsReport .jobDetails .json {
-    background: #f5f5f5;
-    width: 100%;
-    height: 20px;
-    float: left;
-  }
-  #content #info .management .jobsReport .jobDetails .runDate p,
-  #content #info .management .jobsReport .jobDetails .createdDate p,
-  #content #info .management .jobsReport .jobDetails .json p {
-    color: #333;
-    font-size: 0.75em;
-    margin: 0;
-    padding: 5px 10px 5px 45px;
-  }
-  #content #info .management .restaurant {
-    background: url('/Resources/Images/repeatBlue.png') repeat;
-    width: 220px;
-    height: 220px;
-    margin: 0 2px 2px 0;
-    float: left;
-  }
-  #content #info .management .btnToolbar {
-    width: auto;
-    height: 40px;
-    margin-bottom: 4px;
-    clear: both;
-  }
-  #content #info .management .btnToolbar .btn {
-    float: left;
-    height: 26px;
-    padding: 8px 15px 6px 15px;
-    line-height: 22px;
-  }
-  #content #info .management #searchWrap {
-    background: #fff;
-    width: 100%;
-    height: 50px;
-    position: relative;
-  }
-  #content #info .management #searchWrap input {
-    position: absolute;
-    width: auto;
-    height: 50px;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    border: 1px solid #4BC3E4;
-    margin: 0;
-    padding: 0 10px;
-    font-size: 1.25em;
-    line-height: 26px;
-  }
-  #content #info .management #searchWrap .icon-search {
-    position: absolute;
-    z-index: 1;
-    width: 30px;
-    height: 30px;
-    top: 10px;
-    right: 10px;
-    font-size: 1.875em;
-    color: #5bbd62;
-  }
-  #content #info .management #manageFormWrap {
-    background: url('/Resources/Images/repeatBlue.png') repeat;
-    width: 100%;
-    height: auto;
-    overflow: hidden;
-    padding: 20px 0;
-    margin-bottom: 4px;
-  }
-  #content #info .management #manageFormWrap .formRowWrap {
-    padding: 0 20px;
-    width: auto;
-    height: auto;
-    overflow: hidden;
-  }
-  #content #info .management #manageFormWrap .formRowWrap.columnThird {
-    width: 30%;
-    float: left;
-  }
-  #content #info .management #manageFormWrap .formRowWrap .editorLabel {
-    color: #fff;
-    position: relative;
-    margin-bottom: 5px;
-  }
-  #content #info .management #manageFormWrap .formRowWrap .editorField {
-    width: 100%;
-    height: 40px;
-    margin: 0 0 10px 0;
-    position: relative;
-  }
-  #content #info .management #manageFormWrap .formRowWrap .editorField.checkBox {
-    height: 20px;
-  }
-  #content #info .management #manageFormWrap .formRowWrap .editorField input {
-    background: #fff;
-    border: 1px solid #076d8c;
-    font-size: 1em;
-    color: #333;
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    padding: 0 10px;
-    margin: 0;
-  }
-  #content #info .management #manageFormWrap .formRowWrap .btn {
-    background: #fff;
-    display: block;
-    width: auto;
-    height: 20px;
-    padding: 7px 15px;
-    font-size: 1em;
-    line-height: 16px;
-    border: none;
-    margin: 0 2px 12px 0;
-    color: #229abb;
-    float: left;
-  }
-  #content #info .management #manageFormWrap .formRowWrap .btn:hover {
-    background: #fff;
-  }
-  #secondaryContent {
-    width: 1280px;
-    margin: 0 auto;
-    margin-top: -20px;
-  }
-  #secondaryContent #veto,
-  #secondaryContent #overrides,
-  #secondaryContent #badges,
-  #secondaryContent #users,
-  #secondaryContent #myAccount {
-    background: url('/Resources/Images/repeatBlue.png') repeat;
-    width: 75px;
-    height: 73px;
-    overflow: hidden;
-    border-top: 2px solid #229abb;
-    float: left;
-    text-decoration: none;
-  }
-  #secondaryContent #veto:hover,
-  #secondaryContent #overrides:hover,
-  #secondaryContent #badges:hover,
-  #secondaryContent #users:hover,
-  #secondaryContent #myAccount:hover {
-    background: #229abb;
-  }
-  #secondaryContent #veto.new,
-  #secondaryContent #overrides.new,
-  #secondaryContent #badges.new,
-  #secondaryContent #users.new,
-  #secondaryContent #myAccount.new {
-    background: #5bbd62;
-    border-top: 2px solid #3a9e41;
-  }
-  #secondaryContent #veto.new:hover,
-  #secondaryContent #overrides.new:hover,
-  #secondaryContent #badges.new:hover,
-  #secondaryContent #users.new:hover,
-  #secondaryContent #myAccount.new:hover {
-    background: #3a9e41;
-  }
-  #secondaryContent #veto.new .secondaryText,
-  #secondaryContent #overrides.new .secondaryText,
-  #secondaryContent #badges.new .secondaryText,
-  #secondaryContent #users.new .secondaryText,
-  #secondaryContent #myAccount.new .secondaryText {
-    display: block;
-  }
-  #secondaryContent #veto.new .vetoIcon,
-  #secondaryContent #overrides.new .vetoIcon,
-  #secondaryContent #badges.new .vetoIcon,
-  #secondaryContent #users.new .vetoIcon,
-  #secondaryContent #myAccount.new .vetoIcon {
-    -moz-animation: iconVetoRoll 4s infinite;
-    -webkit-animation: iconVetoRoll 4s infinite;
-  }
-  #secondaryContent #veto.new .overridesIcon,
-  #secondaryContent #overrides.new .overridesIcon,
-  #secondaryContent #badges.new .overridesIcon,
-  #secondaryContent #users.new .overridesIcon,
-  #secondaryContent #myAccount.new .overridesIcon {
-    -moz-animation: iconVetoRoll 4s infinite .5s;
-    -webkit-animation: iconVetoRoll 4s infinite .5s;
-  }
-  #secondaryContent #veto.new .badgesIcon,
-  #secondaryContent #overrides.new .badgesIcon,
-  #secondaryContent #badges.new .badgesIcon,
-  #secondaryContent #users.new .badgesIcon,
-  #secondaryContent #myAccount.new .badgesIcon {
-    -moz-animation: iconVetoRoll 4s infinite 1s;
-    -webkit-animation: iconVetoRoll 4s infinite 1s;
-  }
-  #secondaryContent #veto.empty,
-  #secondaryContent #overrides.empty,
-  #secondaryContent #badges.empty,
-  #secondaryContent #users.empty,
-  #secondaryContent #myAccount.empty {
-    background: #ccc;
-    border-top: 2px solid #888;
-    cursor: default;
-  }
-  #secondaryContent #veto .secondaryText,
-  #secondaryContent #overrides .secondaryText,
-  #secondaryContent #badges .secondaryText,
-  #secondaryContent #users .secondaryText,
-  #secondaryContent #myAccount .secondaryText {
-    color: #fff;
-    font-family: 'Lobster', cursive;
-    font-size: 2em;
-    line-height: 32px;
-    text-align: center;
-    display: none;
-    margin-top: -112px;
-  }
-  #secondaryContent #veto {
-    margin-right: 2px;
-  }
-  #secondaryContent #veto .vetoIcon {
-    background: url('/Resources/Images/veto-32.png') no-repeat;
-    width: 32px;
-    height: 32px;
-    margin: 20px auto 0 auto;
-  }
-  #secondaryContent #overrides {
-    margin-right: 2px;
-  }
-  #secondaryContent #overrides .overridesIcon {
-    background: url('/Resources/Images/overrides-32.png') no-repeat;
-    width: 32px;
-    height: 32px;
-    margin: 20px auto 0 auto;
-  }
-  #secondaryContent #badges .badgesIcon {
-    background: url('/Resources/Images/badges-32.png') no-repeat;
-    width: 20px;
-    height: 32px;
-    margin: 20px auto 0 auto;
-  }
-  #secondaryContent #users {
-    float: right;
-    text-align: center;
-    padding-top: 16px;
-    height: 57px;
-    margin-right: 2px;
-  }
-  #secondaryContent #users .icon-user {
-    color: #fff;
-    font-size: 40px;
-  }
-  #secondaryContent #myAccount {
-    float: right;
-    text-align: center;
-    padding-top: 16px;
-    height: 57px;
-  }
-  #secondaryContent #myAccount .icon-cog {
+  #secondaryContent #myAccount .icon-user {
     color: #fff;
     font-size: 40px;
   }
@@ -4024,5 +2697,75 @@
   }
   100% {
     margin-top: 20px;
+  }
+}
+@-moz-keyframes iconVetoRollMobile {
+  0% {
+    margin-top: 10px;
+  }
+  4% {
+    margin-top: 0px;
+  }
+  8% {
+    margin-top: 100px;
+  }
+  12% {
+    margin-top: 80px;
+  }
+  16% {
+    margin-top: 90px;
+  }
+  50% {
+    margin-top: 90px;
+  }
+  54% {
+    margin-top: 100px;
+  }
+  58% {
+    margin-top: 0px;
+  }
+  62% {
+    margin-top: 20px;
+  }
+  66% {
+    margin-top: 10px;
+  }
+  100% {
+    margin-top: 10px;
+  }
+}
+@-webkit-keyframes iconVetoRollMobile {
+  0% {
+    margin-top: 10px;
+  }
+  4% {
+    margin-top: 0px;
+  }
+  8% {
+    margin-top: 100px;
+  }
+  12% {
+    margin-top: 80px;
+  }
+  16% {
+    margin-top: 90px;
+  }
+  50% {
+    margin-top: 90px;
+  }
+  54% {
+    margin-top: 100px;
+  }
+  58% {
+    margin-top: 0px;
+  }
+  62% {
+    margin-top: 20px;
+  }
+  66% {
+    margin-top: 10px;
+  }
+  100% {
+    margin-top: 10px;
   }
 }
