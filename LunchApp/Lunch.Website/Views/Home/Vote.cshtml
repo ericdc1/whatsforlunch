@@ -1,7 +1,14 @@
-﻿@using System.Collections
+﻿@model Lunch.Website.ViewModels.Homepage
+
+@using System.Collections
 @using System.Text
 @{
     ViewBag.Title = "Index";
+}
+
+@if (Model.YourVote != null)
+{
+    <p>You already voted for @Model.YourVote.Restaurant.RestaurantName!</p>
 }
 
 <div id="content">
@@ -21,10 +28,11 @@
             <p class="titleLabel">where would you like to eat?</p>
 
             <div class="listingWrap">
-                <div class="listing"><p>puglionis</p></div>
-                <div class="listing"><p>chic-fil-a</p></div>
-                <div class="listing"><p>buffalo wild wings</p></div>
-                <div class="listing"><p>cracker barrel</p></div>
+                
+                @foreach (var restaurant in Model.RestaurantsForToday)
+                {
+                    <a href="/Home/SaveVote/@restaurant.Id"><div class="listing"><p>@restaurant.RestaurantName</p></div></a>
+                }
             </div>
 
         </div>

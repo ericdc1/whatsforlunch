@@ -141,7 +141,9 @@ namespace Lunch.Core.Jobs
         {    
             var utc = DateTime.UtcNow;
             var eastern = TimeZoneInfo.FindSystemTimeZoneById("Eastern Standard Time");
+         
             var easterntime = utc.Add(eastern.BaseUtcOffset);
+            //var isDaylight = eastern.IsDaylightSavingTime(easterntime);
 
             TimeSpan diff = (utc-easterntime);
             double hours = diff.TotalHours;

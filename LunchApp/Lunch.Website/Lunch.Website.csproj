@@ -276,7 +276,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Views\Home\Index.cshtml">
+    <Content Include="Views\Home\Vote.cshtml">
       <SubType>Code</SubType>
     </Content>
     <Content Include="Web.config">
@@ -300,8 +300,11 @@
     </Content>
     <Content Include="Views\Restaurants\GetTop.cshtml" />
     <Content Include="Views\Account\Manage.cshtml" />
-    <Content Include="Views\Home\EmailTest.cshtml" />
     <Content Include="Views\Shared\_LayoutLogin.cshtml" />
+    <Content Include="Views\Home\NotYet.cshtml" />
+    <Content Include="Views\Home\Rate.cshtml" />
+    <Content Include="Views\Home\Going.cshtml" />
+    <Content Include="Views\Home\ComeBackTomorrow.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
