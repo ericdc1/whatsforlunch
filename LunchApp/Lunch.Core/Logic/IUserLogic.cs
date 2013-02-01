@@ -8,6 +8,7 @@ namespace Lunch.Core.Logic
     public interface IUserLogic
     {
         IEnumerable<User> GetList(object parameters);
+        IEnumerable<User> GetListByVotedDate(DateTime? dateTime);
         User Get(int id);
         User Get(Guid guid);
         User Get(string email);

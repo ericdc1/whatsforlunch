@@ -21,6 +21,19 @@ namespace Lunch.Data.Repositories
              }
          }
 
+        public IEnumerable<User> GetListByVotedDate(DateTime dateTime)
+        {
+            using (_connection = Utilities.GetProfiledOpenConnection())
+            {
+                return _connection.Query<User>("SELECT * FROM Users U " +
+                                               "INNER JOIN Votes V ON V.UserId = U.Id " +
+                                               "AND DATEPART(mm, V.VoteDate) = DATEPART(mm, @VoteDate) " +
+                                               "AND DATEPART(dd, V.VoteDate) = DATEPART(dd, @VoteDate) " +
+                                               "AND DATEPART(yyyy, V.VoteDate) = DATEPART(yyyy, @VoteDate)",
+                                               new Vote { VoteDate = dateTime }).ToList();
+            }
+        }
+
         public User Get(int id)
         {
             using (_connection = Utilities.GetProfiledOpenConnection())
