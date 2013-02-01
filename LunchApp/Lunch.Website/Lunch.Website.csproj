@@ -70,6 +70,12 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="PagedList">
+      <HintPath>..\packages\PagedList.1.15.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc">
+      <HintPath>..\packages\PagedList.Mvc.4.0.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="RazorEngine">
       <HintPath>..\packages\RazorEngine.3.2.0\lib\net40\RazorEngine.dll</HintPath>
     </Reference>
@@ -199,6 +205,7 @@
     <Content Include="Content\images\user001.png" />
     <Content Include="Content\images\user002.png" />
     <Content Include="Content\images\user003.png" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\slate.min.css" />
     <Content Include="Content\themes\base\images\animated-overlay.gif" />
@@ -297,6 +304,7 @@
     <Content Include="Resources\Images\BG-RAW-Images\Burger.jpg" />
     <Content Include="Resources\Images\BG-RAW-Images\Chicken.jpg" />
     <Content Include="Resources\Images\BG-RAW-Images\Pizza.jpg" />
+    <Content Include="Resources\Images\BG-Closed.jpg" />
     <Content Include="Resources\Images\desktop\history-24-Alt.png" />
     <Content Include="Resources\Images\desktop\history-24.png" />
     <Content Include="Resources\Images\desktop\historyAlt.png" />

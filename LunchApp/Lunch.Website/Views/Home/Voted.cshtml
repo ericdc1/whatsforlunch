@@ -1,9 +1,91 @@
 ﻿@model Lunch.Website.ViewModels.Homepage
 
+@using System.Collections
+@using System.Security.Cryptography
+@using System.Text
+
 @{
     ViewBag.Title = "Rate";
 }
 
-<h2>You already voted for @Model.YourVote.Restaurant.RestaurantName</h2>
+@functions
+{
 
-<a href="/Home/DeleteVote/@Model.YourVote.Id">Delete</a>
+    public string CalculateMD5Hash(string input)
+    {
+        // step 1, calculate MD5 hash from input
+        MD5 md5 = System.Security.Cryptography.MD5.Create();
+        byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes(input);
+        byte[] hash = md5.ComputeHash(inputBytes);
+
+        // step 2, convert byte array to hex string
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < hash.Length; i++)
+        {
+            sb.Append(hash[i].ToString("X2"));
+        }
+        return sb.ToString();
+    }
+
+}
+
+<div id="content">
+    <div class="bgOne"></div>
+    <div class="mask"></div>
+    <div id="info">
+
+        <div class="primary">
+
+            <div class="usersWrap">
+                @foreach (var voter in Model.PeopleWhoVotedToday)
+                {
+                    <img title="@voter.FullNameWithEmail" src="http://www.gravatar.com/avatar/@CalculateMD5Hash(voter.Email)?s=200" />
+                }
+                <p>@Model.PeopleWhoVotedToday.Count picks</p>
+            </div>
+
+            <p class="voted">You voted for <br /><span class="restLabel">@Model.YourVote.Restaurant.RestaurantName</span></p>
+
+            <div class="listingWrap">
+
+                <a href="/Home/DeleteVote/@Model.YourVote.Id" class="changeVote">Change your vote?</a>
+
+            </div>
+
+         </div>
+
+    </div>
+</div>
+
+<div id="secondaryContent">
+    <div id="veto" class=""><div class="vetoIcon"></div><div class="secondaryText">3</div></div>
+    <div id="overrides" class="empty"><div class="overridesIcon"></div><div class="secondaryText">2</div></div>
+    <div id="badges" class="new"><div class="badgesIcon"></div><div class="secondaryText">3</div></div>
+    <a href="@Url.Action("Manage", "Account")" id="myAccount"><i class="icon-user"></i></a>
+    @if(Roles.IsUserInRole("Administrator"))
+    {
+        <a href="@Url.Action("Index", "Management")" id="users">
+            <i class="icon-cog"></i>
+        </a>
+    }
+</div>
+
+<script>
+    $(document).ready(function () {
+        if ($.browser.msie) {
+            function interval() {
+                $('.new').children().not('.secondaryText').delay(1500).animate({ marginTop: "100px" }, 1000, function () {
+                    $(this).delay(500).animate({ marginTop: "20px" }, 1000);
+                });
+            }
+
+            setInterval(function () {
+                interval();
+            }, 1500);
+        }
+
+        $('#hiddenNav').click(function () {
+            $('#secondaryContent').toggle();
+        });
+    });
+</script>

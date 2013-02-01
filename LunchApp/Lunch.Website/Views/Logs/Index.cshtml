@@ -1,45 +1,55 @@
-﻿@using Lunch.Core.Jobs
-@model IEnumerable<Lunch.Core.Models.JobLog>
+﻿@using Lunch.Core.Jobs;
+@using PagedList;
+@using PagedList.Mvc;
+@model PagedList<Lunch.Core.Models.JobLog>
 
 @{
     ViewBag.Title = "Logs";
 }
+<link href="/Content/PagedList.css" rel="stylesheet" type="text/css" />
+<div id="content" class="reports">
+    <div class="bgOne"></div>
+    <div class="mask"></div>
+    <div id="info">
+        <div class="management">
+            <h1>Logs</h1>
 
-<h2>Logs</h2>
+            <div>
+            @Html.PagedListPager( (IPagedList)Model, page => Url.Action("Index", new { page }) )
 
-<table class="table table-striped">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.JobLogId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CreatedAt)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Category)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Message)
-        </th>
-    </tr>
+                <table class="table-striped" style="background-color: white; width:75%">
+                    <tr>
+                        <th style="text-align: left">
+                            @Html.DisplayName("Job Log ID")
+                        </th>
+                        <th style="text-align: left">
+                            @Html.DisplayName("Created")
+                        </th>
+                        <th style="text-align: left">
+                            @Html.DisplayName("Category")
+                        </th>
+                        <th style="text-align: left">
+                            @Html.DisplayName("Message")
+                        </th>
+                    </tr>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.JobLogId)
-            </td>
-            <td title="UTC: @item.CreatedAt">
-                @Helpers.AdjustTimeOffsetFromUtc(item.CreatedAt)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Category)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Message)
-            </td>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.JobLogId)
+                            </td>
+                            <td  title="UTC: @item.CreatedAt">
+                                @Helpers.AdjustTimeOffsetFromUtc(item.CreatedAt)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Category)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Message)
+                            </td>
 
-        </tr>
-    }
-
-</table>
+                        </tr>
+                    }
+                </table>
+            </div></div></div></div>

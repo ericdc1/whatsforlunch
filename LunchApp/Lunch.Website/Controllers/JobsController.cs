@@ -2,6 +2,7 @@
 using System.Web.Mvc;
 using Lunch.Core.Logic;
 using Lunch.Website.Services;
+using PagedList;
 
 namespace Lunch.Website.Controllers
 {
@@ -16,13 +17,15 @@ namespace Lunch.Website.Controllers
         }
 
 
-        public ActionResult Index(int? categoryid)
+        public ActionResult Index(int? categoryid, int? page)
         {
-
-
             ViewBag.HasCategoryFilter = categoryid > 0;
-            var result = _jobLogic.GetAll().Take(50).OrderByDescending(f=>f.Id);
-            return View(result);
+            var pageNumber = page ?? 1;
+            var jobs = _jobLogic.GetAll().Take(50).OrderByDescending(f => f.Id);
+            var onePageofJobs = jobs.ToPagedList(pageNumber, 25);
+
+            //var result = _jobLogic.GetAll().Take(50).OrderByDescending(f=>f.Id);
+            return View(onePageofJobs);
         }
 
     }

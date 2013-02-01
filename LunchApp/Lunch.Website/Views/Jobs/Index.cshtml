@@ -1,10 +1,12 @@
 ﻿@using Lunch.Core.Jobs
-@model IEnumerable<Lunch.Core.Models.Job>
+@using PagedList;
+@using PagedList.Mvc;
+@model PagedList<Lunch.Core.Models.Job>
 
 @{
     ViewBag.Title = "Jobs";
 }
-
+<link href="/Content/PagedList.css" rel="stylesheet" type="text/css" />
 <div id="content" class="reports">
     <div class="bgOne"></div>
     <div class="mask"></div>
@@ -12,7 +14,7 @@
         <div class="management">
 
             <h1>Jobs</h1>
-
+            @Html.PagedListPager( (IPagedList)Model, page => Url.Action("Index", new { page }) )
             <div>
             @foreach (var item in Model)
             {

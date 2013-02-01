@@ -48,13 +48,13 @@
                 <p>@Model.PeopleWhoVotedToday.Count picks</p>
             </div>
             
-            <p class="titleLabel">where would you like to eat?</p>
+            <p class="titleLabel">Where would you like to eat?</p>
 
             <div class="listingWrap">
                 
                 @foreach (var restaurant in Model.RestaurantsForToday)
                 {
-                    <a href="/Home/SaveVote/@restaurant.Restaurant.Id"><div class="listing"><p>@restaurant.Restaurant.RestaurantName</p></div></a>
+                    <a href="/Home/SaveVote/@restaurant.Restaurant.Id" class="listing"><p>@restaurant.Restaurant.RestaurantName</p></a>
                 }
             </div>
 

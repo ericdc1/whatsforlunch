@@ -8,6 +8,9 @@
   font-weight: lighter;
   font-size: 16px;
 }
+a {
+  text-decoration: none;
+}
 /* PRIMARY NAVIGATION */
 #nav #title {
   background: #fff;
@@ -71,7 +74,6 @@
   border: none;
   margin: 0;
   cursor: pointer;
-  text-decoration: none;
 }
 .btn.submit {
   background: #5bbd62;
@@ -290,8 +292,77 @@
     color: #fff;
     margin-top: 6px;
   }
-  #content #info .primary p.titleLabel {
+  #content #info .primary .titleLabel {
     display: none;
+  }
+  #content #info .primary .voted {
+    font-size: 1em;
+    color: #fff;
+    text-shadow: 1px 1px 2px #000;
+    text-align: center;
+    font-weight: lighter;
+  }
+  #content #info .primary .voted .restLabel {
+    font-family: 'Lobster', cursive;
+    font-size: 2.5em;
+    line-height: 55px;
+    color: #FFB400;
+  }
+  #content #info .primary .closed {
+    font-size: 1em;
+    color: #fff;
+    text-shadow: 1px 1px 2px #000;
+    text-align: center;
+    font-weight: lighter;
+  }
+  #content #info .primary .closed .font {
+    font-family: 'Lobster', cursive;
+    font-size: 5.5em;
+    line-height: 75px;
+    color: #FFB400;
+  }
+  #content #info .primary .closedHours {
+    background: #fff;
+    border-radius: 3px;
+    width: 290px;
+    height: 100px;
+    padding: 2px 2px 20px 2px;
+    margin: 40px auto;
+    position: relative;
+  }
+  #content #info .primary .closedHours .label {
+    font-size: 2em;
+    line-height: 32px;
+    font-family: 'Lobster', cursive;
+    color: #076d8c;
+    text-align: center;
+    position: absolute;
+    top: -14px;
+    left: 0;
+    right: 0;
+    text-shadow: -3px 0 #ffffff, 0 3px #ffffff, 3px 0 #ffffff, 0 -3px #ffffff;
+  }
+  #content #info .primary .closedHours .dayLabel {
+    font-size: 0.875em;
+    color: #333;
+    text-align: center;
+    position: absolute;
+    bottom: 3px;
+    left: 0;
+    right: 0;
+  }
+  #content #info .primary .closedHours .hourBox {
+    background: #333;
+    font-family: 'Oswald', sans-serif;
+    border-radius: 2px;
+    width: 141px;
+    height: 78px;
+    margin: 18px 2px 2px 2px;
+    float: left;
+    font-size: 2em;
+    line-height: 75px;
+    text-align: center;
+    color: #fff;
   }
   #content #info .primary .listingWrap {
     width: 100%;
@@ -306,6 +377,7 @@
     padding-bottom: 48%;
     margin: 1%;
     float: left;
+    color: #fff;
   }
   #content #info .primary .listingWrap .listing:last-child {
     margin-right: 0;
@@ -321,13 +393,41 @@
     word-spacing: -1px;
     text-shadow: none;
   }
+  #content #info .primary .listingWrap .changeVote {
+    background: #5bbd62;
+    width: 190px;
+    height: 49px;
+    border-right: 1px solid #3a9e41;
+    border-bottom: 1px solid #3a9e41;
+    display: block;
+    margin: 0 auto;
+    position: relative;
+    color: #fff;
+    text-align: center;
+    font-size: 1.25em;
+    line-height: 45px;
+  }
+  #content #info .primary .listingWrap .changeVote:before {
+    content: "";
+    position: absolute;
+    left: -25px;
+    border-right: 25px solid #5bbd62;
+    border-top: 25px solid transparent;
+    border-bottom: 25px solid transparent;
+  }
+  #content #info .primary .listingWrap .changeVote:hover {
+    background: #3a9e41;
+  }
+  #content #info .primary .listingWrap .changeVote:hover:before {
+    border-right-color: #3a9e41;
+  }
   #content #info .primary .usersWrap {
     width: 100%;
     height: auto;
     overflow: hidden;
     margin-bottom: 14px;
-    position: absolute;
-    bottom: -47px;
+    position: fixed;
+    bottom: 65px;
   }
   #content #info .primary .usersWrap p {
     display: block;
@@ -586,7 +686,6 @@
     border: none;
     margin: 0;
     cursor: pointer;
-    text-decoration: none;
   }
   #content #info .management .btn.submit {
     background: #5bbd62;
@@ -616,7 +715,6 @@
     overflow: hidden;
     border-top: 2px solid #229abb;
     float: left;
-    text-decoration: none;
   }
   #secondaryContent #veto:hover,
   #secondaryContent #overrides:hover,
@@ -930,12 +1028,81 @@
     margin: 0 auto;
     max-width: 451px;
   }
-  #content #info .primary p {
+  #content #info .primary .titleLabel {
     margin: 0;
     padding: 0;
     font-size: 2em;
     text-align: center;
     text-shadow: 1px 1px 2px #000;
+  }
+  #content #info .primary .voted {
+    font-size: 1.5em;
+    color: #fff;
+    text-shadow: 1px 1px 2px #000;
+    text-align: center;
+    font-weight: lighter;
+  }
+  #content #info .primary .voted .restLabel {
+    font-family: 'Lobster', cursive;
+    font-size: 2.5em;
+    line-height: 55px;
+    color: #FFB400;
+  }
+  #content #info .primary .closed {
+    font-size: 1.5em;
+    color: #fff;
+    text-shadow: 1px 1px 2px #000;
+    text-align: center;
+    font-weight: lighter;
+  }
+  #content #info .primary .closed .font {
+    font-family: 'Lobster', cursive;
+    font-size: 6em;
+    line-height: 100px;
+    color: #FFB400;
+  }
+  #content #info .primary .closedHours {
+    background: #fff;
+    border-radius: 3px;
+    width: 400px;
+    height: 100px;
+    padding: 2px 2px 20px 2px;
+    margin: 50px auto;
+    position: relative;
+  }
+  #content #info .primary .closedHours .label {
+    font-size: 2em;
+    line-height: 32px;
+    font-family: 'Lobster', cursive;
+    color: #076d8c;
+    text-align: center;
+    position: absolute;
+    top: -14px;
+    left: 0;
+    right: 0;
+    text-shadow: -3px 0 #ffffff, 0 3px #ffffff, 3px 0 #ffffff, 0 -3px #ffffff;
+  }
+  #content #info .primary .closedHours .dayLabel {
+    font-size: 0.875em;
+    color: #333;
+    text-align: center;
+    position: absolute;
+    bottom: 3px;
+    left: 0;
+    right: 0;
+  }
+  #content #info .primary .closedHours .hourBox {
+    background: #333;
+    font-family: 'Oswald', sans-serif;
+    border-radius: 2px;
+    width: 196px;
+    height: 78px;
+    margin: 18px 2px 2px 2px;
+    float: left;
+    font-size: 2.5em;
+    line-height: 75px;
+    text-align: center;
+    color: #fff;
   }
   #content #info .primary .listingWrap {
     width: 100%;
@@ -948,10 +1115,12 @@
     background: url('/Resources/Images/repeatBlue.png') repeat;
     width: 49%;
     height: 0;
-    padding: 22% 0;
+    position: relative;
+    padding: 24% 0;
     margin-bottom: 5px;
     float: left;
     display: table;
+    color: #fff;
   }
   #content #info .primary .listingWrap .listing:first-child {
     margin-right: 5px;
@@ -963,10 +1132,45 @@
     background: #076d8c;
   }
   #content #info .primary .listingWrap .listing p {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    left: 10px;
     display: table-cell;
     vertical-align: middle;
-    text-align: center;
+    text-align: left;
     font-size: 1.4em;
+  }
+  #content #info .primary .listingWrap .changeVote {
+    background: #5bbd62;
+    width: 190px;
+    height: 49px;
+    border-right: 1px solid #3a9e41;
+    border-bottom: 1px solid #3a9e41;
+    display: block;
+    margin: 0 auto;
+    position: relative;
+    color: #fff;
+    text-align: center;
+    font-size: 1.25em;
+    line-height: 45px;
+    margin-bottom: 118px;
+  }
+  #content #info .primary .listingWrap .changeVote:before {
+    content: "";
+    position: absolute;
+    left: -25px;
+    border-right: 25px solid #5bbd62;
+    border-top: 25px solid transparent;
+    border-bottom: 25px solid transparent;
+  }
+  #content #info .primary .listingWrap .changeVote:hover {
+    background: #3a9e41;
+  }
+  #content #info .primary .listingWrap .changeVote:hover:before {
+    border-right-color: #3a9e41;
   }
   #content #info .primary .usersWrap {
     position: absolute;
@@ -976,6 +1180,8 @@
     left: 42%;
   }
   #content #info .primary .usersWrap p {
+    margin: 0;
+    padding: 0;
     font-family: 'Lobster', cursive;
     letter-spacing: 0;
     font-size: 2.5em;
@@ -1233,7 +1439,6 @@
     border: none;
     margin: 0;
     cursor: pointer;
-    text-decoration: none;
   }
   #content #info .management .btn.submit {
     background: #5bbd62;
@@ -1258,7 +1463,6 @@
     overflow: hidden;
     border-top: 2px solid #229abb;
     float: left;
-    text-decoration: none;
   }
   #secondaryContent #veto:hover,
   #secondaryContent #overrides:hover,
@@ -1385,10 +1589,13 @@
   }
 }
 @media only screen and (min-width: 800px) and (max-width: 1280px) {
+  #threshold {
+    min-height: 804px;
+  }
   #nav {
     width: 150px;
     height: 784px;
-    position: fixed;
+    position: absolute;
     top: 10px;
     bottom: 10px;
     left: 10px;
@@ -1576,11 +1783,82 @@
     color: #fff;
     margin-top: 160px;
   }
-  #content #info .primary p {
+  #content #info .primary .titleLabel {
     margin: 0;
     padding: 0;
     font-size: inherit;
     text-shadow: 1px 1px 2px #000;
+  }
+  #content #info .primary .voted {
+    font-size: 1em;
+    color: #fff;
+    text-shadow: 1px 1px 2px #000;
+    text-align: left;
+    font-weight: lighter;
+  }
+  #content #info .primary .voted .restLabel {
+    font-family: 'Lobster', cursive;
+    font-size: 2.5em;
+    line-height: 75px;
+    color: #FFB400;
+  }
+  #content #info .primary .closed {
+    font-size: 0.875em;
+    color: #fff;
+    text-shadow: 1px 1px 2px #000;
+    padding-left: 85px;
+    text-align: left;
+    font-weight: lighter;
+  }
+  #content #info .primary .closed .font {
+    font-family: 'Lobster', cursive;
+    font-size: 5em;
+    line-height: 105px;
+    color: #FFB400;
+    margin-left: -85px;
+  }
+  #content #info .primary .closedHours {
+    background: #fff;
+    border-radius: 3px;
+    width: 400px;
+    height: 100px;
+    padding: 2px 2px 20px 2px;
+    float: left;
+    position: relative;
+  }
+  #content #info .primary .closedHours .label {
+    font-size: 2em;
+    line-height: 32px;
+    font-family: 'Lobster', cursive;
+    color: #076d8c;
+    text-align: center;
+    position: absolute;
+    top: -14px;
+    left: 0;
+    right: 0;
+    text-shadow: -3px 0 #ffffff, 0 3px #ffffff, 3px 0 #ffffff, 0 -3px #ffffff;
+  }
+  #content #info .primary .closedHours .dayLabel {
+    font-size: 0.875em;
+    color: #333;
+    text-align: center;
+    position: absolute;
+    bottom: 3px;
+    left: 0;
+    right: 0;
+  }
+  #content #info .primary .closedHours .hourBox {
+    background: #333;
+    font-family: 'Oswald', sans-serif;
+    border-radius: 2px;
+    width: 196px;
+    height: 78px;
+    margin: 18px 2px 2px 2px;
+    float: left;
+    font-size: 2.5em;
+    line-height: 75px;
+    text-align: center;
+    color: #fff;
   }
   #content #info .primary .listingWrap {
     width: 100%;
@@ -1595,8 +1873,8 @@
     min-height: 150px;
     width: 24%;
     height: 0;
-    padding-top: 10%;
-    padding-bottom: 10%;
+    position: relative;
+    padding-top: 24%;
     margin-right: 2px;
     float: left;
     display: table;
@@ -1609,14 +1887,49 @@
     background: #076d8c;
   }
   #content #info .primary .listingWrap .listing p {
+    margin: 0;
+    padding: 0;
     font-size: 1.25em;
     line-height: 24px;
     letter-spacing: -1px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    left: 10px;
     color: #fff;
-    text-align: center;
+    text-align: left;
     display: table-cell;
     vertical-align: middle;
     padding-bottom: 7px;
+  }
+  #content #info .primary .listingWrap .changeVote {
+    background: #5bbd62;
+    width: 190px;
+    height: 49px;
+    border-right: 1px solid #3a9e41;
+    border-bottom: 1px solid #3a9e41;
+    display: block;
+    float: right;
+    position: relative;
+    color: #fff;
+    text-align: center;
+    font-size: 1.25em;
+    line-height: 45px;
+    margin-bottom: 118px;
+  }
+  #content #info .primary .listingWrap .changeVote:before {
+    content: "";
+    position: absolute;
+    left: -25px;
+    border-right: 25px solid #5bbd62;
+    border-top: 25px solid transparent;
+    border-bottom: 25px solid transparent;
+  }
+  #content #info .primary .listingWrap .changeVote:hover {
+    background: #3a9e41;
+  }
+  #content #info .primary .listingWrap .changeVote:hover:before {
+    border-right-color: #3a9e41;
   }
   #content #info .primary .usersWrap {
     width: 100%;
@@ -1625,6 +1938,8 @@
     margin-bottom: 14px;
   }
   #content #info .primary .usersWrap p {
+    margin: 0;
+    padding: 0;
     display: inline-block;
     vertical-align: top;
     padding-left: 10px;
@@ -1637,6 +1952,7 @@
   #content #info .primary .usersWrap img {
     width: 40px;
     height: 40px;
+    border-radius: 50%;
   }
   #content #info .management {
     width: 90%;
@@ -1888,7 +2204,6 @@
     border: none;
     margin: 0;
     cursor: pointer;
-    text-decoration: none;
   }
   #content #info .management .btn.submit {
     background: #5bbd62;
@@ -1897,7 +2212,7 @@
     background: #3a9e41;
   }
   #secondaryContent {
-    position: absolute;
+    position: fixed;
     right: 10px;
     bottom: 10px;
     width: 391px;
@@ -1913,7 +2228,6 @@
     overflow: hidden;
     border-top: 2px solid #229abb;
     float: left;
-    text-decoration: none;
   }
   #secondaryContent #veto:hover,
   #secondaryContent #overrides:hover,
@@ -2188,14 +2502,84 @@
     margin-top: 70px;
     margin-left: 185px;
     margin-right: 185px;
+    height: 530px;
   }
-  #content #info .primary p {
+  #content #info .primary .titleLabel {
     margin: 0;
     padding: 0;
-    font-size: inherit;
     text-align: center;
     font-size: 1.5em;
     text-shadow: 1px 1px 2px #000;
+  }
+  #content #info .primary .voted {
+    font-size: 1em;
+    color: #fff;
+    text-shadow: 1px 1px 2px #000;
+    text-align: center;
+    font-weight: lighter;
+  }
+  #content #info .primary .voted .restLabel {
+    font-family: 'Lobster', cursive;
+    font-size: 2.5em;
+    line-height: 65px;
+    color: #FFB400;
+  }
+  #content #info .primary .closed {
+    font-size: 1em;
+    color: #fff;
+    text-shadow: 1px 1px 2px #000;
+    text-align: center;
+    font-weight: lighter;
+    padding-top: 30px;
+  }
+  #content #info .primary .closed .font {
+    font-family: 'Lobster', cursive;
+    font-size: 6em;
+    line-height: 125px;
+    color: #FFB400;
+  }
+  #content #info .primary .closedHours {
+    background: #fff;
+    border-radius: 3px;
+    width: 400px;
+    height: 100px;
+    padding: 2px 2px 20px 2px;
+    margin: 50px auto;
+    position: relative;
+  }
+  #content #info .primary .closedHours .label {
+    font-size: 2em;
+    line-height: 32px;
+    font-family: 'Lobster', cursive;
+    color: #076d8c;
+    text-align: center;
+    position: absolute;
+    top: -14px;
+    left: 0;
+    right: 0;
+    text-shadow: -3px 0 #ffffff, 0 3px #ffffff, 3px 0 #ffffff, 0 -3px #ffffff;
+  }
+  #content #info .primary .closedHours .dayLabel {
+    font-size: 0.875em;
+    color: #333;
+    text-align: center;
+    position: absolute;
+    bottom: 3px;
+    left: 0;
+    right: 0;
+  }
+  #content #info .primary .closedHours .hourBox {
+    background: #333;
+    font-family: 'Oswald', sans-serif;
+    border-radius: 2px;
+    width: 196px;
+    height: 78px;
+    margin: 18px 2px 2px 2px;
+    float: left;
+    font-size: 2.5em;
+    line-height: 75px;
+    text-align: center;
+    color: #fff;
   }
   #content #info .primary .listingWrap {
     width: 888px;
@@ -2207,12 +2591,14 @@
   #content #info .primary .listingWrap .listing {
     background: url('/Resources/Images/repeatBlue.png') repeat;
     width: 180px;
+    max-width: 180px;
     height: 220px;
     padding: 0 20px;
     margin-right: 2px;
     float: left;
     display: table;
     box-shadow: 0 0 5px #000;
+    color: #fff;
   }
   #content #info .primary .listingWrap .listing:last-child {
     margin-right: 0;
@@ -2221,32 +2607,68 @@
     background: #076d8c;
   }
   #content #info .primary .listingWrap .listing p {
+    width: 180px;
+    max-width: 180px;
+    text-align: center;
     display: table-cell;
     vertical-align: middle;
-    text-align: center;
-    font-size: 2em;
+    font-size: 1.75em;
     line-height: 34px;
+    word-wrap: break-word;
+  }
+  #content #info .primary .listingWrap .changeVote {
+    background: #5bbd62;
+    width: 190px;
+    height: 49px;
+    border-right: 1px solid #3a9e41;
+    border-bottom: 1px solid #3a9e41;
+    display: block;
+    margin: 0 auto;
+    position: relative;
+    color: #fff;
+    text-align: center;
+    font-size: 1.25em;
+    line-height: 45px;
+    margin-bottom: 118px;
+  }
+  #content #info .primary .listingWrap .changeVote:before {
+    content: "";
+    position: absolute;
+    left: -25px;
+    border-right: 25px solid #5bbd62;
+    border-top: 25px solid transparent;
+    border-bottom: 25px solid transparent;
+  }
+  #content #info .primary .listingWrap .changeVote:hover {
+    background: #3a9e41;
+  }
+  #content #info .primary .listingWrap .changeVote:hover:before {
+    border-right-color: #3a9e41;
   }
   #content #info .primary .usersWrap {
     height: auto;
     overflow: hidden;
     margin-bottom: 14px;
     position: absolute;
-    bottom: -181px;
+    bottom: 40px;
     right: 185px;
     left: 185px;
     text-align: center;
   }
   #content #info .primary .usersWrap p {
+    margin: 0;
+    padding: 0;
     font-family: 'Lobster', cursive;
     letter-spacing: 0;
     font-size: 2em;
+    line-height: 36px;
     text-align: center;
     color: #FFB400;
   }
   #content #info .primary .usersWrap img {
     width: 80px;
     height: 80px;
+    border-radius: 50%;
   }
   #content #info .management {
     width: auto;
@@ -2481,7 +2903,6 @@
     border: none;
     margin: 0;
     cursor: pointer;
-    text-decoration: none;
   }
   #content #info .management .btn.submit {
     background: #5bbd62;
@@ -2506,7 +2927,6 @@
     overflow: hidden;
     border-top: 2px solid #229abb;
     float: left;
-    text-decoration: none;
   }
   #secondaryContent #veto:hover,
   #secondaryContent #overrides:hover,
