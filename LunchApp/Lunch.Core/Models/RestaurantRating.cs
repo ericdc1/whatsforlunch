@@ -8,6 +8,7 @@ namespace Lunch.Core.Models
 
         [Editable(false)]
         public string RestaurantName { get; set; }
+        public Restaurant Restaurant { get; set; }
 
         #endregion
     }
