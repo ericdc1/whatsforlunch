@@ -17,12 +17,16 @@ namespace Lunch.Data.Repositories
             using (_connection = Utilities.GetProfiledOpenConnection())
             {
                 var results = 
-                    _connection.Query<RestaurantRating>(
+                    _connection.Query<RestaurantRating, Restaurant, RestaurantRating>(
                         @"SELECT RR.Id, RR.UserId, R.Id AS RestaurantId, 
-                            COALESCE((SELECT Rating FROM RestaurantRatings RR WHERE RR.UserID = @UserId and RR.RestaurantId = R.Id), 5) AS Rating 
+                            COALESCE((SELECT Rating FROM RestaurantRatings RR WHERE RR.UserID = @UserId and RR.RestaurantId = R.Id), 5) AS Rating, R.* 
                             FROM Restaurants R
                             CROSS JOIN RestaurantRatings RR
-                            WHERE RR.UserID = @UserId",
+                            WHERE RR.UserID = @UserId", (rr, r) =>
+                            {
+                                rr.Restaurant = r;
+                                return rr;
+                            },
                         new {UserId = userId});
 
                 return results;
