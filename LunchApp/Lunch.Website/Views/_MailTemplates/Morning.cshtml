@@ -22,7 +22,7 @@
         <ul>
             @foreach(var restaurant in Model.Restaurants)
             {
-                <li>@restaurant.RestaurantName - @restaurant.RestaurantType</li>
+                <li>@restaurant.Restaurant.RestaurantName - @restaurant.Restaurant.RestaurantType</li>
             }
         </ul>
     

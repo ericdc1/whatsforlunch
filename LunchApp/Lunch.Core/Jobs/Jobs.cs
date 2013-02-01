@@ -15,20 +15,22 @@ namespace Lunch.Core.Jobs
         private readonly IJobLogLogic _jobLogLogic;
         private readonly IUserLogic _userLogic;
         private readonly IRestaurantLogic _restaurantLogic;
+        private readonly IRestaurantOptionLogic _restaurantOptionLogic;
 
 
 
-        public Jobs(IJobLogLogic jobLogLogic, IUserLogic userLogic, IRestaurantLogic restaurantLogic)
+        public Jobs(IJobLogLogic jobLogLogic, IUserLogic userLogic, IRestaurantLogic restaurantLogic, IRestaurantOptionLogic restaurantOptionLogic)
         {
             _jobLogLogic = jobLogLogic;
             _userLogic = userLogic;
             _restaurantLogic = restaurantLogic;
+            _restaurantOptionLogic = restaurantOptionLogic;
         }
 
         public void MorningMessage(object model, int id)
         {
             var peopletoreceivemail = _userLogic.GetList(new {SendMail1 = true});
-            var todayschoices = _restaurantLogic.GenerateRestaurants().ToList();
+            var todayschoices = _restaurantOptionLogic.GetAndSaveOptions().ToList();
             var fromaddress = System.Configuration.ConfigurationManager.AppSettings.Get("FromEmail");
 
             //send email to each person who is eligible
@@ -41,7 +43,7 @@ namespace Lunch.Core.Jobs
                 var messagemodel = new MailDetails() {User = user, Restaurants = todayschoices, Url = link};
 
                 string result = Razor.Parse(template, messagemodel);
-                Helpers.SendMail("ecoffman@hsc.wvu.edu", fromaddress, "What's for Lunch Message of the day", result);
+                //Helpers.SendMail("ecoffman@hsc.wvu.edu", fromaddress, "What's for Lunch Message of the day", result);
 
                 //add log
                 var entity = new JobLog() { JobId = id, Category = "MorningMessage", Message = string.Format("Morning message sent to {0}", user.FullName) };
@@ -53,7 +55,7 @@ namespace Lunch.Core.Jobs
         public void VotingIsOverMessage(object model, int id)
         {
             var peopletoreceivemail = _userLogic.GetList(new { SendMail2 = true });
-            var todayschoices = _restaurantLogic.GenerateRestaurants().Take(2).ToList();
+            var todayschoices = _restaurantOptionLogic.GetAllByDate(null).OrderBy(f => f.Votes).Take(2).ToList();
             var fromaddress = System.Configuration.ConfigurationManager.AppSettings.Get("FromEmail");
 
 
@@ -80,7 +82,7 @@ namespace Lunch.Core.Jobs
         public void WhereAreWeGoingMessage(object model, int id)
         {
             var peopletoreceivemail = _userLogic.GetList(new { SendMail3 = true });
-            var todayschoices = _restaurantLogic.GenerateRestaurants().Take(1).ToList();
+            var todayschoices = _restaurantOptionLogic.GetAllByDate(null).OrderBy(f => f.Votes).Take(1).ToList();
             var fromaddress = System.Configuration.ConfigurationManager.AppSettings.Get("FromEmail");
 
 

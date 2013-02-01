@@ -72,6 +72,18 @@ namespace Lunch.Data.Repositories
             }
         }
 
+        public IList<Vote> GetListForDate(DateTime date)
+        {
+            using (_connection = Utilities.GetProfiledOpenConnection())
+            {
+                return _connection.Query<Vote>("SELECT * FROM Votes WHERE " +
+                                         "DATEPART(mm, VoteDate) = DATEPART(mm, @VoteDate) " +
+                                         "AND DATEPART(dd, VoteDate) = DATEPART(dd, @VoteDate) " +
+                                         "AND DATEPART(yyyy, VoteDate) = DATEPART(yyyy, @VoteDate)",
+                                         new Vote { VoteDate = date }).ToList();
+            }
+        }
+
         public Vote SaveOrUpdate(Vote entity)
         {
             using (_connection = Utilities.GetProfiledOpenConnection())

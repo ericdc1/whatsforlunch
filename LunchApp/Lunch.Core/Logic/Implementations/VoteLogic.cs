@@ -49,6 +49,13 @@ namespace Lunch.Core.Logic.Implementations
             return _voteRepository.GetItemsByMonthAndYear(month, year);
         }
 
+        public IList<Vote> GetItemsForDate(DateTime? date)
+        {
+            if (date == null) date = DateTime.Now;
+
+            return _voteRepository.GetListForDate(date.Value);
+        }
+
         public Vote SaveVote(Vote entity)
         {
             if (entity == null || entity.UserId == 0 || entity.RestaurantId == 0) return entity;

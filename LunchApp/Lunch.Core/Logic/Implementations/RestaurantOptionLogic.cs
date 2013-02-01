@@ -10,11 +10,13 @@ namespace Lunch.Core.Logic.Implementations
     {
         private readonly IRestaurantOptionRepository _restaurantOptionRepository;
         private readonly IRestaurantLogic _restaurantLogic;
+        private readonly IVoteLogic _voteLogic;
 
-        public RestaurantOptionLogic(IRestaurantOptionRepository restaurantOptionRepository, IRestaurantLogic restaurantLogic)
+        public RestaurantOptionLogic(IRestaurantOptionRepository restaurantOptionRepository, IRestaurantLogic restaurantLogic, IVoteLogic voteLogic)
         {
             _restaurantOptionRepository = restaurantOptionRepository;
             _restaurantLogic = restaurantLogic;
+            _voteLogic = voteLogic;
         }
 
 
@@ -51,6 +53,26 @@ namespace Lunch.Core.Logic.Implementations
             
             return options;
         }
+        
+        public RestaurantOption FinalizeOptions()
+        {
+            var options = GetAllByDate(DateTime.Now).ToList();
+            var votes = _voteLogic.GetItemsForDate(null);
+
+            foreach (var option in options)
+                option.Votes = votes.Count(v => v.RestaurantId == option.RestaurantId);
+
+            var selectedRestaurant = options.OrderByDescending(o => o.Votes).FirstOrDefault();
+
+            if (selectedRestaurant != null)
+            {
+                selectedRestaurant.Selected = 1;
+                _restaurantOptionRepository.SaveOrUpdate(selectedRestaurant);
+            }
+                
+            return selectedRestaurant;
+        }
+
 
         public RestaurantOption SaveOrUpdate(RestaurantOption entity)
         {

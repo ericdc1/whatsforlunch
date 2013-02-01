@@ -15,6 +15,7 @@ namespace Lunch.Website.Services
     {
         private IWebSecurityService _webSecurityService;
         private IUserLogic _userLogic;
+        private Lunch.Website.Controllers.BaseController _aController;
 
         protected override bool AuthorizeCore(HttpContextBase httpContext)
         {
@@ -47,7 +48,7 @@ namespace Lunch.Website.Services
                 if (user != null)
                 {
                     FormsAuthentication.SetAuthCookie(user.Email, false);
-
+                    _aController.CurrentUser = user;
                     // have to set the current principal as well as the cookie or we won't have it until refresh
                     var identity = new GenericIdentity(user.Email, "Forms");
                     httpContext.User = new GenericPrincipal(identity, new string[] { });
@@ -58,6 +59,19 @@ namespace Lunch.Website.Services
             }
 
             return false;
+        }
+
+        public override void OnAuthorization(AuthorizationContext filterContext)
+        {
+            try
+            {
+                _aController = (Controllers.BaseController)filterContext.Controller;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Cannot cast current controller to MVC Base Controller!", ex);
+            }
+            base.OnAuthorization(filterContext);
         }
     }
 }

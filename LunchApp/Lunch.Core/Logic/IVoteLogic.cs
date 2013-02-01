@@ -12,6 +12,7 @@ namespace Lunch.Core.Logic
         IList<Vote> GetItemsByRestaurant(int restaurantID);
         IList<Vote> GetItemsByRestaurant(int restaurantID, DateTime date);
         IList<Vote> GetItemsByMonthAndYear(int month, int year);
+        IList<Vote> GetItemsForDate(DateTime? date);
         Vote SaveVote(Vote entity);
         Vote SaveVote(int restaurantID, int userID);
         IDictionary<int, int> GetRestaurantMonthlyVoteCount();

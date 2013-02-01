@@ -6,7 +6,7 @@ namespace Lunch.Core.Jobs
     public class MailDetails
     {
         public User User { get; set; }
-        public IEnumerable<Restaurant> Restaurants { get; set; }
+        public IEnumerable<RestaurantOption> Restaurants { get; set; }
         public string Url { get; set; }
     }
 }

@@ -6,32 +6,40 @@
 
 <h2>Index</h2>
 
+<link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery.ui.all.css" type="text/css" rel="stylesheet"/>
 @foreach (var rating in Model)
 {
     <div>
         <p>@rating.Restaurant.RestaurantName : <span class="rating">@rating.Rating</span></p>
-        <div class="slider" data-restaurantid="@rating.RestaurantId" data-id="@rating.Id" data-value="@rating.Rating"></div>
+        <div class="slider" data-restaurantid="@rating.RestaurantId" data-id="@rating.Id" data-val="@rating.Rating"></div>
     </div>
 }
 
-    <script>
-        $('.slider').slider({
-            value: $(this).data('value'),
-            min: 1,
-            max: 10,
-            step: 1,
-            slide: function (event, ui) {
-                $(this).siblings("p").find(".rating").text(ui.value);
-            },
-            stop: function () {
-                var model = {
-                    RestaurantId: $(this).data('restaurantid'),
-                    Rating: parseInt($(this).siblings("p").find(".rating").text()),
-                    Id: $(this).data('id')
-                };
-                $.post('/Ratings/Save', model, function (result) {
+<script>
+    $('.slider').slider({
+        value: 1,
+        min: 1,
+        max: 10,
+        step: 1,
+        slide: function (event, ui) {
+            $(this).siblings("p").find(".rating").text(ui.value);
+        },
+        stop: function () {
+            var model = {
+                RestaurantId: $(this).data('restaurantid'),
+                Rating: parseInt($(this).siblings("p").find(".rating").text()),
+                Id: $(this).data('id')
+            };
+            $.post('/Ratings/Save', model, function (result) {
                     
-                }, "json");
-            }
+            }, "json");
+        }
+    });
+
+    $(".slider").each(function () {
+        $(this).slider({
+            value: parseInt($(this).data("val"))
         });
-  </script>
+    });
+    
+</script>
