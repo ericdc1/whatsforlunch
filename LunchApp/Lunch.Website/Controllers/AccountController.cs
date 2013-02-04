@@ -173,6 +173,8 @@ namespace Lunch.Website.Controllers
 
             result.Guid = Guid.NewGuid();
 
+            _userLogic.Update(result);
+
             return new JsonResult{Data = "success"};
         }
     }
