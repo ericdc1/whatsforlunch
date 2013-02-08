@@ -2,7 +2,12 @@
 
 @{
     ViewBag.Title = "Rate";
+    var todayschoice = Model.RestaurantsForToday.OrderByDescending(f => f.Votes).Take(1).First();
 }
+
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.0/jquery-ui.min.js"></script>
+<link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery.ui.all.css" type="text/css" rel="stylesheet"/>
+
 
 <div id="content">
     <div class="bgOne"></div>
@@ -10,8 +15,16 @@
     <div id="info">
 
         <div class="primary">
+            
 
-            <p class="voted">Rate your experience at<br /><span class="restLabel">Cheddars</span></p>
+            <p class="voted">Rate your experience at<br /><span class="restLabel">@todayschoice.Restaurant.RestaurantName</span></p>
+            
+            
+            <div>
+                <p>@todayschoice.Restaurant.RestaurantName : <span class="rating">@Model.YourRating.Rating</span></p>
+                <div class="slider" data-restaurantid="@todayschoice.RestaurantId" data-val="@Model.YourRating.Rating"></div>
+            </div>
+            
 
         </div>
     </div>
@@ -29,7 +42,7 @@
         </a>
     }
 </div>
-
+<!-- this is overkill copied from the edit all ratings page - simplify -->
 <script>
     $(document).ready(function () {
         if ($.browser.msie) {
@@ -49,3 +62,34 @@
         });
     });
 </script>
+
+<script>
+    $('.slider').slider({
+        value: 1,
+        min: 1,
+        max: 10,
+        step: 1,
+        slide: function (event, ui) {
+            $(this).siblings("p").find(".rating").text(ui.value);
+        },
+        stop: function () {
+            var model = {
+                RestaurantId: $(this).data('restaurantid'),
+                Rating: parseInt($(this).siblings("p").find(".rating").text())
+            };
+            $.post('/Ratings/Save', model, function (result) {
+
+            }, "json");
+        }
+    });
+
+    $(".slider").each(function () {
+        $(this).slider({
+            value: parseInt($(this).data("val"))
+        });
+    });
+
+</script>
+
+
+

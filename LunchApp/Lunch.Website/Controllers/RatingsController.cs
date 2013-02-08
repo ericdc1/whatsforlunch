@@ -26,7 +26,7 @@ namespace Lunch.Website.Controllers
         public ActionResult Save(RestaurantRating model)
         {
             model.UserId = CurrentUser.Id;
-            model = _restaurantRatingLogic.SaveOrUpdate(model);
+            model = _restaurantRatingLogic.Insert(model);
             return new JsonResult() {Data = model};
         }
     }

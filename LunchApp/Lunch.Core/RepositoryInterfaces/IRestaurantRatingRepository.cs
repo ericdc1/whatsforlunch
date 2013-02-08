@@ -7,6 +7,7 @@ namespace Lunch.Core.RepositoryInterfaces
     {
         IEnumerable<RestaurantRating> GetAllByUser(int userID);
         IEnumerable<RestaurantRating> GetAll();
-        RestaurantRating SaveOrUpdate(RestaurantRating entity);
+        RestaurantRating Insert(RestaurantRating entity);
+        RestaurantRating Delete(RestaurantRating entity);
     }
 }

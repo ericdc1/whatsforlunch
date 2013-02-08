@@ -5,13 +5,13 @@
 }
 
 <h2>Index</h2>
-
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.0/jquery-ui.min.js"></script>
 <link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery.ui.all.css" type="text/css" rel="stylesheet"/>
 @foreach (var rating in Model)
 {
     <div>
         <p>@rating.Restaurant.RestaurantName : <span class="rating">@rating.Rating</span></p>
-        <div class="slider" data-restaurantid="@rating.RestaurantId" data-id="@rating.Id" data-val="@rating.Rating"></div>
+        <div class="slider" data-restaurantid="@rating.RestaurantId" data-val="@rating.Rating"></div>
     </div>
 }
 
@@ -27,8 +27,7 @@
         stop: function () {
             var model = {
                 RestaurantId: $(this).data('restaurantid'),
-                Rating: parseInt($(this).siblings("p").find(".rating").text()),
-                Id: $(this).data('id')
+                Rating: parseInt($(this).siblings("p").find(".rating").text())
             };
             $.post('/Ratings/Save', model, function (result) {
                     

@@ -27,16 +27,18 @@ namespace Lunch.Website.Controllers
         private readonly IVoteLogic _voteLogic;
         private readonly IUserLogic _userLogic;
         private readonly IVetoLogic _vetoLogic;
+        private readonly IRestaurantRatingLogic _restaurantRatingLogic;
 
         public DateTime Overridetime = new DateTime(2013, 2, 1, 15, 00, 0);
 
-        public HomeController(IRestaurantLogic restaurantLogic, IVoteLogic voteLogic, IRestaurantOptionLogic restaurantOptionLogic, IUserLogic userLogic, IVetoLogic vetoLogic)
+        public HomeController(IRestaurantLogic restaurantLogic, IVoteLogic voteLogic, IRestaurantOptionLogic restaurantOptionLogic, IUserLogic userLogic, IVetoLogic vetoLogic, IRestaurantRatingLogic restaurantRatingLogic)
         {
             _restaurantLogic = restaurantLogic;
             _voteLogic = voteLogic;
             _restaurantOptionLogic = restaurantOptionLogic;
             _userLogic = userLogic;
             _vetoLogic = vetoLogic;
+            _restaurantRatingLogic = restaurantRatingLogic;
         }
 
         public ActionResult DeleteVote(int id)
@@ -50,19 +52,18 @@ namespace Lunch.Website.Controllers
 
            // var _jobLogic = ObjectFactory.GetInstance<Jobs>();
            // _jobLogic.MorningMessage(null, 1);
-        
 
-            var model = new Homepage
-                {
-                    RestaurantsForToday = _restaurantOptionLogic.GetAndSaveOptions().ToList(),
-                    YourVote = _voteLogic.GetItem(CurrentUser.Id, Helpers.AdjustTimeOffsetFromUtc(DateTime.UtcNow)),
-                    PeopleWhoVotedToday = _userLogic.GetListByVotedDate(null, null).ToList()
-                };
+            var model = new Homepage();
+            model.RestaurantsForToday = _restaurantOptionLogic.GetAndSaveOptions().ToList();
+            model.YourVote = _voteLogic.GetItem(CurrentUser.Id, Helpers.AdjustTimeOffsetFromUtc(DateTime.UtcNow));
+            model.PeopleWhoVotedToday = _userLogic.GetListByVotedDate(null, null).ToList();
+            model.YourRating = _restaurantRatingLogic.GetAllByUser(CurrentUser.Id).FirstOrDefault(f => f.RestaurantId == model.YourVote.RestaurantId);
+
             if (model.YourVote != null)
             {
                 model.YourVote.Restaurant = _restaurantLogic.Get(model.YourVote.RestaurantId);
             }
-            var currenttime = Overridetime;//  Lunch.Core.Jobs.Helpers.AdjustTimeOffsetFromUtc(DateTime.UtcNow);
+            var currenttime = Lunch.Core.Jobs.Helpers.AdjustTimeOffsetFromUtc(DateTime.UtcNow);
             
             return RedirectCheck(model, currenttime);
         }

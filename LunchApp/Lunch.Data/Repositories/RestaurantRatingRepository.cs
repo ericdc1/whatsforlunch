@@ -16,18 +16,17 @@ namespace Lunch.Data.Repositories
         {
             using (_connection = Utilities.GetProfiledOpenConnection())
             {
-                var results = 
+                var results =
                     _connection.Query<RestaurantRating, Restaurant, RestaurantRating>(
                         @"SELECT RR.Id, RR.UserId, R.Id AS RestaurantId, 
-                            COALESCE((SELECT Rating FROM RestaurantRatings RR WHERE RR.UserID = @UserId and RR.RestaurantId = R.Id), 5) AS Rating, R.* 
+                            COALESCE((SELECT Rating FROM RestaurantRatings RR WHERE RR.UserID = @UserID and RR.RestaurantId = R.Id), 5) AS Rating, R.* 
                             FROM Restaurants R
-                            CROSS JOIN RestaurantRatings RR
-                            WHERE RR.UserID = @UserId", (rr, r) =>
+                            left outer join RestaurantRatings RR on RR.RestaurantId  = R.Id", (rr, r) =>
                             {
                                 rr.Restaurant = r;
                                 return rr;
                             },
-                        new {UserId = userId});
+                        new { UserId = userId });
 
                 return results;
             }
@@ -35,9 +34,9 @@ namespace Lunch.Data.Repositories
 
         public IEnumerable<RestaurantRating> GetAll()
         {
-            using(_connection = Utilities.GetProfiledOpenConnection())
+            using (_connection = Utilities.GetProfiledOpenConnection())
             {
-                var results = 
+                var results =
                     _connection.Query<RestaurantRating>(
                         @"SELECT RR.Id, U.Id AS UserId, R.Id AS RestaurantId, 
                             COALESCE((SELECT Rating FROM RestaurantRatings RR WHERE RR.UserId = U.Id and RR.RestaurantId = R.Id), 5) AS Rating 
@@ -48,24 +47,25 @@ namespace Lunch.Data.Repositories
 
                 return results;
             }
-        } 
+        }
 
-        public RestaurantRating SaveOrUpdate(RestaurantRating entity)
+        public RestaurantRating Insert(RestaurantRating entity)
         {
             using (_connection = Utilities.GetProfiledOpenConnection())
             {
-
-                if (entity.Id > 0)
-                {
-                    _connection.Update(entity);
-                }
-                else
-                {
-                    var insert = _connection.Insert(entity);
-                    entity.Id = (int)insert;
-                }
+                var insert = _connection.Insert(entity);
+                entity.Id = (int)insert;
                 return entity;
             }
+        }
+
+        public RestaurantRating Delete(RestaurantRating entity)
+        {
+            using (_connection = Utilities.GetProfiledOpenConnection())
+            {
+                _connection.Execute("Delete from RestaurantRatings where UserID = @UserID and RestaurantID = @RestaurantID", entity);
+            }
+            return entity;
         }
     }
 }

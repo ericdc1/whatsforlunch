@@ -1,7 +1,6 @@
 ﻿using System.Security.Cryptography;
 using System.Text;
 using System.Web.Mvc;
-using System.Security.Cryptography;
 
  
 namespace System.Web.Helpers

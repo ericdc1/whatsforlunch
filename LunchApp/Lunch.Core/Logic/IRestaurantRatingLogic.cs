@@ -7,6 +7,6 @@ namespace Lunch.Core.Logic
     {
         IEnumerable<RestaurantRating> GetAll();
         IEnumerable<RestaurantRating> GetAllByUser(int userId);
-        RestaurantRating SaveOrUpdate(RestaurantRating entity);
+        RestaurantRating Insert(RestaurantRating entity);
     }
 }

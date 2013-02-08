@@ -31,9 +31,10 @@ namespace Lunch.Core.Logic.Implementations
             return _restaurantRatingRepository.GetAllByUser(userID);
         }
 
-        public RestaurantRating SaveOrUpdate(RestaurantRating entity)
+        public RestaurantRating Insert(RestaurantRating entity)
         {
-            return _restaurantRatingRepository.SaveOrUpdate(entity);
+            _restaurantRatingRepository.Delete(entity);
+            return _restaurantRatingRepository.Insert(entity);
         }
     }
 }
