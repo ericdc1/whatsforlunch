@@ -51,7 +51,7 @@ namespace Lunch.Website.Controllers
             {
                 model.YourVote.Restaurant = _restaurantLogic.Get(model.YourVote.RestaurantId);
             }
-            var currenttime = Overridetime;//  Lunch.Core.Jobs.Helpers.AdjustTimeOffsetFromUtc(DateTime.UtcNow);
+            var currenttime =  Lunch.Core.Jobs.Helpers.AdjustTimeOffsetFromUtc(DateTime.UtcNow);
             
             return RedirectCheck(model, currenttime);
         }
