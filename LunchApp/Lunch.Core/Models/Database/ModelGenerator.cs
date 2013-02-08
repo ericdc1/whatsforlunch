@@ -41,18 +41,6 @@ namespace Lunch.Core.Models.Database
 	}
 
     /// <summary>
-    /// A class which represents the RestaurantOptions table.
-    /// </summary>
-	[Table("RestaurantOptions")]
-	public abstract class RestaurantOption
-	{
-		public virtual int Id { get; set; }
-		public virtual int RestaurantId { get; set; }
-		public virtual DateTime SelectedDate { get; set; }
-		public virtual int Selected { get; set; }
-	}
-
-    /// <summary>
     /// A class which represents the JobLogs table.
     /// </summary>
 	[Table("JobLogs")]
@@ -106,6 +94,19 @@ namespace Lunch.Core.Models.Database
 	}
 
     /// <summary>
+    /// A class which represents the RestaurantOptions table.
+    /// </summary>
+	[Table("RestaurantOptions")]
+	public abstract class RestaurantOption
+	{
+		[Key]
+		public virtual int Id { get; set; }
+		public virtual int RestaurantId { get; set; }
+		public virtual DateTime SelectedDate { get; set; }
+		public virtual int Selected { get; set; }
+	}
+
+    /// <summary>
     /// A class which represents the Users table.
     /// </summary>
 	[Table("Users")]
@@ -120,6 +121,21 @@ namespace Lunch.Core.Models.Database
 		public virtual bool SendMail2 { get; set; }
 		public virtual bool SendMail3 { get; set; }
 		public virtual bool SendMail4 { get; set; }
+	}
+
+    /// <summary>
+    /// A class which represents the Vetoes table.
+    /// </summary>
+	[Table("Vetoes")]
+	public abstract class Veto
+	{
+		[Key]
+		public virtual int Id { get; set; }
+		public virtual int UserId { get; set; }
+		public virtual int? RestaurantId { get; set; }
+		public virtual bool Used { get; set; }
+		public virtual DateTime ReceivedAt { get; set; }
+		public virtual DateTime? UsedAt { get; set; }
 	}
 
     /// <summary>

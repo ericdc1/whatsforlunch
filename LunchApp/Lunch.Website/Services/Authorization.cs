@@ -42,7 +42,7 @@ namespace Lunch.Website.Services
                 guid = Guid.Parse(httpContext.Request.QueryString.Get("guid"));
             if (!_webSecurityService.IsAuthenticated && guid != Guid.Empty)
             {
-                var user = _userLogic.Get(guid);
+                var user = _userLogic.Get(guid, null);
 
                 // if a user has a matching guid let them in
                 if (user != null)

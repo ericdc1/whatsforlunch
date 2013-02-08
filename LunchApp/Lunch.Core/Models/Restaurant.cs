@@ -10,7 +10,8 @@ namespace Lunch.Core.Models
     [Flags]
     public enum RestaurantDependencies
     {
-        RestaurantType = 1
+        RestaurantType = 1,
+        RestaurantHistories = 2
     }
 
     public class Restaurant : Database.Restaurant
@@ -18,6 +19,7 @@ namespace Lunch.Core.Models
         #region relationships
 
         public virtual RestaurantType RestaurantType { get; set; }
+        public virtual IList<RestaurantHistory> RestaurantHistories { get; set; }
 
         #endregion
 
