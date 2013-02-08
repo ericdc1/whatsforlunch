@@ -388,6 +388,7 @@
     <Content Include="Views\Account\ForgotPasswordMessage.cshtml" />
     <Content Include="Views\Account\PasswordReset.cshtml" />
     <Content Include="Views\Account\PasswordResetSuccess.cshtml" />
+    <Content Include="Views\Home\NotToday.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

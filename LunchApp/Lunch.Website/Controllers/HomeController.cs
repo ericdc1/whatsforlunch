@@ -94,6 +94,10 @@ namespace Lunch.Website.Controllers
         [NonAction]
         private ActionResult RedirectCheck(Homepage model, DateTime currenttime)
         {
+            if (!Helpers.IsLunchDate(Helpers.AdjustTimeOffsetFromUtc(DateTime.UtcNow)))
+            {
+                return View("nottoday", model);  
+            }
             if (currenttime < new DateTime(currenttime.Year, currenttime.Month, currenttime.Day, 7, 30, 0))
             {
                 return View("notyet", model);

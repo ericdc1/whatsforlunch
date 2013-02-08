@@ -52,7 +52,6 @@ namespace Lunch.Core.Logic.Implementations
         public IList<Vote> GetItemsForDate(DateTime? date)
         {
             if (date == null) date = DateTime.Now;
-
             return _voteRepository.GetListForDate(date.Value);
         }
 
@@ -83,9 +82,9 @@ namespace Lunch.Core.Logic.Implementations
                 var votes = _voteRepository.GetItemsByMonthAndYear(DateTime.Now.Month, DateTime.Now.Year);
                 foreach (var restaurant in restaurants.ToList())
                 {
-                    var count = votes.Count(f => f.RestaurantId == restaurant.Id);
                     if (!results.ContainsKey(restaurant.Id))
                     {
+                        var count = votes.Count(f => f.RestaurantId == restaurant.Id);
                         results.Add(restaurant.Id, count);
                     }
                 }
@@ -102,9 +101,9 @@ namespace Lunch.Core.Logic.Implementations
                 var votes = _voteRepository.GetItemsByMonthAndYear(DateTime.Now.Month, DateTime.Now.Year);
                 foreach (var user in users.ToList())
                 {
-                    var count = votes.Count(f => f.UserId == user.Id);
                     if (!results.ContainsKey(user.Id))
                     {
+                        var count = votes.Count(f => f.UserId == user.Id);
                         results.Add(user.Id, count);
                     }
                 }

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Configuration;
+using System.Globalization;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Net.Mail;
 using System.Reflection;
@@ -19,9 +21,18 @@ namespace Lunch.Core.Jobs
             if (date.DayOfWeek == DayOfWeek.Saturday || date.DayOfWeek == DayOfWeek.Sunday)
                 return false;
 
-            //TODO: add checks for override dates for holidays
+            var holidayLogic = ObjectFactory.GetInstance<IHolidayLogic>();
+            //var all = holidayLogic.GetAll();
+            //var list = all.Where(f =>f.ExcludedDate.ToString(CultureInfo.InvariantCulture) == date.ToShortDateString());
 
-            return true;
+            //foreach (var item in all)
+            //{
+            //    var x = item.ExcludedDate.ToString(CultureInfo.InvariantCulture);
+            //    var y = date.ToShortDateString();
+            //}
+
+            //return true;
+            return holidayLogic.GetAll().FirstOrDefault(f =>f.ExcludedDate.ToShortDateString() == date.ToShortDateString()) == null;
         }
 
         public static bool SendMail(string toAddress, string fromAddress, string subject, string body)
@@ -60,13 +71,13 @@ namespace Lunch.Core.Jobs
         public void CreateJobs()
         {
             CreateMorningMailJob();
-            CreateVotingIsOverJob();
+            //CreateVotingIsOverJob();
             CreateWhereAreWeGoingJob();
         }
 
         private void CreateWhereAreWeGoingJob()
         {
-            var job = new Job() { CreatedDate = DateTime.Now, MethodName = "WhereAreWeGoingMessage", ParametersJson = "", RunDate = Helpers.AdjustTimeOffsetToUtc(DateTime.Today.AddHours(11).AddMinutes(15)) };
+            var job = new Job() { CreatedDate = DateTime.Now, MethodName = "WhereAreWeGoingMessage", ParametersJson = "{}", RunDate = Helpers.AdjustTimeOffsetToUtc(DateTime.Today.AddHours(11).AddMinutes(15)) };
             var _jobLogic = ObjectFactory.GetInstance<IJobLogic>();
             _jobLogic.SaveOrUpdate(job);
 
@@ -76,21 +87,21 @@ namespace Lunch.Core.Jobs
             _jobLogLogic.SaveOrUpdate(entity);
         }
 
-        private void CreateVotingIsOverJob()
-        {
-            var job = new Job() { CreatedDate = DateTime.Now, MethodName = "VotingIsOverMessage", ParametersJson = "{name:bob}", RunDate = Helpers.AdjustTimeOffsetToUtc(DateTime.Today.AddHours(10).AddMinutes(30)) };
-            var _jobLogic = ObjectFactory.GetInstance<IJobLogic>();
-            _jobLogic.SaveOrUpdate(job);
+        //private void CreateVotingIsOverJob()
+        //{
+        //    var job = new Job() { CreatedDate = DateTime.Now, MethodName = "VotingIsOverMessage", ParametersJson = "{}", RunDate = Helpers.AdjustTimeOffsetToUtc(DateTime.Today.AddHours(10).AddMinutes(30)) };
+        //    var _jobLogic = ObjectFactory.GetInstance<IJobLogic>();
+        //    _jobLogic.SaveOrUpdate(job);
 
-            //add log
-            var _jobLogLogic = ObjectFactory.GetInstance<IJobLogLogic>();
-            var entity = new JobLog() { JobId = 0, Category = "System", Message = "Create voting is over mail job" };
-            _jobLogLogic.SaveOrUpdate(entity);
-        }
+        //    //add log
+        //    var _jobLogLogic = ObjectFactory.GetInstance<IJobLogLogic>();
+        //    var entity = new JobLog() { JobId = 0, Category = "System", Message = "Create voting is over mail job" };
+        //    _jobLogLogic.SaveOrUpdate(entity);
+        //}
 
         private void CreateMorningMailJob()
         {
-            var job = new Job() { CreatedDate = DateTime.Now, MethodName = "MorningMessage", ParametersJson = "{name:bob}", RunDate = Helpers.AdjustTimeOffsetToUtc(DateTime.Today.AddHours(7).AddMinutes(30))};
+            var job = new Job() { CreatedDate = DateTime.Now, MethodName = "MorningMessage", ParametersJson = "{}", RunDate = Helpers.AdjustTimeOffsetToUtc(DateTime.Today.AddHours(7).AddMinutes(30))};
             var _jobLogic = ObjectFactory.GetInstance<IJobLogic>();
             _jobLogic.SaveOrUpdate(job);
 
