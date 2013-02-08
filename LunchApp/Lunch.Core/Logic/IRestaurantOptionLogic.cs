@@ -10,6 +10,7 @@ namespace Lunch.Core.Logic
         IEnumerable<RestaurantOption> GetAllByDate(DateTime? dateTime);
         IEnumerable<RestaurantOption> GetAndSaveOptions();
         RestaurantOption FinalizeOptions();
+        RestaurantOption TodaysSelection();
         RestaurantOption SaveOrUpdate(RestaurantOption entity);
     }
 }

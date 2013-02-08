@@ -74,6 +74,15 @@ namespace Lunch.Core.Logic.Implementations
             return selectedRestaurant;
         }
 
+        public RestaurantOption TodaysSelection()
+        {
+            var options = GetAllByDate(DateTime.Now).ToList();
+
+            if (options.Any(f => f.Selected == 1))
+                return options.First(f => f.Selected == 1);
+
+            return options.OrderByDescending(f => f.Votes).First();
+        }
 
         public RestaurantOption SaveOrUpdate(RestaurantOption entity)
         {
