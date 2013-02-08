@@ -77,6 +77,7 @@ namespace Lunch.Website.Controllers
             {
                 veto.Used = true;
                 veto.UsedAt = DateTime.Now;
+                _vetoLogic.SaveOrUpdate(veto);
             }
             else
             {
