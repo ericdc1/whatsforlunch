@@ -11,13 +11,15 @@ namespace Lunch.Core.Logic.Implementations
     {
         private readonly IRestaurantRepository _restaurantRepository;
         private readonly IRestaurantRatingLogic _restaurantRatingLogic;
+        private readonly IRestaurantOptionRepository _restaurantOptionRepository;
         private readonly IVoteLogic _voteLogic;
 
-        public RestaurantLogic(IRestaurantRepository restaurantRepository, IRestaurantRatingLogic restaurantRatingLogic, IVoteLogic voteLogic)
+        public RestaurantLogic(IRestaurantRepository restaurantRepository, IRestaurantRatingLogic restaurantRatingLogic, IVoteLogic voteLogic, IRestaurantOptionRepository restaurantOptionRepository)
         {
             _restaurantRepository = restaurantRepository;
             _restaurantRatingLogic = restaurantRatingLogic;
             _voteLogic = voteLogic;
+            _restaurantOptionRepository = restaurantOptionRepository;
         }
 
 
@@ -79,8 +81,11 @@ namespace Lunch.Core.Logic.Implementations
 
             var topRestaurants = GetTopByRating().ToList();
             var allRestaurants = GetList(new {}).ToList();
-
-            // TODO: remove those picked recently
+            var recentlySelected = _restaurantOptionRepository.GetRecent().ToList();
+            
+            // remove any recently selected
+            topRestaurants.RemoveAll(m => recentlySelected.Where(n => m.Id == n.RestaurantId).FirstOrDefault() != null && m.Id == recentlySelected.Where(n => m.Id == n.RestaurantId).FirstOrDefault().RestaurantId );
+            allRestaurants.RemoveAll(m => recentlySelected.Where(n => m.Id == n.RestaurantId).FirstOrDefault() != null && m.Id == recentlySelected.Where(n => m.Id == n.RestaurantId).FirstOrDefault().RestaurantId);
 
             var random = new Random();
 

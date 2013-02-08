@@ -48,6 +48,24 @@ namespace Lunch.Data.Repositories
             }
         }
 
+        public IEnumerable<RestaurantOption> GetRecent()
+        {
+            using (_connection = Utilities.GetProfiledOpenConnection())
+            {
+                IEnumerable<RestaurantOption> results =
+                    _connection.Query<RestaurantOption, Restaurant, RestaurantOption>(@"SELECT * FROM RestaurantOptions RO
+                                                                                        INNER JOIN Restaurants R ON R.Id = RO.RestaurantId 
+                                                                                        WHERE Selected = 1 AND SelectedDate > @startDate",
+                                                                                      (ro, r) =>
+                                                                                      {
+                                                                                          ro.Restaurant = r;
+                                                                                          return ro;
+                                                                                      }, new {startDate = DateTime.Now.AddDays(-7)});
+
+                return results;
+            }
+        }
+
         public RestaurantOption SaveOrUpdate(RestaurantOption entity)
         {
             using (_connection = Utilities.GetProfiledOpenConnection())

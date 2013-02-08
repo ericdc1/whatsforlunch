@@ -24,7 +24,7 @@ namespace Lunch.Website.Controllers
         //TODO: delete this?
         public ActionResult GetTop()
         {
-            var temp = _restaurantLogic.GetTopByVote(null);
+            var temp = _restaurantLogic.GetSelection();
 
             var results = _restaurantOptionLogic.GetAndSaveOptions();
 

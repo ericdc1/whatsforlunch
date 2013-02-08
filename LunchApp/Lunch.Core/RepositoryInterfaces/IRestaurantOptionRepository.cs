@@ -8,6 +8,7 @@ namespace Lunch.Core.RepositoryInterfaces
     {
         IEnumerable<RestaurantOption> GetAllByDate(DateTime dateTime);
         IEnumerable<RestaurantOption> GetAll();
+        IEnumerable<RestaurantOption> GetRecent();
         RestaurantOption SaveOrUpdate(RestaurantOption entity);
     }
 }

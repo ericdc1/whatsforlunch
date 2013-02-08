@@ -33,7 +33,7 @@ namespace Lunch.Core.Logic.Implementations
 
             return _restaurantOptionRepository.GetAllByDate(dateTime.Value);
         }
-
+        
         public IEnumerable<RestaurantOption> GetAndSaveOptions()
         {
             var options = GetAllByDate(DateTime.Now).ToList();
