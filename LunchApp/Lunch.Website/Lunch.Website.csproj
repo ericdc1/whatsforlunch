@@ -391,6 +391,7 @@
     <Content Include="Views\Account\PasswordResetSuccess.cshtml" />
     <Content Include="Views\Home\NotToday.cshtml" />
     <Content Include="Views\Management\Index.cshtml" />
+    <Content Include="Views\Home\YouCanVeto.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

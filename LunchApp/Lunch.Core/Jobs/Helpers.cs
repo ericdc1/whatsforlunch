@@ -62,7 +62,7 @@ namespace Lunch.Core.Jobs
         public void CreateJobs()
         {
             CreateMorningMailJob();
-            //CreateVotingIsOverJob();
+            CreateVotingIsOverJob();
             CreateWhereAreWeGoingJob();
         }
 
@@ -78,17 +78,17 @@ namespace Lunch.Core.Jobs
             _jobLogLogic.SaveOrUpdate(entity);
         }
 
-        //private void CreateVotingIsOverJob()
-        //{
-        //    var job = new Job() { CreatedDate = DateTime.Now, MethodName = "VotingIsOverMessage", ParametersJson = "{}", RunDate = Helpers.AdjustTimeOffsetToUtc(DateTime.Today.AddHours(10).AddMinutes(30)) };
-        //    var _jobLogic = ObjectFactory.GetInstance<IJobLogic>();
-        //    _jobLogic.SaveOrUpdate(job);
+        private void CreateVotingIsOverJob()
+        {
+            var job = new Job() { CreatedDate = DateTime.Now, MethodName = "VotingIsOverMessage", ParametersJson = "{}", RunDate = Helpers.AdjustTimeOffsetToUtc(DateTime.Today.AddHours(10).AddMinutes(30)) };
+            var _jobLogic = ObjectFactory.GetInstance<IJobLogic>();
+            _jobLogic.SaveOrUpdate(job);
 
-        //    //add log
-        //    var _jobLogLogic = ObjectFactory.GetInstance<IJobLogLogic>();
-        //    var entity = new JobLog() { JobId = 0, Category = "System", Message = "Create voting is over mail job" };
-        //    _jobLogLogic.SaveOrUpdate(entity);
-        //}
+            //add log
+            var _jobLogLogic = ObjectFactory.GetInstance<IJobLogLogic>();
+            var entity = new JobLog() { JobId = 0, Category = "System", Message = "Create voting is over mail job" };
+            _jobLogLogic.SaveOrUpdate(entity);
+        }
 
         private void CreateMorningMailJob()
         {

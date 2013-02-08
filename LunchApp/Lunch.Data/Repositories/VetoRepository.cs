@@ -34,7 +34,7 @@ namespace Lunch.Data.Repositories
         {
             using (_connection = Utilities.GetProfiledOpenConnection())
             {
-                return _connection.Query<Veto>(@"SELECT * FROM Vetoes WHERE Used = 0 AND UserId = @userId", userId).ToList();
+                return _connection.Query<Veto>(@"SELECT * FROM Vetoes WHERE Used = 0 AND UserId = @userId", new {userId}).ToList();
             }
         }
 
@@ -42,7 +42,7 @@ namespace Lunch.Data.Repositories
         {
             using (_connection = Utilities.GetProfiledOpenConnection())
             {
-                return _connection.Query<Veto>(@"SELECT * FROM Vetoes WHERE Used = 0 AND UserId IN @userIds", userIds).ToList();
+                return _connection.Query<Veto>(@"SELECT * FROM Vetoes WHERE Used = 0 AND UserId IN @userIds",new {userIds}).ToList();
             }
         }
 
@@ -50,7 +50,7 @@ namespace Lunch.Data.Repositories
         {
             using (_connection = Utilities.GetProfiledOpenConnection())
             {
-                return _connection.Query<Veto>(@"SELECT * FROM Vetoes WHERE Used = 0 AND UserId = @userId", userId).ToList();
+                return _connection.Query<Veto>(@"SELECT * FROM Vetoes WHERE Used = 0 AND UserId = @userId", new { userId }).ToList();
             }
         }
 
@@ -61,7 +61,7 @@ namespace Lunch.Data.Repositories
                 return _connection.Query<Veto>(@"SELECT * FROM Vetoes V WHERE 
                                                     DATEPART(mm, V.UsedDate) = DATEPART(mm, @usedDate) AND 
                                                     DATEPART(dd, V.UsedDate) = DATEPART(dd, @usedDate) AND
-                                                    DATEPART(yyyy, V.UsedDate = DATEPART(yyyy, @usedDate)", usedDate).FirstOrDefault();
+                                                    DATEPART(yyyy, V.UsedDate = DATEPART(yyyy, @usedDate)", new { usedDate }).FirstOrDefault();
             }
         }
 
@@ -84,7 +84,7 @@ namespace Lunch.Data.Repositories
                 else
                 {
                     var insert = _connection.Insert(entity);
-                        entity.Id = (int)insert;
+                    entity.Id = (int)insert;
                 }
                 return entity;
             }
@@ -94,7 +94,7 @@ namespace Lunch.Data.Repositories
         {
             using (_connection = Utilities.GetProfiledOpenConnection())
             {
-               _connection.Delete(entity);
+                _connection.Delete(entity);
             }
             return entity;
         }
