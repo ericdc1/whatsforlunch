@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Lunch.Core.Jobs;
 using Lunch.Core.Models;
 using Lunch.Core.RepositoryInterfaces;
 
@@ -29,14 +30,14 @@ namespace Lunch.Core.Logic.Implementations
         
         public IEnumerable<RestaurantOption> GetAllByDate(DateTime? dateTime)
         {
-            if (dateTime == null) dateTime = DateTime.Now;
+            if (dateTime == null) dateTime = Helpers.AdjustTimeOffsetFromUtc(DateTime.UtcNow);
 
             return _restaurantOptionRepository.GetAllByDate(dateTime.Value);
         }
         
         public IEnumerable<RestaurantOption> GetAndSaveOptions()
         {
-            var options = GetAllByDate(DateTime.Now).ToList();
+            var options = GetAllByDate(null).ToList();
 
             if (!options.Any())
             {

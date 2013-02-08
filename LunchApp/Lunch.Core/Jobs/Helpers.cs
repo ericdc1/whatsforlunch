@@ -22,16 +22,7 @@ namespace Lunch.Core.Jobs
                 return false;
 
             var holidayLogic = ObjectFactory.GetInstance<IHolidayLogic>();
-            //var all = holidayLogic.GetAll();
-            //var list = all.Where(f =>f.ExcludedDate.ToString(CultureInfo.InvariantCulture) == date.ToShortDateString());
 
-            //foreach (var item in all)
-            //{
-            //    var x = item.ExcludedDate.ToString(CultureInfo.InvariantCulture);
-            //    var y = date.ToShortDateString();
-            //}
-
-            //return true;
             return holidayLogic.GetAll().FirstOrDefault(f =>f.ExcludedDate.ToShortDateString() == date.ToShortDateString()) == null;
         }
 

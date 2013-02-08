@@ -55,7 +55,7 @@ namespace Lunch.Core.Jobs
         //public void VotingIsOverMessage(object model, int id)
         //{
         //    var peopletoreceivemail = _userLogic.GetList(new { SendMail2 = true });
-        //    var todayschoices = _restaurantOptionLogic.GetAllByDate(null).OrderBy(f => f.Votes).Take(2).ToList();
+        //    var todayschoices = _restaurantOptionLogic.GetAllByDate(null).OrderByDescending(f => f.Votes).Take(2).ToList();
         //    var fromaddress = System.Configuration.ConfigurationManager.AppSettings.Get("FromEmail");
 
 
@@ -82,9 +82,12 @@ namespace Lunch.Core.Jobs
         public void WhereAreWeGoingMessage(object model, int id)
         {
             var peopletoreceivemail = _userLogic.GetList(new { SendMail3 = true });
-            var todayschoices = _restaurantOptionLogic.GetAllByDate(null).OrderBy(f => f.Votes).Take(1).ToList();
-            var fromaddress = System.Configuration.ConfigurationManager.AppSettings.Get("FromEmail");
+            var todayschoices = _restaurantOptionLogic.GetAllByDate(null).OrderByDescending(f => f.Votes).Take(1).ToList();
 
+            //set the winning choice as selected in choices table
+            todayschoices.First().Selected = 1;
+            _restaurantOptionLogic.SaveOrUpdate(todayschoices.First());
+            var fromaddress = System.Configuration.ConfigurationManager.AppSettings.Get("FromEmail");
 
             //send email to each person who is eligible
             foreach (var user in peopletoreceivemail)

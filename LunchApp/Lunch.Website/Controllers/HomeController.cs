@@ -27,7 +27,7 @@ namespace Lunch.Website.Controllers
         private readonly IVoteLogic _voteLogic;
         private readonly IUserLogic _userLogic;
 
-        //public DateTime Overridetime = new DateTime(2013, 2, 1, 8, 00, 0);
+        public DateTime Overridetime = new DateTime(2013, 2, 1, 12, 00, 0);
 
         public HomeController(IRestaurantLogic restaurantLogic, IVoteLogic voteLogic, IRestaurantOptionLogic restaurantOptionLogic, IUserLogic userLogic)
         {
@@ -60,7 +60,7 @@ namespace Lunch.Website.Controllers
             {
                 model.YourVote.Restaurant = _restaurantLogic.Get(model.YourVote.RestaurantId);
             }
-            var currenttime = Lunch.Core.Jobs.Helpers.AdjustTimeOffsetFromUtc(DateTime.UtcNow);
+            var currenttime = Overridetime;//  Lunch.Core.Jobs.Helpers.AdjustTimeOffsetFromUtc(DateTime.UtcNow);
             
             return RedirectCheck(model, currenttime);
         }
@@ -107,7 +107,6 @@ namespace Lunch.Website.Controllers
             {
                 return View(model.YourVote == null ? "vote" : "voted", model);
             }
-
 
             if (currenttime > new DateTime(currenttime.Year, currenttime.Month, currenttime.Day, 10, 30, 0) && currenttime < new DateTime(currenttime.Year, currenttime.Month, currenttime.Day, 11, 15, 0))
             {
