@@ -5,8 +5,7 @@ using Lunch.Core.Models;
 using Lunch.Core.RepositoryInterfaces;
 using Xunit;
 using Moq;
-using Xunit;
-using Xunit.Sdk;
+
 
 namespace Lunch.UnitTests.Logic
 {

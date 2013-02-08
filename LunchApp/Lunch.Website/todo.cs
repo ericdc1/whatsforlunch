@@ -1,20 +1,12 @@
-﻿//done: admit that we failed at nhibernate - EC/JD/MM/LD
-//done?: bring in the UI - SRK
-//todo: ui for editing lists and search/filter lists - TY/SRK
-//todo: ui for email messages - TY
-//done: CRUD for restaurants - MM
-//add stats columns - last visited, last up for vote, times in last 90 days, average rating based on weighted averages of attendees
+﻿//todo: ui for email messages - TY
+//todo: finish CRUD for restaurants - how do you get to the list?
+//TODO: add stats page - last visited, last up for vote, times in last 90 days, average rating based on weighted averages of attendees, who voted for what today (pie chart maybe)
 //todo: user voting for restaurants
-
-//done: possibly pull from some external data source - MM -- http://api.citygridmedia.com/content/places/v2/search/latlon?lat=39.653319&lon=-79.95735&radius=1&type=restaurant&publisher=10000004484&rpp=50
-//done: create remaining jobs 
-
-//inprogress: views for jobs and job logs (filter and date range) - MM
-
-//done: CRUD for users - JD 
-//done: User logins - allow login with username/password and with guid - JD
-//todo: Allow users to edit profile including mail preferences - JD
-//done: make holidays tables and logic
+//todo: make holidays actually effect emails 
+//todo: make list of choices consider places we went in last 5 days
+//todo: rating for today's choice
+//todo: time must be off somehow as the website isn't showing the "closed" page after 5
+//todo: make page show where we went after 2:00 - the homepage views all need reviewed
 
 //todo: Generate 4 restaurants method MM/JD
 //should be random weighting based on users restaurant ratings
@@ -26,25 +18,10 @@
 //ID, JobID, RestaurantID, EventDate, WasSelectedFLG (maybe time out / time in)
 
 
-//done: CR for voting -
-//ID, RestaurantID, UserID, EventDate, (maybe IsOverrideFLG?)
-
-//todo: try knockout or backbone for voting and restaurants to vote for
-
-//done: Email templates ED/LD 
-//todo: webapi methods for voting, restaurant list EC/LD
-// GetTodaysRestaurant, //Vote
-
 //todo: make a setup wizard and build database from scripts via web
 //http://umbraco.codeplex.com/SourceControl/changeset/view/570e4433bee6#src/umbraco.datalayer/Utility/Installer/DefaultInstallerUtility.cs
 //http://msdn.microsoft.com/en-us/library/49b92ztk(v=vs.100).aspx
  
-//done: setup stackexchange exceptional
-
-//todo: make stats pages
-//top restaurants, etc
-
-//todo: messaging system for "saved"
 
 //todo: phonegap
 //todo: windows store app
