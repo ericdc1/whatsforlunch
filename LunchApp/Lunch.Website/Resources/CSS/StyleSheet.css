@@ -2048,7 +2048,7 @@ a {
   }
   #content #info .management #searchWrap {
     background: #fff;
-    width: 80%;
+    width: 100%;
     padding: 0 20px;
     height: 50px;
     position: relative;
@@ -2079,7 +2079,7 @@ a {
   }
   #content #info .management #manageFormWrap {
     background: url('/Resources/Images/repeatWhite.png') repeat;
-    width: 80%;
+    width: 100%;
     height: auto;
     padding: 20px;
     overflow: hidden;
@@ -2147,7 +2147,7 @@ a {
     width: 100%;
     min-height: 40px;
     overflow: hidden;
-    padding: 0 20px;
+    padding: 0 0 0 40px;
     margin-left: -20px;
     border-bottom: 1px solid #fff;
   }
@@ -2204,7 +2204,7 @@ a {
     margin: 5px 0;
     border: 1px solid #004c63;
     border-left: none;
-    margin-left: -20px;
+    margin-left: -40px;
   }
   #content #info .management #manageFormWrap .row .column.actionButton .action {
     background: #076d8c;
@@ -2236,8 +2236,8 @@ a {
   #content #info .management #manageFormWrap .row .column.userAdmin {
     width: 20px;
     float: left;
-    margin-left: 20px;
-    margin-right: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
   }
   #content #info .management #manageFormWrap .row .column.userAdmin .icon-legal {
     color: #fff;
@@ -2246,7 +2246,7 @@ a {
     color: #b7efff;
   }
   #content #info .management #manageFormWrap .row .column.userName {
-    width: 170px;
+    width: 150px;
     color: #fff;
   }
   #content #info .management #manageFormWrap .row .column.userEmail {
@@ -2277,7 +2277,7 @@ a {
     display: inline-block;
     color: #fff;
     text-align: left;
-    margin-left: 10px;
+    margin-left: 5px;
     margin-right: -4px;
     width: 70px;
   }

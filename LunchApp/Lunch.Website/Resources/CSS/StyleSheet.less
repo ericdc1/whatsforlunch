@@ -460,11 +460,11 @@ a { text-decoration: none; }
 									 .btnToolbar { width: auto; height: 40px; margin-bottom: 4px; clear: both;
 												   .btn { float: left; height: 26px; padding: 8px 15px 6px 15px; line-height: 22px; }
 									 }
-									 #searchWrap { background: #fff; width: 80%; padding: 0 20px; height: 50px; position: relative;
+									 #searchWrap { background: #fff; width: 100%; padding: 0 20px; height: 50px; position: relative;
 												   input { position: absolute; width: auto; height: 50px; top: 0; right: 0; bottom: 0; left: 0; border: 1px solid #fff; margin: 0; padding: 0 10px; font-size: 1.25em; line-height: 26px; }
 												   .icon-search { position: absolute; z-index: 1; width: 30px; height: 30px; top: 10px; right: 10px; font-size: 1.875em; color: #5bbd62; }
 									 }
-									 #manageFormWrap { background: url('/Resources/Images/repeatWhite.png') repeat; width: 80%; height: auto; padding: 20px; overflow: hidden; margin-bottom: 4px;
+									 #manageFormWrap { background: url('/Resources/Images/repeatWhite.png') repeat; width: 100%; height: auto; padding: 20px; overflow: hidden; margin-bottom: 4px;
 													   .formRowWrap { padding: 0; width: auto; height: auto; overflow: hidden; 
 																	  &.columnThird { width: 25%; margin-right: 2%; float: left; }
 																	  &.columnQuarter { width: 25%; float: left; }
@@ -477,12 +477,12 @@ a { text-decoration: none; }
 																			 &:hover { background: #076d8c; }
 																	  }
 													   }
-													   .row { width: 100%; min-height: 40px; overflow: hidden; padding: 0 20px; margin-left: -20px; border-bottom: 1px solid #fff;
+													   .row { width: 100%; min-height: 40px; overflow: hidden; padding: 0 0 0 40px; margin-left: -20px; border-bottom: 1px solid #fff;
 															  &:first-child { border-top: 1px solid #fff; }
 															  &.borderTop { border-top: 1px solid #fff; margin-top: 10px; }
 															  .column { display: inline-block; margin-right: -4px; height: 24px; padding: 8px 0;
 																		&.active { padding: 0; height: 40px; border-left: 1px solid #fff;
-																				   &:first-child { height: 20px; padding: 10px; 
+																				   &:first-child { height: 20px; padding: 10px;
 																								   &:hover { background: #076d8c; }
 																				   }
 																				   .mailLabel { margin-right: 15px; margin-left: 10px; }
@@ -492,7 +492,7 @@ a { text-decoration: none; }
 																				   }
 																		}
 																		&.indentLeft { margin-left: 0; vertical-align: top; }
-																		&.actionButton { float: left; padding: 0; height: 28px; margin: 5px 0; border: 1px solid #004c63; border-left: none; margin-left: -20px;
+																		&.actionButton { float: left; padding: 0; height: 28px; margin: 5px 0; border: 1px solid #004c63; border-left: none; margin-left: -40px;
 																						 .action { background: #076d8c; display: inline-block; margin-right: -4px; border-right: 1px solid #004c63; height: 24px; padding: 2px 7px;
 																								   &:hover { background: #004c63;
 																									         .icon-pencil { color: #fff; }
@@ -503,18 +503,18 @@ a { text-decoration: none; }
 																								   .icon-trash { color: #ec9f9f; } 
 																						 }
 																		}
-																		&.userAdmin { width: 20px; float: left; margin-left: 20px; margin-right: 20px; 
+																		&.userAdmin { width: 20px; float: left; margin-left: 10px; margin-right: 10px; 
 																					  .icon-legal { color: #fff; }
 																					  .icon-user { color: #b7efff; }
 																		}
-																		&.userName { width: 170px; color: #fff; }
+																		&.userName { width: 150px; color: #fff; }
 																		&.userEmail { display: none; }
 																		.icon-legal { color: #fff; }
 																		.mailLabel { display: inline-block; position: relative; margin-right: 10px;
 																					 &:after { content: ""; border-left: 5px solid #fff; border-top: 5px solid transparent; border-bottom: 5px solid transparent; position: absolute; right: -10px; top: 50%; margin-top: -4px; }
 																					 .icon-envelope-alt { color: #fff; }
 																		}
-																		.checkBox { display: inline-block; color: #fff; text-align: left; margin-left: 10px; margin-right: -4px; width: 70px;
+																		.checkBox { display: inline-block; color: #fff; text-align: left; margin-left: 5px; margin-right: -4px; width: 70px;
 																					&:last-child { margin-right: 0; }
 																					.icon-ok { color: #cbffcf; }
 																					.icon-remove { color: #ffd9d9; }
