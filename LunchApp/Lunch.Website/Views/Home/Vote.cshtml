@@ -70,7 +70,7 @@
     <a href="@Url.Action("Manage", "Account")" id="myAccount"><i class="icon-user"></i></a>
     @if(Roles.IsUserInRole("Administrator"))
     {
-        <a href="@Url.Action("Index", "Restaurants")" id="users">
+        <a href="@Url.Action("Index", "Management")" id="users">
             <i class="icon-cog"></i>
         </a>
     }
