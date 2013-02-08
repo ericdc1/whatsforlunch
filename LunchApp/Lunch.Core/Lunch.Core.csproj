@@ -70,6 +70,7 @@
     </Compile>
     <Compile Include="Jobs\MailDetails.cs" />
     <Compile Include="Logic\Implementations\RestaurantOptionLogic.cs" />
+    <Compile Include="Logic\Implementations\VetoLogic.cs" />
     <Compile Include="Logic\IRestaurantOptionLogic.cs" />
     <Compile Include="Logic\Implementations\RestaurantRatingLogic.cs" />
     <Compile Include="Logic\Implementations\VoteLogic.cs" />
@@ -90,6 +91,7 @@
     </Compile>
     <Compile Include="Logic\Implementations\RestaurantTypeLogic.cs" />
     <Compile Include="Logic\IRestaurantTypeLogic.cs" />
+    <Compile Include="Logic\IVetoLogic.cs" />
     <Compile Include="Logic\IVoteLogic.cs" />
     <Compile Include="Models\RestaurantOption.cs" />
     <Compile Include="Models\Holiday.cs" />
@@ -99,10 +101,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelGenerator.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Veto.cs" />
     <Compile Include="Models\Views\RestaurantDetails.cs" />
     <Compile Include="Models\Views\ImportRestaurant.cs" />
     <Compile Include="Models\Views\RestaurantImportSettings.cs" />
     <Compile Include="Models\Vote.cs" />
+    <Compile Include="RepositoryInterfaces\IVetoRepository.cs" />
     <Compile Include="RepositoryInterfaces\IRestaurantOptionRepository.cs" />
     <Compile Include="RepositoryInterfaces\IRestaurantRatingRepository.cs" />
     <Compile Include="RepositoryInterfaces\IHolidayRepository.cs" />

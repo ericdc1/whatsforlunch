@@ -23,7 +23,7 @@ namespace Lunch.Website.Controllers
         {
             base.Initialize(requestContext);
 
-            CurrentUser = _userLogic.Get(User.Identity.Name);
+            CurrentUser = _userLogic.Get(User.Identity.Name, null);
         }
     }
 }

@@ -19,31 +19,31 @@ namespace Lunch.Core.Logic.Implementations
             return _userRepository.GetList(parameters);
         }
 
-        public IEnumerable<User> GetListByVotedDate(DateTime? dateTime)
+        public IEnumerable<User> GetListByVotedDate(DateTime? dateTime, UserDependencies? dependencies)
         {
             if (dateTime == null) dateTime = DateTime.Now;
 
-            return _userRepository.GetListByVotedDate(dateTime.Value);
+            return _userRepository.GetListByVotedDate(dateTime.Value, dependencies);
         }
 
-        public User Get(int id)
+        public User Get(int id, UserDependencies? dependencies)
         {
-            return _userRepository.Get(id);
+            return _userRepository.Get(id, dependencies);
         }
 
-        public User Get(Guid guid)
+        public User Get(Guid guid, UserDependencies? dependencies)
         {
-            return _userRepository.Get(guid);
+            return _userRepository.Get(guid, dependencies);
         }
 
-        public User Get(string email)
+        public User Get(string email, UserDependencies? dependencies)
         {
-            return _userRepository.Get(email);
+            return _userRepository.Get(email, dependencies);
         }
 
         public User Update(User entity)
         {
-            var current = Get(entity.Id);
+            var current = Get(entity.Id, null);
 
             if (entity.Guid == Guid.Empty || entity.Guid == null)
                 entity.Guid = current.Guid;

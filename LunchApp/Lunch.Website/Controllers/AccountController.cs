@@ -149,7 +149,7 @@ namespace Lunch.Website.Controllers
 
         public ActionResult Manage()
         {
-            var result = Mapper.Map<Core.Models.User, UserManage>(_userLogic.Get(User.Identity.Name));
+            var result = Mapper.Map<Core.Models.User, UserManage>(_userLogic.Get(User.Identity.Name, null));
 
             return View(result);
         }
@@ -176,7 +176,7 @@ namespace Lunch.Website.Controllers
         [HttpPost]
         public JsonResult RegenerateGuid()
         {
-            var result = _userLogic.Get(User.Identity.Name);
+            var result = _userLogic.Get(User.Identity.Name, null);
 
             result.Guid = Guid.NewGuid();
 
@@ -232,7 +232,7 @@ namespace Lunch.Website.Controllers
                     isValid = true;
                 }
 
-                var user = _userLogic.Get(model.Email);
+                var user = _userLogic.Get(model.Email, null);
 
                 if (isValid)
                 {

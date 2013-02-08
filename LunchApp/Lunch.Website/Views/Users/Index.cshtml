@@ -18,64 +18,71 @@
 
             <div id="manageFormWrap">
 
-                <table class="table table-striped">
-                    <tr>
-                        <th>
-                            Admin
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.FullName)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Email)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.SendMail1)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.SendMail2)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.SendMail3)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.SendMail4)
-                        </th>
-                        <th></th>
-                    </tr>
-
-                    @foreach (var item in Model)
+                @foreach (var item in Model)
                     {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Administrator)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.FullName)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Email)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.SendMail1)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.SendMail2)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.SendMail3)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.SendMail4)
-                            </td>
-                            <td>
-                                <a href="@Url.Action("Edit", new { ID = item.Id })">Edit</a>
-                                <a href="@Url.Action("Delete", new { ID = item.Id })" role="button" data-toggle="modal">Delete</a>
-                            </td>
-                        </tr>
-                    }
+                        <div class="row">
+                            <div class="column actionButton">
+                                <a class="action" href="@Url.Action("Edit", new { ID = item.Id })"><i class="icon-pencil"></i></a>
+                                <a class="action" href="@Url.Action("Delete", new { ID = item.Id })" role="button" data-toggle="modal"><i class="icon-trash"></i></a>
+                            </div>
 
-                </table>
+                            <div class="column userAdmin">
+                                @if (item.Administrator == true) {
+                                    <i class="icon-legal"></i>
+                                } else {
+                                    <i class="icon-user"></i>   
+                                }
+                            </div>
+
+                            <div class="column userName">@Html.DisplayFor(modelItem => item.FullName)</div>
+                            <div class="column userEmail">@Html.DisplayFor(modelItem => item.Email)</div>
+
+                            <div class="column floatRight">
+                                <div class="mailLabel"><i class="icon-envelope-alt"></i></div>
+                                <div class="checkBox">
+                                    Vote:
+                                    @if (item.SendMail1 == true) {
+                                        <i class="icon-ok"></i>
+                                    } 
+                                    else {
+                                        <i class="icon-remove"></i>   
+                                    }
+                                </div>
+                                <div class="checkBox">
+                                    Veto: 
+                                    @if (item.SendMail2 == true)
+                                    {
+                                        <i class="icon-ok"></i>
+                                    } 
+                                    else {
+                                        <i class="icon-remove"></i>   
+                                    }
+                                </div>
+                                <div class="checkBox">
+                                    Result: 
+                                    @if (item.SendMail3 == true)
+                                    {
+                                        <i class="icon-ok"></i>
+                                    }
+                                    else
+                                    {
+                                        <i class="icon-remove"></i>
+                                    }
+                                </div>
+                                <div class="checkBox">
+                                    Rate: 
+                                    @if (item.SendMail4 == true)
+                                    {
+                                        <i class="icon-ok"></i>
+                                    }
+                                    else
+                                    {
+                                        <i class="icon-remove"></i>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    }
 
             </div>
 

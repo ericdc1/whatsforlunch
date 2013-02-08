@@ -8,10 +8,10 @@ namespace Lunch.Core.Logic
     public interface IUserLogic
     {
         IEnumerable<User> GetList(object parameters);
-        IEnumerable<User> GetListByVotedDate(DateTime? dateTime);
-        User Get(int id);
-        User Get(Guid guid);
-        User Get(string email);
+        IEnumerable<User> GetListByVotedDate(DateTime? dateTime, UserDependencies? dependencies);
+        User Get(int id, UserDependencies? dependencies);
+        User Get(Guid guid, UserDependencies? dependencies);
+        User Get(string email, UserDependencies? dependencies);
         User Update(User entity);
         int Delete(int id);
     }

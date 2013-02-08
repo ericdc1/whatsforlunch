@@ -41,7 +41,7 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Management <b class="caret"></b></a>
             <ul class="dropdown-menu">
                 <li>@Html.ActionLink("Restaurants", "Index", "Restaurants")</li>
-                <li>@Html.ActionLink("Restaurant Import", "Index", "Management")</li>
+                <li>@Html.ActionLink("Restaurant Import", "Index", "Restaurants")</li>
                 <li>@Html.ActionLink("Jobs", "Index", "Jobs")</li>
                 <li>@Html.ActionLink("Users", "Index", "Users")</li>
                 <li>@Html.ActionLink("Holidays", "Index", "Holidays")</li>
@@ -59,7 +59,7 @@
     <div id="threshold">
 
         <div id="nav">
-            <div id="title"><div class="logo"></div></div>
+            <a id="title" href="~/"><div class="logo"></div></a>
             <div id="hiddenNav">
                 <i class="icon-reorder"></i>
             </div>

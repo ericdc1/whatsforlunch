@@ -60,7 +60,7 @@ namespace Lunch.Website.Controllers
 
         public ActionResult Edit(int id)
         {
-            var user = _userLogic.Get(id);
+            var user = _userLogic.Get(id, null);
             var model = Mapper.Map<User, ViewModels.UserEdit>(user);
 
             model.Administrator = Roles.IsUserInRole(model.Email, LunchRoles.Administrator.ToString());
@@ -95,7 +95,7 @@ namespace Lunch.Website.Controllers
         [HttpPost]
         public ActionResult Delete(int id)
         {
-            var user = _userLogic.Get(id);
+            var user = _userLogic.Get(id, null);
 
             if (Roles.IsUserInRole(user.Email, LunchRoles.Administrator.ToString()))
                 Roles.RemoveUserFromRole(user.Email, LunchRoles.Administrator.ToString());
