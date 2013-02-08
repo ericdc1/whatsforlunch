@@ -7,10 +7,16 @@
     ViewBag.Title = "Index";
 }
 
-@if (Model.YourVote != null)
+@*@if (Model.YourVote != null)
 {
     <p>You already voted for @Model.YourVote.Restaurant.RestaurantName but you have a veto that we didn't implement</p>
-}
+}*@
+
+<style>
+    .inactive {
+        background: grey !important;
+    }
+</style>
 
 <div id="content">
     <div class="bgOne"></div>
@@ -27,13 +33,14 @@
                 <p>@Model.PeopleWhoVotedToday.Count picks</p>
             </div>
             
-            <p class="titleLabel">Where would you like to eat?</p>
-
+            <p class="voted">You already voted for <span class="restLabel">@Model.YourVote.Restaurant.RestaurantName</span> but you have a veto</p>
+            
+            
             <div class="listingWrap">
                 
-                @foreach (var restaurant in Model.RestaurantsForToday)
+                @foreach (var restaurant in Model.RestaurantsForToday.OrderByDescending(f => f.Votes).Take(2))
                 {
-                    <a href="/Home/SaveVote/@restaurant.Restaurant.Id" class="listing"><p>@restaurant.Restaurant.RestaurantName</p></a>
+                    <a href="/Home/SaveVeto" class="listing @((restaurant.Selected == 1) ? "" : "inactive")"><p>@restaurant.Restaurant.RestaurantName</p></a>
                 }
             </div>
 
@@ -72,6 +79,8 @@
         $('#hiddenNav').click(function () {
             $('#secondaryContent').toggle();
         });
+        
+
     });
 </script>
 

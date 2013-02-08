@@ -1,21 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Net.Mime;
-using System.Reflection;
 using System.Web.Mvc;
 using Lunch.Core.Logic;
-using Lunch.Core.Models;
-using Lunch.Data.Repositories;
-using Lunch.Website.Services;
 using Lunch.Website.ViewModels;
 using StackExchange.Exceptional;
 using Lunch.Core.Jobs;
-using StructureMap;
-using RazorEngine;
-using System.IO;
-using Restaurant = Lunch.Website.ViewModels.Restaurant;
-using User = Lunch.Website.ViewModels.User;
 
 namespace Lunch.Website.Controllers
 {
@@ -28,7 +17,7 @@ namespace Lunch.Website.Controllers
         private readonly IUserLogic _userLogic;
         private readonly IVetoLogic _vetoLogic;
 
-        public DateTime Overridetime = new DateTime(2013, 2, 1, 15, 00, 0);
+        public DateTime Overridetime = new DateTime(2013, 2, 1, 11, 00, 0);
 
         public HomeController(IRestaurantLogic restaurantLogic, IVoteLogic voteLogic, IRestaurantOptionLogic restaurantOptionLogic, IUserLogic userLogic, IVetoLogic vetoLogic)
         {
@@ -78,6 +67,34 @@ namespace Lunch.Website.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult SaveVeto()
+        {
+            var vetos = _vetoLogic.GetAllActiveForUser(CurrentUser.Id);
+            var veto = vetos.FirstOrDefault();
+
+            // mark veto as used
+            if (veto != null)
+            {
+                veto.Used = true;
+                veto.UsedAt = DateTime.Now;
+            }
+            else
+            {
+                // no vetos to use
+                return RedirectToAction("Index");
+            }
+
+            // swap selected on the winner and runner up
+            var options = _restaurantOptionLogic.GetAllByDate(DateTime.Now).OrderByDescending(f => f.Votes).Take(2).ToList();
+            var winner = options.ElementAt(0);
+            winner.Selected = 0;
+            _restaurantOptionLogic.SaveOrUpdate(winner);
+            var runnerUp = options.ElementAt(1);
+            runnerUp.Selected = 1;
+            _restaurantOptionLogic.SaveOrUpdate(runnerUp);
+
+            return RedirectToAction("Index");
+        }
 
         /// <summary>
         /// This lets you access the error handler via a route in your application, secured by whatever
