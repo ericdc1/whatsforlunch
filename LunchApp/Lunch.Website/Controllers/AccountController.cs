@@ -1,10 +1,16 @@
 ﻿using System;
+using System.IO;
+using System.Net.Mail;
+using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using System.Web.Security;
 using AutoMapper;
+using Lunch.Core.Jobs;
 using Lunch.Core.Logic;
 using Lunch.Website.Services;
 using Lunch.Website.ViewModels;
+using RazorEngine;
 
 namespace Lunch.Website.Controllers
 {
@@ -167,6 +173,7 @@ namespace Lunch.Website.Controllers
             return View(result);
         }
 
+        [HttpPost]
         public JsonResult RegenerateGuid()
         {
             var result = _userLogic.Get(User.Identity.Name);
@@ -176,6 +183,110 @@ namespace Lunch.Website.Controllers
             _userLogic.Update(result);
 
             return new JsonResult{Data = "success"};
+        }
+
+        //[HttpPost]
+        //public JsonResult ResetPassword()
+        //{
+        //    var membershipUser = Membership.GetUser(User.Identity.Name);
+        //    if (membershipUser == null)
+        //        return new JsonResult { Data = "failure" };
+
+        //    var tempPassword = membershipUser.ResetPassword();
+        //    var newPassword = Membership.GeneratePassword(8, 0);
+        //    membershipUser.ChangePassword(tempPassword, newPassword);
+
+        //    var user = _userLogic.Get(membershipUser.UserName);
+
+        //    var fromaddress = System.Configuration.ConfigurationManager.AppSettings.Get("FromEmail");
+        //    var baseurl = System.Configuration.ConfigurationManager.AppSettings.Get("BaseURL");
+        //    var link = string.Format("{0}?GUID={1}", baseurl, user.Guid);
+        //    var path = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
+        //    var template = System.IO.File.ReadAllText(new Uri(path + "/Views/_MailTemplates/ResetPassword.cshtml").AbsolutePath);
+        //    var messagemodel = new MailDetails() { User = user,  Url = link, Password = newPassword };
+
+        //    string result = Razor.Parse(template, messagemodel);
+        //    Helpers.SendMail(user.Email, fromaddress, "Password reset", result);
+
+        //    return new JsonResult { Data = "success" };
+        //}
+
+        [AllowAnonymous]
+        public ActionResult ForgotPassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public ActionResult ForgotPassword(ForgotModel model)
+        {
+            bool isValid = false;
+            string resetToken = "";
+
+            if (ModelState.IsValid)
+            {
+                if (_webSecurityService.GetUserId(model.Email) > -1)
+                {
+                    resetToken = _webSecurityService.GeneratePasswordResetToken(model.Email);
+                    isValid = true;
+                }
+
+                var user = _userLogic.Get(model.Email);
+
+                if (isValid)
+                {
+                    string hostUrl = Request.Url.GetComponents(UriComponents.SchemeAndServer, UriFormat.Unescaped);
+                    string resetUrl = hostUrl + VirtualPathUtility.ToAbsolute("~/Account/PasswordReset?resetToken=" + HttpUtility.UrlEncode(resetToken));
+
+                    var fromaddress = System.Configuration.ConfigurationManager.AppSettings.Get("FromEmail");
+                    var path = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
+                    var template = System.IO.File.ReadAllText(new Uri(path + "/Views/_MailTemplates/ResetPassword.cshtml").AbsolutePath);
+                    var messagemodel = new MailDetails() { User = user, Url = resetUrl };
+
+                    string result = Razor.Parse(template, messagemodel);
+                    Helpers.SendMail(user.Email, fromaddress, "Password Reset", result);
+                }
+                return RedirectToAction("ForgotPasswordMessage");
+            }
+            return View(model);
+        }
+
+        [AllowAnonymous]
+        public ActionResult ForgotPasswordMessage()
+        {
+            return View();
+        }
+
+        [AllowAnonymous]
+        public ActionResult PasswordReset()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public ActionResult PasswordReset(PasswordResetModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                if (_webSecurityService.ResetPassword(model.ResetToken, model.NewPassword))
+                {
+                    return RedirectToAction("PasswordResetSuccess");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "The password reset token is invalid.");
+                }
+            }
+
+            return View(model);
+        }
+
+        [AllowAnonymous]
+        public ActionResult PasswordResetSuccess()
+        {
+            return View();
         }
     }
 }

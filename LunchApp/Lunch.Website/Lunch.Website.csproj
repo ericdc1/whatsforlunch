@@ -381,6 +381,13 @@
     <Content Include="Views\Home\ComeBackTomorrow.cshtml" />
     <Content Include="Views\Home\Voted.cshtml" />
     <Content Include="Views\Ratings\Index.cshtml" />
+    <Content Include="Views\_MailTemplates\ResetPassword.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Views\Account\ForgotPasswordMessage.cshtml" />
+    <Content Include="Views\Account\PasswordReset.cshtml" />
+    <Content Include="Views\Account\PasswordResetSuccess.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

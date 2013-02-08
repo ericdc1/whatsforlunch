@@ -16,39 +16,39 @@
             @Html.ValidationSummary(true, "Login was unsuccessful. Please correct the errors and try again.")
 
             @using (Html.BeginForm()) {
-                    <div id="manageFormWrap">
+                <div id="manageFormWrap">
 
-                        <div class="formRowWrap">
-                            <div class="editorLabel">
-                                @Html.LabelFor(m => m.UserName)
-                            </div>
-                            <div class="editorField">
-                                @Html.TextBoxFor(m => m.UserName)
-                                @Html.ValidationMessageFor(m => m.UserName)
-                            </div>
+                    <div class="formRowWrap">
+                        <div class="editorLabel">
+                            @Html.LabelFor(m => m.UserName)
                         </div>
-
-                        <div class="formRowWrap">
-                            <div class="editorLabel">
-                                @Html.LabelFor(m => m.Password)
-                            </div>
-                            <div class="editorField">
-                                @Html.PasswordFor(m => m.Password)
-                                @Html.ValidationMessageFor(m => m.Password)
-                            </div>
+                        <div class="editorField">
+                            @Html.TextBoxFor(m => m.UserName)
+                            @Html.ValidationMessageFor(m => m.UserName)
                         </div>
-
-                        <div class="formRowWrap">
-                            <div class="editorLabel">
-                                @Html.CheckBoxFor(m => m.RememberMe)
-                                @Html.LabelFor(m => m.RememberMe)
-                            </div>
-                        </div>
-
                     </div>
-                
-                    <input type="submit" value="Log On" class="btn submit "/>
 
+                    <div class="formRowWrap">
+                        <div class="editorLabel">
+                            @Html.LabelFor(m => m.Password)
+                        </div>
+                        <div class="editorField">
+                            @Html.PasswordFor(m => m.Password)
+                            @Html.ValidationMessageFor(m => m.Password)
+                        </div>
+                    </div>
+
+                    <div class="formRowWrap">
+                        <div class="editorLabel">
+                            @Html.CheckBoxFor(m => m.RememberMe)
+                            @Html.LabelFor(m => m.RememberMe)
+                        </div>
+                    </div>
+
+                </div>
+                
+                <input type="submit" value="Log On" class="btn submit "/>
+                @Html.ActionLink("Forgot Password", "ForgotPassword")
             }
         </div>
     </div>
