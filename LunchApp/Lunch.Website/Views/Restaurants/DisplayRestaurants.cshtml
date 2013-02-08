@@ -13,12 +13,12 @@
             <h1>Restaurant Import</h1>
             <h3>Restaurants List</h3>
 
-            @using (Html.BeginForm("SaveImports", "Management"))
+            @using (Html.BeginForm("SaveImports", "Restaurants"))
             {
                 @Html.ValidationSummary(true)
             
                 <div id="searchWrap">
-                    <input id="searchbox" type="text" url="/Management/Search" placeholder="Minimun 3 characters required for search" />
+                    <input id="searchbox" type="text" url="@Url.Content("~/Restaurants/Search")" placeholder="Minimun 3 characters required for search" />
                     <i class="icon-search"></i>
                 </div>
         
@@ -30,7 +30,7 @@
 
                 </div>
                 
-                <input id="SaveImports" type="button" url="/Management/SaveImports" value="Save" class="btn submit" />
+                <input id="SaveImports" type="button" url="@Url.Content("~/Restaurants/SaveImports")" value="Save" class="btn submit" />
             }
         </div>
     </div>

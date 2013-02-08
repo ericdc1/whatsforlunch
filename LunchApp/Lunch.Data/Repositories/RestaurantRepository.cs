@@ -24,13 +24,12 @@ namespace Lunch.Data.Repositories
             using (_connection = Utilities.GetProfiledOpenConnection())
             {
                 var result =_connection.Query<RestaurantDetails>(
-                        @"Select restaurants.Id, restaurants.RestaurantName , restaurants.PreferredDayOfWeek, restauranttype.Id as RestaurantTypeID, restauranttype.typename as TypeName
+                        @"Select Restaurants.Id, Restaurants.RestaurantName, Restaurants.PreferredDayOfWeek, RestaurantTypes.Id as RestaurantTypeId, RestaurantTypes.TypeName as TypeName
                         from Restaurants
-                        LEFT OUTER JOIN RestaurantType
-                        ON Restaurants.RestaurantTypeId=Restauranttype.Id");
+                        LEFT OUTER JOIN RestaurantTypes
+                        ON Restaurants.RestaurantTypeId = RestaurantTypes.Id");
                 if (categoryId != null)
                     result = result.Where(f => f.RestaurantTypeId == categoryId);
-
                 return result;
             }
         }

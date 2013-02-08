@@ -28,7 +28,7 @@
                             <span style="color: green;" title="Restaurant is already imported">@Model.Restaurants[i].RestaurantName</span>
                         </td>
                         <td>@Html.DropDownListFor(model => model.Restaurants[i].PreferredDayOfWeek, (SelectList)ViewBag.DaysOfWeek, "-- NONE --", new { disabled = "disabled" })</td>
-                        <td>@Html.DropDownListFor(model => model.Restaurants[i].RestaurantTypeID, (SelectList)ViewBag.RestaurantTypes, "-- UNDEFINED --", new { disabled = "disabled" })</td>
+                        <td>@Html.DropDownListFor(model => model.Restaurants[i].RestaurantTypeId, (SelectList)ViewBag.RestaurantTypes, "-- UNDEFINED --", new { disabled = "disabled" })</td>
                     </tr>   
                 } else
                 {
@@ -39,7 +39,7 @@
                             @Model.Restaurants[i].RestaurantName
                         </td>
                         <td>@Html.DropDownListFor(model => model.Restaurants[i].PreferredDayOfWeek, (SelectList)ViewBag.DaysOfWeek, "-- NONE --", new { Class = "SpecialDay" })</td>
-                        <td>@Html.DropDownListFor(model => model.Restaurants[i].RestaurantTypeID, (SelectList)ViewBag.RestaurantTypes, "-- UNDEFINED --", new { Class = "RestaurantType" })</td>
+                        <td>@Html.DropDownListFor(model => model.Restaurants[i].RestaurantTypeId, (SelectList)ViewBag.RestaurantTypes, "-- UNDEFINED --", new { Class = "RestaurantType" })</td>
                     </tr>   
                 }
             }

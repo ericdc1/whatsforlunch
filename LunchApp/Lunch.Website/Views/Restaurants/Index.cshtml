@@ -14,29 +14,13 @@
 
 <div class="btn-toolbar">
     @Html.ActionLink("Create New", "Create", null, new {@class="btn btn-primary"})
-    @Html.ActionLink("Import", "Index", "Management", null, new {@class="btn"})
+    @Html.ActionLink("Import", "ImportSettings", "Restaurants", null, new {@class="btn"})
        @if (ViewBag.HasCategoryFilter)
     {
         @:|
         @Html.ActionLink("Show all", "index", null, new {@class="btn"})
     }
 </div>
-
-    @foreach (var item in Model)
-    {
-        <div class="restaurant">
-            @Html.DisplayFor(modelItem => item.RestaurantName)
-            @Html.DisplayFor(modelItem => item.PreferredDayOfWeek)
-            @if (item.RestaurantTypeId != null)
-            {
-                Html.ActionLink(item.TypeName, "index", new {categoryid = item.RestaurantTypeId});
-            }
-               
-            <br />
-            <a href="@Url.Action("Edit", new { ID = item.Id })"><i class="icon-pencil"></i></a>
-            <a href="@Url.Action("Delete", new { ID = item.Id })" role="button" data-toggle="modal"><i class="icon-remove"></i></a>
-        </div>
-    }
 
 <table class="table table-striped">
     <tr>

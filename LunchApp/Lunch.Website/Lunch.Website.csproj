@@ -171,7 +171,6 @@
     <Compile Include="Controllers\JobsController.cs" />
     <Compile Include="Controllers\LogsController.cs" />
     <Compile Include="Controllers\RestaurantsController.cs" />
-    <Compile Include="Controllers\ManagementController.cs" />
     <Compile Include="DependencyResolution\IoC.cs" />
     <Compile Include="DependencyResolution\StructureMapControllerFactory.cs" />
     <Compile Include="Global.asax.cs">
@@ -359,8 +358,8 @@
     <Content Include="Views\Users\Create.cshtml" />
     <Content Include="Views\Users\Edit.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
-    <Content Include="Views\Management\_ImportRestaurantsList.cshtml" />
-    <Content Include="Views\Management\SaveImports.cshtml" />
+    <Content Include="Views\Restaurants\_ImportRestaurantsList.cshtml" />
+    <Content Include="Views\Restaurants\SaveImports.cshtml" />
     <Content Include="Views\Holidays\Index.cshtml" />
     <Content Include="Views\_MailTemplates\Morning.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -374,7 +373,7 @@
     <Content Include="Views\Restaurants\GetTop.cshtml" />
     <Content Include="Views\Account\Manage.cshtml" />
     <Content Include="Views\Shared\_LayoutLogin.cshtml" />
-    <Content Include="Views\Management\ImportSettings.cshtml" />
+    <Content Include="Views\Restaurants\ImportSettings.cshtml" />
     <Content Include="Views\Home\NotYet.cshtml" />
     <Content Include="Views\Home\Rate.cshtml" />
     <Content Include="Views\Home\Going.cshtml" />
@@ -431,10 +430,9 @@
     <Content Include="Views\Account\LogOn.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\Thanks.cshtml" />
-    <Content Include="Views\Management\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Management\DisplayRestaurants.cshtml" />
+    <Content Include="Views\Restaurants\DisplayRestaurants.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\Scripts\" />

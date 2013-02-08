@@ -15,6 +15,5 @@ namespace Lunch.Core.Models.Views
         public string TypeName { get; set; }
         [DisplayName("Genre ID")]
         public int? RestaurantTypeId { get; set; }
-       
     }
 }

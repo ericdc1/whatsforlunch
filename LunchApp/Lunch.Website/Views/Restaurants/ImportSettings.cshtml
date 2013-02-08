@@ -16,7 +16,8 @@
             <h1>Management</h1>
             <h3>Import Settings</h3>
 
-            @using (Html.BeginForm()) {
+            @using (Html.BeginForm("ImportSettings", "Restaurants", FormMethod.Post))
+            {
                 @Html.ValidationSummary(true)
 
                 <div id="manageFormWrap">
