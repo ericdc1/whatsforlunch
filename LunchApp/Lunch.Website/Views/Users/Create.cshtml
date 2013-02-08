@@ -61,64 +61,49 @@
                         </div>
                     </div>
         
-                    <div class="formRowWrap">
-                        <div class="editorLabel">
-                            @Html.LabelFor(model => model.Administrator)
-                        </div>
-                        <div class="editorField checkBox">
+                    <div class="row borderTop">
+                        <div class="column indentLeft active">
+                            <i class="icon-legal"></i>
                             @Html.EditorFor(model => model.Administrator)
                             @Html.ValidationMessageFor(model => model.Administrator)
                         </div>
-                    </div>
 
-                    <div class="formRowWrap">
-                        <div class="editorLabel">
-                            @Html.LabelFor(model => model.SendMail1)
-                        </div>
-                        <div class="editorField checkBox">
-                            @Html.EditorFor(model => model.SendMail1)
-                            @Html.ValidationMessageFor(model => model.SendMail1)
-                        </div>
-                    </div>
+                        <div class="column indentLeft active">
+                            <div class="mailLabel">
+                                <i class="icon-envelope-alt"></i>
+                            </div>
 
-                    <div class="formRowWrap">
-                        <div class="editorLabel">
-                            @Html.LabelFor(model => model.SendMail2)
-                        </div>
-                        <div class="editorField checkBox">
-                            @Html.EditorFor(model => model.SendMail2)
-                            @Html.ValidationMessageFor(model => model.SendMail2)
-                        </div>
-                    </div>
+                            <div class="checkBox">
+                                Vote:
+                                @Html.EditorFor(model => model.SendMail1)
+                                @Html.ValidationMessageFor(model => model.SendMail1)
+                            </div>
 
-                    <div class="formRowWrap">
-                        <div class="editorLabel">
-                            @Html.LabelFor(model => model.SendMail3)
-                        </div>
-                        <div class="editorField checkBox">
-                            @Html.EditorFor(model => model.SendMail3)
-                            @Html.ValidationMessageFor(model => model.SendMail3)
-                        </div>
-                    </div>
+                            <div class="checkBox">
+                                Veto:
+                                @Html.EditorFor(model => model.SendMail2)
+                                @Html.ValidationMessageFor(model => model.SendMail2)
+                            </div>
 
-                    <div class="formRowWrap">
-                        <div class="editorLabel">
-                            @Html.LabelFor(model => model.SendMail4)
-                        </div>
-                        <div class="editorField checkBox">
-                            @Html.EditorFor(model => model.SendMail4)
-                            @Html.ValidationMessageFor(model => model.SendMail4)
+                            <div class="checkBox">
+                                Result:
+                                @Html.EditorFor(model => model.SendMail3)
+                                @Html.ValidationMessageFor(model => model.SendMail3)
+                            </div>
+
+                            <div class="checkBox">
+                                Rate:
+                                @Html.EditorFor(model => model.SendMail4)
+                                @Html.ValidationMessageFor(model => model.SendMail4)
+                            </div>
                         </div>
                     </div>
 
                 </div>
                 
+                @Html.ActionLink("Back to List", "Index", null, new { @class = "btn back" })
                 <input type="submit" value="Create" class="btn submit" />
             }
-
-            <div>
-                @Html.ActionLink("Back to List", "Index")
-            </div>
 
         </div>
     </div>

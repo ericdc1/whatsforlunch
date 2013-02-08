@@ -11,6 +11,12 @@
 a {
   text-decoration: none;
 }
+.floatRight {
+  float: right;
+}
+.floatLeft {
+  float: left;
+}
 /* PRIMARY NAVIGATION */
 #nav #title {
   background: #fff;
@@ -1607,6 +1613,7 @@ a {
     height: 95px;
     padding-top: 55px;
     padding-left: 15px;
+    display: block;
   }
   #nav #title:after {
     content: "";
@@ -2136,6 +2143,156 @@ a {
   #content #info .management #manageFormWrap .formRowWrap .btn:hover {
     background: #076d8c;
   }
+  #content #info .management #manageFormWrap .row {
+    width: 100%;
+    min-height: 40px;
+    overflow: hidden;
+    padding: 0 20px;
+    margin-left: -20px;
+    border-bottom: 1px solid #fff;
+  }
+  #content #info .management #manageFormWrap .row:first-child {
+    border-top: 1px solid #fff;
+  }
+  #content #info .management #manageFormWrap .row.borderTop {
+    border-top: 1px solid #fff;
+    margin-top: 10px;
+  }
+  #content #info .management #manageFormWrap .row .column {
+    display: inline-block;
+    margin-right: -4px;
+    height: 24px;
+    padding: 8px 0;
+  }
+  #content #info .management #manageFormWrap .row .column.active {
+    padding: 0;
+    height: 40px;
+    border-left: 1px solid #fff;
+  }
+  #content #info .management #manageFormWrap .row .column.active:first-child {
+    height: 20px;
+    padding: 10px;
+  }
+  #content #info .management #manageFormWrap .row .column.active:first-child:hover {
+    background: #076d8c;
+  }
+  #content #info .management #manageFormWrap .row .column.active .mailLabel {
+    margin-right: 15px;
+    margin-left: 10px;
+  }
+  #content #info .management #manageFormWrap .row .column.active .checkBox {
+    border-left: 1px solid #fff;
+    width: auto;
+    padding: 9px 10px 10px 10px;
+    margin-left: 0;
+  }
+  #content #info .management #manageFormWrap .row .column.active .checkBox:hover {
+    background: #076d8c;
+    color: #fff;
+  }
+  #content #info .management #manageFormWrap .row .column.active .checkBox:last-child {
+    border-right: 1px solid #fff;
+  }
+  #content #info .management #manageFormWrap .row .column.indentLeft {
+    margin-left: 0;
+    vertical-align: top;
+  }
+  #content #info .management #manageFormWrap .row .column.actionButton {
+    float: left;
+    padding: 0;
+    height: 28px;
+    margin: 5px 0;
+    border: 1px solid #004c63;
+    border-left: none;
+    margin-left: -20px;
+  }
+  #content #info .management #manageFormWrap .row .column.actionButton .action {
+    background: #076d8c;
+    display: inline-block;
+    margin-right: -4px;
+    border-right: 1px solid #004c63;
+    height: 24px;
+    padding: 2px 7px;
+  }
+  #content #info .management #manageFormWrap .row .column.actionButton .action:hover {
+    background: #004c63;
+  }
+  #content #info .management #manageFormWrap .row .column.actionButton .action:hover .icon-pencil {
+    color: #fff;
+  }
+  #content #info .management #manageFormWrap .row .column.actionButton .action:hover .icon-trash {
+    color: #fff;
+  }
+  #content #info .management #manageFormWrap .row .column.actionButton .action:last-child {
+    margin-right: 0;
+    border-right: none;
+  }
+  #content #info .management #manageFormWrap .row .column.actionButton .action .icon-pencil {
+    color: #9feca5;
+  }
+  #content #info .management #manageFormWrap .row .column.actionButton .action .icon-trash {
+    color: #ec9f9f;
+  }
+  #content #info .management #manageFormWrap .row .column.userAdmin {
+    width: 20px;
+    float: left;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+  #content #info .management #manageFormWrap .row .column.userAdmin .icon-legal {
+    color: #fff;
+  }
+  #content #info .management #manageFormWrap .row .column.userAdmin .icon-user {
+    color: #b7efff;
+  }
+  #content #info .management #manageFormWrap .row .column.userName {
+    width: 170px;
+    color: #fff;
+  }
+  #content #info .management #manageFormWrap .row .column.userEmail {
+    display: none;
+  }
+  #content #info .management #manageFormWrap .row .column .icon-legal {
+    color: #fff;
+  }
+  #content #info .management #manageFormWrap .row .column .mailLabel {
+    display: inline-block;
+    position: relative;
+    margin-right: 10px;
+  }
+  #content #info .management #manageFormWrap .row .column .mailLabel:after {
+    content: "";
+    border-left: 5px solid #fff;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    position: absolute;
+    right: -10px;
+    top: 50%;
+    margin-top: -4px;
+  }
+  #content #info .management #manageFormWrap .row .column .mailLabel .icon-envelope-alt {
+    color: #fff;
+  }
+  #content #info .management #manageFormWrap .row .column .checkBox {
+    display: inline-block;
+    color: #fff;
+    text-align: left;
+    margin-left: 10px;
+    margin-right: -4px;
+    width: 70px;
+  }
+  #content #info .management #manageFormWrap .row .column .checkBox:last-child {
+    margin-right: 0;
+  }
+  #content #info .management #manageFormWrap .row .column .checkBox .icon-ok {
+    color: #cbffcf;
+  }
+  #content #info .management #manageFormWrap .row .column .checkBox .icon-remove {
+    color: #ffd9d9;
+  }
+  #content #info .management #manageFormWrap .row .column .checkBox input[type="checkbox"] {
+    margin-top: 3px;
+  }
   #content #info .management .manageOption {
     background: #fff;
     width: 90%;
@@ -2193,23 +2350,20 @@ a {
     font-size: 1.5em;
     color: #00ADDC;
   }
-  #content #info .management .btn {
-    background: #ccc;
-    width: auto;
-    height: 40px;
-    padding: 7px 15px;
-    color: #fff;
-    font-size: 1em;
-    line-height: 16px;
-    border: none;
-    margin: 0;
-    cursor: pointer;
+  #content #info .management a.btn {
+    padding: 9px 15px 10px 15px;
   }
   #content #info .management .btn.submit {
     background: #5bbd62;
   }
   #content #info .management .btn.submit:hover {
     background: #3a9e41;
+  }
+  #content #info .management .btn.back {
+    background: #ec9f9f;
+  }
+  #content #info .management .btn.back:hover {
+    background: #d47b7b;
   }
   #secondaryContent {
     position: fixed;
@@ -2833,9 +2987,9 @@ a {
     color: #333;
     position: absolute;
     top: 0;
-    right: 0;
     bottom: 0;
     left: 0;
+    width: 300px;
     padding: 0 10px;
     margin: 0;
   }
@@ -2854,6 +3008,157 @@ a {
   }
   #content #info .management #manageFormWrap .formRowWrap .btn:hover {
     background: #fff;
+  }
+  #content #info .management #manageFormWrap .row {
+    width: 100%;
+    height: 40px;
+    border-bottom: 1px solid #fff;
+  }
+  #content #info .management #manageFormWrap .row:first-child {
+    border-top: 1px solid #fff;
+  }
+  #content #info .management #manageFormWrap .row.borderTop {
+    border-top: 1px solid #fff;
+    margin-top: 10px;
+  }
+  #content #info .management #manageFormWrap .row .column {
+    display: inline-block;
+    margin-right: -4px;
+    height: 24px;
+    padding: 8px 0;
+  }
+  #content #info .management #manageFormWrap .row .column.active {
+    padding: 0;
+    height: 40px;
+    border-left: 1px solid #fff;
+  }
+  #content #info .management #manageFormWrap .row .column.active:first-child {
+    height: 20px;
+    padding: 10px;
+  }
+  #content #info .management #manageFormWrap .row .column.active:first-child:hover {
+    background: #076d8c;
+  }
+  #content #info .management #manageFormWrap .row .column.active:first-child:hover .icon-legal {
+    color: #fff;
+  }
+  #content #info .management #manageFormWrap .row .column.active .mailLabel {
+    margin-right: 15px;
+    margin-left: 10px;
+  }
+  #content #info .management #manageFormWrap .row .column.active .checkBox {
+    border-left: 1px solid #fff;
+    width: auto;
+    padding: 9px 10px 10px 10px;
+    margin-left: 0;
+  }
+  #content #info .management #manageFormWrap .row .column.active .checkBox:hover {
+    background: #076d8c;
+    color: #fff;
+  }
+  #content #info .management #manageFormWrap .row .column.active .checkBox:last-child {
+    border-right: 1px solid #fff;
+  }
+  #content #info .management #manageFormWrap .row .column.indentLeft {
+    margin-left: 20px;
+  }
+  #content #info .management #manageFormWrap .row .column.actionButton {
+    float: left;
+    padding: 0;
+    height: 28px;
+    margin: 5px 0;
+    border: 1px solid #004c63;
+    border-left: none;
+  }
+  #content #info .management #manageFormWrap .row .column.actionButton .action {
+    background: #076d8c;
+    display: inline-block;
+    margin-right: -4px;
+    border-right: 1px solid #004c63;
+    height: 24px;
+    padding: 2px 7px;
+  }
+  #content #info .management #manageFormWrap .row .column.actionButton .action:hover {
+    background: #004c63;
+  }
+  #content #info .management #manageFormWrap .row .column.actionButton .action:hover .icon-pencil {
+    color: #fff;
+  }
+  #content #info .management #manageFormWrap .row .column.actionButton .action:hover .icon-trash {
+    color: #fff;
+  }
+  #content #info .management #manageFormWrap .row .column.actionButton .action:last-child {
+    margin-right: 0;
+    border-right: none;
+  }
+  #content #info .management #manageFormWrap .row .column.actionButton .action .icon-pencil {
+    color: #9feca5;
+  }
+  #content #info .management #manageFormWrap .row .column.actionButton .action .icon-trash {
+    color: #ec9f9f;
+  }
+  #content #info .management #manageFormWrap .row .column.userAdmin {
+    width: 20px;
+    float: left;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+  #content #info .management #manageFormWrap .row .column.userAdmin .icon-legal {
+    color: #fff;
+  }
+  #content #info .management #manageFormWrap .row .column.userAdmin .icon-user {
+    color: #b7efff;
+  }
+  #content #info .management #manageFormWrap .row .column.userName {
+    width: 170px;
+    color: #004c63;
+  }
+  #content #info .management #manageFormWrap .row .column.userEmail {
+    width: 200px;
+  }
+  #content #info .management #manageFormWrap .row .column.userEmail a {
+    color: #fff;
+  }
+  #content #info .management #manageFormWrap .row .column .icon-legal {
+    color: #004c63;
+  }
+  #content #info .management #manageFormWrap .row .column .mailLabel {
+    display: inline-block;
+    position: relative;
+    margin-right: 10px;
+  }
+  #content #info .management #manageFormWrap .row .column .mailLabel:after {
+    content: "";
+    border-left: 5px solid #fff;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    position: absolute;
+    right: -10px;
+    top: 50%;
+    margin-top: -4px;
+  }
+  #content #info .management #manageFormWrap .row .column .mailLabel .icon-envelope-alt {
+    color: #fff;
+  }
+  #content #info .management #manageFormWrap .row .column .checkBox {
+    display: inline-block;
+    color: #004c63;
+    text-align: left;
+    margin-left: 10px;
+    margin-right: -4px;
+    width: 70px;
+  }
+  #content #info .management #manageFormWrap .row .column .checkBox:last-child {
+    margin-right: 20px;
+  }
+  #content #info .management #manageFormWrap .row .column .checkBox .icon-ok {
+    color: #cbffcf;
+  }
+  #content #info .management #manageFormWrap .row .column .checkBox .icon-remove {
+    color: #ffd9d9;
+  }
+  #content #info .management #manageFormWrap .row .column .checkBox input[type="checkbox"] {
+    margin-top: 3px;
   }
   #content #info .management .manageOption {
     background: url('/Resources/Images/repeatBlue.png') repeat;
@@ -2892,23 +3197,20 @@ a {
     font-size: 2em;
     color: #fff;
   }
-  #content #info .management .btn {
-    background: #ccc;
-    width: auto;
-    height: 40px;
-    padding: 7px 15px;
-    color: #fff;
-    font-size: 1em;
-    line-height: 16px;
-    border: none;
-    margin: 0;
-    cursor: pointer;
+  #content #info .management a.btn {
+    padding: 9px 15px 10px 15px;
   }
   #content #info .management .btn.submit {
     background: #5bbd62;
   }
   #content #info .management .btn.submit:hover {
     background: #3a9e41;
+  }
+  #content #info .management .btn.back {
+    background: #ec9f9f;
+  }
+  #content #info .management .btn.back:hover {
+    background: #d47b7b;
   }
   #secondaryContent {
     position: relative;
