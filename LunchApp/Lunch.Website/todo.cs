@@ -2,11 +2,13 @@
 //todo: finish CRUD for restaurants - how do you get to the list?
 //TODO: add stats page - last visited, last up for vote, times in last 90 days, average rating based on weighted averages of attendees, who voted for what today (pie chart maybe)
 //todo: user voting for restaurants
-//todo: make holidays actually effect emails 
+//Done: make holidays actually effect emails 
 //todo: make list of choices consider places we went in last 5 days
 //todo: rating for today's choice
-//todo: time must be off somehow as the website isn't showing the "closed" page after 5
+//done: time must be off somehow as the website isn't showing the "closed" page after 5
 //todo: make page show where we went after 2:00 - the homepage views all need reviewed
+//TODO: history page
+//TODO:Ratings page
 
 //todo: Generate 4 restaurants method MM/JD
 //should be random weighting based on users restaurant ratings

@@ -18,7 +18,7 @@ namespace Lunch.Data.Repositories
             using (_connection = Utilities.GetProfiledOpenConnection())
             {
                 IEnumerable<RestaurantOption> results =
-                    _connection.Query<RestaurantOption, Restaurant, RestaurantOption>(@"SELECT R.*, (SELECT COUNT (*) FROM Votes WHERE Votes.RestaurantId = R.Id AND DATEPART(dd, VoteDate) = DATEPART(dd, @date) AND DATEPART(mm, VoteDate) = DATEPART(mm, @date) AND DATEPART(yyyy, VoteDate) = DATEPART(yyyy, @date)) AS Votes, RO.* FROM RestaurantOptions RO
+                    _connection.Query<RestaurantOption, Restaurant, RestaurantOption>(@"SELECT RO.*, (SELECT COUNT (*) FROM Votes WHERE Votes.RestaurantId = R.Id AND DATEPART(dd, VoteDate) = DATEPART(dd, @date) AND DATEPART(mm, VoteDate) = DATEPART(mm, @date) AND DATEPART(yyyy, VoteDate) = DATEPART(yyyy, @date)) AS Votes, R.* FROM RestaurantOptions RO
                                                                                         INNER JOIN Restaurants R ON R.Id = RO.RestaurantId
                                                                                         WHERE SelectedDate = @date",
                                                                                       (ro, r) =>

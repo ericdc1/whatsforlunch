@@ -26,15 +26,17 @@ namespace Lunch.Website.Controllers
         private readonly IRestaurantOptionLogic _restaurantOptionLogic;
         private readonly IVoteLogic _voteLogic;
         private readonly IUserLogic _userLogic;
+        private readonly IVetoLogic _vetoLogic;
 
-        //public DateTime Overridetime = new DateTime(2013, 2, 1, 8, 00, 0);
+        public DateTime Overridetime = new DateTime(2013, 2, 1, 15, 00, 0);
 
-        public HomeController(IRestaurantLogic restaurantLogic, IVoteLogic voteLogic, IRestaurantOptionLogic restaurantOptionLogic, IUserLogic userLogic)
+        public HomeController(IRestaurantLogic restaurantLogic, IVoteLogic voteLogic, IRestaurantOptionLogic restaurantOptionLogic, IUserLogic userLogic, IVetoLogic vetoLogic)
         {
             _restaurantLogic = restaurantLogic;
             _voteLogic = voteLogic;
             _restaurantOptionLogic = restaurantOptionLogic;
             _userLogic = userLogic;
+            _vetoLogic = vetoLogic;
         }
 
         public ActionResult DeleteVote(int id)
@@ -60,7 +62,7 @@ namespace Lunch.Website.Controllers
             {
                 model.YourVote.Restaurant = _restaurantLogic.Get(model.YourVote.RestaurantId);
             }
-            var currenttime = Lunch.Core.Jobs.Helpers.AdjustTimeOffsetFromUtc(DateTime.UtcNow);
+            var currenttime = Overridetime;//  Lunch.Core.Jobs.Helpers.AdjustTimeOffsetFromUtc(DateTime.UtcNow);
             
             return RedirectCheck(model, currenttime);
         }
@@ -108,11 +110,16 @@ namespace Lunch.Website.Controllers
                 return View(model.YourVote == null ? "vote" : "voted", model);
             }
 
-
             if (currenttime > new DateTime(currenttime.Year, currenttime.Month, currenttime.Day, 10, 30, 0) && currenttime < new DateTime(currenttime.Year, currenttime.Month, currenttime.Day, 11, 15, 0))
             {
-                return View(model.YourVote == null ? "comebacktomorrow" : "voted", model);
+
                 // If you have overrides you can override otherwise show results.
+                var unusedvetos = _vetoLogic.GetAllActiveForUser(CurrentUser.Id);
+                if (unusedvetos.Any())
+                    return View("youcanveto", model);
+
+                return View(model.YourVote == null ? "comebacktomorrow" : "voted", model);
+          
             }
 
             if (currenttime > new DateTime(currenttime.Year, currenttime.Month, currenttime.Day, 11, 15, 0) && currenttime < new DateTime(currenttime.Year, currenttime.Month, currenttime.Day, 14, 0, 0))

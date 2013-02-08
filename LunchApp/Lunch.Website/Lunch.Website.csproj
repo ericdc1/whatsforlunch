@@ -177,6 +177,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\HtmlHelpers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Authorization.cs" />
     <Compile Include="Services\IWebSecurityService.cs" />
@@ -391,6 +392,7 @@
     <Content Include="Views\Account\PasswordResetSuccess.cshtml" />
     <Content Include="Views\Home\NotToday.cshtml" />
     <Content Include="Views\Management\Index.cshtml" />
+    <Content Include="Views\Home\YouCanVeto.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
