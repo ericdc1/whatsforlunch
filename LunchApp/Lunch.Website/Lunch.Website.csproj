@@ -338,6 +338,7 @@
     <Content Include="Resources\Images\WFL-Logo-799.png" />
     <Content Include="Resources\Images\WFL-Logo-960.png" />
     <Content Include="Resources\Images\WFL-Logo.png" />
+    <Content Include="Resources\Scripts\Lunch.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.8.3.js" />
@@ -436,9 +437,7 @@
   <ItemGroup>
     <Content Include="Views\Restaurants\DisplayRestaurants.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\Scripts\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

@@ -54,7 +54,8 @@ a { text-decoration: none; }
 							&:after { content: ""; border-left: 5px solid #fff; border-right: 6px solid #fff; border-bottom: 5px solid transparent; position: absolute; bottom: -10px; right: 50%; margin-right: -5px; }
 					}
 		   }
-		   #hiddenNav { background: #00addc; display: block; position: fixed; top: 10px; right: 10px; padding: 5px 10px;
+		   #hiddenNav { background: #00addc; display: block; position: fixed; top: 10px; right: 10px; padding: 5px 10px;z-index: 3; cursor: pointer;
+						&:hover { background: #229abb; }
 						.icon-reorder { font-size: 1.25em; color: #fff; }
 		   }
 		   .button { background: #fff; width: 75px; height: 70px;
@@ -131,7 +132,9 @@ a { text-decoration: none; }
 												   }
 									 }
 									 .btnToolbar { width: auto; height: 40px; margin-bottom: 4px; clear: both;
-												   .btn { float: left; height: 26px; padding: 8px 15px 6px 15px; line-height: 22px; }
+												   .btn { float: left; height: 26px; padding: 8px 15px 6px 15px; line-height: 22px; 
+														  &.create { width: auto; }
+												   }
 									 }
 									 #searchWrap { background: #fff; width: auto; height: 50px; position: relative;
 												   input { position: absolute; width: auto; height: 50px; top: 0; right: 0; bottom: 0; left: 0; border: 1px solid #fff; margin: 0; padding: 0 10px; font-size: 1.25em; line-height: 26px; }
@@ -149,6 +152,45 @@ a { text-decoration: none; }
 																			 &:hover { background: #076d8c; }
 																	  }
 													   }
+													   .row { background: #fff; width: 100%; height: 40px; overflow: hidden; padding: 0; border-bottom: 1px solid #076d8c; position: relative;
+															  &:first-child { border-top: 1px solid #076d8c; }
+															  &.borderTop { border-top: 1px solid #076d8c; margin-top: 10px; min-height: 40px; height: auto; }
+															  .column { margin-right: -4px; height: 24px; padding: 8px 0;
+																		&.active { padding: 0; height: auto;
+																				   &:first-child { height: 20px; padding: 10px;
+																								   &:hover { background: #076d8c; 
+																											 .icon-legal { color: #fff; }
+																								   }
+																				   }
+																				   .mailLabel { margin-right: 15px; margin-left: 10px; }
+																				   .checkBox { display: block; color: #076d8c; border-bottom: 1px solid #ccc; width: auto; padding: 9px 10px 10px 10px; margin-left: 0; 
+																							   &:hover { background: #076d8c; color: #fff; }
+																							   &:last-child { border-right: 1px solid #fff; }
+																				   }
+																		}
+																		&.indentLeft { margin-left: 0; vertical-align: top; border-bottom: 1px solid #ccc; }
+																		&.actionButton { height: 40px; margin: 0; position: absolute; bottom: 0; right: 0;
+																						 .action { background: #f5f5f5; display: inline-block; margin-right: -2px; height: 24px; padding: 11px 10px;
+																								   &:hover {
+																									         .icon-pencil { color: #2fa337; }
+																											 .icon-trash { color: #a54848; }
+																								   }
+																								   &:last-child { margin-right: 0; border-right: none; }
+																							       .icon-pencil { color: #5bbd62; font-size: 1.25em; line-height: 32px; } 
+																								   .icon-trash { color: #d47b7b; font-size: 1.25em; } 
+																						 }
+																		}
+																		&.userAdmin { display: none; 
+																					  .icon-legal { display: none; }
+																					  .icon-user { display: none; }
+																		}
+																		&.userName { width: auto; font-size: 1.25em; line-height: 20px; color: #00addc; padding-left: 10px; }
+																		&.userEmail { display: none; }
+																		.icon-legal { color: #076d8c; }
+																		.mailLabel { display: none; }
+																		.checkBox { display: none; }
+															  }
+														}
 									 }
 									 .manageOption { background: #fff; width: 100%; height: 40px; margin: 2px 0; float: left; position: relative; display: block; cursor: pointer; 
 													 &:hover { background: #00ADDC; 
@@ -162,9 +204,13 @@ a { text-decoration: none; }
 																   .icon-beer,.icon-user,.icon-cogs,.icon-beaker,.icon-star { font-size: 1.5em; color: #00ADDC; }
 													 }
 									 }
-									 .btn { background: #ccc; width: auto; height: 40px; padding: 7px 15px; color: #fff; font-size: 1em; line-height: 16px; border: none; margin: 0; cursor: pointer;
+									 a.btn { padding: 9px 15px 10px 15px; }
+									 .btn { 
 											&.submit { background: #5bbd62; 
 													   &:hover { background: #3a9e41; }
+											}
+											&.back { background: #ec9f9f; 
+													 &:hover { background: #d47b7b; }
 											}
 									 }
 					   }
@@ -303,8 +349,8 @@ a { text-decoration: none; }
 												   input { position: absolute; width: auto; height: 50px; top: 0; right: 0; bottom: 0; left: 0; border: 1px solid #fff; margin: 0; padding: 0 10px; font-size: 1.25em; line-height: 26px; }
 												   .icon-search { position: absolute; z-index: 1; width: 30px; height: 30px; top: 10px; right: 10px; font-size: 1.875em; color: #5bbd62; }
 									 }
-									 #manageFormWrap { background: url('/Resources/Images/repeatWhite.png') repeat; width: 90%; height: auto; padding: 20px; overflow: hidden; margin-bottom: 4px;
-													   .formRowWrap { padding: 0; width: auto; height: auto; overflow: hidden; 
+									 #manageFormWrap { background: url('/Resources/Images/repeatWhite.png') repeat; width: 100%; height: auto; padding: 20px 0; overflow: hidden; margin-bottom: 4px;
+													   .formRowWrap { padding: 0 20px; width: auto; height: auto; overflow: hidden; 
 																	  &.columnThird { width: 100%; float: left; }
 																	  &.columnQuarter { width: 25%; float: left; }
 																	  .editorLabel { color: #fff; position: relative; margin-bottom: 5px; }
@@ -316,6 +362,49 @@ a { text-decoration: none; }
 																			 &:hover { background: #076d8c; }
 																	  }
 													   }
+													   .row { width: 100%; min-height: 40px; overflow: hidden; padding: 0 0 0 40px; margin-left: -20px; border-bottom: 1px solid #fff;
+															  &:first-child { border-top: 1px solid #fff; }
+															  &.borderTop { border-top: 1px solid #fff; margin-top: 10px; }
+															  .column { display: inline-block; margin-right: -4px; height: 24px; padding: 8px 0;
+																		&.active { padding: 0; height: 40px; border-left: 1px solid #fff;
+																				   &:first-child { height: 20px; padding: 10px;
+																								   &:hover { background: #076d8c; }
+																				   }
+																				   .mailLabel { margin-right: 15px; margin-left: 10px; }
+																				   .checkBox { border-left: 1px solid #fff; width: auto; padding: 9px 10px 10px 10px; margin-left: 0; 
+																							   &:hover { background: #076d8c; color: #fff; }
+																							   &:last-child { border-right: 1px solid #fff; }
+																				   }
+																		}
+																		&.indentLeft { margin-left: 0; vertical-align: top; }
+																		&.actionButton { float: left; padding: 0; height: 28px; margin: 5px 0; border: 1px solid #004c63; border-left: none; margin-left: -20px;
+																						 .action { background: #076d8c; display: inline-block; margin-right: -4px; border-right: 1px solid #004c63; height: 24px; padding: 2px 7px;
+																								   &:hover { background: #004c63;
+																									         .icon-pencil { color: #fff; }
+																											 .icon-trash { color: #fff; }
+																								   }
+																								   &:last-child { margin-right: 0; border-right: none; }
+																							       .icon-pencil { color: #9feca5; } 
+																								   .icon-trash { color: #ec9f9f; } 
+																						 }
+																		}
+																		&.userAdmin { width: 20px; float: left; margin-left: 10px; margin-right: 10px; 
+																					  .icon-legal { color: #fff; }
+																					  .icon-user { color: #b7efff; }
+																		}
+																		&.userName { width: 150px; color: #fff; }
+																		&.userEmail { display: none; }
+																		&.floatRight { width: 100%; clear: both; }
+																		.icon-legal { color: #fff; }
+																		.mailLabel { display: none; }
+																		.checkBox { display: inline-block; color: #fff; text-align: left; margin-left: 5px; margin-right: -4px; width: 70px;
+																					&:last-child { margin-right: 0; }
+																					.icon-ok { color: #cbffcf; }
+																					.icon-remove { color: #ffd9d9; }
+																					input[type="checkbox"] { margin-top: 3px; }
+																		}
+															  }
+														}
 									 }
 									 .manageOption { background: #fff; width: 100%; height: 40px; margin: 2px 0; float: left; position: relative; display: block; cursor: pointer; 
 													 &:hover { background: #00ADDC; 
@@ -329,9 +418,13 @@ a { text-decoration: none; }
 																   .icon-beer,.icon-user,.icon-cogs,.icon-beaker,.icon-star { font-size: 1.5em; color: #00ADDC; }
 													 }
 									 }
-									 .btn { background: #ccc; width: auto; height: 40px; padding: 7px 15px; color: #fff; font-size: 1em; line-height: 16px; border: none; margin: 0; cursor: pointer;
+									 a.btn { padding: 9px 15px 10px 15px; }
+									 .btn { 
 											&.submit { background: #5bbd62; 
 													   &:hover { background: #3a9e41; }
+											}
+											&.back { background: #ec9f9f; 
+													 &:hover { background: #d47b7b; }
 											}
 									 }
 					   }
@@ -491,7 +584,7 @@ a { text-decoration: none; }
 																							   &:last-child { border-right: 1px solid #fff; }
 																				   }
 																		}
-																		&.indentLeft { margin-left: 0; vertical-align: top; }
+																		&.indentLeft { margin-left: -20px; vertical-align: top; }
 																		&.actionButton { float: left; padding: 0; height: 28px; margin: 5px 0; border: 1px solid #004c63; border-left: none; margin-left: -40px;
 																						 .action { background: #076d8c; display: inline-block; margin-right: -4px; border-right: 1px solid #004c63; height: 24px; padding: 2px 7px;
 																								   &:hover { background: #004c63;

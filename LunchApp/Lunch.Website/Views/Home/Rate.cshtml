@@ -11,41 +11,8 @@
 
         <div class="primary">
 
-            <p class="voted">Rate your experience at<br /><span class="restLabel">Cheddars</span></p>
+            <p class="voted">Rate your experience at<br /><span class="restLabel"></span></p>
 
         </div>
     </div>
 </div>
-
-<div id="secondaryContent">
-    <div id="veto" class=""><div class="vetoIcon"></div><div class="secondaryText">3</div></div>
-    <div id="overrides" class="empty"><div class="overridesIcon"></div><div class="secondaryText">2</div></div>
-    <div id="badges" class="new"><div class="badgesIcon"></div><div class="secondaryText">3</div></div>
-    <a href="@Url.Action("Manage", "Account")" id="myAccount"><i class="icon-user"></i></a>
-    @if(Roles.IsUserInRole("Administrator"))
-    {
-        <a href="@Url.Action("Index", "Management")" id="users">
-            <i class="icon-cog"></i>
-        </a>
-    }
-</div>
-
-<script>
-    $(document).ready(function () {
-        if ($.browser.msie) {
-            function interval() {
-                $('.new').children().not('.secondaryText').delay(1500).animate({ marginTop: "100px" }, 1000, function () {
-                    $(this).delay(500).animate({ marginTop: "20px" }, 1000);
-                });
-            }
-
-            setInterval(function () {
-                interval();
-            }, 1500);
-        }
-
-        $('#hiddenNav').click(function () {
-            $('#secondaryContent').toggle();
-        });
-    });
-</script>
