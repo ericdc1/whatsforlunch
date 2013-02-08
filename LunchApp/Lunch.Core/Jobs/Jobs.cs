@@ -82,7 +82,7 @@ namespace Lunch.Core.Jobs
         public void WhereAreWeGoingMessage(object model, int id)
         {
             var peopletoreceivemail = _userLogic.GetList(new { SendMail3 = true });
-            var todayschoices = _restaurantOptionLogic.GetAllByDate(null).OrderBy(f => f.Votes).Take(1).ToList();
+            var todayschoices = _restaurantOptionLogic.GetAllByDate(null).OrderByDescending(f => f.Votes).Take(1).ToList();
             var fromaddress = System.Configuration.ConfigurationManager.AppSettings.Get("FromEmail");
 
 
