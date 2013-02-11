@@ -25,3 +25,6 @@
 
 
 
+
+
+//TODO: use winning restaurant method jack made friday over this mess -     var todayschoice = Model.RestaurantsForToday.OrderByDescending(f => f.Votes).Take(1).First();
