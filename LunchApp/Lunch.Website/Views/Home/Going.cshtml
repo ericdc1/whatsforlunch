@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Going";
+    var todayschoice = Model.RestaurantsForToday.OrderByDescending(f => f.Votes).Take(1).First();
 }
 
 <div id="content">
@@ -11,14 +12,15 @@
 
         <div class="primary">
 
-            <div class="usersWrap">
-                @foreach (var user in Model.PeopleWhoVotedToday)
+           <div class="usersWrap">
+                @foreach (var voter in Model.PeopleWhoVotedToday)
                 {
-    
+                    <img title="@voter.FullNameWithEmail" src="http://www.gravatar.com/avatar/@Html.Md5Hash(voter.Email)?s=200" />
                 }
+                <p>@Model.PeopleWhoVotedToday.Count picks</p>
             </div>
 
-            <p class="voted">You are eating at<br /><span class="restLabel">Cheddars</span><br />with</p>
+            <p class="voted">You are eating at<br /><span class="restLabel">@todayschoice.Restaurant.RestaurantName</span><br />with</p>
 
         </div>
     </div>
