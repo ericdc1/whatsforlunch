@@ -157,16 +157,23 @@ a { text-decoration: none; }
 															  &.borderTop { border-top: 1px solid #076d8c; margin-top: 10px; min-height: 40px; height: auto; }
 															  .column { margin-right: -4px; height: 24px; padding: 8px 0;
 																		&.active { padding: 0; height: auto;
-																				   &:first-child { height: 20px; padding: 10px;
-																								   &:hover { background: #076d8c; 
-																											 .icon-legal { color: #fff; }
-																								   }
-																				   }
 																				   .mailLabel { margin-right: 15px; margin-left: 10px; }
 																				   .checkBox { display: block; color: #076d8c; border-bottom: 1px solid #ccc; width: auto; padding: 9px 10px 10px 10px; margin-left: 0; 
 																							   &:hover { background: #076d8c; color: #fff; }
 																							   &:last-child { border-right: 1px solid #fff; }
 																				   }
+																		}
+																		&.manageUser { padding: 0; height: auto;
+																				   .mailLabel { margin-right: 15px; margin-left: 10px; }
+																				   .checkBox { display: block; color: #076d8c; border-bottom: 1px solid #ccc; width: auto; padding: 9px 10px 10px 10px; margin-left: 0; 
+																							   &:hover { background: #076d8c; color: #fff; }
+																							   &:last-child { border-right: 1px solid #fff; }
+																				   }
+																		}
+																		&.admin { height: 20px; padding: 10px;
+																				  &:hover { background: #076d8c; 
+																							.icon-legal { color: #fff; }
+																				  }
 																		}
 																		&.indentLeft { margin-left: 0; vertical-align: top; border-bottom: 1px solid #ccc; }
 																		&.actionButton { height: 40px; margin: 0; position: absolute; bottom: 0; right: 0;
@@ -186,6 +193,9 @@ a { text-decoration: none; }
 																		}
 																		&.userName { width: auto; font-size: 1.25em; line-height: 20px; color: #00addc; padding-left: 10px; }
 																		&.userEmail { display: none; }
+																		&.restaurant { width: 250px; color: #00addc; float: left; margin-left: 20px; }
+																		&.preferredDay { display: none; }
+																		&.type { display: none; }
 																		.icon-legal { color: #076d8c; }
 																		.mailLabel { display: none; }
 																		.checkBox { display: none; }
@@ -205,7 +215,7 @@ a { text-decoration: none; }
 													 }
 									 }
 									 a.btn { padding: 9px 15px 10px 15px; }
-									 .btn { 
+									 .btn { margin-right: 4px;
 											&.submit { background: #5bbd62; 
 													   &:hover { background: #3a9e41; }
 											}
@@ -349,7 +359,7 @@ a { text-decoration: none; }
 												   input { position: absolute; width: auto; height: 50px; top: 0; right: 0; bottom: 0; left: 0; border: 1px solid #fff; margin: 0; padding: 0 10px; font-size: 1.25em; line-height: 26px; }
 												   .icon-search { position: absolute; z-index: 1; width: 30px; height: 30px; top: 10px; right: 10px; font-size: 1.875em; color: #5bbd62; }
 									 }
-									 #manageFormWrap { background: url('/Resources/Images/repeatWhite.png') repeat; width: 100%; height: auto; padding: 20px 0; overflow: hidden; margin-bottom: 4px;
+									 #manageFormWrap { background: url('/Resources/Images/repeatWhite.png') repeat; width: 100%; height: auto; padding: 20px 0; overflow: hidden; margin-bottom: 80px;
 													   .formRowWrap { padding: 0 20px; width: auto; height: auto; overflow: hidden; 
 																	  &.columnThird { width: 100%; float: left; }
 																	  &.columnQuarter { width: 25%; float: left; }
@@ -367,14 +377,21 @@ a { text-decoration: none; }
 															  &.borderTop { border-top: 1px solid #fff; margin-top: 10px; }
 															  .column { display: inline-block; margin-right: -4px; height: 24px; padding: 8px 0;
 																		&.active { padding: 0; height: 40px; border-left: 1px solid #fff;
-																				   &:first-child { height: 20px; padding: 10px;
-																								   &:hover { background: #076d8c; }
-																				   }
 																				   .mailLabel { margin-right: 15px; margin-left: 10px; }
 																				   .checkBox { border-left: 1px solid #fff; width: auto; padding: 9px 10px 10px 10px; margin-left: 0; 
 																							   &:hover { background: #076d8c; color: #fff; }
 																							   &:last-child { border-right: 1px solid #fff; }
 																				   }
+																		}
+																		&.manageUser { padding: 0; height: 40px;
+																				   .mailLabel { display: none; }
+																				   .checkBox { border-left: 1px solid #fff; width: auto; padding: 9px 10px 10px 10px; margin-left: 0; 
+																							   &:hover { background: #076d8c; color: #fff; }
+																							   &:last-child { border-right: 1px solid #fff; }
+																				   }
+																		}
+																		&.admin { height: 20px; padding: 10px;
+																				  &:hover { background: #076d8c; }
 																		}
 																		&.indentLeft { margin-left: 0; vertical-align: top; }
 																		&.actionButton { float: left; padding: 0; height: 28px; margin: 5px 0; border: 1px solid #004c63; border-left: none; margin-left: -20px;
@@ -394,6 +411,9 @@ a { text-decoration: none; }
 																		}
 																		&.userName { width: 150px; color: #fff; }
 																		&.userEmail { display: none; }
+																		&.restaurant { width: 250px; color: #fff; float: left; margin-left: 20px; }
+																		&.preferredDay { width: 70px; float: left; color: #fff; }
+																		&.type { display: none; }
 																		&.floatRight { width: 100%; clear: both; }
 																		.icon-legal { color: #fff; }
 																		.mailLabel { display: none; }
@@ -419,7 +439,7 @@ a { text-decoration: none; }
 													 }
 									 }
 									 a.btn { padding: 9px 15px 10px 15px; }
-									 .btn { 
+									 .btn { margin-right: 4px;
 											&.submit { background: #5bbd62; 
 													   &:hover { background: #3a9e41; }
 											}
@@ -473,7 +493,7 @@ a { text-decoration: none; }
 					.logo { background: url('/Resources/Images/lunchLogo120.png') no-repeat; width: 120px; height: 33px; }
 		   }
 		   #hiddenNav { display: none; }
-		   .button { width: 150px; height: 150px; margin-bottom: 1px; text-align: center; position: relative;
+		   .button { width: 150px; height: 150px; margin-bottom: 1px; text-align: center; position: relative; display: block;
 					 &:hover { background: #fff;
 							   .text { color: #00addc; }
 							   .lunchIcon { background: url('/Resources/Images/desktop/spriteDesktop.png') -37px -130px no-repeat; width: 24px; height: 24px; position: absolute; right: 10px; bottom: 10px; }
@@ -575,14 +595,21 @@ a { text-decoration: none; }
 															  &.borderTop { border-top: 1px solid #fff; margin-top: 10px; }
 															  .column { display: inline-block; margin-right: -4px; height: 24px; padding: 8px 0;
 																		&.active { padding: 0; height: 40px; border-left: 1px solid #fff;
-																				   &:first-child { height: 20px; padding: 10px;
-																								   &:hover { background: #076d8c; }
-																				   }
 																				   .mailLabel { margin-right: 15px; margin-left: 10px; }
 																				   .checkBox { border-left: 1px solid #fff; width: auto; padding: 9px 10px 10px 10px; margin-left: 0; 
 																							   &:hover { background: #076d8c; color: #fff; }
 																							   &:last-child { border-right: 1px solid #fff; }
 																				   }
+																		}
+																		&.manageUser { padding: 0; height: 40px; margin-left: -20px;
+																				   .mailLabel { margin-right: 15px; }
+																				   .checkBox { border-left: 1px solid #fff; width: auto; padding: 9px 10px 10px 10px; margin-left: 0; 
+																							   &:hover { background: #076d8c; color: #fff; }
+																							   &:last-child { border-right: 1px solid #fff; }
+																				   }
+																		}
+																		&.admin { height: 20px; padding: 10px;
+																				  &:hover { background: #076d8c; }
 																		}
 																		&.indentLeft { margin-left: -20px; vertical-align: top; }
 																		&.actionButton { float: left; padding: 0; height: 28px; margin: 5px 0; border: 1px solid #004c63; border-left: none; margin-left: -40px;
@@ -602,6 +629,11 @@ a { text-decoration: none; }
 																		}
 																		&.userName { width: 150px; color: #fff; }
 																		&.userEmail { display: none; }
+																		&.restaurant { width: 250px; color: #fff; float: left; margin-left: 20px; }
+																		&.preferredDay { width: 70px; float: left; color: #fff; }
+																		&.type { width: 100px; float: right; text-align: right; margin-right: 25px; 
+																				 a { color: #fff; }
+																		}
 																		.icon-legal { color: #fff; }
 																		.mailLabel { display: inline-block; position: relative; margin-right: 10px;
 																					 &:after { content: ""; border-left: 5px solid #fff; border-top: 5px solid transparent; border-bottom: 5px solid transparent; position: absolute; right: -10px; top: 50%; margin-top: -4px; }
@@ -629,7 +661,7 @@ a { text-decoration: none; }
 													 }
 									 }
 									 a.btn { padding: 9px 15px 10px 15px; }
-									 .btn { 
+									 .btn { margin-right: 4px;
 											&.submit { background: #5bbd62; 
 													   &:hover { background: #3a9e41; }
 											}
@@ -709,7 +741,7 @@ a { text-decoration: none; }
 	}
 
 	#content { position: relative; width: 100%; height: 620px; padding-left: 0; 
-			   &.reports { height: auto; 
+			   &.reports { height: auto; margin-bottom: 40px; 
 						   .bgOne,.mask { display: none; }
 			   }
 			   .bgOne,.bgTwo { top: -85px; height: 685px }
@@ -786,16 +818,23 @@ a { text-decoration: none; }
 															  &.borderTop { border-top: 1px solid #fff; margin-top: 10px; }
 															  .column { display: inline-block; margin-right: -4px; height: 24px; padding: 8px 0;
 																		&.active { padding: 0; height: 40px; border-left: 1px solid #fff;
-																				   &:first-child { height: 20px; padding: 10px; 
-																								   &:hover { background: #076d8c;
-																											 .icon-legal { color: #fff; }
-																								   }
-																				   }
 																				   .mailLabel { margin-right: 15px; margin-left: 10px; }
 																				   .checkBox { border-left: 1px solid #fff; width: auto; padding: 9px 10px 10px 10px; margin-left: 0; 
 																							   &:hover { background: #076d8c; color: #fff; }
 																							   &:last-child { border-right: 1px solid #fff; }
 																				   }
+																		}
+																		&.manageUser { padding: 0; height: 40px; margin-left: 10px;
+																				   .mailLabel { margin-right: 15px; margin-left: 10px; }
+																				   .checkBox { border-left: 1px solid #fff; width: auto; padding: 9px 10px 10px 10px; margin-left: 0; 
+																							   &:hover { background: #076d8c; color: #fff; }
+																							   &:last-child { border-right: 1px solid #fff; }
+																				   }
+																		}
+																		&.admin { height: 20px; padding: 10px; 
+																				  &:hover { background: #076d8c;
+																							.icon-legal { color: #fff; }
+																				  }
 																		}
 																		&.indentLeft { margin-left: 20px; }
 																		&.actionButton { float: left; padding: 0; height: 28px; margin: 5px 0; border: 1px solid #004c63; border-left: none; 
@@ -816,6 +855,11 @@ a { text-decoration: none; }
 																		&.userName { width: 170px; color: #004c63; }
 																		&.userEmail { width: 200px;
 																					  a { color: #fff; }
+																		}
+																		&.restaurant { width: 300px; color: #004c63; float: left; margin-left: 20px; }
+																		&.preferredDay { width: 100px; float: left; color: #004c63; }
+																		&.type { width: 150px; float: right; text-align: right; margin-right: 25px; 
+																				 a { color: #fff; }
 																		}
 																		.icon-legal { color: #004c63; }
 																		.mailLabel { display: inline-block; position: relative; margin-right: 10px;
@@ -839,7 +883,7 @@ a { text-decoration: none; }
 													 }
 									 }
 									 a.btn { padding: 9px 15px 10px 15px; }
-									 .btn { 
+									 .btn { margin-right: 4px;
 											&.submit { background: #5bbd62; 
 													   &:hover { background: #3a9e41; }
 											}
@@ -851,7 +895,7 @@ a { text-decoration: none; }
 			   }
 	}
 
-	#secondaryContent { position: relative; margin-top: -20px; margin-left: 186px; margin-right: 186px;
+	#secondaryContent { position: relative; margin-top: -20px; margin-left: 186px; margin-right: 186px; height: 75px;
 						#veto,#overrides,#badges,#users,#myAccount { background: url('/Resources/Images/repeatBlue.png') repeat; width: 75px; height: 73px; overflow: hidden; border-top: 2px solid #229abb; float: left;
 												   &:hover { background: #229abb; }
 												   &.new { background: #5bbd62; border-top: 2px solid #3a9e41;

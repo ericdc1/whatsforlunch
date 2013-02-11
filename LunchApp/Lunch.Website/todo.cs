@@ -22,6 +22,7 @@
 
 //todo: phonegap
 //todo: windows store app
+//todo: Delete User
 
 
 

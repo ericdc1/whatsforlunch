@@ -10,59 +10,39 @@
     <div id="info">
         <div class="management">
 
-<h1>Restaurants</h1>
+            <h1>Restaurants</h1>
 
-<div class="btn-toolbar">
-    @Html.ActionLink("Create New", "Create", null, new {@class="btn btn-primary"})
-    @Html.ActionLink("Import", "ImportSettings", "Restaurants", null, new {@class="btn"})
-       @if (ViewBag.HasCategoryFilter)
-    {
-        @:|
-        @Html.ActionLink("Show all", "index", null, new {@class="btn"})
-    }
-</div>
-
-<table class="table table-striped">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.RestaurantName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PreferredDayOfWeek)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TypeName)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.RestaurantName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PreferredDayOfWeek)
-            </td>
-            <td>
-                @if (item.RestaurantTypeId == null)
+            <div class="btnToolbar">
+                @Html.ActionLink("Create New", "Create", null, new {@class="btn submit"})
+                @Html.ActionLink("Import", "ImportSettings", "Restaurants", null, new {@class="btn submit"})
+                   @if (ViewBag.HasCategoryFilter)
                 {
-                    <span>Undefined</span>
-                } else
-                {
-                    @Html.ActionLink(item.TypeName, "index", new { categoryid = item.RestaurantTypeId })
+                    @:|
+                    @Html.ActionLink("Show all", "index", null, new {@class="btn submit"})
                 }
-                
-            </td>
-            <td>
-                <a href="@Url.Action("Edit", new { ID = item.Id })"><i class="icon-pencil"></i></a>
-                <a href="@Url.Action("Delete", new { ID = item.Id })" role="button" data-toggle="modal"><i class="icon-remove"></i></a>
-            </td>
-        </tr>
-    }
+            </div>
 
-</table>
+            <div id="manageFormWrap">
+                @foreach (var item in Model) {
+                    <div class="row">
+                        <div class="column actionButton">
+                            <a href="@Url.Action("Edit", new { ID = item.Id })" class="action"><i class="icon-pencil"></i></a>
+                            <a href="@Url.Action("Delete", new { ID = item.Id })" role="button" data-toggle="modal" class="action"><i class="icon-trash"></i></a>
+                        </div>
+                        <div class="column restaurant">@Html.DisplayFor(modelItem => item.RestaurantName)</div>
+                        <div class="column preferredDay">@Html.DisplayFor(modelItem => item.PreferredDayOfWeek)</div>
+                        <div class="column type">
+                            @if (item.RestaurantTypeId == null)
+                            {
+                                <span>Undefined</span>
+                            } else
+                            {
+                                @Html.ActionLink(item.TypeName, "index", new { categoryid = item.RestaurantTypeId })
+                            }
+                        </div>
+                    </div>
+                }
+            </div>
 
         </div>
     </div>
