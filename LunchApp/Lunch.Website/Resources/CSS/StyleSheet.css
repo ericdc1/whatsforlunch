@@ -849,9 +849,6 @@ a {
   #content #info .management a.btn {
     padding: 9px 15px 10px 15px;
   }
-  #content #info .management .btn {
-    margin-right: 4px;
-  }
   #content #info .management .btn.submit {
     background: #5bbd62;
   }
@@ -1774,9 +1771,6 @@ a {
   }
   #content #info .management a.btn {
     padding: 9px 15px 10px 15px;
-  }
-  #content #info .management .btn {
-    margin-right: 4px;
   }
   #content #info .management .btn.submit {
     background: #5bbd62;
@@ -2733,9 +2727,6 @@ a {
   #content #info .management a.btn {
     padding: 9px 15px 10px 15px;
   }
-  #content #info .management .btn {
-    margin-right: 4px;
-  }
   #content #info .management .btn.submit {
     background: #5bbd62;
   }
@@ -3208,6 +3199,80 @@ a {
     height: 80px;
     border-radius: 50%;
   }
+  #content #info .primary .sliderWrap {
+    width: 500px;
+    height: 30px;
+    margin: 20px auto 0 auto;
+  }
+  #content #info .primary .sliderWrap .sliderLabels {
+    width: 550px;
+    height: 14px;
+    margin-bottom: 20px;
+  }
+  #content #info .primary .sliderWrap .sliderLabels.rating0 .number:nth-child(1) {
+    color: #FFB400;
+  }
+  #content #info .primary .sliderWrap .sliderLabels.rating1 .number:nth-child(2) {
+    color: #FFB400;
+  }
+  #content #info .primary .sliderWrap .sliderLabels.rating2 .number:nth-child(3) {
+    color: #FFB400;
+  }
+  #content #info .primary .sliderWrap .sliderLabels.rating3 .number:nth-child(4) {
+    color: #FFB400;
+  }
+  #content #info .primary .sliderWrap .sliderLabels.rating4 .number:nth-child(5) {
+    color: #FFB400;
+  }
+  #content #info .primary .sliderWrap .sliderLabels.rating5 .number:nth-child(6) {
+    color: #FFB400;
+  }
+  #content #info .primary .sliderWrap .sliderLabels.rating6 .number:nth-child(7) {
+    color: #FFB400;
+  }
+  #content #info .primary .sliderWrap .sliderLabels.rating7 .number:nth-child(8) {
+    color: #FFB400;
+  }
+  #content #info .primary .sliderWrap .sliderLabels.rating8 .number:nth-child(9) {
+    color: #FFB400;
+  }
+  #content #info .primary .sliderWrap .sliderLabels.rating9 .number:nth-child(10) {
+    color: #FFB400;
+  }
+  #content #info .primary .sliderWrap .sliderLabels.rating10 .number:nth-child(11) {
+    color: #FFB400;
+  }
+  #content #info .primary .sliderWrap .sliderLabels .number {
+    font-family: 'Lobster', cursive;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 1em;
+    display: inline-block;
+    width: 50px;
+    margin: 0 -4px 0 0;
+  }
+  #content #info .primary .sliderWrap .sliderLabels .number:last-child {
+    margin-left: -5px;
+  }
+  #content #info .primary .sliderWrap .slider {
+    background: #fff;
+    height: 4px;
+    border-radius: 0;
+    border: none;
+  }
+  #content #info .primary .sliderWrap .slider .ui-slider-handle {
+    background: #FFB400;
+    width: 25px;
+    height: 25px;
+    margin-top: -5px;
+    border-radius: 50%;
+    border: none;
+    box-shadow: 0 0 0 4px rgba(255, 180, 0, 0.5);
+    cursor: pointer;
+  }
+  #content #info .primary .sliderWrap .slider .ui-slider-handle:focus {
+    border: none;
+    outline: none;
+  }
   #content #info .management {
     width: auto;
     margin: 0 auto;
@@ -3625,9 +3690,6 @@ a {
   }
   #content #info .management a.btn {
     padding: 9px 15px 10px 15px;
-  }
-  #content #info .management .btn {
-    margin-right: 4px;
   }
   #content #info .management .btn.submit {
     background: #5bbd62;

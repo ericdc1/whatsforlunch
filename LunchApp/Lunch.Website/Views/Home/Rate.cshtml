@@ -20,8 +20,21 @@
             <p class="voted">Rate your experience at<br /><span class="restLabel">@todayschoice.Restaurant.RestaurantName</span></p>
             
             
-            <div>
-                <p>@todayschoice.Restaurant.RestaurantName : <span class="rating">@Model.YourRating.Rating</span></p>
+            <div class="sliderWrap">
+                <p style="display:none;">@todayschoice.Restaurant.RestaurantName : <span class="rating">@Model.YourRating.Rating</span></p>
+                <div class="sliderLabels rating@(Model.YourRating.Rating)">
+                    <div class="number">0</div>
+                    <div class="number">1</div>
+                    <div class="number">2</div>
+                    <div class="number">3</div>
+                    <div class="number">4</div>
+                    <div class="number">5</div>
+                    <div class="number">6</div>
+                    <div class="number">7</div>
+                    <div class="number">8</div>
+                    <div class="number">9</div>
+                    <div class="number">10</div>
+                </div>
                 <div class="slider" data-restaurantid="@todayschoice.RestaurantId" data-val="@Model.YourRating.Rating"></div>
             </div>
             
@@ -30,18 +43,6 @@
     </div>
 </div>
 
-<div id="secondaryContent">
-    <div id="veto" class=""><div class="vetoIcon"></div><div class="secondaryText">3</div></div>
-    <div id="overrides" class="empty"><div class="overridesIcon"></div><div class="secondaryText">2</div></div>
-    <div id="badges" class="new"><div class="badgesIcon"></div><div class="secondaryText">3</div></div>
-    <a href="@Url.Action("Manage", "Account")" id="myAccount"><i class="icon-user"></i></a>
-    @if(Roles.IsUserInRole("Administrator"))
-    {
-        <a href="@Url.Action("Index", "Management")" id="users">
-            <i class="icon-cog"></i>
-        </a>
-    }
-</div>
 <!-- this is overkill copied from the edit all ratings page - simplify -->
 <script>
     $(document).ready(function () {
@@ -65,12 +66,13 @@
 
 <script>
     $('.slider').slider({
-        value: 1,
-        min: 1,
+        value: 0,
+        min: 0,
         max: 10,
         step: 1,
         slide: function (event, ui) {
             $(this).siblings("p").find(".rating").text(ui.value);
+            $(this).siblings(".sliderLabels").addClass("rating" + ui.value);
         },
         stop: function () {
             var model = {
