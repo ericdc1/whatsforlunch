@@ -64,6 +64,8 @@ namespace Lunch.Website
             StackExchange.Profiling.MiniProfiler.Stop();
         }
 
+	//TODO: try this approach
+        //http://stackoverflow.com/questions/619895/how-can-i-properly-handle-404-in-asp-net-mvc
         //protected void Application_Error()
         //{
         //    var exception = Server.GetLastError();
