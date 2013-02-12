@@ -11,49 +11,57 @@
     <div id="info">
         <div class="management">
 
-            <h1>Edit</h1>
+            <h1>Edit Restaurant</h1>
 
             @using (Html.BeginForm())
             {
                 @Html.ValidationSummary(true)
     
                 var monthFilters = from DayOfWeek n in Enum.GetValues(typeof(DayOfWeek))
-                                   select new SelectListItem
-                                   {
-                                       Value = ((int)n).ToString(CultureInfo.InvariantCulture),
-                                       Text = n.ToString()
-                                   };
+                    select new SelectListItem
+                    {
+                        Value = ((int)n).ToString(CultureInfo.InvariantCulture),
+                        Text = n.ToString()
+                    };
     
                 <div id="manageFormWrap">
-                    <legend>Restaurants</legend>
 
                     <div class="editorField">
                         @Html.EditorFor(model => model.Id)
                         @Html.ValidationMessageFor(model => model.Id)
                     </div>
 
-                    <div class="editorLabel">
-                        @Html.LabelFor(model => model.RestaurantName)
-                    </div>
-                    <div class="editorField">
-                        @Html.EditorFor(model => model.RestaurantName)
-                        @Html.ValidationMessageFor(model => model.RestaurantName)
+                    <div class="formRowWrap">
+                        <div class="editorLabel">
+                            @Html.LabelFor(model => model.RestaurantName)
+                        </div>
+
+                        <div class="editorField">
+                            @Html.EditorFor(model => model.RestaurantName)
+                            @Html.ValidationMessageFor(model => model.RestaurantName)
+                        </div>
                     </div>
 
-                    <div class="editorLabel">
-                        @Html.LabelFor(model => model.PreferredDayOfWeek)
-                    </div>
-                    <div class="editorField">
-                        @Html.DropDownList("PreferredDayOfWeek", monthFilters, "No preference",null)
-                        @Html.ValidationMessageFor(model => model.PreferredDayOfWeek)
+                    <div class="formRowWrap">
+                        <div class="editorLabel">
+                            @Html.LabelFor(model => model.PreferredDayOfWeek)
+                        </div>
+
+                        <div class="editorField">
+                            @Html.DropDownList("PreferredDayOfWeek", monthFilters, "No preference",null)
+                            @Html.ValidationMessageFor(model => model.PreferredDayOfWeek)
+                        </div>
                     </div>
 
-                    <div class="editorLabel">
-                        @Html.LabelFor(model => model.RestaurantTypeID)
-                    </div>
-                    <div class="editorField">
-                        @Html.DropDownList("RestaurantTypeID", new SelectList(ViewBag.RestaurantTypeList, "ID", "TypeName"), "--Choose--")
-                        @Html.ValidationMessageFor(model => model.RestaurantTypeID)
+                    <div class="formRowWrap">
+                        <div class="editorLabel">
+                            @Html.LabelFor(model => model.RestaurantTypeID)
+                        </div>
+
+                        <div class="editorField">
+                            @Html.DropDownList("RestaurantTypeID", new SelectList(ViewBag.RestaurantTypeList, "ID", "TypeName"), "--Choose--")
+                            @Html.ValidationMessageFor(model => model.RestaurantTypeID)
+                        </div>
                     </div>
 
                 </div>
@@ -61,10 +69,6 @@
                 @Html.ActionLink("Back to List", "Index", null, new { @class = "btn back" })
                 <input type="submit" value="Save" class="btn submit" />
             }
-
-            <div>
-                
-            </div>
 
         </div>
     </div>

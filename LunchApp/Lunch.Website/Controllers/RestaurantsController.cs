@@ -54,7 +54,7 @@ namespace Lunch.Website.Controllers
         public ActionResult Create()
         {
             ViewBag.RestaurantTypeList = _restaurantTypeLogic.GetAll();
-            return View("Edit");
+            return View("Create");
         }
 
         [HttpPost]

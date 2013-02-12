@@ -14,7 +14,7 @@
 
             <div class="btnToolbar">
                 @Html.ActionLink("Create New", "Create", null, new {@class="btn submit"})
-                @Html.ActionLink("Import", "ImportSettings", "Restaurants", null, new {@class="btn submit"})
+                @Html.ActionLink("Import", "ImportSettings", "Restaurants", null, new {@class="btn submit marginLeft"})
                    @if (ViewBag.HasCategoryFilter)
                 {
                     @:|
@@ -22,7 +22,7 @@
                 }
             </div>
 
-            <div id="manageFormWrap">
+            <div id="manageFormWrap" class="noPadding">
                 @foreach (var item in Model) {
                     <div class="row">
                         <div class="column actionButton">

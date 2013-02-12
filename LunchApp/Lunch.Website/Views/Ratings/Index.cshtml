@@ -4,16 +4,27 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
-<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.0/jquery-ui.min.js"></script>
-<link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery.ui.all.css" type="text/css" rel="stylesheet"/>
-@foreach (var rating in Model)
-{
-    <div>
-        <p>@rating.Restaurant.RestaurantName : <span class="rating">@rating.Rating</span></p>
-        <div class="slider" data-restaurantid="@rating.RestaurantId" data-val="@rating.Rating"></div>
+<div id="content" class="reports">
+    <div class="bgOne"></div>
+    <div class="mask"></div>
+    <div id="info">
+        <div class="management">
+
+            <h1>Index</h1>
+
+            <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.0/jquery-ui.min.js"></script>
+            <link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery.ui.all.css" type="text/css" rel="stylesheet"/>
+            @foreach (var rating in Model)
+            {
+                <div>
+                    <p>@rating.Restaurant.RestaurantName : <span class="rating">@rating.Rating</span></p>
+                    <div class="slider" data-restaurantid="@rating.RestaurantId" data-val="@rating.Rating"></div>
+                </div>
+            }
+
+        </div>
     </div>
-}
+</div>
 
 <script>
     $('.slider').slider({

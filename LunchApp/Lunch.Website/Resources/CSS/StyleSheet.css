@@ -583,6 +583,9 @@ a {
     overflow: hidden;
     margin-bottom: 4px;
   }
+  #content #info .management #manageFormWrap.noPadding {
+    padding: 0;
+  }
   #content #info .management #manageFormWrap .formRowWrap {
     padding: 0 10px;
     width: auto;
@@ -614,6 +617,19 @@ a {
     bottom: 0;
     left: 0;
     padding: 0 10px;
+    margin: 0;
+  }
+  #content #info .management #manageFormWrap .formRowWrap .editorField select {
+    background: #fff;
+    border: 1px solid #076d8c;
+    font-size: 1em;
+    color: #333;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 0 0 0 10px;
     margin: 0;
   }
   #content #info .management #manageFormWrap .formRowWrap .btn {
@@ -819,7 +835,7 @@ a {
     color: #fff;
   }
   #content #info .management .manageOption:first-child {
-    margin-top: 160px;
+    margin-top: 20px;
   }
   #content #info .management .manageOption .manageTitle {
     position: absolute;
@@ -860,6 +876,9 @@ a {
   }
   #content #info .management .btn.back:hover {
     background: #d47b7b;
+  }
+  #content #info .management .btn.marginLeft {
+    margin-left: 4px;
   }
   #secondaryContent {
     background: #333;
@@ -1369,6 +1388,7 @@ a {
     word-spacing: -1px;
     color: #fff;
     margin: 0 0 20px 0;
+    display: inline-block;
   }
   #content #info .management h3 {
     font-size: 1em;
@@ -1376,6 +1396,12 @@ a {
     word-spacing: -1px;
     color: #00addc;
     margin: -10px 0 20px 0;
+  }
+  #content #info .management #pagingWrap {
+    float: right;
+  }
+  #content #info .management .portalWrap {
+    width: 100%;
   }
   #content #info .management .jobsReport {
     width: 100%;
@@ -1482,6 +1508,9 @@ a {
     overflow: hidden;
     margin-bottom: 80px;
   }
+  #content #info .management #manageFormWrap.noPadding {
+    padding: 0;
+  }
   #content #info .management #manageFormWrap .formRowWrap {
     padding: 0 20px;
     width: auto;
@@ -1521,6 +1550,19 @@ a {
     bottom: 0;
     left: 0;
     padding: 0 10px;
+    margin: 0;
+  }
+  #content #info .management #manageFormWrap .formRowWrap .editorField select {
+    background: #fff;
+    border: 1px solid #076d8c;
+    font-size: 1em;
+    color: #333;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 0 0 0 10px;
     margin: 0;
   }
   #content #info .management #manageFormWrap .formRowWrap .btn {
@@ -1742,7 +1784,7 @@ a {
     color: #fff;
   }
   #content #info .management .manageOption:first-child {
-    margin-top: 160px;
+    margin-top: 20px;
   }
   #content #info .management .manageOption .manageTitle {
     position: absolute;
@@ -1783,6 +1825,9 @@ a {
   }
   #content #info .management .btn.back:hover {
     background: #d47b7b;
+  }
+  #content #info .management .btn.marginLeft {
+    margin-left: 4px;
   }
   #secondaryContent {
     position: fixed;
@@ -2305,6 +2350,7 @@ a {
     word-spacing: -1px;
     color: #fff;
     margin: 20px 0;
+    display: inline-block;
   }
   #content #info .management h3 {
     font-size: 1em;
@@ -2312,6 +2358,12 @@ a {
     word-spacing: -1px;
     color: #00addc;
     margin: -10px 0 20px 0;
+  }
+  #content #info .management #pagingWrap {
+    float: right;
+  }
+  #content #info .management .portalWrap {
+    width: 100%;
   }
   #content #info .management .jobsReport {
     width: 100%;
@@ -2418,6 +2470,9 @@ a {
     overflow: hidden;
     margin-bottom: 4px;
   }
+  #content #info .management #manageFormWrap.noPadding {
+    padding: 0 20px;
+  }
   #content #info .management #manageFormWrap .formRowWrap {
     padding: 0;
     width: auto;
@@ -2458,6 +2513,20 @@ a {
     bottom: 0;
     left: 0;
     padding: 0 10px;
+    margin: 0;
+  }
+  #content #info .management #manageFormWrap .formRowWrap .editorField select {
+    background: #fff;
+    border: 1px solid #076d8c;
+    font-size: 1em;
+    color: #333;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 300px;
+    padding: 0 0 0 10px;
     margin: 0;
   }
   #content #info .management #manageFormWrap .formRowWrap .btn {
@@ -2697,7 +2766,7 @@ a {
     color: #fff;
   }
   #content #info .management .manageOption:first-child {
-    margin-top: 160px;
+    margin-top: 90px;
   }
   #content #info .management .manageOption .manageTitle {
     position: absolute;
@@ -2738,6 +2807,9 @@ a {
   }
   #content #info .management .btn.back:hover {
     background: #d47b7b;
+  }
+  #content #info .management .btn.marginLeft {
+    margin-left: 4px;
   }
   #secondaryContent {
     position: fixed;
@@ -3284,6 +3356,7 @@ a {
     word-spacing: -1px;
     color: #076d8c;
     margin: 0 0 20px 0;
+    display: inline-block;
   }
   #content #info .management h3 {
     font-size: 1em;
@@ -3291,6 +3364,12 @@ a {
     word-spacing: -1px;
     color: #00addc;
     margin: -10px 0 20px 0;
+  }
+  #content #info .management #pagingWrap {
+    float: right;
+  }
+  #content #info .management .portalWrap {
+    width: 100%;
   }
   #content #info .management .jobsReport {
     width: 33.3%;
@@ -3401,6 +3480,9 @@ a {
     padding: 20px 0;
     margin-bottom: 4px;
   }
+  #content #info .management #manageFormWrap.noPadding {
+    padding: 0;
+  }
   #content #info .management #manageFormWrap .formRowWrap {
     padding: 0 20px;
     width: auto;
@@ -3442,6 +3524,19 @@ a {
     padding: 0 10px;
     margin: 0;
   }
+  #content #info .management #manageFormWrap .formRowWrap .editorField select {
+    background: #fff;
+    border: 1px solid #076d8c;
+    font-size: 1em;
+    color: #333;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 300px;
+    padding: 0 0 0 10px;
+    margin: 0;
+  }
   #content #info .management #manageFormWrap .formRowWrap .btn {
     background: url('/Resources/Images/repeatWhite.png') repeat;
     display: block;
@@ -3475,6 +3570,17 @@ a {
     margin-right: -4px;
     height: 24px;
     padding: 8px 0;
+  }
+  #content #info .management #manageFormWrap .row .column.generic {
+    padding: 10px;
+    height: 20px;
+    width: 20%;
+  }
+  #content #info .management #manageFormWrap .row .column.generic:first-child {
+    padding-left: 20px;
+  }
+  #content #info .management #manageFormWrap .row .column.generic:last-child {
+    padding-right: 20px;
   }
   #content #info .management #manageFormWrap .row .column.active {
     padding: 0;
@@ -3702,6 +3808,9 @@ a {
   }
   #content #info .management .btn.back:hover {
     background: #d47b7b;
+  }
+  #content #info .management .btn.marginLeft {
+    margin-left: 4px;
   }
   #secondaryContent {
     position: relative;
