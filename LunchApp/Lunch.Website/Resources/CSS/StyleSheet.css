@@ -432,6 +432,40 @@ a {
   #content #info .primary .listingWrap .changeVote:hover:before {
     border-right-color: #3a9e41;
   }
+  #content #info .primary .listingWrap .vetoLabel {
+    text-align: center;
+    font-size: 1.15em;
+    text-shadow: 1px 1px 2px #000;
+    margin: 0 0 10px 0;
+  }
+  #content #info .primary .listingWrap .veto {
+    background: #ec9f9f;
+    width: 300px;
+    height: 49px;
+    border-right: 1px solid #b94f4f;
+    border-bottom: 1px solid #b94f4f;
+    display: block;
+    margin: 0 auto;
+    position: relative;
+    color: #fff;
+    font-family: 'Oswald', sans-serif;
+    text-align: center;
+    font-size: 1.25em;
+    line-height: 48px;
+    margin-bottom: 40px;
+  }
+  #content #info .primary .listingWrap .veto.inactive {
+    background: #ec9f9f;
+  }
+  #content #info .primary .listingWrap .veto:hover {
+    background: #b94f4f;
+  }
+  #content #info .primary .listingWrap .veto .icon-remove {
+    display: inline-block;
+    margin-right: 4px;
+    color: #fff;
+    font-size: 1.25em;
+  }
   #content #info .primary .usersWrap {
     width: 100%;
     height: auto;
@@ -1358,6 +1392,40 @@ a {
   }
   #content #info .primary .listingWrap .changeVote:hover:before {
     border-right-color: #3a9e41;
+  }
+  #content #info .primary .listingWrap .vetoLabel {
+    text-align: center;
+    font-size: 1.15em;
+    text-shadow: 1px 1px 2px #000;
+    margin: 0 0 10px 0;
+  }
+  #content #info .primary .listingWrap .veto {
+    background: #ec9f9f;
+    width: 300px;
+    height: 49px;
+    border-right: 1px solid #b94f4f;
+    border-bottom: 1px solid #b94f4f;
+    display: block;
+    margin: 0 auto;
+    position: relative;
+    color: #fff;
+    font-family: 'Oswald', sans-serif;
+    text-align: center;
+    font-size: 1.25em;
+    line-height: 48px;
+    margin-bottom: 40px;
+  }
+  #content #info .primary .listingWrap .veto.inactive {
+    background: #ec9f9f;
+  }
+  #content #info .primary .listingWrap .veto:hover {
+    background: #b94f4f;
+  }
+  #content #info .primary .listingWrap .veto .icon-remove {
+    display: inline-block;
+    margin-right: 4px;
+    color: #fff;
+    font-size: 1.25em;
   }
   #content #info .primary .usersWrap {
     position: absolute;
@@ -2316,6 +2384,40 @@ a {
   #content #info .primary .listingWrap .changeVote:hover:before {
     border-right-color: #3a9e41;
   }
+  #content #info .primary .listingWrap .vetoLabel {
+    text-align: left;
+    font-size: 1.15em;
+    text-shadow: 1px 1px 2px #000;
+    margin: 0 0 10px 0;
+  }
+  #content #info .primary .listingWrap .veto {
+    background: #ec9f9f;
+    width: 300px;
+    height: 49px;
+    border-right: 1px solid #b94f4f;
+    border-bottom: 1px solid #b94f4f;
+    display: block;
+    margin: 0;
+    position: relative;
+    color: #fff;
+    font-family: 'Oswald', sans-serif;
+    text-align: center;
+    font-size: 1.25em;
+    line-height: 48px;
+    margin-bottom: 118px;
+  }
+  #content #info .primary .listingWrap .veto.inactive {
+    background: #ec9f9f;
+  }
+  #content #info .primary .listingWrap .veto:hover {
+    background: #b94f4f;
+  }
+  #content #info .primary .listingWrap .veto .icon-remove {
+    display: inline-block;
+    margin-right: 4px;
+    color: #fff;
+    font-size: 1.25em;
+  }
   #content #info .primary .usersWrap {
     width: 100%;
     height: auto;
@@ -3245,6 +3347,40 @@ a {
   }
   #content #info .primary .listingWrap .changeVote:hover:before {
     border-right-color: #3a9e41;
+  }
+  #content #info .primary .listingWrap .vetoLabel {
+    text-align: center;
+    font-size: 1.15em;
+    text-shadow: 1px 1px 2px #000;
+    margin: 0 0 10px 0;
+  }
+  #content #info .primary .listingWrap .veto {
+    background: #ec9f9f;
+    width: 300px;
+    height: 49px;
+    border-right: 1px solid #b94f4f;
+    border-bottom: 1px solid #b94f4f;
+    display: block;
+    margin: 0 auto;
+    position: relative;
+    color: #fff;
+    font-family: 'Oswald', sans-serif;
+    text-align: center;
+    font-size: 1.25em;
+    line-height: 48px;
+    margin-bottom: 118px;
+  }
+  #content #info .primary .listingWrap .veto.inactive {
+    background: #ec9f9f;
+  }
+  #content #info .primary .listingWrap .veto:hover {
+    background: #b94f4f;
+  }
+  #content #info .primary .listingWrap .veto .icon-remove {
+    display: inline-block;
+    margin-right: 4px;
+    color: #fff;
+    font-size: 1.25em;
   }
   #content #info .primary .usersWrap {
     height: auto;
