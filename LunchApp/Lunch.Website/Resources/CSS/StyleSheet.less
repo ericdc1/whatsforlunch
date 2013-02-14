@@ -348,8 +348,11 @@ a { text-decoration: none; }
 														 .icon-remove { display: inline-block; margin-right: 4px; color: #fff; font-size: 1.25em; }
 												 }
 								  }
-								  .usersWrap { position: absolute; height: auto; overflow: hidden; bottom: -55px; left: 42%; 
-											   p { margin: 0; padding: 0; font-family: 'Lobster', cursive; letter-spacing: 0; font-size: 2.5em; text-align: left; color: #FFB400; }
+								  .usersWrap { position: absolute; height: auto; overflow: hidden; bottom: -55px; left: 0; right: 0;
+											   &.going { bottom: -75px;
+														 p { text-align: center; color: #fff; }
+											   }
+											   p { margin: 0; padding: 0; font-family: 'Lobster', cursive; letter-spacing: 0; font-size: 2.5em; text-align: left; color: #FFB400; text-shadow: 1px 1px 2px #000; }
 											   img { display: none; }
 								  }
 					   }
@@ -578,7 +581,10 @@ a { text-decoration: none; }
 												 }
 								  }
 								  .usersWrap { width: 100%; height: auto; overflow: hidden; margin-bottom: 14px; 
-											   p { margin: 0; padding: 0; display: inline-block; vertical-align: top; padding-left: 10px; font-family: 'Lobster', cursive; letter-spacing: 0; font-size: 2em; text-align: left; color: #FFB400; }
+											   &.going {
+														 p { width: 100%; color: #fff; }
+											   }
+											   p { margin: 0; padding: 0; display: inline-block; vertical-align: top; padding-left: 10px; font-family: 'Lobster', cursive; letter-spacing: 0; font-size: 2em; text-align: left; color: #FFB400; text-shadow: 1px 1px 2px #000; }
 											   img { width: 40px; height: 40px; border-radius: 50%; }
 								  }
 					   }
@@ -811,7 +817,10 @@ a { text-decoration: none; }
 												 }
 							      }
 								  .usersWrap { height: auto; overflow: hidden; margin-bottom: 14px; position: absolute; bottom: 40px; right: 185px; left: 185px; text-align: center;
-											   p { margin: 0; padding: 0; font-family: 'Lobster', cursive; letter-spacing: 0; font-size: 2em; line-height: 36px; text-align: center; color: #FFB400; }
+											   &.going { bottom: 120px; 
+														 p { margin-bottom: 10px; color: #fff; }
+											   }
+											   p { margin: 0; padding: 0; font-family: 'Lobster', cursive; letter-spacing: 0; font-size: 2em; line-height: 36px; text-align: center; color: #FFB400; text-shadow: 1px 1px 2px #000; }
 											   img { width: 80px; height: 80px; border-radius: 50%; }
 								  }
 								  .sliderWrap { width: 500px; height: 30px; margin: 20px auto 0 auto; 

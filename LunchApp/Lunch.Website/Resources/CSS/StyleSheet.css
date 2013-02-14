@@ -1432,7 +1432,15 @@ a {
     height: auto;
     overflow: hidden;
     bottom: -55px;
-    left: 42%;
+    left: 0;
+    right: 0;
+  }
+  #content #info .primary .usersWrap.going {
+    bottom: -75px;
+  }
+  #content #info .primary .usersWrap.going p {
+    text-align: center;
+    color: #fff;
   }
   #content #info .primary .usersWrap p {
     margin: 0;
@@ -1442,6 +1450,7 @@ a {
     font-size: 2.5em;
     text-align: left;
     color: #FFB400;
+    text-shadow: 1px 1px 2px #000;
   }
   #content #info .primary .usersWrap img {
     display: none;
@@ -2424,6 +2433,10 @@ a {
     overflow: hidden;
     margin-bottom: 14px;
   }
+  #content #info .primary .usersWrap.going p {
+    width: 100%;
+    color: #fff;
+  }
   #content #info .primary .usersWrap p {
     margin: 0;
     padding: 0;
@@ -2435,6 +2448,7 @@ a {
     font-size: 2em;
     text-align: left;
     color: #FFB400;
+    text-shadow: 1px 1px 2px #000;
   }
   #content #info .primary .usersWrap img {
     width: 40px;
@@ -3392,6 +3406,13 @@ a {
     left: 185px;
     text-align: center;
   }
+  #content #info .primary .usersWrap.going {
+    bottom: 120px;
+  }
+  #content #info .primary .usersWrap.going p {
+    margin-bottom: 10px;
+    color: #fff;
+  }
   #content #info .primary .usersWrap p {
     margin: 0;
     padding: 0;
@@ -3401,6 +3422,7 @@ a {
     line-height: 36px;
     text-align: center;
     color: #FFB400;
+    text-shadow: 1px 1px 2px #000;
   }
   #content #info .primary .usersWrap img {
     width: 80px;

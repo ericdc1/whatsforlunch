@@ -12,15 +12,15 @@
 
         <div class="primary">
 
-           <div class="usersWrap">
+            <div class="usersWrap going">
+                <p>@Model.PeopleWhoVotedToday.Count people are going</p>
                 @foreach (var voter in Model.PeopleWhoVotedToday)
                 {
                     <img title="@voter.FullNameWithEmail" src="http://www.gravatar.com/avatar/@Html.Md5Hash(voter.Email)?s=200" />
                 }
-                <p>@Model.PeopleWhoVotedToday.Count picks</p>
             </div>
 
-            <p class="voted">You are eating at<br /><span class="restLabel">@todayschoice.Restaurant.RestaurantName</span><br />with</p>
+            <p class="voted">You are eating at<br /><span class="restLabel">@todayschoice.Restaurant.RestaurantName</span></p>
 
         </div>
     </div>
