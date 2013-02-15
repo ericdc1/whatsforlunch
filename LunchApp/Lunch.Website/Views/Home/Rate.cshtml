@@ -75,7 +75,7 @@
 
 
     $('.slider').slider({
-        value: 0,
+        value: 1,
         min: 0,
         max: 10,
         step: 1,
@@ -89,7 +89,7 @@
         stop: function () {
             var model = {
                 RestaurantId: $(this).data('restaurantid'),
-                Rating: parseInt($(this).siblings("p").find(".rating").text())
+                Rating: parseInt($(this).parent().siblings("p").find(".rating").text())
             };
             $.post('/Ratings/Save', model, function (result) {
 
