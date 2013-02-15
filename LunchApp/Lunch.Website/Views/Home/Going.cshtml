@@ -2,14 +2,18 @@
 
 @{
     ViewBag.Title = "Going";
-    var todayschoice = Model.RestaurantsForToday.OrderByDescending(f => f.Votes).Take(1).First();
 }
 
 <div id="content">
     <div class="bgOne"></div>
     <div class="mask"></div>
     <div id="info">
-
+        
+       @if (ViewBag.YouVetoed)
+       {
+            <h1 style="color:white; font-size: 32px" class="ShawnAteH1Tags">You vetoed!</h1>
+       }
+          
         <div class="primary">
 
             <div class="usersWrap going">
@@ -20,7 +24,7 @@
                 }
             </div>
 
-            <p class="voted">You are eating at<br /><span class="restLabel">@todayschoice.Restaurant.RestaurantName</span></p>
+            <p class="voted">You are eating at<br /><span class="restLabel">@Model.WinningRestaurant.Restaurant.RestaurantName</span></p>
 
         </div>
     </div>

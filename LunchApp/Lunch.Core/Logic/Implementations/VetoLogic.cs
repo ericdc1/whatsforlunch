@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Lunch.Core.Models;
 using Lunch.Core.RepositoryInterfaces;
 
@@ -28,6 +29,12 @@ namespace Lunch.Core.Logic.Implementations
         public IEnumerable<Veto> GetAllActiveForUser(int userId)
         {
             return _vetoRepository.GetAllActiveForUser(userId);
+        }
+
+        public Veto GetUsedTodayForUser(int userid)
+        {
+            return
+                GetAll().FirstOrDefault(f => f.UserId == userid && f.Used && f.UsedAt != null && f.UsedAt.Value.ToShortDateString() == Jobs.Helpers.AdjustTimeOffsetFromUtc(DateTime.UtcNow).ToShortDateString());
         }
 
         public Veto Get(int id)

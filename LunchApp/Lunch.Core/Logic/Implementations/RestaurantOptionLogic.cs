@@ -12,12 +12,14 @@ namespace Lunch.Core.Logic.Implementations
         private readonly IRestaurantOptionRepository _restaurantOptionRepository;
         private readonly IRestaurantLogic _restaurantLogic;
         private readonly IVoteLogic _voteLogic;
+        private readonly IVetoLogic _vetoLogic;
 
-        public RestaurantOptionLogic(IRestaurantOptionRepository restaurantOptionRepository, IRestaurantLogic restaurantLogic, IVoteLogic voteLogic)
+        public RestaurantOptionLogic(IRestaurantOptionRepository restaurantOptionRepository, IRestaurantLogic restaurantLogic, IVoteLogic voteLogic, IVetoLogic vetoLogic)
         {
             _restaurantOptionRepository = restaurantOptionRepository;
             _restaurantLogic = restaurantLogic;
             _voteLogic = voteLogic;
+            _vetoLogic = vetoLogic;
         }
 
 
@@ -64,6 +66,11 @@ namespace Lunch.Core.Logic.Implementations
                 option.Votes = votes.Count(v => v.RestaurantId == option.RestaurantId);
 
             var selectedRestaurant = options.OrderByDescending(o => o.Votes).FirstOrDefault();
+
+            var veto = _vetoLogic.Get(DateTime.UtcNow);
+
+            if (veto != null)
+                selectedRestaurant = options.Find(f => f.RestaurantId == veto.RestaurantId);
 
             if (selectedRestaurant != null)
             {

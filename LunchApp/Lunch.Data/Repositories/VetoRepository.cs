@@ -54,14 +54,14 @@ namespace Lunch.Data.Repositories
             }
         }
 
-        public Veto Get(DateTime usedDate)
+        public Veto Get(DateTime usedAt)
         {
             using (_connection = Utilities.GetProfiledOpenConnection())
             {
                 return _connection.Query<Veto>(@"SELECT * FROM Vetoes V WHERE 
-                                                    DATEPART(mm, V.UsedDate) = DATEPART(mm, @usedDate) AND 
-                                                    DATEPART(dd, V.UsedDate) = DATEPART(dd, @usedDate) AND
-                                                    DATEPART(yyyy, V.UsedDate = DATEPART(yyyy, @usedDate)", new { usedDate }).FirstOrDefault();
+DATEPART(mm, V.UsedAt) = DATEPART(mm, @usedAt) 
+AND DATEPART(dd, V.UsedAt) = DATEPART(dd, @usedAt)
+AND DATEPART(yyyy, V.UsedAt) = DATEPART(yyyy, @usedAt)", new { usedAt = usedAt }).FirstOrDefault();
             }
         }
 

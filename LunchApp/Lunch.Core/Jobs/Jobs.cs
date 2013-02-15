@@ -29,7 +29,7 @@ namespace Lunch.Core.Jobs
 
         public void MorningMessage(object model, int id)
         {
-            var peopletoreceivemail = _userLogic.GetList(new {SendMail1 = true});
+            var peopletoreceivemail = _userLogic.GetList(new { SendMail1 = true });
             var todayschoices = _restaurantOptionLogic.GetAndSaveOptions().ToList();
             var fromaddress = System.Configuration.ConfigurationManager.AppSettings.Get("FromEmail");
 
@@ -40,7 +40,7 @@ namespace Lunch.Core.Jobs
                 var link = string.Format("{0}?GUID={1}", baseurl, user.Guid);
                 var path = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
                 var template = File.ReadAllText(new Uri(path + "/Views/_MailTemplates/Morning.cshtml").AbsolutePath);
-                var messagemodel = new MailDetails() {User = user, Restaurants = todayschoices, Url = link};
+                var messagemodel = new MailDetails() { User = user, Restaurants = todayschoices, Url = link };
 
                 string result = Razor.Parse(template, messagemodel);
                 Helpers.SendMail(user.Email, fromaddress, "What's for Lunch Message of the day", result);
@@ -73,7 +73,7 @@ namespace Lunch.Core.Jobs
                 var template = File.ReadAllText(new Uri(path + "/Views/_MailTemplates/VotingOver.cshtml").AbsolutePath);
                 var messagemodel = new MailDetails() { User = user, Restaurants = todayschoices, Url = link };
                 string result = Razor.Parse(template, messagemodel);
-                Helpers.SendMail(user.Email, fromaddress, "What's for Lunch Voting Is Over", result);
+                Helpers.SendMail(user.Email, fromaddress, "What's for Lunch Veto Option", result);
 
                 //add log
                 var entity = new JobLog() { JobId = id, Category = "VotingIsOverMessage", Message = string.Format("Voting is over message sent to {0}", user.FullName) };
@@ -86,11 +86,8 @@ namespace Lunch.Core.Jobs
         public void WhereAreWeGoingMessage(object model, int id)
         {
             var peopletoreceivemail = _userLogic.GetList(new { SendMail3 = true });
-            var todayschoices = _restaurantOptionLogic.GetAllByDate(null).OrderByDescending(f => f.Votes).Take(1).ToList();
+            var todayschoice = new List<RestaurantOption> { _restaurantOptionLogic.FinalizeOptions() };
 
-            //set the winning choice as selected in choices table
-            todayschoices.First().Selected = 1;
-            _restaurantOptionLogic.SaveOrUpdate(todayschoices.First());
             var fromaddress = System.Configuration.ConfigurationManager.AppSettings.Get("FromEmail");
 
             //send email to each person who is eligible
@@ -101,12 +98,12 @@ namespace Lunch.Core.Jobs
 
                 var path = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
                 var template = File.ReadAllText(new Uri(path + "/Views/_MailTemplates/WhereGoing.cshtml").AbsolutePath);
-                var messagemodel = new MailDetails() { User = user, Restaurants = todayschoices, Url = link };
+                var messagemodel = new MailDetails() { User = user, Restaurants = todayschoice, Url = link };
                 string result = Razor.Parse(template, messagemodel);
                 Helpers.SendMail(user.Email, fromaddress, "What's for Lunch Message of the day", result);
 
                 //add log
-                var entity = new JobLog() { JobId= id, Category = "WhereGoing", Message = string.Format("Where are we going message sent to {0}", user.FullName) };
+                var entity = new JobLog() { JobId = id, Category = "WhereGoing", Message = string.Format("Where are we going message sent to {0}", user.FullName) };
                 _jobLogLogic.SaveOrUpdate(entity);
             }
 
