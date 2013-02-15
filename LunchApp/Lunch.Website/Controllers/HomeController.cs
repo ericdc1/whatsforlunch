@@ -58,14 +58,14 @@ namespace Lunch.Website.Controllers
             model.RestaurantsForToday = _restaurantOptionLogic.GetAndSaveOptions().ToList();
             model.YourVote = _voteLogic.GetItem(CurrentUser.Id, Helpers.AdjustTimeOffsetFromUtc(DateTime.UtcNow));
             model.PeopleWhoVotedToday = _userLogic.GetListByVotedDate(null, null).ToList();
-            if(model.YourVote !=null)
-                model.YourRating = _restaurantRatingLogic.GetAllByUser(CurrentUser.Id).FirstOrDefault(f => f.RestaurantId == model.YourVote.RestaurantId);
-   
+            model.WinningRestaurant = _restaurantOptionLogic.TodaysSelection();
             if (model.YourVote != null)
             {
                 model.YourVote.Restaurant = _restaurantLogic.Get(model.YourVote.RestaurantId);
+                if(model.WinningRestaurant !=null)
+                    model.YourRating = _restaurantRatingLogic.GetAllByUser(CurrentUser.Id).FirstOrDefault(f => f.RestaurantId == model.WinningRestaurant.RestaurantId);
             }
-            model.WinningRestaurant = _restaurantOptionLogic.TodaysSelection();
+            
 
             var currenttime = Lunch.Core.Jobs.Helpers.AdjustTimeOffsetFromUtc(DateTime.UtcNow);
             
