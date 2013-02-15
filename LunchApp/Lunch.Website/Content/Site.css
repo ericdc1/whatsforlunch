@@ -40,7 +40,7 @@ body {
         margin: 0px 9px 4px 9px;
         font-size: 0.875em;
         text-align: center;
-        color: #1c558e;
+        color: #fff;
     }
 
         .ContentCalendar .ContentHeader .NextPrevMonth {
@@ -58,14 +58,14 @@ body {
         height: 20px;
         overflow: hidden;
         margin: 0px 9px;
-        border-bottom: Solid 1px #cccccc;
+        border-bottom: Solid 1px #004c63;
     }
 
         .ContentCalendar .CalendarDaysRow .Label {
             width: 33px;
             height: 20px;
             text-align: center;
-            color: #9e9e9e;
+            color: #004c63;
             font-size: 0.75em;
             float: left;
         }
@@ -75,7 +75,7 @@ body {
         height: 33px;
         overflow: visible;
         margin: 0px 9px;
-        border-left: Solid 1px #cccccc;
+        border-left: Solid 1px #004c63;
     }
 
         .ContentCalendar .CalendarRow .Day {
@@ -85,8 +85,8 @@ body {
             text-align: center;
             color: #1c558e;
             background: #f5f5f5;
-            border-right: Solid 1px #cccccc;
-            border-bottom: Solid 1px #cccccc;
+            border-right: Solid 1px #004c63;
+            border-bottom: Solid 1px #004c63;
             font-size: 0.875em;
             float: left;
         }
@@ -97,15 +97,15 @@ body {
             padding-top: 7px;
             text-align: center;
             color: #ffffff;
-            background: #999999;
-            border-right: Solid 1px #cccccc;
-            border-bottom: Solid 1px #cccccc;
+            background: #004c63;
+            border-right: Solid 1px #004c63;
+            border-bottom: Solid 1px #004c63;
             font-size: 0.875em;
             float: left;
         }
 
             .ContentCalendar .CalendarRow .Day:hover {
-                background: #cccccc;
+                background: #004c63;
                 color: #ffffff;
             }
 
@@ -142,7 +142,7 @@ body {
             }
 
                 .ContentCalendar .CalendarRow .Day.Off a:hover {
-                    background: #cccccc;
+                    background: #076d8c;
                     color: #ffffff;
                 }
 
@@ -151,9 +151,9 @@ body {
         .ContentCalendar .CalendarRow .EmptyDay {
             width: 32px;
             height: 32px;
-            background: #e3e3e3;
-            border-right: Solid 1px #cccccc;
-            border-bottom: Solid 1px #cccccc;
+            background: #b7efff;
+            border-right: Solid 1px #004c63;
+            border-bottom: Solid 1px #004c63;
             float: left;
         }
 
@@ -161,7 +161,7 @@ body {
         background-color: #f5f5f5;
         color: #1c559d;
         margin: 9px 0px 0px 8px;
-        border-bottom: Solid 1px #ccc;
+        border-bottom: Solid 1px #004c63;
     }
 
         .ContentCalendar .btn.calendar:hover {

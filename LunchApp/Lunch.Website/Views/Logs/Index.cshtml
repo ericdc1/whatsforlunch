@@ -14,7 +14,7 @@
     <div id="info">
         <div class="management">
 
-            <h1>Logs @Lunch.Core.Jobs.Helpers.AdjustTimeOffsetFromUtc(DateTime.UtcNow) @Lunch.Core.Jobs.Helpers.AdjustTimeOffsetToUtc(DateTime.Now)</h1>
+            <h1>Logs @* @Lunch.Core.Jobs.Helpers.AdjustTimeOffsetFromUtc(DateTime.UtcNow) @Lunch.Core.Jobs.Helpers.AdjustTimeOffsetToUtc(DateTime.Now)*@</h1>
             <div id="pagingWrap">
                 @Html.PagedListPager( (IPagedList)Model, page => Url.Action("Index", new { page }) )
             </div>

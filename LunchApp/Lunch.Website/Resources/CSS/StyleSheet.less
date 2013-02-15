@@ -816,35 +816,12 @@ a { text-decoration: none; }
 														 .icon-remove { display: inline-block; margin-right: 4px; color: #fff; font-size: 1.25em; }
 												 }
 							      }
-								  .usersWrap { height: auto; overflow: hidden; margin-bottom: 14px; position: absolute; bottom: 40px; right: 185px; left: 185px; text-align: center;
+								  .usersWrap { height: auto; overflow: visible; margin-bottom: 14px; position: absolute; bottom: 40px; right: 185px; left: 185px; text-align: center;
 											   &.going { bottom: 120px; 
 														 p { margin-bottom: 10px; color: #fff; }
 											   }
 											   p { margin: 0; padding: 0; font-family: 'Lobster', cursive; letter-spacing: 0; font-size: 2em; line-height: 36px; text-align: center; color: #FFB400; text-shadow: 1px 1px 2px #000; }
 											   img { width: 80px; height: 80px; border-radius: 50%; }
-								  }
-								  .sliderWrap { width: 500px; height: 30px; margin: 20px auto 0 auto; 
-												.sliderLabels { width: 550px; height: 14px; margin-bottom: 20px;
-																&.rating0 { .number:nth-child(1) { color: #FFB400; } }
-																&.rating1 { .number:nth-child(2) { color: #FFB400; } }
-																&.rating2 { .number:nth-child(3) { color: #FFB400; } }
-																&.rating3 { .number:nth-child(4) { color: #FFB400; } }
-																&.rating4 { .number:nth-child(5) { color: #FFB400; } }
-																&.rating5 { .number:nth-child(6) { color: #FFB400; } }
-																&.rating6 { .number:nth-child(7) { color: #FFB400; } }
-																&.rating7 { .number:nth-child(8) { color: #FFB400; } }
-																&.rating8 { .number:nth-child(9) { color: #FFB400; } }
-																&.rating9 { .number:nth-child(10) { color: #FFB400; } }
-																&.rating10 { .number:nth-child(11) { color: #FFB400; } }
-																.number { font-family: 'Lobster', cursive; color: rgba(255,255,255,0.5); font-size: 1em; display: inline-block; width: 50px; margin: 0 -4px 0 0;
-																		  &:last-child { margin-left: -5px; }
-																}
-												}
-												.slider { background: #fff; height: 4px; border-radius: 0; border: none; 
-														  .ui-slider-handle { background: #FFB400; width: 25px; height: 25px; margin-top: -5px; border-radius: 50%; border: none; box-shadow: 0 0 0 4px rgba(255,180,0,0.5); cursor: pointer;
-																			  &:focus { border: none; outline: none; }
-														  }
-												}
 								  }
 					   }
 					   .management { width: auto; margin: 0 auto; padding: 0 186px; 
@@ -1001,6 +978,30 @@ a { text-decoration: none; }
 						#myAccount { float: right; text-align: center; padding-top: 16px; height: 57px;
 									 .icon-user { color: #fff; font-size: 40px; }
 						}
+	}
+	.sliderWrap { width: 500px; height: 30px; margin: 20px auto 0 auto; 
+				  &.page { background: url('/Resources/Images/repeatBlue.png') repeat; width: 100%; height: 60px; margin: 0 auto; }
+				  .sliderLabels { width: 550px; height: 14px; margin-bottom: 20px;
+								  &.rating0 { .number:nth-child(1) { color: #FFB400; } }
+								  &.rating1 { .number:nth-child(2) { color: #FFB400; } }
+								  &.rating2 { .number:nth-child(3) { color: #FFB400; } }
+								  &.rating3 { .number:nth-child(4) { color: #FFB400; } }
+								  &.rating4 { .number:nth-child(5) { color: #FFB400; } }
+								  &.rating5 { .number:nth-child(6) { color: #FFB400; } }
+								  &.rating6 { .number:nth-child(7) { color: #FFB400; } }
+								  &.rating7 { .number:nth-child(8) { color: #FFB400; } }
+								  &.rating8 { .number:nth-child(9) { color: #FFB400; } }
+								  &.rating9 { .number:nth-child(10) { color: #FFB400; } }
+								  &.rating10 { .number:nth-child(11) { color: #FFB400; } }
+								  .number { font-family: 'Lobster', cursive; color: rgba(255,255,255,0.5); font-size: 1em; display: inline-block; width: 50px; margin: 0 -4px 0 0;
+											&:last-child { margin-left: -5px; }
+								  }
+				  }
+				  .slider { background: #fff; height: 4px; border-radius: 0; border: none; 
+							.ui-slider-handle { background: #FFB400; width: 25px; height: 25px; margin-top: -5px; border-radius: 50%; border: none; box-shadow: 0 0 0 4px rgba(255,180,0,0.5); cursor: pointer;
+												&:focus { border: none; outline: none; }
+							}
+				  }
 	}
 
 }
