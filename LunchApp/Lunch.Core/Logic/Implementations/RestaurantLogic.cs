@@ -84,8 +84,8 @@ namespace Lunch.Core.Logic.Implementations
             var recentlySelected = _restaurantOptionRepository.GetRecent().ToList();
             
             // remove any recently selected
-            topRestaurants.RemoveAll(m => recentlySelected.Where(n => m.Id == n.RestaurantId).FirstOrDefault() != null && m.Id == recentlySelected.Where(n => m.Id == n.RestaurantId).FirstOrDefault().RestaurantId );
-            allRestaurants.RemoveAll(m => recentlySelected.Where(n => m.Id == n.RestaurantId).FirstOrDefault() != null && m.Id == recentlySelected.Where(n => m.Id == n.RestaurantId).FirstOrDefault().RestaurantId);
+            topRestaurants.RemoveAll(m => recentlySelected.FirstOrDefault(n => m.Id == n.RestaurantId) != null && m.Id == recentlySelected.FirstOrDefault(n => m.Id == n.RestaurantId).RestaurantId);
+            allRestaurants.RemoveAll(m => recentlySelected.FirstOrDefault(n => m.Id == n.RestaurantId) != null && m.Id == recentlySelected.FirstOrDefault(n => m.Id == n.RestaurantId).RestaurantId);
 
             var random = new Random();
 
@@ -98,10 +98,10 @@ namespace Lunch.Core.Logic.Implementations
             allRestaurants.RemoveAll(m => m.Id == selection[2].Id || m.Id == selection[3].Id);
 
             // if there is a restaurant with a special replace the last one with it
-            var specialRestaurants = allRestaurants.Where(r => r.PreferredDayOfWeek != null);
+            var specialRestaurants = allRestaurants.Where(r => r.PreferredDayOfWeek != null && r.PreferredDayOfWeek.Value == (int)DateTime.Now.DayOfWeek);
             var specialRestaurant = specialRestaurants.OrderBy(x => random.Next()).Take(1).FirstOrDefault();
             if (specialRestaurant != null)
-                selection[selection.Count] = specialRestaurant;
+                selection[selection.Count - 1] = specialRestaurant;
 
             return selection;
         }
