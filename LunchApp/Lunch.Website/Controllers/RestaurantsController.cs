@@ -62,6 +62,14 @@ namespace Lunch.Website.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (model.RestaurantTypeID == null && !string.IsNullOrWhiteSpace(model.NewRestaurantTypeName))
+                {
+                    // Add new restaurant type
+                    var newType = new RestaurantType {TypeName = model.NewRestaurantTypeName.Trim()};
+                    newType = _restaurantTypeLogic.SaveOrUpdate(newType);
+                    if (newType != null)
+                        model.RestaurantTypeID = newType.Id;
+                }
                 var xmodel = Mapper.Map<ViewModels.Restaurant, Restaurant>(model);
                 _restaurantLogic.SaveOrUpdate(xmodel);
                 return RedirectToAction("Index");
@@ -83,6 +91,14 @@ namespace Lunch.Website.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (model.RestaurantTypeID == null && !string.IsNullOrWhiteSpace(model.NewRestaurantTypeName))
+                {
+                    // Add new restaurant type
+                    var newType = new RestaurantType { TypeName = model.NewRestaurantTypeName.Trim() };
+                    newType = _restaurantTypeLogic.SaveOrUpdate(newType);
+                    if (newType != null)
+                        model.RestaurantTypeID = newType.Id;
+                }
                 var xmodel = Mapper.Map<ViewModels.Restaurant, Restaurant>(model);
                 _restaurantLogic.SaveOrUpdate(xmodel);
                 return RedirectToAction("Index");

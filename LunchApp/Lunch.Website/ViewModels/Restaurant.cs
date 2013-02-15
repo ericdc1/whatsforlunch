@@ -22,5 +22,8 @@ namespace Lunch.Website.ViewModels
         public int? PreferredDayOfWeek { get; set; }
         [DisplayName("Genre")]
         public int? RestaurantTypeID { get; set; }
+
+        [DisplayName("New Restaurant Type")]
+        public string NewRestaurantTypeName { get; set; }
     }
 }
