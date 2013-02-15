@@ -1,0 +1,22 @@
+﻿@model List<IEnumerable<Lunch.Core.Models.RestaurantOption>>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Shawn - figure this out for UI :) - love eric</h2>
+
+@foreach (var day in Model)
+{
+    var dayoptions = day.ToList();
+    if (dayoptions.Any())
+    {
+        foreach (var option in dayoptions.OrderByDescending(f => f.Votes))
+        {
+    @option.SelectedDate.ToShortDateString()
+    @option.Restaurant.RestaurantName 
+    @option.Votes
+    @:<br />
+    }  
+    <hr />
+    }
+}
