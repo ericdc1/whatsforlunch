@@ -98,7 +98,7 @@ namespace Lunch.Core.Logic.Implementations
             allRestaurants.RemoveAll(m => m.Id == selection[2].Id || m.Id == selection[3].Id);
 
             // if there is a restaurant with a special replace the last one with it
-            var specialRestaurants = allRestaurants.Where(r => r.PreferredDayOfWeek != null && r.PreferredDayOfWeek.Value == (int)DateTime.Now.DayOfWeek);
+            var specialRestaurants = allRestaurants.Where(r => r.PreferredDayOfWeek != null && r.PreferredDayOfWeek.Value == (int)DateTime.UtcNow.DayOfWeek);
             var specialRestaurant = specialRestaurants.OrderBy(x => random.Next()).Take(1).FirstOrDefault();
             if (specialRestaurant != null)
                 selection[selection.Count - 1] = specialRestaurant;
