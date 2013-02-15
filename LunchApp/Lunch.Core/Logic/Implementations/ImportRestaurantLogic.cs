@@ -64,12 +64,9 @@ namespace Lunch.Core.Logic.Implementations
                 var inDBAlready = _restaurantLogic.GetList(new { }).ToList();
                 if (inDBAlready.Any())
                 {
-                    foreach (var item in model)
+                    foreach (var item in model.Where(item => inDBAlready.Find(f => f.RestaurantName.Trim().ToLower() == item.RestaurantName.Trim().ToLower()) != null))
                     {
-                        if (inDBAlready.Find(f => f.RestaurantName.Trim().ToLower() == item.RestaurantName.Trim().ToLower()) != null)
-                        {
-                            item.AlreadyImported = true;
-                        }
+                        item.AlreadyImported = true;
                     }
                 }
             }

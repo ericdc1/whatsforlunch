@@ -21,7 +21,7 @@ namespace Lunch.Data.Repositories
                         @"SELECT RR.Id, RR.UserId, R.Id AS RestaurantId, 
                             COALESCE((SELECT Rating FROM RestaurantRatings RR WHERE RR.UserID = @UserID and RR.RestaurantId = R.Id), 5) AS Rating, R.* 
                             FROM Restaurants R
-                            left outer join RestaurantRatings RR on RR.RestaurantId  = R.Id", (rr, r) =>
+                            left outer join RestaurantRatings RR on RR.RestaurantId  = R.Id WHERE RR.UserId = @UserID OR RR.Id IS NULL", (rr, r) =>
                             {
                                 rr.Restaurant = r;
                                 return rr;
