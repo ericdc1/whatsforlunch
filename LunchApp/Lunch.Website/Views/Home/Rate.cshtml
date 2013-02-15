@@ -19,21 +19,18 @@
             <p class="voted">Rate your experience at<br /><span class="restLabel">@todayschoice.Restaurant.RestaurantName</span></p>
             
             <div class="sliderWrap">
-                <p style="display:none;">@todayschoice.Restaurant.RestaurantName : <span class="rating">@Model.YourRating.Rating</span></p>
-                <div class="sliderLabels rating@(Model.YourRating.Rating)">
-                    <div class="number" data-tag="0">0</div>
-                    <div class="number" data-tag="1">1</div>
-                    <div class="number" data-tag="2">2</div>
-                    <div class="number" data-tag="3">3</div>
-                    <div class="number" data-tag="4">4</div>
-                    <div class="number" data-tag="5">5</div>
-                    <div class="number" data-tag="6">6</div>
-                    <div class="number" data-tag="7">7</div>
-                    <div class="number" data-tag="8">8</div>
-                    <div class="number" data-tag="9">9</div>
-                    <div class="number" data-tag="10">10</div>
+                <div class="sliderRating">
+                    <div class="iconRating" data-tag="@Model.YourRating.Rating"></div>
+                    <div class="numberRating">@Model.YourRating.Rating</div>
                 </div>
-                <div class="slider" data-restaurantid="@todayschoice.RestaurantId" data-val="@Model.YourRating.Rating"></div>
+                <p style="display:none;">@todayschoice.Restaurant.RestaurantName : <span class="rating">@Model.YourRating.Rating</span></p>
+                <div class="sliderBarWrap">
+                    <div class="slider" data-restaurantid="@todayschoice.RestaurantId" data-val="@Model.YourRating.Rating">
+                        <div data-tag="sliderBar" class="value@(Model.YourRating.Rating)">
+
+                        </div>
+                    </div>
+                </div>
             </div>
 
         </div>
@@ -58,18 +55,36 @@
         $('#hiddenNav').click(function () {
             $('#secondaryContent').toggle();
         });
-    });
-</script>
 
-<script>
+    });
+
+    changeIcon();
+
+    function changeIcon() {
+        if ($('.iconRating').attr('data-tag') < 5) {
+            $('.iconRating').children('i').remove();
+            $('.iconRating').append('<i class="icon-thumbs-down"></i>');
+        } else if ($('.iconRating').attr('data-tag') == 5) {
+            $('.iconRating').children('i').remove();
+            $('.iconRating').append('<i class="icon-food"></i>');
+        } else {
+            $('.iconRating').children('i').remove();
+            $('.iconRating').append('<i class="icon-thumbs-up"></i>');
+        }
+    }
+
+
     $('.slider').slider({
         value: 0,
         min: 0,
         max: 10,
         step: 1,
         slide: function (event, ui) {
-            $(this).siblings("p").find(".rating").text(ui.value);
-            $(this).siblings(".sliderLabels").addClass("rating" + ui.value);
+            $(this).parent().siblings("p").find(".rating").text(ui.value);
+            $(this).parent().siblings(".sliderRating").children(".numberRating").text(ui.value);
+            $(this).children('[data-tag="sliderBar"]').removeClass().addClass("value" + ui.value);
+            $(this).parent().siblings().children('.iconRating').attr('data-tag', + ui.value);
+            changeIcon();
         },
         stop: function () {
             var model = {

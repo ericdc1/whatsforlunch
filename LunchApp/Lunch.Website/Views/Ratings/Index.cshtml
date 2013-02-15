@@ -28,6 +28,21 @@
 </div>
 
 <script>
+    changeIcon();
+
+    function changeIcon() {
+        if ($('.iconRating').attr('data-tag') < 5) {
+            $('.iconRating').children('i').remove();
+            $('.iconRating').append('<i class="icon-thumbs-down"></i>');
+        } else if ($('.iconRating').attr('data-tag') == 5) {
+            $('.iconRating').children('i').remove();
+            $('.iconRating').append('<i class="icon-food"></i>');
+        } else {
+            $('.iconRating').children('i').remove();
+            $('.iconRating').append('<i class="icon-thumbs-up"></i>');
+        }
+    }
+
     $('.slider').slider({
         value: 0,
         min: 0,
@@ -35,6 +50,7 @@
         step: 1,
         slide: function (event, ui) {
             $(this).siblings("p").find(".rating").text(ui.value);
+
         },
         stop: function () {
             var model = {
