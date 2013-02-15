@@ -288,6 +288,14 @@
       <DependentUpon>StyleSheet.less</DependentUpon>
     </Content>
     <Content Include="Resources\CSS\StyleSheetNew.less" />
+    <Content Include="Resources\EmailImages\bullet.png" />
+    <Content Include="Resources\EmailImages\choiceis.png" />
+    <Content Include="Resources\EmailImages\choicesare.png" />
+    <Content Include="Resources\EmailImages\finalchoice.png" />
+    <Content Include="Resources\EmailImages\leaving.png" />
+    <Content Include="Resources\EmailImages\lunch.png" />
+    <Content Include="Resources\EmailImages\veto.png" />
+    <Content Include="Resources\EmailImages\vote.png" />
     <Content Include="Resources\fonts\fontawesome-webfont.eot" />
     <Content Include="Resources\fonts\fontawesome-webfont.ttf" />
     <Content Include="Resources\fonts\fontawesome-webfont.woff" />
