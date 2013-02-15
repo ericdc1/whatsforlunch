@@ -3,20 +3,35 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Shawn - figure this out for UI :) - love eric</h2>
+<div id="content" class="reports">
+    <div class="bgOne"></div>
+    <div class="mask"></div>
+    <div id="info">
+        <div class="management">
 
-@foreach (var day in Model)
-{
-    var dayoptions = day.ToList();
-    if (dayoptions.Any())
-    {
-        foreach (var option in dayoptions.OrderByDescending(f => f.Votes))
-        {
-    @option.SelectedDate.ToShortDateString()
-    @option.Restaurant.RestaurantName 
-    @option.Votes
-    @:<br />
-    }  
-    <hr />
-    }
-}
+            <h1>History</h1>
+
+            <div id="manageFormWrap" class="noPadding">
+
+                @foreach (var day in Model)
+                {
+                    var dayoptions = day.ToList();
+                    if (dayoptions.Any())
+                    {
+                        <div class="row tall padded">
+                        @foreach (var option in dayoptions.OrderByDescending(f => f.Votes))
+                        {
+                            @option.SelectedDate.ToShortDateString()
+                            @option.Restaurant.RestaurantName 
+                            @option.Votes
+                            @:<br />
+                        }  
+                        </div>
+                    }
+                }
+
+            </div>
+
+        </div>
+    </div>
+</div>

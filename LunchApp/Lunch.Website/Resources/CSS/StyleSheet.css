@@ -4179,6 +4179,13 @@ a {
     height: 40px;
     border-bottom: 1px solid #fff;
   }
+  #content #info .management #manageFormWrap .row.tall {
+    height: auto;
+    overflow: hidden;
+  }
+  #content #info .management #manageFormWrap .row.padded {
+    padding: 20px 0;
+  }
   #content #info .management #manageFormWrap .row:first-child {
     border-top: 1px solid #fff;
   }
