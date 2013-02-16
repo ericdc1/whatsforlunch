@@ -83,7 +83,7 @@ namespace Lunch.Core.Logic.Implementations
 
         public RestaurantOption TodaysSelection()
         {
-            var options = GetAllByDate(DateTime.Now).ToList();
+            var options = GetAllByDate(DateTime.UtcNow).ToList();
 
             if (options.Any(f => f.Selected == 1))
                 return options.First(f => f.Selected == 1);
