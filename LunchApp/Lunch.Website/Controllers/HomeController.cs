@@ -1,21 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Net.Mime;
-using System.Reflection;
 using System.Web.Mvc;
 using Lunch.Core.Logic;
-using Lunch.Core.Models;
-using Lunch.Data.Repositories;
-using Lunch.Website.Services;
 using Lunch.Website.ViewModels;
 using StackExchange.Exceptional;
 using Lunch.Core.Jobs;
-using StructureMap;
-using RazorEngine;
-using System.IO;
-using Restaurant = Lunch.Website.ViewModels.Restaurant;
-using User = Lunch.Website.ViewModels.User;
 
 namespace Lunch.Website.Controllers
 {
@@ -56,7 +45,7 @@ namespace Lunch.Website.Controllers
             var model = new Homepage();
 
             model.RestaurantsForToday = _restaurantOptionLogic.GetAndSaveOptions().ToList();
-            model.YourVote = _voteLogic.GetItem(CurrentUser.Id, Helpers.AdjustTimeOffsetFromUtc(DateTime.UtcNow));
+            model.YourVote = _voteLogic.GetItem(CurrentUser.Id, Core.Helpers.AdjustTimeOffsetFromUtc(DateTime.UtcNow));
             model.PeopleWhoVotedToday = _userLogic.GetListByVotedDate(null, null).ToList();
             model.WinningRestaurant = _restaurantOptionLogic.TodaysSelection();
             if (model.YourVote != null)
@@ -67,7 +56,7 @@ namespace Lunch.Website.Controllers
             }
             
 
-            var currenttime = Lunch.Core.Jobs.Helpers.AdjustTimeOffsetFromUtc(DateTime.UtcNow);
+            var currenttime = Lunch.Core.Helpers.AdjustTimeOffsetFromUtc(DateTime.UtcNow);
             
             return RedirectCheck(model, currenttime);
         }
@@ -112,7 +101,7 @@ namespace Lunch.Website.Controllers
         [NonAction]
         private ActionResult RedirectCheck(Homepage model, DateTime currenttime)
         {
-            if (!Helpers.IsLunchDate(Helpers.AdjustTimeOffsetFromUtc(DateTime.UtcNow)))
+            if (!Helpers.IsLunchDate(Core.Helpers.AdjustTimeOffsetFromUtc(DateTime.UtcNow)))
             {
                 return View("nottoday", model);  
             }

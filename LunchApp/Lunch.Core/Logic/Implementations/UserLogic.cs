@@ -21,7 +21,7 @@ namespace Lunch.Core.Logic.Implementations
 
         public IEnumerable<User> GetListByVotedDate(DateTime? dateTime, UserDependencies? dependencies)
         {
-            if (dateTime == null) dateTime = DateTime.Now;
+            if (dateTime == null) dateTime = Core.Helpers.AdjustTimeOffsetFromUtc(DateTime.UtcNow);
 
             return _userRepository.GetListByVotedDate(dateTime.Value, dependencies);
         }

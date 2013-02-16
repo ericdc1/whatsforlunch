@@ -68,7 +68,7 @@ namespace Lunch.Core.Jobs
 
         private void CreateWhereAreWeGoingJob()
         {
-            var job = new Job() { CreatedDate = DateTime.Now, MethodName = "WhereAreWeGoingMessage", ParametersJson = "{}", RunDate = Helpers.AdjustTimeOffsetToUtc(DateTime.Today.AddHours(11).AddMinutes(15)) };
+            var job = new Job() { CreatedDate = DateTime.Now, MethodName = "WhereAreWeGoingMessage", ParametersJson = "{}", RunDate = Core.Helpers.AdjustTimeOffsetToUtc(DateTime.Today.AddHours(11).AddMinutes(15)) };
             var _jobLogic = ObjectFactory.GetInstance<IJobLogic>();
             _jobLogic.SaveOrUpdate(job);
 
@@ -80,7 +80,7 @@ namespace Lunch.Core.Jobs
 
         private void CreateVotingIsOverJob()
         {
-            var job = new Job() { CreatedDate = DateTime.Now, MethodName = "VotingIsOverMessage", ParametersJson = "{}", RunDate = Helpers.AdjustTimeOffsetToUtc(DateTime.Today.AddHours(10).AddMinutes(30)) };
+            var job = new Job() { CreatedDate = DateTime.Now, MethodName = "VotingIsOverMessage", ParametersJson = "{}", RunDate = Core.Helpers.AdjustTimeOffsetToUtc(DateTime.Today.AddHours(10).AddMinutes(30)) };
             var _jobLogic = ObjectFactory.GetInstance<IJobLogic>();
             _jobLogic.SaveOrUpdate(job);
 
@@ -92,7 +92,7 @@ namespace Lunch.Core.Jobs
 
         private void CreateMorningMailJob()
         {
-            var job = new Job() { CreatedDate = DateTime.Now, MethodName = "MorningMessage", ParametersJson = "{}", RunDate = Helpers.AdjustTimeOffsetToUtc(DateTime.Today.AddHours(7).AddMinutes(30))};
+            var job = new Job() { CreatedDate = DateTime.Now, MethodName = "MorningMessage", ParametersJson = "{}", RunDate = Core.Helpers.AdjustTimeOffsetToUtc(DateTime.Today.AddHours(7).AddMinutes(30))};
             var _jobLogic = ObjectFactory.GetInstance<IJobLogic>();
             _jobLogic.SaveOrUpdate(job);
 
@@ -126,32 +126,6 @@ namespace Lunch.Core.Jobs
                 _jobLogLogic.SaveOrUpdate(entity);
             }
         }
-
-
-        public static DateTime AdjustTimeOffsetFromUtc(DateTime time)
-        {
-            var utc = DateTime.UtcNow;
-            var eastern = TimeZoneInfo.FindSystemTimeZoneById("Eastern Standard Time");
-            var easterntime = utc.Add(eastern.BaseUtcOffset);
-
-            TimeSpan diff = (easterntime-utc);
-            double hours = diff.TotalHours;
-            return time.AddHours(hours);
-        }
-
-        public static DateTime AdjustTimeOffsetToUtc(DateTime time)
-        {    
-            var utc = DateTime.UtcNow;
-            var eastern = TimeZoneInfo.FindSystemTimeZoneById("Eastern Standard Time");
-         
-            var easterntime = utc.Add(eastern.BaseUtcOffset);
-            //var isDaylight = eastern.IsDaylightSavingTime(easterntime);
-
-            TimeSpan diff = (utc-easterntime);
-            double hours = diff.TotalHours;
-            return time.AddHours(hours);
-        }
-
 
         public static string Keepalive()
         {

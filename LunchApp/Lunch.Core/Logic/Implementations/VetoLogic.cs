@@ -34,7 +34,7 @@ namespace Lunch.Core.Logic.Implementations
         public Veto GetUsedTodayForUser(int userid)
         {
             return
-                GetAll().FirstOrDefault(f => f.UserId == userid && f.Used && f.UsedAt != null && f.UsedAt.Value.ToShortDateString() == Jobs.Helpers.AdjustTimeOffsetFromUtc(DateTime.UtcNow).ToShortDateString());
+                GetAll().FirstOrDefault(f => f.UserId == userid && f.Used && f.UsedAt != null && f.UsedAt.Value.ToShortDateString() == Helpers.AdjustTimeOffsetFromUtc(DateTime.UtcNow).ToShortDateString());
         }
 
         public Veto Get(int id)
