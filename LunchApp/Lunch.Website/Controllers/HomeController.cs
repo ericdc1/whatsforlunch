@@ -10,7 +10,7 @@ namespace Lunch.Website.Controllers
 {
     public class HomeController : BaseController
     {
-       
+
         private readonly IRestaurantLogic _restaurantLogic;
         private readonly IRestaurantOptionLogic _restaurantOptionLogic;
         private readonly IVoteLogic _voteLogic;
@@ -43,21 +43,24 @@ namespace Lunch.Website.Controllers
             //_jobLogic.WhereAreWeGoingMessage(null, 1);
 
             var model = new Homepage();
-
-            model.RestaurantsForToday = _restaurantOptionLogic.GetAndSaveOptions().ToList();
-            model.YourVote = _voteLogic.GetItem(CurrentUser.Id, Core.Helpers.AdjustTimeOffsetFromUtc(DateTime.UtcNow));
-            model.PeopleWhoVotedToday = _userLogic.GetListByVotedDate(null, null).ToList();
-            model.WinningRestaurant = _restaurantOptionLogic.TodaysSelection();
-            if (model.YourVote != null)
+            if (Helpers.IsLunchDate(Core.Helpers.AdjustTimeOffsetFromUtc(DateTime.UtcNow)))
             {
-                model.YourVote.Restaurant = _restaurantLogic.Get(model.YourVote.RestaurantId);
-                if(model.WinningRestaurant !=null)
-                    model.YourRating = _restaurantRatingLogic.GetAllByUser(CurrentUser.Id).FirstOrDefault(f => f.RestaurantId == model.WinningRestaurant.RestaurantId);
+                model.RestaurantsForToday = _restaurantOptionLogic.GetAndSaveOptions().ToList();
+                model.YourVote = _voteLogic.GetItem(CurrentUser.Id, Core.Helpers.AdjustTimeOffsetFromUtc(DateTime.UtcNow));
+                model.PeopleWhoVotedToday = _userLogic.GetListByVotedDate(null, null).ToList();
+                model.WinningRestaurant = _restaurantOptionLogic.TodaysSelection();
+                if (model.YourVote != null)
+                {
+                    model.YourVote.Restaurant = _restaurantLogic.Get(model.YourVote.RestaurantId);
+                    if (model.WinningRestaurant != null)
+                        model.YourRating = _restaurantRatingLogic.GetAllByUser(CurrentUser.Id).FirstOrDefault(f => f.RestaurantId == model.WinningRestaurant.RestaurantId);
+                }
+
             }
-            
+
 
             var currenttime = Lunch.Core.Helpers.AdjustTimeOffsetFromUtc(DateTime.UtcNow);
-            
+
             return RedirectCheck(model, currenttime);
         }
 
@@ -75,9 +78,9 @@ namespace Lunch.Website.Controllers
         public ActionResult SaveVeto(int id)
         {
             var veto = _vetoLogic.GetAllActiveForUser(CurrentUser.Id).First();
-            veto.RestaurantId=id;
+            veto.RestaurantId = id;
             veto.UsedAt = DateTime.UtcNow;
-            veto.Used=true;
+            veto.Used = true;
             _vetoLogic.SaveOrUpdate(veto);
             //message here? 
             return RedirectToAction("Index");
@@ -103,7 +106,7 @@ namespace Lunch.Website.Controllers
         {
             if (!Helpers.IsLunchDate(Core.Helpers.AdjustTimeOffsetFromUtc(DateTime.UtcNow)))
             {
-                return View("nottoday", model);  
+                return View("nottoday", model);
             }
             if (currenttime < new DateTime(currenttime.Year, currenttime.Month, currenttime.Day, 7, 30, 0))
             {
@@ -127,13 +130,13 @@ namespace Lunch.Website.Controllers
 
                 // If you have overrides you can override otherwise show results.
                 var unusedvetos = _vetoLogic.GetAllActiveForUser(CurrentUser.Id);
-                if (unusedvetos.Any() && model.YourVote != null )
+                if (unusedvetos.Any() && model.YourVote != null)
                     return View("youcanveto", model);
 
-           
+
 
                 return View(model.YourVote == null ? "comebacktomorrow" : "voted", model);
-          
+
             }
 
             if (currenttime > new DateTime(currenttime.Year, currenttime.Month, currenttime.Day, 11, 15, 0) && currenttime < new DateTime(currenttime.Year, currenttime.Month, currenttime.Day, 14, 0, 0))
