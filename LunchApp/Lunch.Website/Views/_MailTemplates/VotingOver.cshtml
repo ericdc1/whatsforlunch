@@ -24,13 +24,9 @@
                         <td>
                             <p style="font-family: Arial, Helvetica, sans-serif; color: #FFF; font-size: 46px; padding-left: 40px; padding-top: 30px">
                                 <img src="@Model.BaseUrl/resources/emailimages/bullet.png" />
-                                @foreach (var restaurant in Model.Restaurants)
-                                {
-                                    @restaurant.Restaurant.RestaurantName
-                                }
-
-
-                                <br />
+                                @Model.Restaurants.ToList()[0].Restaurant.RestaurantName
+                            <br />
+                            </p>
                         </td>
                     </tr>
                     <tr>
