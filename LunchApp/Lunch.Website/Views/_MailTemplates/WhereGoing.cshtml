@@ -1,16 +1,45 @@
 ﻿@model Lunch.Core.Jobs.MailDetails
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>What's For Lunch?</title>
+</head>
 
-<h2>What's for lunch - Where are we going?</h2>
+<body style="background: #fff; text-align: center; margin: 0px;">
+    <table width="650px" align="center" cellpadding="0" cellspacing="0">
+        <tr>
+            <td>
 
-<div>
-    Hello @Model.User.FullName,
-    <br />
+                <h2>
+                    <img src="@Model.BaseUrl/resources/emailimages/lunch.png"  /></h2>
 
-    Today's restaurant choice is:
-    <ul>
-        <li>@Model.Restaurants.ToList()[0].Restaurant.RestaurantName - @Model.Restaurants.ToList()[0].Restaurant.RestaurantType</li>
-    </ul>
+                <h1 style="font-family: Helvetica, sans-serif; font-size: 26px; font-weight: lighter;">Good Morning @Model.User.FullName,</h1>
 
-    <br />
-    We are leaving at 11:45.
-</div>
+                <table width="650px" height="350px" bgcolor="#666666" style="border-width: 0px; border-collapse: collapse">
+                    <tr>
+                        <td height="80px">
+                            <img src="@Model.BaseUrl/resources/emailimages/finalchoice.png" alt="Today's restaurant choices are:"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p style="font-family: Arial, Helvetica, sans-serif; color: #FFF; font-size: 36px;">
+                                <center>
+          @Model.Restaurants.ToList()[0].Restaurant.RestaurantName
+     </center>
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><a href="@Model.Url">
+                            <img src="@Model.BaseUrl/resources/emailimages/leaving.png" /></a></td>
+                    </tr>
+                </table>
+                <p style="font-family: Arial, Helvetica, sans-serif; text-align: right; font-size: 9px">
+                    Having trouble viewing this email?<br />
+                    <a href="@Model.Url">View in browser.</a>
+                </p>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

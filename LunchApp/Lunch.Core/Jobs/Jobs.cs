@@ -40,10 +40,10 @@ namespace Lunch.Core.Jobs
                 var link = string.Format("{0}?GUID={1}", baseurl, user.Guid);
                 var path = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
                 var template = File.ReadAllText(new Uri(path + "/Views/_MailTemplates/Morning.cshtml").AbsolutePath);
-                var messagemodel = new MailDetails() { User = user, Restaurants = todayschoices, Url = link };
+                var messagemodel = new MailDetails() { User = user, Restaurants = todayschoices, Url = link, BaseUrl = baseurl };
 
                 string result = Razor.Parse(template, messagemodel);
-                Helpers.SendMail(user.Email, fromaddress, "What's for Lunch Message of the day", result);
+                Helpers.SendMail(user.Email, fromaddress, "What's for Lunch - Message of the day", result);
 
                 //add log
                 var entity = new JobLog() { JobId = id, Category = "MorningMessage", Message = string.Format("Morning message sent to {0}", user.FullName) };
@@ -71,9 +71,9 @@ namespace Lunch.Core.Jobs
 
                 var path = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
                 var template = File.ReadAllText(new Uri(path + "/Views/_MailTemplates/VotingOver.cshtml").AbsolutePath);
-                var messagemodel = new MailDetails() { User = user, Restaurants = todayschoices, Url = link };
+                var messagemodel = new MailDetails() { User = user, Restaurants = todayschoices, Url = link, BaseUrl = baseurl };
                 string result = Razor.Parse(template, messagemodel);
-                Helpers.SendMail(user.Email, fromaddress, "What's for Lunch Veto Option", result);
+                Helpers.SendMail(user.Email, fromaddress, "What's for Lunch - Veto Option", result);
 
                 //add log
                 var entity = new JobLog() { JobId = id, Category = "VotingIsOverMessage", Message = string.Format("Voting is over message sent to {0}", user.FullName) };
@@ -98,9 +98,9 @@ namespace Lunch.Core.Jobs
 
                 var path = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
                 var template = File.ReadAllText(new Uri(path + "/Views/_MailTemplates/WhereGoing.cshtml").AbsolutePath);
-                var messagemodel = new MailDetails() { User = user, Restaurants = todayschoice, Url = link };
+                var messagemodel = new MailDetails() { User = user, Restaurants = todayschoice, Url = link, BaseUrl = baseurl};
                 string result = Razor.Parse(template, messagemodel);
-                Helpers.SendMail(user.Email, fromaddress, "What's for Lunch Message of the day", result);
+                Helpers.SendMail(user.Email, fromaddress, "What's for Lunch - Where are we going?", result);
 
                 //add log
                 var entity = new JobLog() { JobId = id, Category = "WhereGoing", Message = string.Format("Where are we going message sent to {0}", user.FullName) };

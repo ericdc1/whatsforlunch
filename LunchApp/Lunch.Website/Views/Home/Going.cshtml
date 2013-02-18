@@ -2,6 +2,10 @@
 
 @{
     ViewBag.Title = "Going";
+    if (ViewBag.YouVetoed == null)
+    {
+        ViewBag.YouVetoed = false;
+    }       
 }
 
 <div id="content">

@@ -5,6 +5,7 @@ using Lunch.Core.Logic;
 using Lunch.Website.ViewModels;
 using StackExchange.Exceptional;
 using Lunch.Core.Jobs;
+using StructureMap;
 
 namespace Lunch.Website.Controllers
 {
@@ -40,7 +41,7 @@ namespace Lunch.Website.Controllers
         {
 
             //var _jobLogic = ObjectFactory.GetInstance<Jobs>();
-            //_jobLogic.WhereAreWeGoingMessage(null, 1);
+            //_jobLogic.MorningMessage(null, 1);
 
             var model = new Homepage();
             if (Helpers.IsLunchDate(Core.Helpers.AdjustTimeOffsetFromUtc(DateTime.UtcNow)))

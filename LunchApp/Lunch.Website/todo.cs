@@ -10,6 +10,8 @@
 //http://msdn.microsoft.com/en-us/library/49b92ztk(v=vs.100).aspx
 
 
+//todo: rate email
+
 //todo: webapi for main screen and voting for phonegap app
 //todo: phonegap
 //todo: windows store app
