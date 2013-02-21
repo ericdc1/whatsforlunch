@@ -7,20 +7,6 @@ using Lunch.Core.RepositoryInterfaces;
 
 namespace Lunch.Core.Logic.Implementations
 {
-    public static class LinqHelpers
-    {
-        public static double WeightedAverage<T>(this IEnumerable<T> records, Func<T, double> value, Func<T, double> weight)
-        {
-            double weightedValueSum = records.Sum(record => value(record) * weight(record));
-            double weightSum = records.Sum(record => weight(record));
-
-            if (weightSum != 0.0)
-                return weightedValueSum / weightSum;
-            else
-                return 0;
-        }
-    }
-
     public class RestaurantLogic : IRestaurantLogic
     {
         private readonly IRestaurantRepository _restaurantRepository;
@@ -36,8 +22,6 @@ namespace Lunch.Core.Logic.Implementations
             _restaurantOptionRepository = restaurantOptionRepository;
         }
 
-
-        
 
         public IEnumerable<Restaurant> GetTopByRating(int count = 10)
         {
