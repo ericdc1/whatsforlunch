@@ -19,7 +19,7 @@ namespace Lunch.Data.Repositories
                 var results =
                     _connection.Query<RestaurantRating, Restaurant, RestaurantRating>(
                         @"SELECT RR.Id, RR.UserId, R.Id AS RestaurantId, 
-                            COALESCE((SELECT Rating FROM RestaurantRatings RR WHERE RR.UserID = @UserID and RR.RestaurantId = R.Id), 5) AS Rating, R.* 
+                            COALESCE(RR.Rating, 5) AS Rating, R.* 
                             FROM Restaurants R
                             left outer join RestaurantRatings RR on RR.RestaurantId  = R.Id AND RR.UserId = @UserID ORDER BY R.RestaurantName", (rr, r) =>
                             {

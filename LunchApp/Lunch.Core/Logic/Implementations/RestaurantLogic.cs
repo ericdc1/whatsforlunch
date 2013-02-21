@@ -102,8 +102,8 @@ namespace Lunch.Core.Logic.Implementations
             var recentlySelected = _restaurantOptionRepository.GetRecent().ToList();
             
             // remove any recently selected
-            topRestaurants.RemoveAll(m => recentlySelected.Where(n => m.Id == n.RestaurantId).FirstOrDefault() != null && m.Id == recentlySelected.Where(n => m.Id == n.RestaurantId).FirstOrDefault().RestaurantId );
-            allRestaurants.RemoveAll(m => recentlySelected.Where(n => m.Id == n.RestaurantId).FirstOrDefault() != null && m.Id == recentlySelected.Where(n => m.Id == n.RestaurantId).FirstOrDefault().RestaurantId);
+            topRestaurants.RemoveAll(m => recentlySelected.FirstOrDefault(n => m.Id == n.RestaurantId) != null && m.Id == recentlySelected.FirstOrDefault(n => m.Id == n.RestaurantId).RestaurantId);
+            allRestaurants.RemoveAll(m => recentlySelected.FirstOrDefault(n => m.Id == n.RestaurantId) != null && m.Id == recentlySelected.FirstOrDefault(n => m.Id == n.RestaurantId).RestaurantId);
 
             var random = new Random();
 

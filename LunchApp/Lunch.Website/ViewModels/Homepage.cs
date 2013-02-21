@@ -13,6 +13,7 @@ namespace Lunch.Website.ViewModels
         public List<Core.Models.User> PeopleWhoVotedToday { get; set; }
         public Vote YourVote { get; set; }
         public RestaurantRating YourRating { get; set; }
+        public RestaurantOption WinningRestaurant { get; set; }
 
         //if you have overrides or vetos????
     }

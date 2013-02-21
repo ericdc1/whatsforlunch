@@ -1,0 +1,37 @@
+﻿@model List<IEnumerable<Lunch.Core.Models.RestaurantOption>>
+@{
+    ViewBag.Title = "Index";
+}
+
+<div id="content" class="reports">
+    <div class="bgOne"></div>
+    <div class="mask"></div>
+    <div id="info">
+        <div class="management">
+
+            <h1>History</h1>
+
+            <div id="manageFormWrap" class="noPadding">
+
+                @foreach (var day in Model)
+                {
+                    var dayoptions = day.ToList();
+                    if (dayoptions.Any())
+                    {
+                        <div class="row tall padded">
+                        @foreach (var option in dayoptions.OrderByDescending(f => f.Votes))
+                        {
+                            @option.SelectedDate.ToShortDateString()
+                            @option.Restaurant.RestaurantName 
+                            @option.Votes
+                            @:<br />
+                        }  
+                        </div>
+                    }
+                }
+
+            </div>
+
+        </div>
+    </div>
+</div>

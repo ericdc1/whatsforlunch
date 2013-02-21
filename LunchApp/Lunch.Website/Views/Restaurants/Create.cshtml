@@ -13,16 +13,17 @@
 
             <h1>Create Restaurant</h1>
 
-            @using (Html.BeginForm()) {
+            @using (Html.BeginForm())
+            {
 
                 @Html.ValidationSummary(true)
     
                 var monthFilters = from DayOfWeek n in Enum.GetValues(typeof(DayOfWeek))
-                    select new SelectListItem
-                    {
-                        Value = ((int)n).ToString(CultureInfo.InvariantCulture),
-                        Text = n.ToString()
-                    };
+                                   select new SelectListItem
+                                   {
+                                       Value = ((int)n).ToString(CultureInfo.InvariantCulture),
+                                       Text = n.ToString()
+                                   };
 
                 <div id="manageFormWrap">
 
@@ -41,7 +42,7 @@
                             @Html.LabelFor(model => model.PreferredDayOfWeek)
                         </div>
                         <div class="editorField">
-                            @Html.DropDownList("PreferredDayOfWeek", monthFilters, "No preference",null)
+                            @Html.DropDownList("PreferredDayOfWeek", monthFilters, "No preference", null)
                             @Html.ValidationMessageFor(model => model.PreferredDayOfWeek)
                         </div>
                     </div>
@@ -49,10 +50,22 @@
                     <div class="formRowWrap">
                         <div class="editorLabel">
                             @Html.LabelFor(model => model.RestaurantTypeID)
+                            (<a href="#" id="addNewType">Add New</a>)
                         </div>
                         <div class="editorField">
                             @Html.DropDownList("RestaurantTypeID", new SelectList(ViewBag.RestaurantTypeList, "ID", "TypeName"), "--Choose--")
                             @Html.ValidationMessageFor(model => model.RestaurantTypeID)
+                        </div>
+                    </div>
+
+                    <div id="newType" class="formRowWrap" style="display: none;">
+                        <div class="editorLabel">
+                            @Html.LabelFor(model => model.NewRestaurantTypeName)
+                        </div>
+                        <div class="editorField">
+                            @Html.TextBoxFor(model => model.NewRestaurantTypeName)
+                            @Html.ValidationMessageFor(model => model.NewRestaurantTypeName)
+
                         </div>
                     </div>
 
@@ -65,3 +78,16 @@
         </div>
     </div>
 </div>
+
+
+<script type="text/javascript">
+
+    $(document).ready(function() {
+
+        $("#addNewType").click(function() {
+            $("#newType").show();
+        });
+
+    });
+
+</script>

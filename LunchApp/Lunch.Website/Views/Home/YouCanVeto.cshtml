@@ -27,15 +27,15 @@
                 <p>@Model.PeopleWhoVotedToday.Count picks</p>
             </div>
             
-            <p class="voted">The winning restaurant is<br /><span class="restLabel">@Model.YourVote.Restaurant.RestaurantName</span></p>
+            <p class="voted">The winning restaurant is<br /><span class="restLabel">@Model.RestaurantsForToday.OrderByDescending(f=>f.Votes).First().Restaurant.RestaurantName</span></p>
             
             
             <div class="listingWrap">
                 <p class="vetoLabel">Would you like to veto this and go to</p>
-                @foreach (var restaurant in Model.RestaurantsForToday.OrderBy(f => f.Votes).Take(1))
-                {
-                    <a href="/Home/SaveVeto" class="veto @((restaurant.Selected == 1) ? "" : "inactive")"><i class="icon-remove"></i>@restaurant.Restaurant.RestaurantName</a>
+                @{
+                    var secondchoice = Model.RestaurantsForToday.OrderByDescending(f => f.Votes).Skip(1).Take(1).First().Restaurant;
                 }
+                    <a href="/Home/SaveVeto/@secondchoice.Id" class="veto"><i class="icon-remove"></i>@secondchoice.RestaurantName</a>
             </div>
 
         </div>
@@ -56,11 +56,6 @@
                 interval();
             }, 1500);
         }
-
-        $('#hiddenNav').click(function () {
-            $('#secondaryContent').toggle();
-        });
-        
 
     });
 </script>

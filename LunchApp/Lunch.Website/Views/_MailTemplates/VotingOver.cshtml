@@ -1,17 +1,49 @@
 ﻿@model Lunch.Core.Jobs.MailDetails
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>What's For Lunch?</title>
+</head>
 
-<h2>What's for lunch - Voting is Over!</h2>
+<body style="background: #fff; text-align: center; margin: 0px;">
+    <table width="650px" align="center" cellpadding="0" cellspacing="0">
+        <tr>
+            <td>
 
-<div>
-    Hello @Model.User.FullName,
-    <br />
+                <h2>
+                    <img src="@Model.BaseUrl/resources/emailimages/lunch.png"  /></h2>
 
-    Today's restaurant choice is:
-    <ul>
-        <li>@Model.Restaurants.ToList()[0].Restaurant.RestaurantName - @Model.Restaurants.ToList()[0].Restaurant.RestaurantType</li>
-    </ul>
+                <h1 style="font-family: Helvetica, sans-serif; font-size: 26px; font-weight: lighter;">Good Morning @Model.User.FullName,</h1>
 
-    <br />
-    You have an available override.
-    <a href="@Model.Url">Click here to change today's restaurant to @Model.Restaurants.ToList()[1].Restaurant.RestaurantName - @Model.Restaurants.ToList()[1].Restaurant.RestaurantType</a>
-</div>
+                <table width="650px" height="350px" bgcolor="#666666" style="border-width: 0px; border-collapse: collapse">
+                    <tr>
+                        <td height="80px">
+                            <img src="@Model.BaseUrl/resources/emailimages/choiceis.png" alt="Today's restaurant choices are:"><a href="@Model.Url" style="border:hidden"><img src="@Model.BaseUrl/resources/emailimages/veto.png" alt="vote" style="padding-top:-3px"/></a></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p style="font-family: Arial, Helvetica, sans-serif; color: #FFF; font-size: 46px; padding-left: 40px; padding-top: 30px">
+                                <img src="@Model.BaseUrl/resources/emailimages/bullet.png" />
+                                @Model.Restaurants.ToList()[0].Restaurant.RestaurantName
+                            <br />
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 15px">
+                            <p style="font-family: Helvetica, sans-serif; font-size: 16px; font-weight: lighter; color: #FFF;">You have an available override.
+                                <br />
+                                <a href="@Model.Url" style="color:#FFF; text-decoration:none"><span style="font-family: Helvetica, sans-serif; font-size: 16px; font-weight: lighter; color: #ffb400;">Click here to change today's restaurant to<br />
+                                    <strong>@Model.Restaurants.ToList()[1].Restaurant.RestaurantName</strong></span> </a></p>
+                        </td>
+                    </tr>
+                </table>
+                <p style="font-family: Arial, Helvetica, sans-serif; text-align: right; font-size: 9px">
+                    Having trouble viewing this email?<br />
+                    <a href="@Model.Url">View in browser.</a>
+                </p>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

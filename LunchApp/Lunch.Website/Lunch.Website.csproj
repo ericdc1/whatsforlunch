@@ -163,6 +163,7 @@
     <Compile Include="App_Start\SimpleMembershipMvc3.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\HistoryController.cs" />
     <Compile Include="Controllers\ErrorsController.cs" />
     <Compile Include="Controllers\HistoriesController.cs" />
     <Compile Include="Controllers\HolidaysController.cs" />
@@ -289,6 +290,14 @@
       <DependentUpon>StyleSheet.less</DependentUpon>
     </Content>
     <Content Include="Resources\CSS\StyleSheetNew.less" />
+    <Content Include="Resources\EmailImages\bullet.png" />
+    <Content Include="Resources\EmailImages\choiceis.png" />
+    <Content Include="Resources\EmailImages\choicesare.png" />
+    <Content Include="Resources\EmailImages\finalchoice.png" />
+    <Content Include="Resources\EmailImages\leaving.png" />
+    <Content Include="Resources\EmailImages\lunch.png" />
+    <Content Include="Resources\EmailImages\veto.png" />
+    <Content Include="Resources\EmailImages\vote.png" />
     <Content Include="Resources\fonts\fontawesome-webfont.eot" />
     <Content Include="Resources\fonts\fontawesome-webfont.ttf" />
     <Content Include="Resources\fonts\fontawesome-webfont.woff" />
@@ -348,6 +357,7 @@
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery-ui-1.10.0.js" />
     <Content Include="Scripts\jquery-ui-1.10.0.min.js" />
+    <Content Include="Scripts\jquery.ui.touch-punch.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -394,6 +404,7 @@
     <Content Include="Views\Home\NotToday.cshtml" />
     <Content Include="Views\Management\Index.cshtml" />
     <Content Include="Views\Home\YouCanVeto.cshtml" />
+    <Content Include="Views\History\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

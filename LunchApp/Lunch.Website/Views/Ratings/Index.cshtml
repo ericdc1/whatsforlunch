@@ -10,13 +10,11 @@
     <div id="info">
         <div class="management">
 
-            <h1>Index</h1>
+            <h1>Ratings</h1>
 
-            <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.0/jquery-ui.min.js"></script>
-            <link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery.ui.all.css" type="text/css" rel="stylesheet"/>
             @foreach (var rating in Model)
             {
-                <div>
+                <div class="sliderWrap page">
                     <p>@rating.Restaurant.RestaurantName : <span class="rating">@rating.Rating</span></p>
                     <div class="slider" data-restaurantid="@rating.RestaurantId" data-val="@rating.Rating"></div>
                 </div>
@@ -27,13 +25,29 @@
 </div>
 
 <script>
+    changeIcon();
+
+    function changeIcon() {
+        if ($('.iconRating').attr('data-tag') < 5) {
+            $('.iconRating').children('i').remove();
+            $('.iconRating').append('<i class="icon-thumbs-down"></i>');
+        } else if ($('.iconRating').attr('data-tag') == 5) {
+            $('.iconRating').children('i').remove();
+            $('.iconRating').append('<i class="icon-food"></i>');
+        } else {
+            $('.iconRating').children('i').remove();
+            $('.iconRating').append('<i class="icon-thumbs-up"></i>');
+        }
+    }
+
     $('.slider').slider({
-        value: 1,
-        min: 1,
+        value: 0,
+        min: 0,
         max: 10,
         step: 1,
         slide: function (event, ui) {
             $(this).siblings("p").find(".rating").text(ui.value);
+
         },
         stop: function () {
             var model = {

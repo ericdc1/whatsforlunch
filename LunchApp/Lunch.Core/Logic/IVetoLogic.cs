@@ -9,6 +9,7 @@ namespace Lunch.Core.Logic
         IEnumerable<Veto> GetAll();
         IEnumerable<Veto> GetAllActive();
         IEnumerable<Veto> GetAllActiveForUser(int userId);
+        Veto GetUsedTodayForUser(int userid);
         Veto Get(int id);
         Veto Get(DateTime usedDate);
         Veto SaveOrUpdate(Veto entity);

@@ -45,7 +45,7 @@ namespace Lunch.Core.Jobs
                 Core.Jobs.Helpers.Keepalive();
 
                 //Check to see if today is a lunch day
-                if (Core.Jobs.Helpers.IsLunchDate(Core.Jobs.Helpers.AdjustTimeOffsetFromUtc(DateTime.UtcNow)))
+                if (Core.Jobs.Helpers.IsLunchDate(Core.Helpers.AdjustTimeOffsetFromUtc(DateTime.UtcNow)))
                 {
                     //add log
                     var _jobLogLogic = ObjectFactory.GetInstance<IJobLogLogic>();
@@ -55,7 +55,7 @@ namespace Lunch.Core.Jobs
                     var _jobLogic = ObjectFactory.GetInstance<IJobLogic>();
                     var jobsfortoday =
                         _jobLogic.GetAll()
-                                 .Where(f => f.RunDate.ToShortDateString() == Core.Jobs.Helpers.AdjustTimeOffsetFromUtc(DateTime.UtcNow).ToShortDateString())
+                                 .Where(f => f.RunDate.ToShortDateString() == Core.Helpers.AdjustTimeOffsetFromUtc(DateTime.UtcNow).ToShortDateString())
                                  .ToList();
 
                     //Check to see if there are jobs in the db for today
