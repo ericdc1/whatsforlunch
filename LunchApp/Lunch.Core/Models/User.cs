@@ -31,6 +31,8 @@ namespace Lunch.Core.Models
             get { return FullName + "(" + Email + ")"; }
         }
 
+        
+
         #endregion
 
     }

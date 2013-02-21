@@ -1,4 +1,6 @@
-﻿using System.Security.Cryptography;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Web.Mvc;
 
@@ -28,5 +30,7 @@ namespace System.Web.Helpers
             return sb.ToString().ToLower();
         }
     }
+
+
 
 }

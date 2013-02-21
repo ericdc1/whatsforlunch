@@ -7,6 +7,20 @@ using Lunch.Core.RepositoryInterfaces;
 
 namespace Lunch.Core.Logic.Implementations
 {
+    public static class LinqHelpers
+    {
+        public static double WeightedAverage<T>(this IEnumerable<T> records, Func<T, double> value, Func<T, double> weight)
+        {
+            double weightedValueSum = records.Sum(record => value(record) * weight(record));
+            double weightSum = records.Sum(record => weight(record));
+
+            if (weightSum != 0.0)
+                return weightedValueSum / weightSum;
+            else
+                return 0;
+        }
+    }
+
     public class RestaurantLogic : IRestaurantLogic
     {
         private readonly IRestaurantRepository _restaurantRepository;
@@ -23,6 +37,8 @@ namespace Lunch.Core.Logic.Implementations
         }
 
 
+        
+
         public IEnumerable<Restaurant> GetTopByRating(int count = 10)
         {
             var restaurants = _restaurantRepository.GetList(new {}).ToList();
@@ -36,10 +52,10 @@ namespace Lunch.Core.Logic.Implementations
                 foreach (var i in userVotes)
                 {
                     var userVote = i;
-                    var userRatings = ratings.Where(r => r.UserId == userVote.Key);
+                    var userRatings = ratings.Where(r => r.UserId == userVote.Key).ToList();
                     foreach (var userRating in userRatings)
                     {
-                        userRating.Rating = userRating.Rating * (userVote.Value / userVoteMax);
+                        userRating.WeightedRating = userRating.Rating * ((double)userVote.Value / userVoteMax);
                     }
                 }
 
@@ -52,7 +68,7 @@ namespace Lunch.Core.Logic.Implementations
                     var restaurantRatings = ratings.Where(r => r.RestaurantId == restaurantVote.Key);
                     foreach (var restaurantRating in restaurantRatings)
                     {
-                        restaurantRating.Rating = restaurantRating.Rating * (restaurantVote.Value / restaurantVoteMax);
+                        restaurantRating.WeightedRating = restaurantRating.Rating * ((double)restaurantVote.Value / restaurantVoteMax);
                     }
                 }
 
@@ -60,8 +76,10 @@ namespace Lunch.Core.Logic.Implementations
             foreach (var restaurant in restaurants)
             {
                 var restaurantRatings = ratings.Where(r => r.RestaurantId == restaurant.Id).ToList();
-                restaurant.Rating = (double)restaurantRatings.Sum(r => r.Rating) / (double)restaurantRatings.Count();
+                restaurant.Rating = (double)restaurantRatings.Sum(r => r.WeightedRating) / (double)restaurantRatings.Count();
             }
+
+            restaurants = restaurants.OrderByDescending(r => r.Rating).ToList();
 
             return restaurants.Take(count);
         }
@@ -98,10 +116,10 @@ namespace Lunch.Core.Logic.Implementations
             allRestaurants.RemoveAll(m => m.Id == selection[2].Id || m.Id == selection[3].Id);
 
             // if there is a restaurant with a special replace the last one with it
-            var specialRestaurants = allRestaurants.Where(r => r.PreferredDayOfWeek != null);
+            var specialRestaurants = allRestaurants.Where(r => r.PreferredDayOfWeek != null && r.PreferredDayOfWeek == (int)DateTime.UtcNow.DayOfWeek);
             var specialRestaurant = specialRestaurants.OrderBy(x => random.Next()).Take(1).FirstOrDefault();
             if (specialRestaurant != null)
-                selection[selection.Count] = specialRestaurant;
+                selection[selection.Count - 1] = specialRestaurant;
 
             return selection;
         }

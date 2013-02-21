@@ -122,7 +122,6 @@
     <Compile Include="Models\Job.cs" />
     <Compile Include="Models\JobLog.cs" />
     <Compile Include="Models\Restaurant.cs" />
-    <Compile Include="Models\RestaurantHistory.cs" />
     <Compile Include="Models\RestaurantType.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
