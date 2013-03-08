@@ -33,9 +33,9 @@ namespace Lunch.Website.Controllers
         {
             var temp = _restaurantLogic.GetSelection();
 
-            var results = _restaurantOptionLogic.GetAndSaveOptions();
+            //var results = _restaurantOptionLogic.GetAndSaveOptions();
 
-            return View(results);
+            return View();
         }
 
         public ActionResult Index(int? categoryid)

@@ -72,6 +72,16 @@ namespace Lunch.Data.Repositories
             }
         }
 
+        public IList<Vote> GetItemsByLast30Days(DateTime date)
+        {
+            using (_connection = Utilities.GetProfiledOpenConnection())
+            {
+                return _connection.Query<Vote>("SELECT * FROM Votes " +
+                                               "WHERE VoteDate > @date",
+                                               new { date = date.AddDays(-30) }).ToList();
+            }
+        }
+
         public IList<Vote> GetListForDate(DateTime date)
         {
             using (_connection = Utilities.GetProfiledOpenConnection())

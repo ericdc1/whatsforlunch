@@ -26,9 +26,8 @@ namespace Lunch.Core.Logic.Implementations
         public IEnumerable<Restaurant> GetTopByRating(int count = 10)
         {
             var restaurants = _restaurantRepository.GetList(new {}).ToList();
-            var ratings = _restaurantRatingLogic.GetAll().ToList();
+            var ratings = _restaurantRatingLogic.GetAll().Distinct(new RestaurantRating.RestaurantRatingEqualityComparer()).ToList();
             var userVotes = _voteLogic.GetUserMonthlyVoteCount();
-            var restaurantVotes = _voteLogic.GetRestaurantMonthlyVoteCount();
 
             // multiply each users ratings by their vote weight
             var userVoteMax = userVotes.OrderByDescending(v => v.Value).First().Value;
@@ -40,19 +39,6 @@ namespace Lunch.Core.Logic.Implementations
                     foreach (var userRating in userRatings)
                     {
                         userRating.WeightedRating = userRating.Rating * ((double)userVote.Value / userVoteMax);
-                    }
-                }
-
-            // multiple each restaurants rating by their vote weight
-            var restaurantVoteMax = restaurantVotes.OrderByDescending(v => v.Value).First().Value;
-            if (restaurantVoteMax > 0)
-                foreach (var i in restaurantVotes)
-                {
-                    var restaurantVote = i;
-                    var restaurantRatings = ratings.Where(r => r.RestaurantId == restaurantVote.Key);
-                    foreach (var restaurantRating in restaurantRatings)
-                    {
-                        restaurantRating.WeightedRating = restaurantRating.Rating * ((double)restaurantVote.Value / restaurantVoteMax);
                     }
                 }
 

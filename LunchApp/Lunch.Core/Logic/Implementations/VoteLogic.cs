@@ -98,7 +98,7 @@ namespace Lunch.Core.Logic.Implementations
             var users = _userRepository.GetList(null);
             if (users != null)
             {
-                var votes = _voteRepository.GetItemsByMonthAndYear(DateTime.Now.Month, DateTime.Now.Year);
+                var votes = _voteRepository.GetItemsByLast30Days(DateTime.Now);
                 foreach (var user in users.ToList())
                 {
                     if (!results.ContainsKey(user.Id))
