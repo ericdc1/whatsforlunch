@@ -44,7 +44,7 @@ a { text-decoration: none; }
 
 @media only screen and (max-width: 480px) {
 
-	#nav { background: #fff; width: auto; height: 70px; position: fixed; bottom: 0; right: 10px; left: 10px; z-index: 1;
+	#nav { background: #fff; width: auto; height: 70px; position: fixed; bottom: 0; right: 10px; left: 10px; z-index: 999;
 		   #navWrap { width: 300px; margin: 0 auto; display: block; visibility: visible; }
 		   #title,.button,footer { float: left; }
 		   #title { background: #fff; width: auto; height: 48px; position: fixed; top: 0; left: 0; right: 0;
@@ -236,7 +236,7 @@ a { text-decoration: none; }
 			   }
 	}
 
-	#secondaryContent { background: #333; position: fixed; top: 55px; left: 0; bottom: 0; right: 0; padding-bottom: 3px; border-bottom: 2px solid #fff; display: none;
+	#secondaryContent { background: #333; position: fixed; z-index: 9999; top: 55px; left: 0; bottom: 0; right: 0; padding-bottom: 3px; border-bottom: 2px solid #fff; display: none;
 			 #veto,#overrides,#badges,#users,#myAccount { background: url('/Resources/Images/repeatBlue.png') repeat; width: 100%; height: 50px; overflow: hidden; border-top: 2px solid #229abb; float: left;
 														  &:hover { background: #229abb; }
 														  &.new { background: #5bbd62; border-top: 2px solid #3a9e41;
@@ -266,7 +266,24 @@ a { text-decoration: none; }
 			}
 	}
 	.sliderWrap { width: 300px; height: 30px; margin: 70px auto 0 auto; position: relative;
-				  &.page { background: url('/Resources/Images/repeatBlue.png') repeat; width: 100%; height: 60px; margin: 0 auto; }
+				  &.page { width: 100%; height: 75px; margin: 0px auto 20px auto;
+						   &:last-child { margin-bottom: 50px; }
+						   .sliderBarWrap { width: 96%; padding: 0 2%;
+											.slider { width: 99%; margin: 0 auto;
+													  .value0 { background: #b94f4f; width: 0%; }
+													  .value1 { background: #b94f4f; width: 10%; }
+													  .value2 { background: #d47b7b; width: 20%; }
+													  .value3 { background: #e7914b; width: 30%; }
+													  .value4 { background: #f7ca8f; width: 40%; }
+													  .value5 { background: #f7db8f; width: 50%; }
+													  .value6 { background: #d6e67c; width: 60%; }
+													  .value7 { background: #bad873; width: 70%; }
+													  .value8 { background: #94d873; width: 80%; }
+													  .value9 { background: #58c15f; width: 90%; }
+													  .value10 { background: #3a9e41; width: 100%; }
+											}
+						   }
+				  }
 				  .sliderRating { background: #076d8c; width: 100px; height: 100px; position: absolute; top: -30px; left: 50%; margin-left: -50px; z-index: 0; border-right: 2px solid #fff; border-left: 2px solid #fff; 
 								  &:before { content: ""; background: #076d8c; position: absolute; width: 50px; height: 50px; border-radius: 50%; top: -20px; left: 50%; margin-left: -25px; }
 								  &:after { content: ""; background: #076d8c; position: absolute; width: 50px; height: 50px; border-radius: 50%; bottom: -20px; left: 50%; margin-left: -25px; }
@@ -274,6 +291,15 @@ a { text-decoration: none; }
 												.icon-thumbs-down,.icon-thumbs-up,.icon-food { text-align: center; font-size: 1.5em; color: #fff; }
 								  }
 								  .numberRating { width: 100%; text-align: center; font-family: 'Oswald', sans-serif; position: relative; z-index: 1; color: #fff; font-size: 1.5em; margin-top: 60px; }
+				  }
+				  .sliderPageTitleWrap { overflow: hidden;
+										 .sliderTitle { font-family: 'Oswald', sans-serif; font-size: 1.25em; padding-bottom: 4px; color: #fff; float: left; }
+										 .sliderPageRating { float: right; padding-bottom: 4px;
+															 .iconRating { display: inline-block;
+																		.icon-thumbs-down,.icon-thumbs-up,.icon-food { font-size: 1.5em; color: #fff; }
+															 }
+															 .numberRating { display: inline-block; font-family: 'Oswald', sans-serif; color: #fff; font-size: 1.5em; }
+										 }
 				  }
 				  .sliderBarWrap { background: #f5f5f5; width: 250px; padding: 0 25px; box-shadow: 0 0 0 4px rgba(255,255,255,0.5); position: relative; z-index: 1;
 								    .slider { background: transparent; width: 250px; height: 30px; border-radius: 0; border: none; padding: 5px 0;
@@ -303,7 +329,7 @@ a { text-decoration: none; }
 
 @media only screen and (min-width: 481px) and (max-width: 799px) {
 
-	#nav { width: 100%; height: 75px; position: fixed; top: 0; bottom: 10px; left: 0; z-index: 1;
+	#nav { width: 100%; height: 75px; position: fixed; top: 0; bottom: 10px; left: 0; z-index: 9999;
 		   #title,.button,footer { float: left; }
 		   #title { background: #fff; width: 28%; height: 65px; padding-top: 10px;
 					&:after { content: ""; position: absolute; border-left: 5px solid #fff; border-top: 5px solid transparent; border-bottom: 5px solid transparent; left: 100%; top: 46%; }
@@ -506,7 +532,7 @@ a { text-decoration: none; }
 			   }
 	}
 
-	#secondaryContent { position: fixed; bottom: 0; right: 0; width: auto;
+	#secondaryContent { position: fixed; z-index: 9999; bottom: 0; right: 0; width: auto;
              #veto,#overrides,#badges,#users,#myAccount { background: url('/Resources/Images/repeatBlue.png') repeat; width: 75px; height: 73px; overflow: hidden; border-top: 2px solid #229abb; float: left;
 														  &:hover { background: #229abb; }
 														  &.new { background: #5bbd62; border-top: 2px solid #3a9e41;
@@ -536,7 +562,24 @@ a { text-decoration: none; }
 			}
 	}
 	.sliderWrap { width: 450px; height: 30px; margin: 70px auto 0 auto; position: relative;
-				  &.page { background: url('/Resources/Images/repeatBlue.png') repeat; width: 100%; height: 60px; margin: 0 auto; }
+				  &.page { width: 100%; height: 75px; margin: 0px auto 20px auto;
+						   &:last-child { margin-bottom: 120px; }
+						   .sliderBarWrap { width: 96%; padding: 0 2%;
+											.slider { width: 99%; margin: 0 auto;
+													  .value0 { background: #b94f4f; width: 0%; }
+													  .value1 { background: #b94f4f; width: 10%; }
+													  .value2 { background: #d47b7b; width: 20%; }
+													  .value3 { background: #e7914b; width: 30%; }
+													  .value4 { background: #f7ca8f; width: 40%; }
+													  .value5 { background: #f7db8f; width: 50%; }
+													  .value6 { background: #d6e67c; width: 60%; }
+													  .value7 { background: #bad873; width: 70%; }
+													  .value8 { background: #94d873; width: 80%; }
+													  .value9 { background: #58c15f; width: 90%; }
+													  .value10 { background: #3a9e41; width: 100%; }
+											}
+						   }
+				  }
 				  .sliderRating { background: #076d8c; width: 100px; height: 100px; position: absolute; top: -30px; left: 50%; margin-left: -50px; z-index: 0; border-right: 2px solid #fff; border-left: 2px solid #fff; 
 								  &:before { content: ""; background: #076d8c; position: absolute; width: 50px; height: 50px; border-radius: 50%; top: -20px; left: 50%; margin-left: -25px; }
 								  &:after { content: ""; background: #076d8c; position: absolute; width: 50px; height: 50px; border-radius: 50%; bottom: -20px; left: 50%; margin-left: -25px; }
@@ -544,6 +587,15 @@ a { text-decoration: none; }
 												.icon-thumbs-down,.icon-thumbs-up,.icon-food { text-align: center; font-size: 1.5em; color: #fff; }
 								  }
 								  .numberRating { width: 100%; text-align: center; font-family: 'Oswald', sans-serif; position: relative; z-index: 1; color: #fff; font-size: 1.5em; margin-top: 60px; }
+				  }
+				  .sliderPageTitleWrap { overflow: hidden;
+										 .sliderTitle { font-family: 'Oswald', sans-serif; font-size: 1.25em; padding-bottom: 4px; color: #fff; float: left; }
+										 .sliderPageRating { float: right; padding-bottom: 4px;
+															 .iconRating { display: inline-block;
+																		.icon-thumbs-down,.icon-thumbs-up,.icon-food { font-size: 1.5em; color: #fff; }
+															 }
+															 .numberRating { display: inline-block; font-family: 'Oswald', sans-serif; color: #fff; font-size: 1.5em; }
+										 }
 				  }
 				  .sliderBarWrap { background: #f5f5f5; width: 400px; padding: 0 25px; box-shadow: 0 0 0 4px rgba(255,255,255,0.5); position: relative; z-index: 1;
 								    .slider { background: transparent; width: 400px; height: 30px; border-radius: 0; border: none; padding: 5px 0;
@@ -611,7 +663,7 @@ a { text-decoration: none; }
 						   .bgOne { position: fixed; }
 						   .mask { position: fixed; }
 			   }
-			   #info { width: 100%; max-width: 900px; position: relative;
+			   #info { width: 80%; max-width: 900px; position: relative;
 					   .primary { font-size: 2.25em; color: #fff; margin-top: 160px; 
 								  .titleLabel { margin: 0; padding: 0; font-size: inherit; text-shadow: 1px 1px 2px #000; }
 								  .voted { font-size: 1em; color: #fff; text-shadow: 1px 1px 2px #000; text-align: left; font-weight: lighter; 
@@ -652,7 +704,7 @@ a { text-decoration: none; }
 											   img { width: 40px; height: 40px; border-radius: 50%; }
 								  }
 					   }
-					   .management { width: 90%; float: left; margin-bottom: 20px;
+					   .management { width: 100%; float: left; margin-bottom: 20px;
 									 h1 { font-size: 2em; line-height: 34px; word-spacing: -1px; color: #fff; margin: 20px 0; display: inline-block; }
 									 h3 { font-size: 1em; line-height: 16px; word-spacing: -1px; color: #00addc; margin: -10px 0 20px 0; }
 									 #pagingWrap { float: right; }
@@ -774,8 +826,8 @@ a { text-decoration: none; }
 			   }
 	}
 
-	#secondaryContent { position: fixed; right: 10px; bottom: 10px; width: 391px;
-			 #veto,#overrides,#badges,#users,#myAccount { background: url('/Resources/Images/repeatBlue.png') repeat; width: 75px; height: 73px; overflow: hidden; border-top: 2px solid #229abb; float: left;
+	#secondaryContent { position: fixed; right: 10px; top: 10px; height: 400px; width: 80px;
+			 #veto,#overrides,#badges,#users,#myAccount { background: url('/Resources/Images/repeatBlue.png') repeat; width: 75px; height: 73px; overflow: hidden; border-top: 2px solid #229abb;
 														  &:hover { background: #229abb; }
 														  &.new { background: #5bbd62; border-top: 2px solid #3a9e41;
 																  &:hover { background: #3a9e41; }
@@ -787,24 +839,41 @@ a { text-decoration: none; }
 														  &.empty { background: #ccc; border-top: 2px solid #888;  }
 														  .secondaryText { color: #fff; font-family: 'Lobster', cursive; font-size: 2em; line-height: 32px; text-align: center; display: none; margin-top: -112px; }
 			}
-			#veto { margin-right: 2px;
+			#veto { margin-right: 0;
 					.vetoIcon { background: url('/Resources/Images/veto-32.png') no-repeat; width: 32px; height: 32px; margin: 20px auto 0 auto; }
 			}
-			#overrides { margin-right: 2px;
+			#overrides { margin-right: 0;
 							.overridesIcon { background: url('/Resources/Images/overrides-32.png') no-repeat; width: 32px; height: 32px; margin: 20px auto 0 auto; }
 			}
-			#badges { margin-right: 10px;
+			#badges { margin-right: 0;
 						.badgesIcon { background: url('/Resources/Images/badges-32.png') no-repeat; width: 20px; height: 32px; margin: 20px auto 0 auto; }
 			}
-			#users { float: right; text-align: center; padding-top: 16px; height: 57px; margin-right: 2px;
+			#users { float: left; text-align: center; padding-top: 16px; height: 57px; margin-right: 0;
 								 .icon-cog { color: #fff; font-size: 40px; }
 			}
-			#myAccount { float: right; text-align: center; padding-top: 16px; height: 57px;
+			#myAccount { float: left; text-align: center; padding-top: 16px; height: 57px; margin-right: 0;
 							.icon-user { color: #fff; font-size: 40px; }
 			}
 	}
 	.sliderWrap { width: 550px; height: 30px; margin: 70px 0 0 0; position: relative;
-				  &.page { background: url('/Resources/Images/repeatBlue.png') repeat; width: 100%; height: 60px; margin: 0 auto; }
+				  &.page { width: 100%; height: 75px; margin: 0px auto 20px auto;
+						   &:last-child { margin-bottom: 90px; }
+						   .sliderBarWrap { width: 96%; padding: 0 2%;
+											.slider { width: 99%; margin: 0 auto;
+													  .value0 { background: #b94f4f; width: 0%; }
+													  .value1 { background: #b94f4f; width: 10%; }
+													  .value2 { background: #d47b7b; width: 20%; }
+													  .value3 { background: #e7914b; width: 30%; }
+													  .value4 { background: #f7ca8f; width: 40%; }
+													  .value5 { background: #f7db8f; width: 50%; }
+													  .value6 { background: #d6e67c; width: 60%; }
+													  .value7 { background: #bad873; width: 70%; }
+													  .value8 { background: #94d873; width: 80%; }
+													  .value9 { background: #58c15f; width: 90%; }
+													  .value10 { background: #3a9e41; width: 100%; }
+											}
+						   }
+				  }
 				  .sliderRating { background: #076d8c; width: 100px; height: 100px; position: absolute; top: -30px; left: 50%; margin-left: -50px; z-index: 0; border-right: 2px solid #fff; border-left: 2px solid #fff; 
 								  &:before { content: ""; background: #076d8c; position: absolute; width: 50px; height: 50px; border-radius: 50%; top: -20px; left: 50%; margin-left: -25px; }
 								  &:after { content: ""; background: #076d8c; position: absolute; width: 50px; height: 50px; border-radius: 50%; bottom: -20px; left: 50%; margin-left: -25px; }
@@ -812,6 +881,15 @@ a { text-decoration: none; }
 												.icon-thumbs-down,.icon-thumbs-up,.icon-food { text-align: center; font-size: 1.5em; color: #fff; }
 								  }
 								  .numberRating { width: 100%; text-align: center; font-family: 'Oswald', sans-serif; position: relative; z-index: 1; color: #fff; font-size: 1.5em; margin-top: 60px; }
+				  }
+				  .sliderPageTitleWrap { overflow: hidden;
+										 .sliderTitle { font-family: 'Oswald', sans-serif; font-size: 1.25em; padding-bottom: 4px; color: #fff; float: left; }
+										 .sliderPageRating { float: right; padding-bottom: 4px;
+															 .iconRating { display: inline-block;
+																		.icon-thumbs-down,.icon-thumbs-up,.icon-food { font-size: 1.5em; color: #fff; }
+															 }
+															 .numberRating { display: inline-block; font-family: 'Oswald', sans-serif; color: #fff; font-size: 1.5em; }
+										 }
 				  }
 				  .sliderBarWrap { background: #f5f5f5; width: 500px; padding: 0 25px; box-shadow: 0 0 0 4px rgba(255,255,255,0.5); position: relative; z-index: 1;
 								    .slider { background: transparent; width: 500px; height: 30px; border-radius: 0; border: none; padding: 5px 0;
@@ -1078,7 +1156,23 @@ a { text-decoration: none; }
 						}
 	}
 	.sliderWrap { width: 750px; height: 30px; margin: 70px auto 0 auto; position: relative;
-				  &.page { background: url('/Resources/Images/repeatBlue.png') repeat; width: 100%; height: 60px; margin: 0 auto; }
+				  &.page { width: 100%; height: 75px; margin: 0px auto 20px auto;
+						   .sliderBarWrap { width: 96%; padding: 0 2%;
+											.slider { width: 99%; margin: 0 auto;
+													  .value0 { background: #b94f4f; width: 0%; }
+													  .value1 { background: #b94f4f; width: 10%; }
+													  .value2 { background: #d47b7b; width: 20%; }
+													  .value3 { background: #e7914b; width: 30%; }
+													  .value4 { background: #f7ca8f; width: 40%; }
+													  .value5 { background: #f7db8f; width: 50%; }
+													  .value6 { background: #d6e67c; width: 60%; }
+													  .value7 { background: #bad873; width: 70%; }
+													  .value8 { background: #94d873; width: 80%; }
+													  .value9 { background: #58c15f; width: 90%; }
+													  .value10 { background: #3a9e41; width: 100%; }
+											}
+						   }
+				  }
 				  .sliderRating { background: #076d8c; width: 100px; height: 100px; position: absolute; top: -30px; left: 50%; margin-left: -50px; z-index: 0; border-right: 2px solid #fff; border-left: 2px solid #fff; 
 								  &:before { content: ""; background: #076d8c; position: absolute; width: 50px; height: 50px; border-radius: 50%; top: -20px; left: 50%; margin-left: -25px; }
 								  &:after { content: ""; background: #076d8c; position: absolute; width: 50px; height: 50px; border-radius: 50%; bottom: -20px; left: 50%; margin-left: -25px; }
@@ -1086,6 +1180,15 @@ a { text-decoration: none; }
 												.icon-thumbs-down,.icon-thumbs-up,.icon-food { text-align: center; font-size: 1.5em; color: #fff; }
 								  }
 								  .numberRating { width: 100%; text-align: center; font-family: 'Oswald', sans-serif; position: relative; z-index: 1; color: #fff; font-size: 1.5em; margin-top: 60px; }
+				  }
+				  .sliderPageTitleWrap { overflow: hidden;
+										 .sliderTitle { font-family: 'Oswald', sans-serif; font-size: 1.25em; padding-bottom: 4px; color: #777; float: left; }
+										 .sliderPageRating { float: right;
+															 .iconRating { display: inline-block;
+																		.icon-thumbs-down,.icon-thumbs-up,.icon-food { font-size: 1.5em; color: #777; }
+															 }
+															 .numberRating { display: inline-block; font-family: 'Oswald', sans-serif; color: #777; font-size: 1.5em; }
+										 }
 				  }
 				  .sliderBarWrap { background: #f5f5f5; width: 700px; padding: 0 25px; box-shadow: 0 0 0 4px rgba(255,255,255,0.5); position: relative; z-index: 1;
 								    .slider { background: transparent; width: 700px; height: 30px; border-radius: 0; border: none; padding: 5px 0;

@@ -14,10 +14,25 @@
 
             @foreach (var rating in Model)
             {
-                <div class="sliderWrap page">
-                    <p>@rating.Restaurant.RestaurantName : <span class="rating">@rating.Rating</span></p>
-                    <div class="slider" data-restaurantid="@rating.RestaurantId" data-val="@rating.Rating"></div>
+
+            <div class="sliderWrap page">
+                <div class="sliderPageTitleWrap">
+                    <div class="sliderTitle">@rating.Restaurant.RestaurantName</div>
+                    <div class="sliderPageRating">
+                        <div class="iconRating" data-tag="@rating.Rating"></div>
+                        <div class="numberRating">@rating.Rating</div>
+                    </div>
                 </div>
+                <p style="display:none;">@rating.Restaurant.RestaurantName : <span class="rating">@rating.Rating</span></p>
+                <div class="sliderBarWrap">
+                    <div class="slider" data-restaurantid="@rating.RestaurantId" data-val="@rating.Rating">
+                        <div data-tag="sliderBar" class="value@(rating.Rating)">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+                
             }
 
         </div>
@@ -25,37 +40,60 @@
 </div>
 
 <script>
+    $(document).ready(function () {
+        if ($.browser.msie) {
+            function interval() {
+                $('.new').children().not('.secondaryText').delay(1500).animate({ marginTop: "100px" }, 1000, function () {
+                    $(this).delay(500).animate({ marginTop: "20px" }, 1000);
+                });
+            }
+
+            setInterval(function () {
+                interval();
+            }, 1500);
+        }
+
+    });
+
     changeIcon();
 
     function changeIcon() {
-        if ($('.iconRating').attr('data-tag') < 5) {
-            $('.iconRating').children('i').remove();
-            $('.iconRating').append('<i class="icon-thumbs-down"></i>');
-        } else if ($('.iconRating').attr('data-tag') == 5) {
-            $('.iconRating').children('i').remove();
-            $('.iconRating').append('<i class="icon-food"></i>');
-        } else {
-            $('.iconRating').children('i').remove();
-            $('.iconRating').append('<i class="icon-thumbs-up"></i>');
-        }
+
+        $('.sliderWrap').each(function () {
+            if ($(this).children().children().children('.iconRating').attr('data-tag') < 5) {
+                $(this).children().children().children('.iconRating').children('i').remove();
+                $(this).children().children().children('.iconRating').append('<i class="icon-thumbs-down"></i>');
+            } else if ($(this).children().children().children('.iconRating').attr('data-tag') == 5) {
+                $(this).children().children().children('.iconRating').children('i').remove();
+                $(this).children().children().children('.iconRating').append('<i class="icon-food"></i>');
+            } else {
+                $(this).children().children().children('.iconRating').children('i').remove();
+                $(this).children().children().children('.iconRating').append('<i class="icon-thumbs-up"></i>');
+            }
+        });
+
     }
 
+
     $('.slider').slider({
-        value: 0,
+        value: 1,
         min: 0,
         max: 10,
         step: 1,
         slide: function (event, ui) {
-            $(this).siblings("p").find(".rating").text(ui.value);
-
+            $(this).parent().siblings("p").find(".rating").text(ui.value);
+            $(this).parent().siblings().children(".sliderPageRating").children(".numberRating").text(ui.value);
+            $(this).children('[data-tag="sliderBar"]').removeClass().addClass("value" + ui.value);
+            $(this).parent().siblings().children().children('.iconRating').attr('data-tag', +ui.value);
+            changeIcon();
         },
         stop: function () {
             var model = {
                 RestaurantId: $(this).data('restaurantid'),
-                Rating: parseInt($(this).siblings("p").find(".rating").text())
+                Rating: parseInt($(this).parent().siblings("p").find(".rating").text())
             };
             $.post('/Ratings/Save', model, function (result) {
-                    
+
             }, "json");
         }
     });
