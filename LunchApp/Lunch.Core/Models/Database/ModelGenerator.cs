@@ -5,13 +5,8 @@
 // 
 //     Connection String Name: `AzureSQL`
 //     Provider:               `System.Data.SqlClient`
-//     Connection String:      `empty`
+//     Connection String:      `Server=tcp:jh2haawn58.database.windows.net,1433;Database=WhatsForLunch;User ID=whatsforlunch@jh2haawn58;Password=******;`
 //     Include Views:          `True`
-
-
-// -----------------------------------------------------------------------------------------
-// Failed to read database schema - Format of the initialization string does not conform to specification starting at index 0.
-// -----------------------------------------------------------------------------------------
 
 using System;
 using System.ComponentModel.DataAnnotations;
@@ -19,4 +14,151 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Lunch.Core.Models.Database
 {
+    /// <summary>
+    /// A class which represents the RestaurantRatings table.
+    /// </summary>
+	[Table("RestaurantRatings")]
+	public abstract class RestaurantRating
+	{
+		[Key]
+		public virtual int Id { get; set; }
+		public virtual int UserId { get; set; }
+		public virtual int RestaurantId { get; set; }
+		public virtual int Rating { get; set; }
+	}
+
+    /// <summary>
+    /// A class which represents the Votes table.
+    /// </summary>
+	[Table("Votes")]
+	public abstract class Vote
+	{
+		[Key]
+		public virtual int Id { get; set; }
+		public virtual int UserId { get; set; }
+		public virtual int RestaurantId { get; set; }
+		public virtual DateTime VoteDate { get; set; }
+	}
+
+    /// <summary>
+    /// A class which represents the JobLogs table.
+    /// </summary>
+	[Table("JobLogs")]
+	public abstract class JobLog
+	{
+		[Key]
+		public virtual int JobLogId { get; set; }
+		public virtual string Category { get; set; }
+		public virtual string Message { get; set; }
+		public virtual DateTime CreatedAt { get; set; }
+		public virtual int? JobId { get; set; }
+	}
+
+    /// <summary>
+    /// A class which represents the Jobs table.
+    /// </summary>
+	[Table("Jobs")]
+	public abstract class Job
+	{
+		[Key]
+		public virtual int Id { get; set; }
+		public virtual string MethodName { get; set; }
+		public virtual string ParametersJson { get; set; }
+		public virtual DateTime RunDate { get; set; }
+		public virtual DateTime CreatedDate { get; set; }
+		public virtual bool HasRun { get; set; }
+	}
+
+    /// <summary>
+    /// A class which represents the Restaurants table.
+    /// </summary>
+	[Table("Restaurants")]
+	public abstract class Restaurant
+	{
+		[Key]
+		public virtual int Id { get; set; }
+		public virtual string RestaurantName { get; set; }
+		public virtual int? PreferredDayOfWeek { get; set; }
+		public virtual int? RestaurantTypeId { get; set; }
+	}
+
+    /// <summary>
+    /// A class which represents the RestaurantTypes table.
+    /// </summary>
+	[Table("RestaurantTypes")]
+	public abstract class RestaurantType
+	{
+		[Key]
+		public virtual int Id { get; set; }
+		public virtual string TypeName { get; set; }
+	}
+
+    /// <summary>
+    /// A class which represents the RestaurantOptions table.
+    /// </summary>
+	[Table("RestaurantOptions")]
+	public abstract class RestaurantOption
+	{
+		[Key]
+		public virtual int Id { get; set; }
+		public virtual int RestaurantId { get; set; }
+		public virtual DateTime SelectedDate { get; set; }
+		public virtual int Selected { get; set; }
+	}
+
+    /// <summary>
+    /// A class which represents the Users table.
+    /// </summary>
+	[Table("Users")]
+	public abstract class User
+	{
+		[Key]
+		public virtual int Id { get; set; }
+		public virtual string FullName { get; set; }
+		public virtual string Email { get; set; }
+		public virtual Guid? Guid { get; set; }
+		public virtual bool SendMail1 { get; set; }
+		public virtual bool SendMail2 { get; set; }
+		public virtual bool SendMail3 { get; set; }
+		public virtual bool SendMail4 { get; set; }
+	}
+
+    /// <summary>
+    /// A class which represents the Vetoes table.
+    /// </summary>
+	[Table("Vetoes")]
+	public abstract class Veto
+	{
+		[Key]
+		public virtual int Id { get; set; }
+		public virtual int UserId { get; set; }
+		public virtual int? RestaurantId { get; set; }
+		public virtual bool Used { get; set; }
+		public virtual DateTime ReceivedAt { get; set; }
+		public virtual DateTime? UsedAt { get; set; }
+	}
+
+    /// <summary>
+    /// A class which represents the DBVersions table.
+    /// </summary>
+	[Table("DBVersions")]
+	public abstract class DBVersion
+	{
+		[Key]
+		public virtual int ID { get; set; }
+		public virtual string ScriptName { get; set; }
+		public virtual DateTime RunDate { get; set; }
+	}
+
+    /// <summary>
+    /// A class which represents the Holidays table.
+    /// </summary>
+	[Table("Holidays")]
+	public abstract class Holiday
+	{
+		[Key]
+		public virtual int Id { get; set; }
+		public virtual DateTime ExcludedDate { get; set; }
+	}
+
 }
