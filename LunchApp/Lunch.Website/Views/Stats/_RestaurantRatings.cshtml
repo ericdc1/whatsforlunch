@@ -1,0 +1,33 @@
+﻿@model Lunch.Website.ViewModels.Stats.RestaurantRatings
+
+<div>
+    
+    <h2>Top Ten Restaurants By User Ratings</h2>
+    <ol>
+        @foreach(var restaurant in Model.TopTen)
+        {
+            <li>
+                @restaurant.RestaurantName -
+                <span>@Model.RestaurantOptions.Count(o => o.Selected == 1 && o.RestaurantId == restaurant.Id && o.SelectedDate > DateTime.Now.AddMonths(-2))</span>
+            </li>
+        }
+    </ol>
+    
+</div>
+
+<div>
+    
+    <h2>Top Ten Restaurants By Weighted User Ratings</h2>
+    <span>Weighting based on attendance in the past 30 days</span><br />
+    <span>These restaurants are used to fill the first two spots for the daily selections</span>
+    <ol>
+        @foreach(var restaurant in Model.TopTenWeighted)
+        {
+            <li>
+                @restaurant.RestaurantName -
+                <span>@Model.RestaurantOptions.Count(o => o.Selected == 1 && o.RestaurantId == restaurant.Id && o.SelectedDate > DateTime.Now.AddMonths(-2))</span>
+            </li>
+        }
+    </ol>
+
+</div>

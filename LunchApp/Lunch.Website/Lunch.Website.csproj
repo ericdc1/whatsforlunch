@@ -169,6 +169,7 @@
     <Compile Include="Controllers\HolidaysController.cs" />
     <Compile Include="Controllers\ManagementController.cs" />
     <Compile Include="Controllers\RatingsController.cs" />
+    <Compile Include="Controllers\StatsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JobsController.cs" />
@@ -187,6 +188,8 @@
     <Compile Include="todo.cs" />
     <Compile Include="ViewModels\Account.cs" />
     <Compile Include="ViewModels\Homepage.cs" />
+    <Compile Include="ViewModels\Stats\RestaurantRatings.cs" />
+    <Compile Include="ViewModels\Stats\VoteCharts.cs" />
     <Compile Include="ViewModels\UserManage.cs" />
     <Compile Include="ViewModels\User.cs" />
     <Compile Include="ViewModels\UserEdit.cs" />
@@ -405,6 +408,9 @@
     <Content Include="Views\Management\Index.cshtml" />
     <Content Include="Views\Home\YouCanVeto.cshtml" />
     <Content Include="Views\History\Index.cshtml" />
+    <Content Include="Views\Stats\Index.cshtml" />
+    <Content Include="Views\Stats\_RestaurantRatings.cshtml" />
+    <Content Include="Views\Stats\_VoteCharts.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

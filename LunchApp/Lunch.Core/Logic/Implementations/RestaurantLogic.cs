@@ -25,6 +25,23 @@ namespace Lunch.Core.Logic.Implementations
 
         public IEnumerable<Restaurant> GetTopByRating(int count = 10)
         {
+            var restaurants = _restaurantRepository.GetList(new { }).ToList();
+            var ratings = _restaurantRatingLogic.GetAll().Distinct(new RestaurantRating.RestaurantRatingEqualityComparer()).ToList();
+
+            // for each restaurant find the average
+            foreach (var restaurant in restaurants)
+            {
+                var restaurantRatings = ratings.Where(r => r.RestaurantId == restaurant.Id).ToList();
+                restaurant.Rating = (double)restaurantRatings.Sum(r => r.Rating) / (double)restaurantRatings.Count();
+            }
+
+            restaurants = restaurants.OrderByDescending(r => r.Rating).ToList();
+
+            return restaurants.Take(count);
+        }
+
+        public IEnumerable<Restaurant> GetTopByWeightedRating(int count = 10)
+        {
             var restaurants = _restaurantRepository.GetList(new {}).ToList();
             var ratings = _restaurantRatingLogic.GetAll().Distinct(new RestaurantRating.RestaurantRatingEqualityComparer()).ToList();
             var userVotes = _voteLogic.GetUserMonthlyVoteCount();
@@ -67,7 +84,7 @@ namespace Lunch.Core.Logic.Implementations
         {
             var selection = new List<Restaurant>();
 
-            var topRestaurants = GetTopByRating().ToList();
+            var topRestaurants = GetTopByWeightedRating().ToList();
             var allRestaurants = GetList(new {}).ToList();
             var recentlySelected = _restaurantOptionRepository.GetRecent().ToList();
             

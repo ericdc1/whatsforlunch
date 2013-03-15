@@ -8,6 +8,7 @@ namespace Lunch.Core.Logic
     public interface IRestaurantLogic
     {
         IEnumerable<Restaurant> GetTopByRating(int count = 10);
+        IEnumerable<Restaurant> GetTopByWeightedRating(int count = 10);
         IEnumerable<Restaurant> GetTopByVote(DateTime? date, int count = 2);
         IEnumerable<Restaurant> GetSelection();
         IEnumerable<Restaurant> GetList(object parameters);

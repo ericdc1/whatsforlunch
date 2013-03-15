@@ -25,11 +25,11 @@ namespace Lunch.Data.Repositories
             using (_connection = Utilities.GetProfiledOpenConnection())
             {
                 return _connection.Query<Vote>("SELECT * FROM Votes " +
-                                         "WHERE UserID = @UserID " +
-                                         "AND DATEPART(mm, VoteDate) = DATEPART(mm, @VoteDate) " +
-                                         "AND DATEPART(dd, VoteDate) = DATEPART(dd, @VoteDate) " +
-                                         "AND DATEPART(yyyy, VoteDate) = DATEPART(yyyy, @VoteDate)", 
-                                         new Vote { UserId = userID, VoteDate = date }).FirstOrDefault();
+                                               "WHERE UserID = @UserID " +
+                                               "AND DATEPART(mm, VoteDate) = DATEPART(mm, @VoteDate) " +
+                                               "AND DATEPART(dd, VoteDate) = DATEPART(dd, @VoteDate) " +
+                                               "AND DATEPART(yyyy, VoteDate) = DATEPART(yyyy, @VoteDate)",
+                                               new Vote {UserId = userID, VoteDate = date}).FirstOrDefault();
             }
         }
 
@@ -45,7 +45,7 @@ namespace Lunch.Data.Repositories
         {
             using (_connection = Utilities.GetProfiledOpenConnection())
             {
-                return _connection.GetList<Vote>(new { RestaurantID = restaurantID }).ToList();
+                return _connection.GetList<Vote>(new {RestaurantID = restaurantID}).ToList();
             }
         }
 
@@ -54,10 +54,10 @@ namespace Lunch.Data.Repositories
             using (_connection = Utilities.GetProfiledOpenConnection())
             {
                 return _connection.Query<Vote>("SELECT * FROM Votes WHERE RestaurantID = @RestaurantID " +
-                                         "AND DATEPART(mm, VoteDate) = DATEPART(mm, @VoteDate) " +
-                                         "AND DATEPART(dd, VoteDate) = DATEPART(dd, @VoteDate) " +
-                                         "AND DATEPART(yyyy, VoteDate) = DATEPART(yyyy, @VoteDate)", 
-                                         new Vote {RestaurantId = restaurantID, VoteDate = date}).ToList();
+                                               "AND DATEPART(mm, VoteDate) = DATEPART(mm, @VoteDate) " +
+                                               "AND DATEPART(dd, VoteDate) = DATEPART(dd, @VoteDate) " +
+                                               "AND DATEPART(yyyy, VoteDate) = DATEPART(yyyy, @VoteDate)",
+                                               new Vote {RestaurantId = restaurantID, VoteDate = date}).ToList();
             }
         }
 
@@ -67,8 +67,8 @@ namespace Lunch.Data.Repositories
             {
                 return _connection.Query<Vote>("SELECT * FROM Votes " +
                                                "WHERE DATEPART(mm, VoteDate) = @Month " +
-                                               "AND DATEPART(yyyy, VoteDate) = @Year", 
-                                               new { Month = month, Year = year}).ToList();
+                                               "AND DATEPART(yyyy, VoteDate) = @Year",
+                                               new {Month = month, Year = year}).ToList();
             }
         }
 
@@ -78,7 +78,7 @@ namespace Lunch.Data.Repositories
             {
                 return _connection.Query<Vote>("SELECT * FROM Votes " +
                                                "WHERE VoteDate > @date",
-                                               new { date = date.AddDays(-30) }).ToList();
+                                               new {date = date.AddDays(-30)}).ToList();
             }
         }
 
@@ -86,11 +86,20 @@ namespace Lunch.Data.Repositories
         {
             using (_connection = Utilities.GetProfiledOpenConnection())
             {
-                return _connection.Query<Vote>("SELECT * FROM Votes WHERE " +
-                                         "DATEPART(mm, VoteDate) = DATEPART(mm, @VoteDate) " +
-                                         "AND DATEPART(dd, VoteDate) = DATEPART(dd, @VoteDate) " +
-                                         "AND DATEPART(yyyy, VoteDate) = DATEPART(yyyy, @VoteDate)",
-                                         new Vote { VoteDate = date }).ToList();
+                return _connection.Query<Vote, User, Restaurant, Vote>(@"SELECT * FROM Votes V
+                                                                            INNER JOIN Users U ON U.Id = V.UserId
+                                                                            INNER JOIN Restaurants R ON R.Id = V.RestaurantId
+                                                                            WHERE 
+                                                                            DATEPART(mm, VoteDate) = DATEPART(mm, @VoteDate) 
+                                                                            AND DATEPART(dd, VoteDate) = DATEPART(dd, @VoteDate) 
+                                                                            AND DATEPART(yyyy, VoteDate) = DATEPART(yyyy, @VoteDate)",
+                                                                       (v, u, r) =>
+                                                                           {
+                                                                               v.User = u;
+                                                                               v.Restaurant = r;
+                                                                               return v;
+                                                                           },
+                                                                       new Vote {VoteDate = date}).ToList();
             }
         }
 

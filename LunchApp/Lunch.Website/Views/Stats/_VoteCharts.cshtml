@@ -1,0 +1,140 @@
+﻿@using Lunch.Core.Models
+@using Newtonsoft.Json
+@model Lunch.Website.ViewModels.Stats.VoteCharts
+
+@{
+    var mostRecent = new List<object>();
+    var mostRecentrestaurants = Model.MostResent.Select(v => v.Restaurant).Distinct(new Restaurant.RestaurantEqualityComparer());
+    
+    foreach (var restaurant in mostRecentrestaurants)
+    {
+        mostRecent.Add(new
+                        {
+                            id = restaurant.Id,
+                            label = restaurant.RestaurantName,
+                            value = Model.MostResent.Count(r => r.Restaurant.Id == restaurant.Id)
+                        });
+    }
+    mostRecent.Add(new
+    {
+        id = 99999,
+        label = "test1",
+        value = 1
+    });
+    mostRecent.Add(new
+    {
+        id = 888888,
+        label = "test2",
+        value = 2
+    });
+}
+
+<script src='http://d3js.org/d3.v2.js'></script>
+
+
+
+<div id="mostRecentChart" style="float: left;"></div>
+
+<div id="mostRecentDetails" style="float: left;">
+    @foreach(var vote in Model.MostResent)
+    {
+        <div class="mostRecentDetail" data-id="@vote.RestaurantId" style="display: none; float: left;">
+            <img title="@vote.User.FullNameWithEmail" src="http://www.gravatar.com/avatar/@Html.Md5Hash(vote.User.Email)?s=75" />
+        </div>
+    }
+</div>
+<div style="clear: both;"></div>
+
+<script type="text/javascript">
+
+    var mostRecent = function() {
+
+        //
+        // D3
+
+        var data = @Html.Raw(JsonConvert.SerializeObject(mostRecent));
+
+        var w = 900,                        //width
+            h = 900,                        //height
+            r = 300,                        //radius
+            color = window.d3.scale.category20c();
+
+        var vis = window.d3.select("#mostRecentChart")
+            .append("svg:svg")              //create the SVG element inside the <body>
+            .data([data])                   //associate our data with the document
+            .attr("width", w)           //set the width and height of our visualization (these will be attributes of the <svg> tag
+            .attr("height", h)
+            .append("svg:g")                //make a group to hold our pie chart
+            .attr("transform", "translate(" + (r + r / 10) + "," + (r + r / 10) + ")");    //move the center of the pie chart from 0, 0 to radius, radius
+
+        var arc = window.d3.svg.arc()              //this will create <path> elements for us using arc data
+            .outerRadius(r);
+        var arc2 = window.d3.svg.arc()              //this will create <path> elements for us using arc data
+            .outerRadius(r / 10);
+
+
+        var pie = window.d3.layout.pie()           //this will create arc data for us given a list of values
+            .value(function(d) { return d.value; });    //we must tell it out to access the value of each element in our data array
+
+        var arcs = vis.selectAll("g.slice")     //this selects all <g> elements with class slice (there aren't any yet)
+            .data(pie)                          //associate the generated pie data (an array of arcs, each having startAngle, endAngle and value properties) 
+            .enter()                            //this will create <g> elements for every "extra" data element that should be associated with a selection. The result is creating a <g> for every object in the data array
+                .append("svg:g")                //create a group to hold each slice (we will have a <path> and a <text> element associated with each slice)
+                    .attr("data-id", function(d) { return d.data.id; })
+                    .attr("class", "slice");    //allow us to style things in the slices (like text)
+
+        arcs.append("svg:path")
+                .attr("fill", function(d, i) { return color(i); } ) //set the color for each slice to be chosen from the color function defined above
+                .attr("d", arc);                                    //this creates the actual SVG path using the associated data (pie) with the arc drawing function
+
+        arcs.append("svg:text")                                     //add a label to each slice
+                .attr("transform", function(d) {                    //set the label's origin to the center of the arc
+                    //we have to make sure to set these before calling arc.centroid
+                    d.innerRadius = 0;
+                    d.outerRadius = r;
+                    console.log(d);
+                    return "translate(" + arc.centroid(d) + ")";        //this gives us a pair of coordinates like [50, 50]
+                })
+            .attr("text-anchor", "middle")                          //center the text on it's origin
+            .text(function(d, i) { return data[i].label; });        //get the label from our original data array
+        
+
+        //
+        // Bindings
+
+        $('#mostRecentChart .slice').on('mouseover', function(event) {
+            var $this = $(this);
+
+            //[data-id="' + $this.data('id') + '"]
+
+            $this.attr("transform", function() {
+                vis.selectAll('g.slice[data-id="' + $this.data('id') + '"]')
+                    .attr("transform", function(d) { 
+                        d.innerRadius = 0;
+                        d.outerRadius = 1000;
+                        return "translate(" + arc2.centroid(d) + ")"; //this gives us a pair of coordinates like [50, 50]
+                    });
+            });
+            //    function(d) {
+            //    //var directionX = ($this.find('text').attr('transform').match(/,.*-/)) ? -1 : 1;
+            //    //var directionY = ($this.find('text').attr('transform').match(/-.*,/)) ? -1 : 1;
+                
+            //    return "translate(" + directionX * r / 10 + ", " + directionY * r / 10 + ")";
+            //});
+
+            $('#mostRecentDetails').find('.mostRecentDetail[data-id="' + $this.data('id') + '"]').show();
+        });
+        
+        $('#mostRecentChart .slice').on('mouseout', function(event) {
+            var $this = $(this);
+            
+            $this.attr("transform", function(d) { 
+                return "translate(" + 0 + ", " + 0 + ")";
+            });
+
+            $('#mostRecentDetails').find('.mostRecentDetail[data-id="' + $this.data('id') + '"]').hide();
+        });
+        
+    }();
+
+</script>
