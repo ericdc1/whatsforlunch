@@ -20,8 +20,21 @@ namespace Lunch.Website
         //private IWebSecurityService _webSecurityService;
         //private IUserLogic _userLogic;
 
+       
+        public static bool SetupComplete
+        {
+            get { return IsSetupComplete(); }
+        }
+
+ 
+        private static bool IsSetupComplete()
+        {
+            return false;
+        }
+
         protected void Application_Start()
         {
+
 
             ObjectFactory.Initialize(i => i.AddRegistry<StructureMapRegistry>());
             ObjectFactory.AssertConfigurationIsValid();
@@ -56,6 +69,14 @@ namespace Lunch.Website
 
         private void Application_BeginRequest()
         {
+            
+            if (!SetupComplete && !Request.Url.AbsolutePath.Contains("setupwizard"))
+            {
+                Response.Status = "301 Moved Permanently";
+                Response.AddHeader("Location", "/setupwizard");
+                Response.End();
+            }
+
             StackExchange.Profiling.MiniProfiler.Start();
             StackExchange.Profiling.MiniProfiler.Settings.PopupRenderPosition = RenderPosition.Right;    
         }

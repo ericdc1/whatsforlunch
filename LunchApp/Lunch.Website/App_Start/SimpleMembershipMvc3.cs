@@ -20,6 +20,9 @@ namespace Lunch.Website.App_Start
 		
 		public static void Initialize()
 		{
+		    if (!MvcApplication.SetupComplete)
+		        return;
+
 			// Modify the settings below as appropriate for your application
             //WebSecurity.InitializeDatabaseConnection(connectionStringName: "AzureSQL", userTableName: "User", userIdColumn: "Id", userNameColumn: "Email", autoCreateTables: true);
 			
@@ -38,7 +41,7 @@ namespace Lunch.Website.App_Start
 
 		public static void Start()
 		{
-			if (SimpleMembershipEnabled)
+			if (SimpleMembershipEnabled && MvcApplication.SetupComplete)
 			{
 				MembershipProvider provider = Membership.Providers["AspNetSqlMembershipProvider"];
 				if (provider != null)

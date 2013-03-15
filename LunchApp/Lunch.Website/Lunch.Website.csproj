@@ -170,6 +170,7 @@
     <Compile Include="Controllers\ManagementController.cs" />
     <Compile Include="Controllers\RatingsController.cs" />
     <Compile Include="Controllers\StatsController.cs" />
+    <Compile Include="Controllers\SetupWizardController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JobsController.cs" />
@@ -278,6 +279,9 @@
     <Content Include="Content\themes\base\minified\jquery.ui.tooltip.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Copy of Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <None Include="Resources\CSS\font-awesome.less" />
     <Content Include="Resources\CSS\font-awesome.css">
       <DependentUpon>font-awesome.less</DependentUpon>
@@ -306,7 +310,6 @@
     <Content Include="Resources\fonts\fontawesome-webfont.woff" />
     <Content Include="Resources\fonts\FontAwesome.otf" />
     <Content Include="Morning.cshtml" />
-    <None Include="Scripts\jquery-1.8.3.intellisense.js" />
     <Content Include="img\glyphicons-halflings-white.png" />
     <Content Include="img\glyphicons-halflings.png" />
     <Content Include="Resources\CSS\StyleSheetNew.css" />
@@ -353,10 +356,12 @@
     <Content Include="Resources\Images\WFL-Logo-960.png" />
     <Content Include="Resources\Images\WFL-Logo.png" />
     <Content Include="Resources\Scripts\Lunch.js" />
+    <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Scripts\jquery-1.8.3.js" />
-    <Content Include="Scripts\jquery-1.8.3.min.js" />
+    <Content Include="Scripts\jquery-1.9.1.js" />
+    <Content Include="Scripts\jquery-1.9.1.min.js" />
+    <Content Include="Scripts\jquery-1.9.1.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery-ui-1.10.0.js" />
     <Content Include="Scripts\jquery-ui-1.10.0.min.js" />
@@ -411,6 +416,7 @@
     <Content Include="Views\Stats\Index.cshtml" />
     <Content Include="Views\Stats\_RestaurantRatings.cshtml" />
     <Content Include="Views\Stats\_VoteCharts.cshtml" />
+    <Content Include="Views\SetupWizard\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

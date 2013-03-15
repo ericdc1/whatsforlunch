@@ -70,6 +70,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Jobs\MailDetails.cs" />
+    <Compile Include="Logic\IDBVersionLogic.cs" />
     <Compile Include="Logic\Implementations\RestaurantOptionLogic.cs" />
     <Compile Include="Logic\Implementations\VetoLogic.cs" />
     <Compile Include="Logic\IRestaurantOptionLogic.cs" />
@@ -107,6 +108,7 @@
     <Compile Include="Models\Views\ImportRestaurant.cs" />
     <Compile Include="Models\Views\RestaurantImportSettings.cs" />
     <Compile Include="Models\Vote.cs" />
+    <Compile Include="RepositoryInterfaces\IDBVersionRepository.cs" />
     <Compile Include="RepositoryInterfaces\IVetoRepository.cs" />
     <Compile Include="RepositoryInterfaces\IRestaurantOptionRepository.cs" />
     <Compile Include="RepositoryInterfaces\IRestaurantRatingRepository.cs" />
