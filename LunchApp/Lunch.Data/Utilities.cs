@@ -9,7 +9,15 @@ namespace Lunch.Data
     {
         private static readonly ConnectionStringSettings Connection = ConfigurationManager.ConnectionStrings["AzureSQL"];
         private static readonly string ConnectionString = Connection.ConnectionString;
-   
+
+
+        public static SqlConnection GetOpenConnection(string connectionstring)
+        {
+            var connection = new SqlConnection(connectionstring);
+            connection.Open();
+            return connection;
+        }
+
         public static SqlConnection GetOpenConnection()
         {
             var connection = new SqlConnection(ConnectionString);

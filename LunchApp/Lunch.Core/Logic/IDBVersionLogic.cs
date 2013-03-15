@@ -8,5 +8,7 @@ namespace Lunch.Core.Logic
         IEnumerable<DBVersion> GetItems();
         DBVersion GetLastVersion();
         DBVersion Insert(DBVersion entity);
+        void CheckDbAccess(string connectionstring);
+        void GenerateInitialDatabase(string connectionstring);
     }
 }

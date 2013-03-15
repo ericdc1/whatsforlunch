@@ -1,4 +1,6 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Configuration;
+using System.Diagnostics;
 using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
@@ -20,21 +22,14 @@ namespace Lunch.Website
         //private IWebSecurityService _webSecurityService;
         //private IUserLogic _userLogic;
 
-       
-        public static bool SetupComplete
-        {
-            get { return IsSetupComplete(); }
-        }
 
- 
-        private static bool IsSetupComplete()
-        {
-            return false;
-        }
+        public static bool SetupComplete;
 
         protected void Application_Start()
         {
 
+           SetupComplete = Convert.ToBoolean(ConfigurationManager.AppSettings["SetupComplete"]);
+           Application["SetupComplete"]  = SetupComplete;
 
             ObjectFactory.Initialize(i => i.AddRegistry<StructureMapRegistry>());
             ObjectFactory.AssertConfigurationIsValid();

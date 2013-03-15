@@ -32,5 +32,15 @@ namespace Lunch.Core.Logic.Implementations
             entity.ID = _dbVersionRepository.Insert(entity);
             return entity;
         }
+
+        public void CheckDbAccess(string connectionstring)
+        {
+            _dbVersionRepository.CheckDbAccess(connectionstring);
+        }
+
+        public void GenerateInitialDatabase(string connectionstring)
+        {
+            _dbVersionRepository.GenerateInitialDatabase(connectionstring);
+        }
     }
 }

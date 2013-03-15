@@ -1,0 +1,97 @@
+﻿@model Lunch.Website.ViewModels.SetupWizard.Configuration
+
+@{
+    Layout = "~/Views/Shared/setupwizard.cshtml";
+    ViewBag.Title = "Configuration";
+}
+
+<h2>Configuration</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Configuration</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.AzureSQL)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.AzureSQL)
+            @Html.ValidationMessageFor(model => model.AzureSQL)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.BaseURL)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.BaseURL)
+            @Html.ValidationMessageFor(model => model.BaseURL)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FromEmail)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.FromEmail)
+            @Html.ValidationMessageFor(model => model.FromEmail)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ExcludedDays)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ExcludedDays)
+            @Html.ValidationMessageFor(model => model.ExcludedDays)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.RestaurantProviderPublisherKey)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.RestaurantProviderPublisherKey)
+            @Html.ValidationMessageFor(model => model.RestaurantProviderPublisherKey)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.RestaurantProviderLatitude)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.RestaurantProviderLatitude)
+            @Html.ValidationMessageFor(model => model.RestaurantProviderLatitude)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.RestaurantProviderLongitude)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.RestaurantProviderLongitude)
+            @Html.ValidationMessageFor(model => model.RestaurantProviderLongitude)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.RestaurantProviderRadius)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.RestaurantProviderRadius)
+            @Html.ValidationMessageFor(model => model.RestaurantProviderRadius)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.RestaurantProviderZipCode)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.RestaurantProviderZipCode)
+            @Html.ValidationMessageFor(model => model.RestaurantProviderZipCode)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

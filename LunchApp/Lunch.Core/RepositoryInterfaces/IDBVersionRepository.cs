@@ -8,5 +8,7 @@ namespace Lunch.Core.RepositoryInterfaces
         IEnumerable<DBVersion> GetItems();
         DBVersion GetLastVersion();
         int Insert(DBVersion entity);
+        void CheckDbAccess(string connectionstring);
+        void GenerateInitialDatabase(string connectionstring);
     }
 }

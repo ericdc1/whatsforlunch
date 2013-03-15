@@ -1,7 +1,9 @@
+using System;
 using System.Collections.Specialized;
 using System.Configuration;
 using System.Web.Security;
 using Lunch.Website.Services;
+using Lunch.Website.ViewModels;
 using WebMatrix.WebData;
 
 [assembly: WebActivator.PreApplicationStartMethod(typeof(Lunch.Website.App_Start.SimpleMembershipMvc3), "Start")]
@@ -35,8 +37,13 @@ namespace Lunch.Website.App_Start
             if (!Roles.RoleExists("Administrator"))
                 Roles.CreateRole("Administrator");
             
-            //if (!WebSecurity.UserExists("jdehlin@gmail.com"))
-            //    WebSecurity.CreateUserAndAccount("jdehlin@gmail.com", "foobar", new {FullName = "Jack Dehlin", GUID = Guid.NewGuid()});
+            if (!WebSecurity.UserExists("admin@lunch.com"))
+            {
+                WebSecurity.CreateUserAndAccount("admin@lunch.com", "admin", new { FullName = "Lunch Admin", SendMail1 = false, SendMail2 = false, SendMail3 = false, SendMail4 = false, GUID = Guid.NewGuid() });
+                Roles.AddUserToRole("admin@lunch.com", LunchRoles.Administrator.ToString());
+                Roles.AddUserToRole("admin@lunch.com", "User");
+            }
+              
 		}
 
 		public static void Start()

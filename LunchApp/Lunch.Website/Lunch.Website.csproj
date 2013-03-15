@@ -189,6 +189,7 @@
     <Compile Include="todo.cs" />
     <Compile Include="ViewModels\Account.cs" />
     <Compile Include="ViewModels\Homepage.cs" />
+    <Compile Include="ViewModels\SetupWizard\Configuration.cs" />
     <Compile Include="ViewModels\Stats\RestaurantRatings.cs" />
     <Compile Include="ViewModels\Stats\VoteCharts.cs" />
     <Compile Include="ViewModels\UserManage.cs" />
@@ -279,7 +280,7 @@
     <Content Include="Content\themes\base\minified\jquery.ui.tooltip.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <Content Include="Copy of Web.config">
+    <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
     <None Include="Resources\CSS\font-awesome.less" />
@@ -373,9 +374,6 @@
     <Content Include="Views\Home\Vote.cshtml">
       <SubType>Code</SubType>
     </Content>
-    <Content Include="Web.config">
-      <SubType>Designer</SubType>
-    </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Views\Users\Create.cshtml" />
     <Content Include="Views\Users\Edit.cshtml" />
@@ -417,6 +415,8 @@
     <Content Include="Views\Stats\_RestaurantRatings.cshtml" />
     <Content Include="Views\Stats\_VoteCharts.cshtml" />
     <Content Include="Views\SetupWizard\Index.cshtml" />
+    <Content Include="Views\SetupWizard\Configuration.cshtml" />
+    <Content Include="Views\Shared\setupwizard.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
