@@ -71,6 +71,7 @@
     </Compile>
     <Compile Include="Jobs\MailDetails.cs" />
     <Compile Include="Logic\IDBVersionLogic.cs" />
+    <Compile Include="Logic\Implementations\DBVersionLogic.cs" />
     <Compile Include="Logic\Implementations\RestaurantOptionLogic.cs" />
     <Compile Include="Logic\Implementations\VetoLogic.cs" />
     <Compile Include="Logic\IRestaurantOptionLogic.cs" />
@@ -95,6 +96,7 @@
     <Compile Include="Logic\IRestaurantTypeLogic.cs" />
     <Compile Include="Logic\IVetoLogic.cs" />
     <Compile Include="Logic\IVoteLogic.cs" />
+    <Compile Include="Models\DBVersion.cs" />
     <Compile Include="Models\RestaurantOption.cs" />
     <Compile Include="Models\Holiday.cs" />
     <Compile Include="Models\RestaurantRating.cs" />

@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using Lunch.Core.Models;
 
 namespace Lunch.Core.Logic
 {
-    interface IDBVersionLogic
+    public interface IDBVersionLogic
     {
+        IEnumerable<DBVersion> GetItems();
+        DBVersion GetLastVersion();
+        DBVersion Insert(DBVersion entity);
     }
 }
