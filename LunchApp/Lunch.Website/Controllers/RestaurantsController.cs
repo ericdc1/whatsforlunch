@@ -45,12 +45,6 @@ namespace Lunch.Website.Controllers
             return View(result.OrderBy(f => f.RestaurantName));
         }
 
-        public ActionResult Details(int id)
-        {
-            var model = _restaurantLogic.Get(id);
-            return View(model);
-        }
-
         public ActionResult Create()
         {
             ViewBag.RestaurantTypeList = _restaurantTypeLogic.GetAll();
@@ -109,10 +103,61 @@ namespace Lunch.Website.Controllers
 
         public ActionResult Delete(int id)
         {
-            var rest = _restaurantLogic.Get(id);
-            _restaurantLogic.Delete(rest);
+            var model = _restaurantLogic.Get(id);
+            if (model != null)
+                _restaurantLogic.Delete(model);
             return RedirectToAction("Index");
         }
+
+        #region Restaurant Types
+
+        public ActionResult Types()
+        {
+            return View(_restaurantTypeLogic.GetAll());
+        }
+
+        public ActionResult CreateCategory()
+        {
+            return View(new ViewModels.RestaurantType());
+        }
+
+        [HttpPost]
+        public ActionResult CreateCategory(ViewModels.RestaurantType model)
+        {
+            if (ModelState.IsValid)
+            {
+                _restaurantTypeLogic.SaveOrUpdate(Mapper.Map<ViewModels.RestaurantType, RestaurantType>(model));
+                return RedirectToAction("Types");
+            }
+            return View(model);
+        }
+
+        public ActionResult EditCategory(int id)
+        {
+            var entity = _restaurantTypeLogic.Get(id);
+            return View(Mapper.Map<RestaurantType, ViewModels.RestaurantType>(entity));
+        }
+
+        [HttpPost]
+        public ActionResult EditCategory(ViewModels.RestaurantType model)
+        {
+            if (ModelState.IsValid)
+            {
+                _restaurantTypeLogic.SaveOrUpdate(Mapper.Map<ViewModels.RestaurantType, RestaurantType>(model));
+                return RedirectToAction("Types");
+            }
+            return View(model);
+        }
+
+        public ActionResult DeleteCategory(int id)
+        {
+            var model = _restaurantTypeLogic.Get(id);
+            if (model != null)
+                _restaurantTypeLogic.Delete(model);
+            return RedirectToAction("Types");
+        }
+
+        #endregion
 
         #region Import Restaurants
 

@@ -1,0 +1,40 @@
+﻿@model Lunch.Website.ViewModels.RestaurantType
+
+@{
+    ViewBag.Title = "Create Restaurant Category";
+}
+
+<div id="content" class="reports">
+    <div class="bgOne"></div>
+    <div class="mask"></div>
+    <div id="info">
+        <div class="management">
+
+            <h1>Create Restaurant Category</h1>
+
+            @using (Html.BeginForm())
+            {
+
+                @Html.ValidationSummary(true)
+
+                <div id="manageFormWrap">
+
+                    <div class="formRowWrap">
+                        <div class="editorLabel">
+                            @Html.LabelFor(model => model.TypeName)
+                        </div>
+                        <div class="editorField">
+                            @Html.EditorFor(model => model.TypeName)
+                            @Html.ValidationMessageFor(model => model.TypeName)
+                        </div>
+                    </div>
+
+                </div>
+                
+                @Html.ActionLink("Back to List", "Types", null, new { @class = "btn back" })
+                <input type="submit" value="Create" class="btn submit" />
+            }
+
+        </div>
+    </div>
+</div>

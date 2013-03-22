@@ -1,0 +1,34 @@
+﻿@model IEnumerable<Lunch.Core.Models.RestaurantType>
+
+@{
+    ViewBag.Title = "Restaurant Categories";
+}
+
+<div id="content" class="reports">
+    <div class="bgOne"></div>
+    <div class="mask"></div>
+    <div id="info">
+        <div class="management">
+
+            <h1>Restaurant Categories</h1>
+
+            <div class="btnToolbar">
+                @Html.ActionLink("Create New", "CreateCategory", null, new {@class="btn submit"})
+            </div>
+
+            <div id="manageFormWrap" class="noPadding">
+                @foreach (var item in Model) 
+                {
+                    <div class="row">
+                        <div class="column actionButton">
+                            <a href="@Url.Action("EditCategory", new { ID = item.Id })" class="action"><i class="icon-pencil"></i></a>
+                            <a href="@Url.Action("DeleteCategory", new { ID = item.Id })" role="button" data-toggle="modal" class="action"><i class="icon-trash"></i></a>
+                        </div>
+                        <div class="column restaurant">@Html.DisplayFor(modelItem => item.TypeName)</div>
+                    </div>
+                }
+            </div>
+
+        </div>
+    </div>
+</div>
